@@ -54,11 +54,13 @@ async function getPageProperties(pageId) {
   console.log('   Available properties:', Object.keys(properties).join(', '));
 
   // Try all possible variations of Status property name
+  // Note: Notion has both "Select" and "Status" property types
   let status = '';
   for (const key of Object.keys(properties)) {
     if (key.toLowerCase().includes('status')) {
       console.log(`   Checking '${key}' property:`, JSON.stringify(properties[key], null, 2));
-      status = properties[key]?.select?.name || '';
+      // Try both .status.name (Status property) and .select.name (Select property)
+      status = properties[key]?.status?.name || properties[key]?.select?.name || '';
       if (status) {
         console.log(`   Found status in property '${key}': ${status}`);
         break;
@@ -173,7 +175,7 @@ async function scheduledSync() {
       and: [
         {
           property: 'Status',
-          select: {
+          status: {
             equals: 'Published',
           },
         },
