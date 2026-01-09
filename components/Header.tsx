@@ -9,7 +9,7 @@ export default function Header() {
           href="https://techreviewlabs.xyz"
           className="inline-block"
         >
-          <div className="text-2xl font-bold">TechReviewLabs</div>
+          <div className="text-2xl font-bold">테크리뷰Lab</div>
         </a>
         <span className="text-gray-400 text-2xl">|</span>
         <a
