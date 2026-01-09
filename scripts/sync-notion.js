@@ -57,6 +57,7 @@ async function getPageProperties(pageId) {
   let status = '';
   for (const key of Object.keys(properties)) {
     if (key.toLowerCase().includes('status')) {
+      console.log(`   Checking '${key}' property:`, JSON.stringify(properties[key], null, 2));
       status = properties[key]?.select?.name || '';
       if (status) {
         console.log(`   Found status in property '${key}': ${status}`);
