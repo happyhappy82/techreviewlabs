@@ -102,18 +102,6 @@ export default async function ReviewPage({ params }: Props) {
         />
 
         <div className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            {review.category && (
-              <span className="text-xs px-2 py-1 bg-gray-100 rounded">
-                {review.category}
-              </span>
-            )}
-            {review.rating && review.rating > 0 && (
-              <span className="text-sm text-yellow-600 font-semibold">
-                ★ {review.rating.toFixed(1)} / 5.0
-              </span>
-            )}
-          </div>
           <h1
             className="text-[42px] font-black leading-tight mb-4"
             style={{ color: review.lightColor }}
