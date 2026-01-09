@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const http = require('http');
+const matter = require('gray-matter');
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -82,9 +83,25 @@ async function getPageProperties(pageId) {
   };
 }
 
-function fileExistsForPage(slug) {
-  const filePath = path.join(REVIEWS_DIR, `${slug}.md`);
-  return fs.existsSync(filePath);
+function findExistingFileByPageId(pageId) {
+  const files = fs.readdirSync(REVIEWS_DIR).filter(file => file.endsWith('.md'));
+
+  for (const file of files) {
+    const filePath = path.join(REVIEWS_DIR, file);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data } = matter(fileContent);
+
+    if (data.notionPageId === pageId) {
+      return {
+        exists: true,
+        filePath: filePath,
+        fileName: file,
+        slug: file.replace('.md', '')
+      };
+    }
+  }
+
+  return { exists: false };
 }
 
 function deleteReviewFile(slug) {
@@ -108,6 +125,13 @@ async function processPage(pageId, isNew = false) {
   const slug = generateSlug(props.title);
   console.log(`\n📝 Processing: ${props.title} (${slug})`);
   console.log(`   Status: ${props.status}, Date: ${props.date}`);
+
+  // Check if file exists with different slug (title changed)
+  const existingFile = findExistingFileByPageId(pageId);
+  if (existingFile.exists && existingFile.slug !== slug) {
+    console.log(`  🔄 Title changed, removing old file: ${existingFile.fileName}`);
+    fs.unlinkSync(existingFile.filePath);
+  }
 
   // Get page content
   const mdblocks = await n2m.pageToMarkdown(pageId);
@@ -144,6 +168,7 @@ rating: ${props.rating}
 product: "${props.product}"
 lightColor: "${props.lightColor}"
 darkColor: "${props.darkColor}"
+notionPageId: "${props.pageId}"
 ---
 
 `;
@@ -206,9 +231,9 @@ async function scheduledSync() {
     if (!props.title) continue;
 
     const slug = generateSlug(props.title);
-    const exists = fileExistsForPage(slug);
+    const existingFile = findExistingFileByPageId(pageId);
 
-    if (!exists) {
+    if (!existingFile.exists) {
       // 신규 발행
       console.log(`\n✨ New review detected: ${slug}`);
       const publishedSlug = await processPage(pageId, true);
@@ -269,9 +294,9 @@ async function webhookSync() {
 
   // Handle publish/update
   if (status === 'Published') {
-    const exists = fileExistsForPage(slug);
+    const existingFile = findExistingFileByPageId(pageId);
 
-    if (exists) {
+    if (existingFile.exists) {
       console.log(`\n✏️  Updating existing review: ${slug}`);
       await processPage(pageId, false);
       return true;
