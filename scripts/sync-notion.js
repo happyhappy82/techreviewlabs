@@ -69,16 +69,22 @@ async function getPageProperties(pageId) {
     }
   }
 
+  // Helper function to extract full text from Notion rich_text/title array
+  const getFullText = (textArray) => {
+    if (!textArray || !Array.isArray(textArray)) return '';
+    return textArray.map(item => item.plain_text || '').join('');
+  };
+
   return {
     pageId: page.id,
-    title: properties.제목?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
+    title: getFullText(properties.제목?.title) || getFullText(properties.Title?.title) || '',
     date: properties.날짜?.date?.start || properties.Date?.date?.start || new Date().toISOString().split('T')[0],
-    excerpt: properties.요약?.rich_text?.[0]?.plain_text || properties.Excerpt?.rich_text?.[0]?.plain_text || '',
+    excerpt: getFullText(properties.요약?.rich_text) || getFullText(properties.Excerpt?.rich_text) || '',
     category: properties.카테고리?.select?.name || properties.Category?.select?.name || '기타',
     rating: properties.평점?.number || properties.Rating?.number || 0,
-    product: properties.제품명?.rich_text?.[0]?.plain_text || properties.Product?.rich_text?.[0]?.plain_text || '',
-    lightColor: properties.밝은색?.rich_text?.[0]?.plain_text || properties.LightColor?.rich_text?.[0]?.plain_text || 'lab(62.926 59.277 -1.573)',
-    darkColor: properties.어두운색?.rich_text?.[0]?.plain_text || properties.DarkColor?.rich_text?.[0]?.plain_text || 'lab(80.993 32.329 -7.093)',
+    product: getFullText(properties.제품명?.rich_text) || getFullText(properties.Product?.rich_text) || '',
+    lightColor: getFullText(properties.밝은색?.rich_text) || getFullText(properties.LightColor?.rich_text) || 'lab(62.926 59.277 -1.573)',
+    darkColor: getFullText(properties.어두운색?.rich_text) || getFullText(properties.DarkColor?.rich_text) || 'lab(80.993 32.329 -7.093)',
     status: status,
   };
 }
