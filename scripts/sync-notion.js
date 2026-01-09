@@ -50,6 +50,21 @@ async function getPageProperties(pageId) {
   const page = await notion.pages.retrieve({ page_id: pageId });
   const properties = page.properties;
 
+  // Debug: Print all property keys
+  console.log('   Available properties:', Object.keys(properties).join(', '));
+
+  // Try all possible variations of Status property name
+  let status = '';
+  for (const key of Object.keys(properties)) {
+    if (key.toLowerCase().includes('status')) {
+      status = properties[key]?.select?.name || '';
+      if (status) {
+        console.log(`   Found status in property '${key}': ${status}`);
+        break;
+      }
+    }
+  }
+
   return {
     pageId: page.id,
     title: properties.제목?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
@@ -60,7 +75,7 @@ async function getPageProperties(pageId) {
     product: properties.제품명?.rich_text?.[0]?.plain_text || properties.Product?.rich_text?.[0]?.plain_text || '',
     lightColor: properties.밝은색?.rich_text?.[0]?.plain_text || properties.LightColor?.rich_text?.[0]?.plain_text || 'lab(62.926 59.277 -1.573)',
     darkColor: properties.어두운색?.rich_text?.[0]?.plain_text || properties.DarkColor?.rich_text?.[0]?.plain_text || 'lab(80.993 32.329 -7.093)',
-    status: properties.Status?.select?.name || properties.status?.select?.name || '',
+    status: status,
   };
 }
 
