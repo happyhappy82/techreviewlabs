@@ -9,14 +9,14 @@ export default function Header() {
           href="https://techreviewlabs.xyz"
           className="inline-block"
         >
-          <div className="text-2xl font-bold">테크리뷰Lab</div>
-        </a>
-        <span className="text-gray-400 text-2xl">|</span>
-        <a
-          href="https://techreviewlabs.xyz"
-          className="text-2xl font-semibold hover:opacity-70 transition-opacity"
-        >
-          Tech Reviews
+          <Image
+            src="/logo.png"
+            alt="테크리뷰Lab"
+            width={200}
+            height={60}
+            className="h-auto"
+            priority
+          />
         </a>
       </div>
     </header>
