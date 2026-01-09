@@ -180,7 +180,7 @@ async function scheduledSync() {
           },
         },
         {
-          property: '날짜',
+          property: 'Date',
           date: {
             before: now,
           },
@@ -189,7 +189,7 @@ async function scheduledSync() {
     },
     sorts: [
       {
-        property: '날짜',
+        property: 'Date',
         direction: 'descending',
       },
     ],
