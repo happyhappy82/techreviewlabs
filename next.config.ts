@@ -1,0 +1,38 @@
+import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  productionBrowserSourceMaps: false,
+  compress: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000,
+  },
+  experimental: {
+    optimizePackageImports: ["react-icons", "react-markdown"],
+    optimizeCss: true,
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  modularizeImports: {
+    "react-markdown": {
+      transform: "react-markdown",
+    },
+  },
+};
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);
