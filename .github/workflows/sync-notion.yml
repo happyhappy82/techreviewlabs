@@ -1,0 +1,116 @@
+name: Sync Notion to Reviews
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # 매일 오후 1시 (KST)
+    - cron: '0 9 * * *'  # 매일 오후 6시 (KST)
+  workflow_dispatch:
+  repository_dispatch:
+    types: [notion-webhook]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          echo "Installed packages:"
+          npm list --depth=0
+
+      - name: Sync from Notion
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          SYNC_ACTION: ${{ github.event.client_payload.action }}
+          SYNC_PAGE_ID: ${{ github.event.client_payload.page_id }}
+          TRIGGER_TYPE: ${{ github.event_name }}
+        run: node scripts/sync-notion.js
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+
+      - name: Configure Git
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name "Notion Sync Bot"
+          git config --global user.email "notion-sync[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git add -A content/reviews/
+          git add -A public/notion-images/
+
+          git commit -m "Sync reviews from Notion"
+
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Check for published slug
+        if: steps.check_changes.outputs.has_changes == 'true'
+        id: check_slug
+        run: |
+          if [ -f ".published-slug" ]; then
+            SLUG=$(cat .published-slug)
+            echo "published_slug=$SLUG" >> $GITHUB_OUTPUT
+            echo "has_slug=true" >> $GITHUB_OUTPUT
+            echo "📌 발행된 slug: $SLUG"
+          else
+            echo "has_slug=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ 발행된 slug 없음"
+          fi
+
+      - name: Wait for Vercel deployment
+        if: steps.check_slug.outputs.has_slug == 'true'
+        run: |
+          echo "⏳ Vercel 배포 대기 중 (3분)..."
+          sleep 180
+          echo "✅ 대기 완료"
+
+      - name: Submit to Google Search Console
+        if: steps.check_slug.outputs.has_slug == 'true'
+        env:
+          SITE_URL: https://techreviewlabs.xyz
+          PUBLISHED_SLUG: ${{ steps.check_slug.outputs.published_slug }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          echo "🔍 Google Search Console에 URL 제출 중..."
+          node scripts/google-indexing.js
+
+      - name: Report completion
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          echo "✅ Notion sync completed!"
+          if [ -f ".published-slug" ]; then
+            echo "📌 발행된 글: $(cat .published-slug)"
+            echo "🔍 Google 인덱싱 요청 완료"
+          fi
+
+      - name: No changes
+        if: steps.check_changes.outputs.has_changes == 'false'
+        run: |
+          echo "ℹ️ No new or updated reviews found in Notion"
+          echo "All published reviews are already synced"

@@ -33,14 +33,13 @@ export default function ReviewCard({
             </span>
           )}
           {rating && rating > 0 && (
-            <span className="text-xs text-yellow-600">
+            <span className="text-xs text-amber-700 font-medium">
               ★ {rating.toFixed(1)}
             </span>
           )}
         </div>
         <h2
-          className="text-[28px] font-black leading-none mb-2"
-          style={{ color: lightColor }}
+          className="text-[28px] font-black leading-none mb-2 text-gray-900"
         >
           {title}
         </h2>

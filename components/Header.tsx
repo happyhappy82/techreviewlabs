@@ -16,6 +16,7 @@ export default function Header() {
             height={60}
             className="h-auto"
             priority
+            fetchPriority="high"
           />
         </a>
       </div>
