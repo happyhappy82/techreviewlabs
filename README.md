@@ -2,9 +2,6 @@
 
 > 전자기기 리뷰 전문 사이트 - 스마트폰, 노트북, 태블릿, 이어폰 등
 
-[![CI/CD](https://github.com/happyhappy82/techreviewlabs/actions/workflows/ci.yml/badge.svg)](https://github.com/happyhappy82/techreviewlabs/actions/workflows/ci.yml)
-[![Lighthouse CI](https://img.shields.io/badge/Lighthouse-97%2B-success)](https://github.com/happyhappy82/techreviewlabs/actions/workflows/lighthouse-ci.yml)
-
 ## 🚀 특징
 
 - ⚡ **초고속 로딩** - Next.js 15 + SSG로 Lighthouse 97+ 달성
@@ -99,50 +96,6 @@ git push
 ```
 
 → **Vercel이 자동으로 배포** (약 2분 소요)
-
-## 🤖 GitHub Actions 워크플로우
-
-### 1️⃣ CI/CD Pipeline (`ci.yml`)
-
-모든 push와 PR에서 자동 실행:
-
-- ✅ TypeScript 타입 체크
-- ✅ ESLint 검사
-- ✅ 프로덕션 빌드 테스트
-- ✅ 번들 크기 확인
-- ✅ 보안 취약점 검사
-
-### 2️⃣ Lighthouse CI (`lighthouse-ci.yml`)
-
-PR 생성 시 성능 측정:
-
-- 📊 Performance 점수 (목표: 97+)
-- 📊 FCP, LCP 측정
-- 📊 JavaScript 번들 크기 검증
-- 💬 PR에 자동 코멘트
-
-### 3️⃣ Review Validation (`review-validation.yml`)
-
-새 리뷰 추가 시 자동 검증:
-
-- ✅ 필수 frontmatter 필드 확인
-- ✅ 평점 범위 검증 (0-5)
-- ✅ 날짜 형식 검증 (YYYY-MM-DD)
-- ⚠️  카테고리 검증
-
-### 4️⃣ Auto Release (`auto-release.yml`)
-
-main 브랜치 push 시:
-
-- 📝 릴리즈 노트 자동 생성
-- 🎉 새 리뷰 추가 알림
-
-### 5️⃣ Dependency Update (`dependency-update.yml`)
-
-매주 월요일 자동 실행:
-
-- 📦 오래된 패키지 확인
-- 🔒 보안 취약점 스캔
 
 ## 📊 성능 지표
 
