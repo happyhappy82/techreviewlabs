@@ -81,6 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body className="mx-auto max-w-2xl bg-white px-5 py-12 text-black">
+        {children}
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -91,7 +92,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        {children}
       </body>
     </html>
   );
