@@ -120,13 +120,23 @@ export default async function ReviewPage({ params }: Props) {
             components={{
               h2: ({ node, ...props }) => {
                 const text = props.children?.toString() || "";
-                const id = text.toLowerCase().replace(/\s+/g, "-");
-                return <h2 id={id} {...props} />;
+                const id = text
+                  .toLowerCase()
+                  .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
+                  .replace(/\s+/g, "-")
+                  .replace(/-+/g, "-")
+                  .replace(/^-|-$/g, "");
+                return <h2 id={id} className="scroll-mt-20" {...props} />;
               },
               h3: ({ node, ...props }) => {
                 const text = props.children?.toString() || "";
-                const id = text.toLowerCase().replace(/\s+/g, "-");
-                return <h3 id={id} {...props} />;
+                const id = text
+                  .toLowerCase()
+                  .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
+                  .replace(/\s+/g, "-")
+                  .replace(/-+/g, "-")
+                  .replace(/^-|-$/g, "");
+                return <h3 id={id} className="scroll-mt-20" {...props} />;
               },
             }}
           >

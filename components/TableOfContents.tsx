@@ -49,7 +49,15 @@ export default function TableOfContents() {
           >
             <a
               href={`#${heading.id}`}
-              className={`block py-1 transition-colors ${
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById(heading.id);
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                  setActiveId(heading.id);
+                }
+              }}
+              className={`block py-1 transition-colors cursor-pointer ${
                 activeId === heading.id
                   ? "text-blue-600 font-semibold"
                   : "text-gray-600 hover:text-gray-900"
