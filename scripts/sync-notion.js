@@ -143,6 +143,27 @@ async function processPage(pageId, isNew = false) {
   const mdblocks = await n2m.pageToMarkdown(pageId);
   let markdown = n2m.toMarkdownString(mdblocks).parent;
 
+  // Auto-generate excerpt if empty
+  if (!props.excerpt || props.excerpt.trim() === '') {
+    // Remove markdown syntax and get first 150 characters
+    const plainText = markdown
+      .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove links but keep text
+      .replace(/#{1,6}\s/g, '') // Remove headers
+      .replace(/\*\*/g, '') // Remove bold
+      .replace(/\*/g, '') // Remove italic
+      .replace(/`/g, '') // Remove code
+      .replace(/>/g, '') // Remove blockquote
+      .replace(/\n+/g, ' ') // Replace newlines with space
+      .trim();
+
+    props.excerpt = plainText.substring(0, 150).trim();
+    if (plainText.length > 150) {
+      props.excerpt += '...';
+    }
+    console.log(`  📝 Auto-generated excerpt: ${props.excerpt.substring(0, 50)}...`);
+  }
+
   // Download images
   const imageMatches = markdown.match(/!\[.*?\]\((https?:\/\/.*?)\)/g);
   if (imageMatches) {
