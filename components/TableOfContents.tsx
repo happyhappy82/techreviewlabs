@@ -57,11 +57,7 @@ export default function TableOfContents() {
                   setActiveId(heading.id);
                 }
               }}
-              className={`block py-1 transition-colors cursor-pointer ${
-                activeId === heading.id
-                  ? "text-blue-600 font-semibold"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
+              className="block py-1 text-gray-600 hover:text-gray-900 cursor-pointer"
             >
               {heading.text}
             </a>
