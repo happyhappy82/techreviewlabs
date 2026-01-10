@@ -7,6 +7,28 @@ import QnA from "@/components/QnA";
 import { getReviewBySlug, getSortedReviewsData } from "@/lib/reviews";
 import { extractQnA, removeQnASection } from "@/lib/qna-utils";
 import type { Metadata } from "next";
+import type { Element } from "hast";
+
+function extractTextFromNode(node: Element): string {
+  let text = "";
+  for (const child of node.children || []) {
+    if (child.type === "text") {
+      text += child.value;
+    } else if (child.type === "element") {
+      text += extractTextFromNode(child as Element);
+    }
+  }
+  return text;
+}
+
+function generateId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -119,23 +141,13 @@ export default async function ReviewPage({ params }: Props) {
             remarkPlugins={[remarkGfm]}
             components={{
               h2: ({ node, ...props }) => {
-                const text = props.children?.toString() || "";
-                const id = text
-                  .toLowerCase()
-                  .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
-                  .replace(/\s+/g, "-")
-                  .replace(/-+/g, "-")
-                  .replace(/^-|-$/g, "");
+                const text = node ? extractTextFromNode(node as Element) : "";
+                const id = generateId(text);
                 return <h2 id={id} className="scroll-mt-20" {...props} />;
               },
               h3: ({ node, ...props }) => {
-                const text = props.children?.toString() || "";
-                const id = text
-                  .toLowerCase()
-                  .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
-                  .replace(/\s+/g, "-")
-                  .replace(/-+/g, "-")
-                  .replace(/^-|-$/g, "");
+                const text = node ? extractTextFromNode(node as Element) : "";
+                const id = generateId(text);
                 return <h3 id={id} className="scroll-mt-20" {...props} />;
               },
             }}
