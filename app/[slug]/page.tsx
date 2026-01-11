@@ -88,31 +88,50 @@ export default async function ReviewPage({ params }: Props) {
   const qnaItems = extractQnA(review.content);
   const contentWithoutQnA = removeQnASection(review.content);
 
-  const reviewSchema = {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "Product",
-      name: review.product,
-      category: review.category,
-    },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: review.rating,
-      bestRating: 5,
-      worstRating: 1,
-    },
-    author: {
-      "@type": "Organization",
-      name: "TechReviewLabs",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "TechReviewLabs",
-    },
-    datePublished: review.date,
-    reviewBody: review.excerpt,
-  };
+  const isActualReview = review.product && (review.rating ?? 0) > 0;
+
+  const schema = isActualReview
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        itemReviewed: {
+          "@type": "Product",
+          name: review.product,
+          category: review.category,
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: review.rating,
+          bestRating: 5,
+          worstRating: 1,
+        },
+        author: {
+          "@type": "Organization",
+          name: "TechReviewLabs",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "TechReviewLabs",
+        },
+        datePublished: review.date,
+        reviewBody: review.excerpt,
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: review.title,
+        description: review.excerpt,
+        datePublished: review.date,
+        author: {
+          "@type": "Organization",
+          name: "TechReviewLabs",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "TechReviewLabs",
+          url: "https://techreviewlabs.xyz",
+        },
+      };
 
   return (
     <>
@@ -120,7 +139,7 @@ export default async function ReviewPage({ params }: Props) {
       <article className="relative">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
 
         <div className="mb-8">
