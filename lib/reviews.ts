@@ -5,16 +5,26 @@ import readingTime from "reading-time";
 
 const reviewsDirectory = path.join(process.cwd(), "content/reviews");
 
-// 날짜를 YYYY-MM-DD 형식으로 변환
-function formatDate(date: string): string {
+// 날짜를 YYYY-MM-DD 형식으로 변환 (화면 표시용)
+function formatDateForDisplay(date: string): string {
   if (!date) return "";
   return date.split("T")[0];
+}
+
+// ISO 형식으로 정규화 (SEO용)
+function normalizeToISO(date: string): string {
+  if (!date) return "";
+  // 이미 시간 정보가 있으면 그대로 반환
+  if (date.includes("T")) return date;
+  // YYYY-MM-DD만 있으면 시간 추가
+  return `${date}T00:00:00+09:00`;
 }
 
 export interface Review {
   slug: string;
   title: string;
-  date: string;
+  date: string;          // ISO 형식 (SEO용: OpenGraph, Schema.org)
+  displayDate: string;   // YYYY-MM-DD (화면 표시용)
   excerpt: string;
   content: string;
   readingTime: string;
@@ -42,10 +52,12 @@ export function getSortedReviewsData(): Review[] {
       const contentWithoutTitle = content.replace(/^#\s+.+\n*/m, '').trim();
       const stats = readingTime(contentWithoutTitle);
 
+      const rawDate = data.date || "";
       return {
         slug,
         title: data.title || slug,
-        date: formatDate(data.date || ""),
+        date: normalizeToISO(rawDate),
+        displayDate: formatDateForDisplay(rawDate),
         excerpt: data.excerpt || "",
         content: contentWithoutTitle,
         readingTime: stats.text,
@@ -84,10 +96,12 @@ export function getReviewBySlug(slug: string): Review | null {
     const contentWithoutTitle = content.replace(/^#\s+.+\n*/m, '').trim();
     const stats = readingTime(contentWithoutTitle);
 
+    const rawDate = data.date || "";
     return {
       slug: decodedSlug,
       title: data.title || decodedSlug,
-      date: formatDate(data.date || ""),
+      date: normalizeToISO(rawDate),
+      displayDate: formatDateForDisplay(rawDate),
       excerpt: data.excerpt || "",
       content: contentWithoutTitle,
       readingTime: stats.text,

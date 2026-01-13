@@ -78,7 +78,7 @@ async function getPageProperties(pageId) {
   return {
     pageId: page.id,
     title: getFullText(properties.제목?.title) || getFullText(properties.Title?.title) || '',
-    date: (properties.날짜?.date?.start || properties.Date?.date?.start || new Date().toISOString()).split('T')[0],
+    date: properties.날짜?.date?.start || properties.Date?.date?.start || new Date().toISOString(),
     excerpt: getFullText(properties.요약?.rich_text) || getFullText(properties.Excerpt?.rich_text) || '',
     category: properties.카테고리?.select?.name || properties.Category?.select?.name || '기타',
     rating: properties.평점?.number || properties.Rating?.number || 0,

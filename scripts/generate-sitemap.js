@@ -6,6 +6,17 @@ const BASE_URL = "https://www.techreviewlab.xyz";
 const REVIEWS_DIR = path.join(process.cwd(), "content/reviews");
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 
+// ISO 형식으로 정규화 (YYYY-MM-DD만 있으면 시간 추가, +00:00을 Z로 변환)
+function normalizeToISO(date) {
+  if (!date) return new Date().toISOString();
+  // 이미 T가 포함되어 있으면 ISO 형식, +00:00을 Z로 통일
+  if (date.includes("T")) {
+    return date.replace(/\+00:00$/, "Z").replace(/\+09:00$/, "Z");
+  }
+  // YYYY-MM-DD만 있으면 시간 추가
+  return `${date}T00:00:00.000Z`;
+}
+
 function getReviews() {
   if (!fs.existsSync(REVIEWS_DIR)) {
     return [];
@@ -22,7 +33,7 @@ function getReviews() {
 
       return {
         slug,
-        date: (data.date || new Date().toISOString()).split("T")[0],
+        date: normalizeToISO(data.date),
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -30,7 +41,7 @@ function getReviews() {
 
 function generateSitemap() {
   const reviews = getReviews();
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString();
 
   const urls = [
     {

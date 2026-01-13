@@ -2,7 +2,8 @@ import Link from "./Link";
 
 interface ReviewCardProps {
   title: string;
-  date: string;
+  date: string;           // ISO 형식 (SEO용 dateTime 속성)
+  displayDate: string;    // YYYY-MM-DD (화면 표시용)
   excerpt: string;
   slug: string;
   lightColor: string;
@@ -14,6 +15,7 @@ interface ReviewCardProps {
 export default function ReviewCard({
   title,
   date,
+  displayDate,
   excerpt,
   slug,
   lightColor,
@@ -31,7 +33,7 @@ export default function ReviewCard({
         >
           {title}
         </h2>
-        <time dateTime={`${date}T00:00:00+09:00`} className="text-[13px] text-gray-700 block">{date}</time>
+        <time dateTime={date} className="text-[13px] text-gray-700 block">{displayDate}</time>
         <p className="mt-1">{excerpt}</p>
       </article>
     </Link>

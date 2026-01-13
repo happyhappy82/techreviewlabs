@@ -230,7 +230,7 @@ export default async function ReviewPage({ params }: Props) {
             {review.title}
           </h1>
           <div className="flex gap-4 text-sm text-gray-600">
-            <time dateTime={`${review.date}T00:00:00+09:00`}>{review.date}</time>
+            <time dateTime={review.date}>{review.displayDate}</time>
             <span>{review.readingTime}</span>
           </div>
         </div>
