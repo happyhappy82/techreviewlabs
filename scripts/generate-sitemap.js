@@ -22,7 +22,7 @@ function getReviews() {
 
       return {
         slug,
-        date: data.date || new Date().toISOString().split("T")[0],
+        date: (data.date || new Date().toISOString()).split("T")[0],
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
