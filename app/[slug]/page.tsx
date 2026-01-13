@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const url = `https://techreviewlabs.xyz/${slug}`;
+  const url = `https://www.techreviewlab.xyz/${slug}`;
 
   return {
     title: review.title,
@@ -100,7 +100,7 @@ export default async function ReviewPage({ params }: Props) {
 
   const isActualReview = review.product && (review.rating ?? 0) > 0;
 
-  const pageUrl = `https://techreviewlabs.xyz/${slug}`;
+  const pageUrl = `https://www.techreviewlab.xyz/${slug}`;
 
   const mainSchema = isActualReview
     ? {
@@ -120,15 +120,15 @@ export default async function ReviewPage({ params }: Props) {
         author: {
           "@type": "Organization",
           name: "TechReviewLabs",
-          url: "https://techreviewlabs.xyz",
+          url: "https://www.techreviewlab.xyz",
         },
         publisher: {
           "@type": "Organization",
           name: "TechReviewLabs",
-          url: "https://techreviewlabs.xyz",
+          url: "https://www.techreviewlab.xyz",
           logo: {
             "@type": "ImageObject",
-            url: "https://techreviewlabs.xyz/logo.png",
+            url: "https://www.techreviewlab.xyz/logo.png",
           },
         },
         datePublished: review.date,
@@ -138,7 +138,7 @@ export default async function ReviewPage({ params }: Props) {
           "@type": "WebPage",
           "@id": pageUrl,
         },
-        image: "https://techreviewlabs.xyz/opengraph-image.png",
+        image: "https://www.techreviewlab.xyz/opengraph-image.png",
       }
     : {
         "@context": "https://schema.org",
@@ -150,22 +150,22 @@ export default async function ReviewPage({ params }: Props) {
         author: {
           "@type": "Organization",
           name: "TechReviewLabs",
-          url: "https://techreviewlabs.xyz",
+          url: "https://www.techreviewlab.xyz",
         },
         publisher: {
           "@type": "Organization",
           name: "TechReviewLabs",
-          url: "https://techreviewlabs.xyz",
+          url: "https://www.techreviewlab.xyz",
           logo: {
             "@type": "ImageObject",
-            url: "https://techreviewlabs.xyz/logo.png",
+            url: "https://www.techreviewlab.xyz/logo.png",
           },
         },
         mainEntityOfPage: {
           "@type": "WebPage",
           "@id": pageUrl,
         },
-        image: "https://techreviewlabs.xyz/opengraph-image.png",
+        image: "https://www.techreviewlab.xyz/opengraph-image.png",
       };
 
   const breadcrumbSchema = {
@@ -176,7 +176,7 @@ export default async function ReviewPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "홈",
-        item: "https://techreviewlabs.xyz",
+        item: "https://www.techreviewlab.xyz",
       },
       {
         "@type": "ListItem",

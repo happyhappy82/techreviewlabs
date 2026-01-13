@@ -1,6 +1,6 @@
 const https = require("https");
 
-const SITEMAP_URL = "https://techreviewlabs.xyz/sitemap.xml";
+const SITEMAP_URL = "https://www.techreviewlab.xyz/sitemap.xml";
 
 const PING_URLS = [
   `https://www.google.com/ping?sitemap=${encodeURIComponent(SITEMAP_URL)}`,

@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-const BASE_URL = "https://techreviewlabs.xyz";
+const BASE_URL = "https://www.techreviewlab.xyz";
 const REVIEWS_DIR = path.join(process.cwd(), "content/reviews");
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 

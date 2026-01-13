@@ -116,7 +116,7 @@ git push
 
 ## 🔗 링크
 
-- **프로덕션**: https://techreviewlabs.xyz
+- **프로덕션**: https://www.techreviewlab.xyz
 - **GitHub**: https://github.com/happyhappy82/techreviewlabs
 - **Vercel**: [대시보드](https://vercel.com/happyhappy82/techreviewlabs)
 

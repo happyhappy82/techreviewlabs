@@ -97,7 +97,7 @@ jobs:
       - name: Submit to Google Search Console
         if: steps.check_slug.outputs.has_slug == 'true'
         env:
-          SITE_URL: https://techreviewlabs.xyz
+          SITE_URL: https://www.techreviewlab.xyz
           PUBLISHED_SLUG: ${{ steps.check_slug.outputs.published_slug }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |

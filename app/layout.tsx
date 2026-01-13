@@ -10,13 +10,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "테크리뷰Lab",
   description: "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다. 최신 IT 제품정보를 꼼꼼하게 제공해드립니다.",
-  metadataBase: new URL("https://techreviewlabs.xyz"),
+  metadataBase: new URL("https://www.techreviewlab.xyz"),
   keywords: ["스마트폰 리뷰", "노트북 리뷰", "태블릿 리뷰", "이어폰 리뷰", "전자기기", "테크 리뷰", "가젯 리뷰"],
   authors: [{ name: "TechReviewLabs" }],
   creator: "TechReviewLabs",
   publisher: "TechReviewLabs",
   alternates: {
-    canonical: "https://techreviewlabs.xyz",
+    canonical: "https://www.techreviewlab.xyz",
   },
   verification: {
     google: "LUA8o3zeFLpEIqCY81Haa50ZacoubJgXjCLoeWWkwvA",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다. 최신 IT 제품정보를 꼼꼼하게 제공해드립니다.",
     type: "website",
     locale: "ko_KR",
-    url: "https://techreviewlabs.xyz",
+    url: "https://www.techreviewlab.xyz",
     siteName: "테크리뷰Lab",
     images: [
       {
@@ -69,12 +69,12 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "테크리뷰Lab",
     "alternateName": "TechReviewLabs",
-    "url": "https://techreviewlabs.xyz",
+    "url": "https://www.techreviewlab.xyz",
     "description": "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다. 최신 IT 제품정보를 꼼꼼하게 제공해드립니다.",
     "publisher": {
       "@type": "Organization",
       "name": "TechReviewLabs",
-      "url": "https://techreviewlabs.xyz",
+      "url": "https://www.techreviewlab.xyz",
     },
   };
 
@@ -83,8 +83,8 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "TechReviewLabs",
     "alternateName": "테크리뷰Lab",
-    "url": "https://techreviewlabs.xyz",
-    "logo": "https://techreviewlabs.xyz/logo.png",
+    "url": "https://www.techreviewlab.xyz",
+    "logo": "https://www.techreviewlab.xyz/logo.png",
     "description": "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다.",
   };
 

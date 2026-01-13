@@ -6,7 +6,7 @@ export default function Header() {
     <header className="mb-14 flex flex-row place-content-between">
       <div className="flex items-center gap-3">
         <a
-          href="https://techreviewlabs.xyz/"
+          href="https://www.techreviewlab.xyz/"
           className="inline-block"
         >
           <Image
