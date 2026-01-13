@@ -31,7 +31,7 @@ export default function ReviewCard({
         >
           {title}
         </h2>
-        <p className="text-[13px] text-gray-700">{date}</p>
+        <time dateTime={`${date}T00:00:00+09:00`} className="text-[13px] text-gray-700 block">{date}</time>
         <p className="mt-1">{excerpt}</p>
       </article>
     </Link>

@@ -67,12 +67,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "ko_KR",
       type: "article",
       publishedTime: review.date,
+      modifiedTime: review.date,
       authors: ["TechReviewLabs"],
+      images: [
+        {
+          url: "/opengraph-image.png",
+          width: 1200,
+          height: 630,
+          alt: review.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: review.title,
       description: review.excerpt,
+      images: ["/opengraph-image.png"],
     },
   };
 }
@@ -90,7 +100,9 @@ export default async function ReviewPage({ params }: Props) {
 
   const isActualReview = review.product && (review.rating ?? 0) > 0;
 
-  const schema = isActualReview
+  const pageUrl = `https://techreviewlabs.xyz/${slug}`;
+
+  const mainSchema = isActualReview
     ? {
         "@context": "https://schema.org",
         "@type": "Review",
@@ -108,13 +120,25 @@ export default async function ReviewPage({ params }: Props) {
         author: {
           "@type": "Organization",
           name: "TechReviewLabs",
+          url: "https://techreviewlabs.xyz",
         },
         publisher: {
           "@type": "Organization",
           name: "TechReviewLabs",
+          url: "https://techreviewlabs.xyz",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://techreviewlabs.xyz/logo.png",
+          },
         },
         datePublished: review.date,
+        dateModified: review.date,
         reviewBody: review.excerpt,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": pageUrl,
+        },
+        image: "https://techreviewlabs.xyz/opengraph-image.png",
       }
     : {
         "@context": "https://schema.org",
@@ -122,16 +146,62 @@ export default async function ReviewPage({ params }: Props) {
         headline: review.title,
         description: review.excerpt,
         datePublished: review.date,
+        dateModified: review.date,
         author: {
           "@type": "Organization",
           name: "TechReviewLabs",
+          url: "https://techreviewlabs.xyz",
         },
         publisher: {
           "@type": "Organization",
           name: "TechReviewLabs",
           url: "https://techreviewlabs.xyz",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://techreviewlabs.xyz/logo.png",
+          },
         },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": pageUrl,
+        },
+        image: "https://techreviewlabs.xyz/opengraph-image.png",
       };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "홈",
+        item: "https://techreviewlabs.xyz",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: review.title,
+        item: pageUrl,
+      },
+    ],
+  };
+
+  const faqSchema =
+    qnaItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: qnaItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -139,8 +209,18 @@ export default async function ReviewPage({ params }: Props) {
       <article className="relative">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(mainSchema) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        {faqSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          />
+        )}
 
         <div className="mb-8">
           <h1
@@ -150,7 +230,7 @@ export default async function ReviewPage({ params }: Props) {
             {review.title}
           </h1>
           <div className="flex gap-4 text-sm text-gray-600">
-            <time dateTime={review.date}>{review.date}</time>
+            <time dateTime={`${review.date}T00:00:00+09:00`}>{review.date}</time>
             <span>{review.readingTime}</span>
           </div>
         </div>

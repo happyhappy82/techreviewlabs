@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   authors: [{ name: "TechReviewLabs" }],
   creator: "TechReviewLabs",
   publisher: "TechReviewLabs",
+  alternates: {
+    canonical: "https://techreviewlabs.xyz",
+  },
   verification: {
     google: "LUA8o3zeFLpEIqCY81Haa50ZacoubJgXjCLoeWWkwvA",
     other: {
@@ -28,11 +31,20 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: "https://techreviewlabs.xyz",
     siteName: "테크리뷰Lab",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "테크리뷰Lab - 전자제품 리뷰 사이트",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "테크리뷰Lab",
     description: "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다. 최신 IT 제품정보를 꼼꼼하게 제공해드립니다.",
+    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,
@@ -59,6 +71,21 @@ export default function RootLayout({
     "alternateName": "TechReviewLabs",
     "url": "https://techreviewlabs.xyz",
     "description": "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다. 최신 IT 제품정보를 꼼꼼하게 제공해드립니다.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "TechReviewLabs",
+      "url": "https://techreviewlabs.xyz",
+    },
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TechReviewLabs",
+    "alternateName": "테크리뷰Lab",
+    "url": "https://techreviewlabs.xyz",
+    "logo": "https://techreviewlabs.xyz/logo.png",
+    "description": "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다.",
   };
 
   return (
@@ -94,6 +121,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className="mx-auto max-w-2xl bg-white px-5 py-12 text-black">

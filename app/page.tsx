@@ -9,6 +9,7 @@ export default function Home() {
     <>
       <Header />
       <main>
+        <h1 className="sr-only">테크리뷰Lab - 전자제품 리뷰 사이트</h1>
         <div className="relative -top-[10px] flex flex-col gap-8">
           {reviews.length === 0 ? (
             <p>No reviews yet. Create your first review in content/reviews/</p>
