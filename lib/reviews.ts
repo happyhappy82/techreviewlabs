@@ -5,6 +5,12 @@ import readingTime from "reading-time";
 
 const reviewsDirectory = path.join(process.cwd(), "content/reviews");
 
+// 날짜를 YYYY-MM-DD 형식으로 변환
+function formatDate(date: string): string {
+  if (!date) return "";
+  return date.split("T")[0];
+}
+
 export interface Review {
   slug: string;
   title: string;
@@ -39,7 +45,7 @@ export function getSortedReviewsData(): Review[] {
       return {
         slug,
         title: data.title || slug,
-        date: data.date || "",
+        date: formatDate(data.date || ""),
         excerpt: data.excerpt || "",
         content: contentWithoutTitle,
         readingTime: stats.text,
@@ -81,7 +87,7 @@ export function getReviewBySlug(slug: string): Review | null {
     return {
       slug: decodedSlug,
       title: data.title || decodedSlug,
-      date: data.date || "",
+      date: formatDate(data.date || ""),
       excerpt: data.excerpt || "",
       content: contentWithoutTitle,
       readingTime: stats.text,
