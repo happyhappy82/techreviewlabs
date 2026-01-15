@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.techreviewlab.xyz</loc>
-    <lastmod>2026-01-14T09:37:27.122Z</lastmod>
+    <lastmod>2026-01-15T04:32:52.994Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.techreviewlab.xyz/%EC%8B%B1%EA%B8%80%EC%BD%94%EC%96%B4-%EC%84%B1%EB%8A%A5-vs-%EB%A9%80%ED%8B%B0%EC%BD%94%EC%96%B4-%EC%84%B1%EB%8A%A5-%EC%B0%A8%EC%9D%B4%EC%A0%90</loc>
+    <lastmod>2026-01-15T03:20:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.techreviewlab.xyz/%ED%8F%89%EA%B7%A0-fps-vs-1-low%ED%95%98%EC%9C%841-%EC%B0%A8%EC%9D%B4%EC%A0%90</loc>
