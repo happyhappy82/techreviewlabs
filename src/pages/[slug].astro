@@ -158,4 +158,49 @@ const breadcrumbSchema = {
   .prose h3 {
     scroll-margin-top: 5rem;
   }
+
+  /* FAQ 토글 스타일 */
+  .prose details {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0;
+    margin: 1rem 0;
+    background: #f9fafb;
+  }
+
+  .prose details summary {
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .prose details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .prose details summary::before {
+    content: '▶';
+    font-size: 0.75rem;
+    transition: transform 0.2s;
+  }
+
+  .prose details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  .prose details[open] summary {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .prose details > *:not(summary) {
+    padding: 0 1.25rem;
+  }
+
+  .prose details > *:last-child {
+    padding-bottom: 1rem;
+  }
 </style>

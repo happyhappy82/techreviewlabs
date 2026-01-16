@@ -9,6 +9,36 @@ const matter = require('gray-matter');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+// 토글 블록을 <details>/<summary>로 변환
+n2m.setCustomTransformer('toggle', async (block) => {
+  const { toggle } = block;
+  if (!toggle || !toggle.rich_text) return '';
+
+  // 토글 제목 추출 (볼드, 이탤릭 등 서식 유지)
+  const title = toggle.rich_text.map(t => {
+    let content = t.plain_text;
+    if (t.annotations?.bold) content = `**${content}**`;
+    if (t.annotations?.italic) content = `*${content}*`;
+    if (t.annotations?.code) content = `\`${content}\``;
+    return content;
+  }).join('');
+
+  // 자식 블록 내용 가져오기
+  let childContent = '';
+  if (block.has_children) {
+    const childBlocks = await notion.blocks.children.list({ block_id: block.id });
+    for (const child of childBlocks.results) {
+      const childMd = await n2m.blockToMarkdown(child);
+      if (childMd) {
+        const mdString = n2m.toMarkdownString([childMd]);
+        childContent += mdString.parent;
+      }
+    }
+  }
+
+  return `<details>\n<summary>${title}</summary>\n\n${childContent}\n</details>\n`;
+});
+
 const REVIEWS_DIR = path.join(process.cwd(), 'src/content/reviews');
 const IMAGES_DIR = path.join(process.cwd(), 'public/notion-images');
 
