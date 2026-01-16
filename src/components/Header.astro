@@ -1,15 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../../public/logo.png';
 ---
 
 <header class="mb-14 flex flex-row place-content-between">
   <div class="flex items-center gap-3">
     <a href="/" class="inline-block">
-      <img
-        src="/logo.png"
+      <Image
+        src={logo}
         alt="테크리뷰Lab"
-        width="200"
-        height="60"
-        style="width: 200px; height: 60px;"
+        width={200}
+        height={60}
         loading="eager"
         decoding="async"
       />
