@@ -1,10 +1,17 @@
 import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Header from "@/components/Header";
-import TableOfContents from "@/components/TableOfContents";
-import QnA from "@/components/QnA";
 import { getReviewBySlug, getSortedReviewsData } from "@/lib/reviews";
+
+// 클라이언트 컴포넌트 지연 로딩 - LCP 이후 로드
+const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
+  loading: () => null,
+});
+const QnA = dynamic(() => import("@/components/QnA"), {
+  loading: () => null,
+});
 import { extractQnA, removeQnASection } from "@/lib/qna-utils";
 import type { Metadata } from "next";
 import type { Element } from "hast";
