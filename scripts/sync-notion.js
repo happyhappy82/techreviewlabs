@@ -83,8 +83,8 @@ async function getPageProperties(pageId) {
     category: properties.카테고리?.select?.name || properties.Category?.select?.name || '기타',
     rating: properties.평점?.number || properties.Rating?.number || 0,
     product: getFullText(properties.제품명?.rich_text) || getFullText(properties.Product?.rich_text) || '',
-    lightColor: getFullText(properties.밝은색?.rich_text) || getFullText(properties.LightColor?.rich_text) || 'lab(62.926 59.277 -1.573)',
-    darkColor: getFullText(properties.어두운색?.rich_text) || getFullText(properties.DarkColor?.rich_text) || 'lab(80.993 32.329 -7.093)',
+    lightColor: getFullText(properties.밝은색?.rich_text) || getFullText(properties.LightColor?.rich_text) || '#c53030',
+    darkColor: getFullText(properties.어두운색?.rich_text) || getFullText(properties.DarkColor?.rich_text) || '#9b2c2c',
     status: status,
   };
 }
