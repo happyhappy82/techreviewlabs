@@ -14,9 +14,9 @@ export default function Header() {
             alt="테크리뷰Lab"
             width={200}
             height={60}
-            className="h-auto"
             priority
             fetchPriority="high"
+            style={{ width: 200, height: 60 }}
           />
         </a>
       </div>

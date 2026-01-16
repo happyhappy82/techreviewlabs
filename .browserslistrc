@@ -1,6 +1,6 @@
-last 2 Chrome versions
-last 2 Firefox versions
-last 2 Safari versions
-last 2 Edge versions
+Chrome >= 92
+Firefox >= 90
+Safari >= 15.4
+Edge >= 92
 not dead
 not ie 11

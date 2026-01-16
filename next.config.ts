@@ -14,16 +14,11 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
   experimental: {
-    optimizePackageImports: ["react-icons", "react-markdown"],
+    optimizePackageImports: ["react-icons"],
     optimizeCss: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
-  },
-  modularizeImports: {
-    "react-markdown": {
-      transform: "react-markdown",
-    },
   },
 };
 
