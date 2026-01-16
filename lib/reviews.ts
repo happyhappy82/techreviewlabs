@@ -2,6 +2,39 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { marked } from "marked";
+import { removeQnASection } from "./qna-utils";
+
+// h2, h3에 id 자동 생성
+function generateId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+// marked 설정: h2, h3에 id와 scroll-mt-20 클래스 추가
+const renderer = new marked.Renderer();
+renderer.heading = function ({ text, depth }: { text: string; depth: number }) {
+  if (depth === 2 || depth === 3) {
+    const id = generateId(text);
+    return `<h${depth} id="${id}" class="scroll-mt-20">${text}</h${depth}>`;
+  }
+  return `<h${depth}>${text}</h${depth}>`;
+};
+
+marked.setOptions({
+  renderer,
+  gfm: true,
+  breaks: false,
+});
+
+// 마크다운을 HTML로 변환
+function markdownToHtml(markdown: string): string {
+  return marked.parse(markdown) as string;
+}
 
 const reviewsDirectory = path.join(process.cwd(), "content/reviews");
 
@@ -26,7 +59,8 @@ export interface Review {
   date: string;          // ISO 형식 (SEO용: OpenGraph, Schema.org)
   displayDate: string;   // YYYY-MM-DD (화면 표시용)
   excerpt: string;
-  content: string;
+  content: string;       // 원본 마크다운 (QnA 추출용)
+  contentHtml: string;   // 빌드타임에 변환된 HTML
   readingTime: string;
   lightColor: string;
   darkColor: string;
@@ -60,6 +94,7 @@ export function getSortedReviewsData(): Review[] {
         displayDate: formatDateForDisplay(rawDate),
         excerpt: data.excerpt || "",
         content: contentWithoutTitle,
+        contentHtml: "", // 리스트에서는 HTML 불필요
         readingTime: stats.text,
         lightColor: data.lightColor || "#c53030",
         darkColor: data.darkColor || "#9b2c2c",
@@ -96,6 +131,10 @@ export function getReviewBySlug(slug: string): Review | null {
     const contentWithoutTitle = content.replace(/^#\s+.+\n*/m, '').trim();
     const stats = readingTime(contentWithoutTitle);
 
+    // QnA 섹션 제거 후 HTML 변환 (빌드 타임)
+    const contentWithoutQnA = removeQnASection(contentWithoutTitle);
+    const contentHtml = markdownToHtml(contentWithoutQnA);
+
     const rawDate = data.date || "";
     return {
       slug: decodedSlug,
@@ -104,6 +143,7 @@ export function getReviewBySlug(slug: string): Review | null {
       displayDate: formatDateForDisplay(rawDate),
       excerpt: data.excerpt || "",
       content: contentWithoutTitle,
+      contentHtml,
       readingTime: stats.text,
       lightColor: data.lightColor || "#c53030",
       darkColor: data.darkColor || "#9b2c2c",

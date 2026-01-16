@@ -12,32 +12,31 @@
     "prebuild": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "googleapis": "^128.0.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.1",
     "next": "^15.1.4",
+    "notion-to-md": "^3.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "gray-matter": "^4.0.3",
-    "reading-time": "^1.5.0",
-    "react-markdown": "^9.0.1",
-    "remark-gfm": "^4.0.0",
-    "@notionhq/client": "^2.2.15",
-    "notion-to-md": "^3.1.1",
-    "googleapis": "^128.0.0"
+    "reading-time": "^1.5.0"
   },
   "devDependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^15.1.4",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/mdx": "^2.0.11",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@next/mdx": "^15.1.4",
-    "@mdx-js/loader": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@types/mdx": "^2.0.11",
-    "@tailwindcss/typography": "^0.5.10",
-    "typescript": "^5",
-    "tailwindcss": "^3.4.1",
-    "postcss": "^8",
     "autoprefixer": "^10.0.1",
     "critters": "^0.0.20",
     "eslint": "^8",
-    "eslint-config-next": "^15.1.4"
+    "eslint-config-next": "^15.1.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }

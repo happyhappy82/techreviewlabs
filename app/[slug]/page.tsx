@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import Header from "@/components/Header";
 import { getReviewBySlug, getSortedReviewsData } from "@/lib/reviews";
+import { extractQnA } from "@/lib/qna-utils";
+import type { Metadata } from "next";
 
 // 클라이언트 컴포넌트 지연 로딩 - LCP 이후 로드
 const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
@@ -12,30 +12,6 @@ const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
 const QnA = dynamic(() => import("@/components/QnA"), {
   loading: () => null,
 });
-import { extractQnA, removeQnASection } from "@/lib/qna-utils";
-import type { Metadata } from "next";
-import type { Element } from "hast";
-
-function extractTextFromNode(node: Element): string {
-  let text = "";
-  for (const child of node.children || []) {
-    if (child.type === "text") {
-      text += child.value;
-    } else if (child.type === "element") {
-      text += extractTextFromNode(child as Element);
-    }
-  }
-  return text;
-}
-
-function generateId(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s가-힣ㄱ-ㅎㅏ-ㅣ-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
-}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -103,7 +79,6 @@ export default async function ReviewPage({ params }: Props) {
   }
 
   const qnaItems = extractQnA(review.content);
-  const contentWithoutQnA = removeQnASection(review.content);
 
   const isActualReview = review.product && (review.rating ?? 0) > 0;
 
@@ -243,25 +218,10 @@ export default async function ReviewPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="prose prose-lg max-w-none">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              h2: ({ node, ...props }) => {
-                const text = node ? extractTextFromNode(node as Element) : "";
-                const id = generateId(text);
-                return <h2 id={id} className="scroll-mt-20" {...props} />;
-              },
-              h3: ({ node, ...props }) => {
-                const text = node ? extractTextFromNode(node as Element) : "";
-                const id = generateId(text);
-                return <h3 id={id} className="scroll-mt-20" {...props} />;
-              },
-            }}
-          >
-            {contentWithoutQnA}
-          </ReactMarkdown>
-        </div>
+        <div
+          className="prose prose-lg max-w-none"
+          dangerouslySetInnerHTML={{ __html: review.contentHtml }}
+        />
 
         <QnA items={qnaItems} />
         <TableOfContents />
