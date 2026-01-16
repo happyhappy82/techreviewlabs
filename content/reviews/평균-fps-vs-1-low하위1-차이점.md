@@ -5,8 +5,8 @@ excerpt: "오늘은 '평균 FPS vs 1% Low(하위1%) 차이점'에 대해 말씀�
 category: "기타"
 rating: 0
 product: ""
-lightColor: "lab(62.926 59.277 -1.573)"
-darkColor: "lab(80.993 32.329 -7.093)"
+lightColor: "#c53030"
+darkColor: "#9b2c2c"
 notionPageId: "2e6753eb-c013-81f3-9656-d1761e7a3ad2"
 ---
 

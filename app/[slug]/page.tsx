@@ -206,7 +206,8 @@ export default async function ReviewPage({ params }: Props) {
   return (
     <>
       <Header />
-      <article className="relative">
+      <main>
+        <article className="relative">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(mainSchema) }}
@@ -258,6 +259,7 @@ export default async function ReviewPage({ params }: Props) {
         <QnA items={qnaItems} />
         <TableOfContents />
       </article>
+      </main>
     </>
   );
 }

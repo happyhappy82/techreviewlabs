@@ -5,8 +5,8 @@ excerpt: "오늘은 많은 분들이 궁금해하시지만, 막상 스펙표를 
 category: "기타"
 rating: 0
 product: ""
-lightColor: "lab(62.926 59.277 -1.573)"
-darkColor: "lab(80.993 32.329 -7.093)"
+lightColor: "#c53030"
+darkColor: "#9b2c2c"
 notionPageId: "2e6753eb-c013-8155-b842-f88a7680d36f"
 ---
 

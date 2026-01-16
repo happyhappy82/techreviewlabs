@@ -5,8 +5,8 @@ excerpt: "싱글코어 성능 vs 멀티코어 성능 차이점 안녕하세요, 
 category: "기타"
 rating: 0
 product: ""
-lightColor: "lab(62.926 59.277 -1.573)"
-darkColor: "lab(80.993 32.329 -7.093)"
+lightColor: "#c53030"
+darkColor: "#9b2c2c"
 notionPageId: "2e6753eb-c013-8189-a00c-d1a9ae644205"
 ---
 
