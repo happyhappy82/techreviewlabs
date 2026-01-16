@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import { getCollection } from 'astro:content';
+
+const reviews = await getCollection('reviews');
+
+// Sort by date descending
+const sortedReviews = reviews.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+function formatDateForDisplay(date: string): string {
+  if (!date) return '';
+  return date.split('T')[0];
+}
+---
+
+<BaseLayout
+  title="테크리뷰Lab"
+  description="전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다. 최신 IT 제품정보를 꼼꼼하게 제공해드립니다."
+>
+  <Header />
+  <main>
+    <h1 class="sr-only">테크리뷰Lab - 전자제품 리뷰 사이트</h1>
+    <div class="relative -top-[10px] flex flex-col gap-8">
+      {sortedReviews.length === 0 ? (
+        <p>No reviews yet.</p>
+      ) : (
+        sortedReviews.map((review) => (
+          <ReviewCard
+            title={review.data.title}
+            date={review.data.date}
+            displayDate={formatDateForDisplay(review.data.date)}
+            excerpt={review.data.excerpt}
+            slug={review.slug}
+            lightColor={review.data.lightColor}
+          />
+        ))
+      )}
+    </div>
+  </main>
+</BaseLayout>

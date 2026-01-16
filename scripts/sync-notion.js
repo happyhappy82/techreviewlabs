@@ -9,7 +9,7 @@ const matter = require('gray-matter');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-const REVIEWS_DIR = path.join(process.cwd(), 'content/reviews');
+const REVIEWS_DIR = path.join(process.cwd(), 'src/content/reviews');
 const IMAGES_DIR = path.join(process.cwd(), 'public/notion-images');
 
 if (!fs.existsSync(REVIEWS_DIR)) {

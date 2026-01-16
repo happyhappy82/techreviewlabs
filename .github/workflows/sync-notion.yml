@@ -41,9 +41,6 @@ jobs:
           TRIGGER_TYPE: ${{ github.event_name }}
         run: node scripts/sync-notion.js
 
-      - name: Generate Sitemap
-        run: npm run generate:sitemap
-
       - name: Check for changes
         id: check_changes
         run: |
@@ -64,9 +61,8 @@ jobs:
       - name: Commit and push changes
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-          git add -A content/reviews/
+          git add -A src/content/reviews/
           git add -A public/notion-images/
-          git add -A public/sitemap.xml
 
           git commit -m "Sync reviews from Notion"
 
@@ -103,12 +99,6 @@ jobs:
         run: |
           echo "🔍 Google Search Console에 URL 제출 중..."
           node scripts/google-indexing.js
-
-      - name: Ping Search Engines with Sitemap
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          echo "🔔 검색엔진에 사이트맵 알림 중..."
-          npm run ping:sitemap
 
       - name: Report completion
         if: steps.check_changes.outputs.has_changes == 'true'

@@ -1,0 +1,162 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "테크리뷰Lab",
+  "alternateName": "TechReviewLabs",
+  "url": "https://www.techreviewlab.xyz",
+  "description": "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TechReviewLabs",
+    "url": "https://www.techreviewlab.xyz",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TechReviewLabs",
+  "alternateName": "테크리뷰Lab",
+  "url": "https://www.techreviewlab.xyz",
+  "logo": "https://www.techreviewlab.xyz/logo.png",
+  "description": "전자제품, 테크제품 등 관련 상품 및 쇼핑정보를 공유하는 사이트입니다.",
+};
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="keywords" content="스마트폰 리뷰, 노트북 리뷰, 태블릿 리뷰, 이어폰 리뷰, 전자기기, 테크 리뷰, 가젯 리뷰" />
+    <meta name="author" content="TechReviewLabs" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="LUA8o3zeFLpEIqCY81Haa50ZacoubJgXjCLoeWWkwvA" />
+    <meta name="naver-site-verification" content="e2de8fcfde3eb494012924feab35d8349ba12e7d" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="테크리뷰Lab" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content="https://www.techreviewlab.xyz/opengraph-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.techreviewlab.xyz/opengraph-image.png" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </head>
+  <body class="mx-auto max-w-2xl bg-white px-5 py-12 text-black">
+    <slot />
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NSG3V29F"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden">
+      </iframe>
+    </noscript>
+
+    <!-- GTM -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NSG3V29F');
+    </script>
+
+    <!-- GA -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-VV6QYJKBH9"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VV6QYJKBH9');
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  :root {
+    --bg: #ffffff;
+    --text: #000000;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  body {
+    color: var(--text);
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>
