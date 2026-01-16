@@ -1,0 +1,70 @@
+---
+// 클라이언트 사이드에서 동작하는 목차 컴포넌트
+---
+
+<nav id="toc" class="hidden lg:block fixed right-8 top-32 w-64">
+  <h3 class="text-sm font-bold mb-4 text-gray-900">목차</h3>
+  <ul id="toc-list" class="space-y-2 text-sm"></ul>
+</nav>
+
+<script>
+  function initTOC() {
+    const tocList = document.getElementById('toc-list');
+    const toc = document.getElementById('toc');
+    if (!tocList || !toc) return;
+
+    const headings = Array.from(document.querySelectorAll('article h2, article h3'));
+
+    if (headings.length === 0) {
+      toc.style.display = 'none';
+      return;
+    }
+
+    // 목차 항목 생성
+    headings.forEach((heading) => {
+      const li = document.createElement('li');
+      if (heading.tagName === 'H3') {
+        li.className = 'ml-4';
+      }
+
+      const a = document.createElement('a');
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent || '';
+      a.className = 'block py-1 text-gray-600 hover:text-gray-900 cursor-pointer transition-colors';
+
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        heading.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    // 스크롤 시 활성 항목 표시
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const links = tocList.querySelectorAll('a');
+            links.forEach((link) => {
+              if (link.getAttribute('href') === `#${entry.target.id}`) {
+                link.classList.add('text-gray-900', 'font-medium');
+                link.classList.remove('text-gray-600');
+              } else {
+                link.classList.remove('text-gray-900', 'font-medium');
+                link.classList.add('text-gray-600');
+              }
+            });
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -80% 0px' }
+    );
+
+    headings.forEach((heading) => observer.observe(heading));
+  }
+
+  // DOM 로드 후 실행
+  document.addEventListener('DOMContentLoaded', initTOC);
+</script>
