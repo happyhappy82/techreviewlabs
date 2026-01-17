@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync:notion": "node scripts/sync-notion.js"
+    "sync:notion": "node scripts/sync-notion.cjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
