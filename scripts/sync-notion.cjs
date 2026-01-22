@@ -9,6 +9,44 @@ const matter = require('gray-matter');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+// 테이블 블록 커스텀 변환 - 셀 내 줄바꿈을 <br>로 변환
+n2m.setCustomTransformer('table', async (block) => {
+  const { table } = block;
+  if (!table) return '';
+
+  const tableRows = await notion.blocks.children.list({ block_id: block.id });
+  if (!tableRows.results.length) return '';
+
+  const rows = [];
+  for (const row of tableRows.results) {
+    if (row.type !== 'table_row') continue;
+    const cells = row.table_row.cells.map(cell => {
+      // 셀 내용 추출 및 줄바꿈을 <br>로 변환
+      const cellContent = cell.map(t => {
+        let content = t.plain_text || '';
+        // 줄바꿈을 <br>로 변환
+        content = content.replace(/\n/g, '<br>');
+        if (t.annotations?.bold) content = `**${content}**`;
+        if (t.annotations?.italic) content = `*${content}*`;
+        if (t.annotations?.code) content = `\`${content}\``;
+        if (t.href) content = `[${content}](${t.href})`;
+        return content;
+      }).join('');
+      return cellContent;
+    });
+    rows.push(cells);
+  }
+
+  if (rows.length === 0) return '';
+
+  // 마크다운 테이블 생성
+  const headerRow = `| ${rows[0].join(' | ')} |`;
+  const separatorRow = `| ${rows[0].map(() => '---').join(' | ')} |`;
+  const bodyRows = rows.slice(1).map(row => `| ${row.join(' | ')} |`).join('\n');
+
+  return `${headerRow}\n${separatorRow}\n${bodyRows}\n`;
+});
+
 // 토글 블록을 <details>/<summary>로 변환
 n2m.setCustomTransformer('toggle', async (block) => {
   const { toggle } = block;
@@ -184,7 +222,11 @@ async function processPage(pageId, isNew = false) {
       .replace(/\*/g, '') // Remove italic
       .replace(/`/g, '') // Remove code
       .replace(/>/g, '') // Remove blockquote
+      .replace(/^\|.*\|$/gm, '') // Remove table rows (lines with | at start and end)
+      .replace(/\|/g, '') // Remove remaining pipe characters
+      .replace(/-{3,}/g, '') // Remove horizontal rules and table separators
       .replace(/\n+/g, ' ') // Replace newlines with space
+      .replace(/\s+/g, ' ') // Collapse multiple spaces
       .trim();
 
     props.excerpt = plainText.substring(0, 150).trim();
