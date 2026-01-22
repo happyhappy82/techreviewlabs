@@ -1,7 +1,7 @@
 ---
 title: "노트북 GPU TGP(전력) vs 데스크탑 GPU 차이점"
 date: "2026-01-22T03:20:00.000+00:00"
-excerpt: "노트북 GPU TGP(Total Graphics Power)와 데스크탑 GPU의 근본적인 성능 차이를 알아봅니다."
+excerpt: "핵심만 콕! 안녕하세요. 오늘은 많은 분들이 궁금해하시면서도 헷갈려 하는 '노트북 GPU TGP(전력)와 데스크탑 GPU의 차이점'에 대해 말씀드릴게요. \"같은 RTX 4070인데, 노트북용이랑 데스크탑용이랑 왜 성능이 다르지?\"라고 생각해보신 적 있으실 거예요. 그..."
 category: "기타"
 rating: 0
 product: ""
