@@ -257,11 +257,17 @@ async function processPage(pageId, isNew = false) {
     }
   }
 
+  // Sanitize excerpt for YAML (escape quotes and remove problematic characters)
+  const safeExcerpt = props.excerpt
+    .replace(/"/g, '\\"')  // Escape double quotes
+    .replace(/\n/g, ' ')   // Remove newlines
+    .trim();
+
   // Create frontmatter
   const frontmatter = `---
 title: "${props.title}"
 date: "${props.date}"
-excerpt: "${props.excerpt}"
+excerpt: "${safeExcerpt}"
 category: "${props.category}"
 rating: ${props.rating}
 product: "${props.product}"
