@@ -44,12 +44,15 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if [ -z "$(git status --porcelain)" ]; then
+          # 실제 커밋 대상 폴더만 변경 확인 (.published-slug 같은 임시 파일 제외)
+          CHANGES=$(git status --porcelain src/content/reviews/ src/pages/ src/data/ public/notion-images/ 2>/dev/null || true)
+          if [ -z "$CHANGES" ]; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
+            echo "No changes detected in target directories"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected"
+            echo "Changes detected:"
+            echo "$CHANGES"
           fi
 
       - name: Configure Git
