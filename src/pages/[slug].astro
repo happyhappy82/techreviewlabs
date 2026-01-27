@@ -125,9 +125,8 @@ const breadcrumbSchema = {
   modifiedTime={review.data.date}
 >
   <Header />
-  <main class="flex gap-8" style="max-width: 1600px; margin: 0 auto;">
-    <!-- 메인 콘텐츠 영역 -->
-    <article class="flex-1 min-w-0">
+  <main>
+    <article>
       <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -161,29 +160,18 @@ const breadcrumbSchema = {
       </div>
 
       <!-- 본문 콘텐츠 -->
-      <div class="prose prose-lg" style="max-width: 1400px;">
+      <div class="prose prose-lg">
         <Content />
       </div>
     </article>
-
-    <!-- 사이드바 -->
-    <aside class="hidden lg:block w-[200px] flex-shrink-0">
-      <TableOfContents />
-    </aside>
   </main>
+  <TableOfContents />
 </BaseLayout>
 
-<style is:global>
-  /* 정보성 글 페이지에서 body max-width override */
-  body {
-    max-width: 1600px !important;
-  }
-</style>
-
 <style>
-  /* 본문 너비 */
+  /* 본문 너비 - body max-w-ns (800px) 따름 */
   article .prose {
-    max-width: 1400px;
+    max-width: none;
   }
 
   /* 노서치 스타일 prose */
