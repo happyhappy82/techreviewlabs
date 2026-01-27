@@ -48,7 +48,7 @@ const config: Config = {
         ns: "10px",
       },
       maxWidth: {
-        ns: "1400px",
+        ns: "1000px",
       },
       typography: {
         DEFAULT: {
