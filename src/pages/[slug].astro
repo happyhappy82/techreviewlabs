@@ -125,82 +125,223 @@ const breadcrumbSchema = {
   modifiedTime={review.data.date}
 >
   <Header />
-  <main>
-    <article class="relative">
+  <main class="flex gap-8">
+    <!-- 메인 콘텐츠 영역 -->
+    <article class="flex-1 min-w-0">
       <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
-      <div class="mb-8">
-        <h1
-          class="text-[42px] font-black leading-tight mb-4"
-          style={`color: ${review.data.lightColor}`}
-        >
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="ns-number-badge">1</span>
+          <span class="ns-badge">{review.data.category}</span>
+        </div>
+        <h1 class="text-ns-title text-ns-text mb-4">
           {review.data.title}
         </h1>
-        <div class="flex gap-4 text-sm text-gray-600">
-          <time datetime={review.data.date}>{formatDateForDisplay(review.data.date)}</time>
-          <span>{getReadingTime(review.body)}</span>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime={review.data.date} class="text-gray-500">
+            {formatDateForDisplay(review.data.date)} 업데이트
+          </time>
         </div>
       </div>
 
-      <div class="prose prose-lg max-w-none">
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          {review.data.excerpt}
+        </p>
+      </div>
+
+      <!-- 본문 콘텐츠 -->
+      <div class="prose prose-lg max-w-none ns-prose">
         <Content />
       </div>
     </article>
-    <TableOfContents />
+
+    <!-- 사이드바 -->
+    <aside class="hidden lg:block w-[200px] flex-shrink-0">
+      <TableOfContents />
+    </aside>
   </main>
 </BaseLayout>
 
 <style>
-  .prose h2 {
-    scroll-margin-top: 5rem;
-  }
-  .prose h3 {
-    scroll-margin-top: 5rem;
+  /* 본문 영역 폭 확장 */
+  .ns-prose {
+    max-width: 1000px !important;
   }
 
-  /* FAQ 토글 스타일 */
-  .prose details {
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+  /* 노서치 스타일 prose */
+  .ns-prose h2 {
+    scroll-margin-top: 5rem;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #1A1A1A;
+  }
+
+  .ns-prose h3 {
+    scroll-margin-top: 5rem;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .ns-prose p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+  }
+
+  .ns-prose ul, .ns-prose ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .ns-prose li {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+
+  .ns-prose strong {
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  /* 테이블 스타일 - 노서치 */
+  .ns-prose table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    font-size: 14px;
+  }
+
+  .ns-prose th {
+    background: #F9F9F9;
+    font-weight: 700;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #DFDFDF;
+    color: #1A1A1A;
+  }
+
+  .ns-prose td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #DFDFDF;
+    color: #1A1A1A;
+  }
+
+  .ns-prose tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* FAQ 토글 스타일 - 노서치 */
+  .ns-prose details {
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
     padding: 0;
     margin: 1rem 0;
-    background: #f9fafb;
+    background: #fff;
   }
 
-  .prose details summary {
+  .ns-prose details summary {
     padding: 1rem 1.25rem;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 14px;
     list-style: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #1A1A1A;
   }
 
-  .prose details summary::-webkit-details-marker {
+  .ns-prose details summary::-webkit-details-marker {
     display: none;
   }
 
-  .prose details summary::before {
+  .ns-prose details summary::before {
     content: '▶';
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     transition: transform 0.2s;
+    color: #1A1A1A;
   }
 
-  .prose details[open] summary::before {
+  .ns-prose details[open] summary::before {
     transform: rotate(90deg);
   }
 
-  .prose details[open] summary {
-    border-bottom: 1px solid #e5e7eb;
+  .ns-prose details[open] summary {
+    border-bottom: 1px solid #DFDFDF;
+    background: #F9F9F9;
   }
 
-  .prose details > *:not(summary) {
+  .ns-prose details > *:not(summary) {
     padding: 0 1.25rem;
   }
 
-  .prose details > *:last-child {
+  .ns-prose details > *:last-child {
     padding-bottom: 1rem;
+  }
+
+  /* 링크 스타일 */
+  .ns-prose a {
+    color: #256FFF;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .ns-prose a:hover {
+    color: #1a4fc9;
+  }
+
+  /* 코드 스타일 */
+  .ns-prose code {
+    background: #F9F9F9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #1A1A1A;
+  }
+
+  .ns-prose pre {
+    background: #F9F9F9;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .ns-prose pre code {
+    background: none;
+    padding: 0;
+  }
+
+  /* 인용구 */
+  .ns-prose blockquote {
+    border-left: 4px solid #256FFF;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #1F1F1F;
+    font-style: normal;
   }
 </style>
