@@ -248,8 +248,44 @@ async function parseNotionContent(pageId) {
 
       if (!text.trim()) continue;
 
-      // 섹션 구분 키워드
-      if (text.includes('주요 스펙') || text.includes('스펙')) {
+      // 섹션 구분 키워드 - 중첩된 자식 불릿 처리
+      const isSectionHeader =
+        text.includes('주요 스펙') || text === '스펙' ||
+        text === '장점' || text === '단점' ||
+        text.includes('추천') || text.includes('이런 분께');
+
+      if (isSectionHeader && block.has_children && currentProduct) {
+        // 중첩 불릿 구조: 부모에서 섹션 타입 결정, 자식에서 데이터 수집
+        const children = await notion.blocks.children.list({ block_id: block.id });
+
+        for (const child of children.results) {
+          if (child.type === 'bulleted_list_item') {
+            const childText = richTextToPlain(child.bulleted_list_item.rich_text);
+            if (!childText.trim()) continue;
+
+            if (text.includes('주요 스펙') || text === '스펙') {
+              // 스펙은 "CPU: Intel..." 형태
+              const colonIdx = childText.indexOf(':');
+              if (colonIdx > 0) {
+                currentProduct.specs.push({
+                  label: childText.substring(0, colonIdx).trim(),
+                  value: childText.substring(colonIdx + 1).trim()
+                });
+              }
+            } else if (text === '장점') {
+              currentProduct.pros.push(childText);
+            } else if (text === '단점') {
+              currentProduct.cons.push(childText);
+            } else if (text.includes('추천') || text.includes('이런 분께')) {
+              currentProduct.recommendFor.push(childText);
+            }
+          }
+        }
+        continue;
+      }
+
+      // 플랫 구조 불릿 처리 (중첩 아닌 경우)
+      if (text.includes('주요 스펙') || text === '스펙') {
         collectingSpecs = true;
         collectingPros = false;
         collectingCons = false;
@@ -278,7 +314,7 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
-      // 현재 제품에 데이터 추가
+      // 현재 제품에 데이터 추가 (플랫 구조)
       if (currentProduct) {
         if (collectingPros) {
           currentProduct.pros.push(text);
