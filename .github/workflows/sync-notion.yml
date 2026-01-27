@@ -62,6 +62,7 @@ jobs:
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           git add -A src/content/reviews/
+          git add -A src/pages/
           git add -A public/notion-images/
 
           git commit -m "Sync reviews from Notion"

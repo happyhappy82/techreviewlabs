@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ProductCard from '../components/ProductCard.astro';
+import PriceComparison from '../components/PriceComparison.astro';
+import SpecTable from '../components/SpecTable.astro';
+
+// 샘플 제품 데이터
+const products = [
+  {
+    name: "15-fc0223AU 16GB램",
+    brand: "HP",
+    image: "https://img.danawa.com/prod_img/500000/648/682/img/27682648_1.jpg",
+    priceRange: "57 ~ 68만원",
+    badge: "가성비픽",
+    totalScore: 71.6,
+    scores: {
+      price: 88.4,
+      performance: 70,
+      display: 59.9,
+      screenSize: 74.5,
+      storage: 68.7,
+      portability: 66.7,
+      usability: 65.8,
+    },
+    specs: {
+      screenSize: "15.6",
+      resolution: "1920X1080(FHD)",
+      cpuType: "라이젠5-Zen3",
+      cpuModel: "7430U",
+      ram: "16GB",
+      storage: "SSD 256GB",
+      weight: "1.59kg",
+      brand: "HP",
+      cpuMaker: "AMD",
+      panel: "IPS",
+      ratio: "16:9",
+      brightness: "300",
+      gpu: "7430U Radeon Graphics",
+      battery: "41Wh",
+    },
+    prices: [
+      { mall: "쿠팡", logo: "https://image.nosearch.com/mall/coupang.png", price: 573000, url: "#", fastDelivery: false },
+      { mall: "G마켓", logo: "https://image.nosearch.com/mall/gmarket.png", price: 589000, url: "#", fastDelivery: true },
+      { mall: "11번가", logo: "https://image.nosearch.com/mall/11st.png", price: 598000, url: "#", fastDelivery: false },
+    ],
+    description: `15-fc0223AU 16GB램 모델은 HP에서 24년에 출시한 50만 원대 가성비 노트북인데요.
+
+군더더기 없는 깔끔한 디자인에 얇은 두께, 무광 블랙 컬러까지 더해져 매우 예쁜 제품입니다.
+
+성능을 살펴보면, AMD의 라이젠5-Zen3 7430U CPU와 256GB SSD, RAM은 16GB로 업그레이드 된 모델이기에 웹서핑이나 인터넷 강의는 물론, 일반적인 사무 업무도 충분히 할 수 있을 정도의 준수한 성능을 가지고 있습니다.`,
+  },
+  {
+    name: "2025 울트라PC 15U50T-GA5HK",
+    brand: "LG전자",
+    image: "https://img.danawa.com/prod_img/500000/559/938/img/28938559_1.jpg",
+    priceRange: "76 ~ 91만원",
+    badge: "가성비픽",
+    totalScore: 73.5,
+    scores: {
+      price: 84,
+      performance: 66.7,
+      display: 63,
+      screenSize: 74.5,
+      storage: 70.9,
+      portability: 74.2,
+      usability: 78.4,
+    },
+    specs: {
+      screenSize: "15.6",
+      resolution: "1920X1080(FHD)",
+      cpuType: "코어i5-13세대",
+      cpuModel: "i5-1334U",
+      ram: "16GB",
+      storage: "SSD 256GB",
+      weight: "1.7kg",
+      brand: "LG전자",
+      cpuMaker: "인텔",
+      panel: "IPS",
+      ratio: "16:9",
+      brightness: "300",
+      gpu: "UHD Graphics",
+      battery: "51Wh",
+    },
+    prices: [
+      { mall: "G마켓", logo: "https://image.nosearch.com/mall/gmarket.png", price: 767400, url: "#", fastDelivery: true },
+      { mall: "오늘의집", logo: "https://image.nosearch.com/mall/ohouse.png", price: 769000, url: "#", fastDelivery: false },
+      { mall: "쿠팡", logo: "https://image.nosearch.com/mall/coupang.png", price: 799000, url: "#", fastDelivery: false },
+      { mall: "LG공식", logo: "https://image.nosearch.com/mall/lg.png", price: 1049000, url: "#", fastDelivery: true },
+    ],
+    description: `15U50T-GA5HK는 LG전자에서 25년 출시한 울트라PC라인 신상입니다.
+
+인텔 i5-13세대 1334U CPU와 교체 가능한 16GB RAM, 256GB SSD까지 갖추고 있으며, 브랜드 PC 중 이 가격대에서는 찾아보기 힘든 윈도우 11 홈 버전 정품이 기본 설치되어 있는 모델입니다.
+
+SSD와 RAM도 필요에 따라 업그레이드 할 수 있는 슬롯이 하나씩 있어 확장성도 뛰어나고, LG전자의 뛰어난 사후 서비스를 기대해 볼 수 있는 제품입니다.`,
+  },
+  {
+    name: "아이디어패드 Slim3 83K9000JKR 16GB램",
+    brand: "레노버",
+    image: "https://img.danawa.com/prod_img/500000/814/983/img/28983814_1.jpg",
+    priceRange: "82 ~ 98만원",
+    badge: "가성비픽",
+    totalScore: 76.8,
+    scores: {
+      price: 79.2,
+      performance: 78.5,
+      display: 82.3,
+      screenSize: 68.5,
+      storage: 68.7,
+      portability: 82.1,
+      usability: 78.9,
+    },
+    specs: {
+      screenSize: "14",
+      resolution: "1920X1200(WUXGA)",
+      cpuType: "라이젠5-8000",
+      cpuModel: "8640HS",
+      ram: "16GB",
+      storage: "SSD 256GB",
+      weight: "1.33kg",
+      brand: "레노버",
+      cpuMaker: "AMD",
+      panel: "OLED",
+      ratio: "16:10",
+      brightness: "400",
+      gpu: "Radeon 760M",
+      battery: "60Wh",
+    },
+    prices: [
+      { mall: "쿠팡", logo: "https://image.nosearch.com/mall/coupang.png", price: 829000, url: "#", fastDelivery: false },
+      { mall: "11번가", logo: "https://image.nosearch.com/mall/11st.png", price: 849000, url: "#", fastDelivery: false },
+      { mall: "G마켓", logo: "https://image.nosearch.com/mall/gmarket.png", price: 879000, url: "#", fastDelivery: true },
+    ],
+    description: `레노버 아이디어패드 Slim3 14AHP10 83K9000JKR 16GB램 모델은 25년 4월 출시한 가성비 노트북입니다.
+
+AMD 라이젠5 8640HS CPU + DDR5 16GB(5600MHz) 가 적용 된 제품인데요, 여러 오피스 프로그램과 인터넷 창을 동시에 열어두고 사용하더라도 버벅일 일이 거의 없습니다.
+
+14인치 크기의 1920X1200(WUXGA) 해상도 OLED 디스플레이가 적용 되었으며, 색상의 정확도를 가늠할 수 있는 색재현율 수치는 DCI-P3 100%로 가성비 노트북 중 매우 뛰어난 수준입니다.`,
+  },
+];
+
+// 스펙 테이블용 라벨
+const specLabels = [
+  { key: 'brand', label: '브랜드' },
+  { key: 'cpuMaker', label: '제조사' },
+  { key: 'cpuModel', label: 'CPU 넘버' },
+  { key: 'screenSize', label: '화면 크기(inch)' },
+  { key: 'resolution', label: '해상도' },
+  { key: 'panel', label: '패널' },
+  { key: 'ratio', label: '화면 비율' },
+  { key: 'brightness', label: '밝기(nit)' },
+  { key: 'ram', label: '메모리' },
+  { key: 'gpu', label: 'GPU 칩셋' },
+  { key: 'storage', label: '저장장치' },
+  { key: 'weight', label: '무게' },
+  { key: 'battery', label: '배터리 용량' },
+];
+---
+
+<BaseLayout
+  title="가격대별 노트북 추천 TOP 3 - 2026년"
+  description="50~80만원대 가성비 노트북 추천. HP, LG, 레노버 노트북 스펙 비교 및 최저가 정보."
+>
+  <Header />
+
+  <main>
+    <!-- 페이지 헤더 -->
+    <div class="page-header">
+      <div class="category-tabs">
+        <a href="#" class="tab active">가격대별</a>
+        <a href="#" class="tab">맥북</a>
+        <a href="#" class="tab">사무용</a>
+        <a href="#" class="tab">학생용</a>
+        <a href="#" class="tab">게이밍</a>
+        <a href="#" class="tab">2in1</a>
+      </div>
+
+      <h1 class="page-title">최고의 가격대 별 노트북</h1>
+
+      <div class="author-info">
+        <div class="author-avatar">TRL</div>
+        <span class="author-name">TechReviewLabs</span>
+        <span class="update-date">2026.01.23 업데이트</span>
+      </div>
+
+      <p class="page-description">
+        50~70만원이라는 예산은 모든 면에서 완벽한 노트북을 고르기에 충분하지 않은 예산입니다.
+        이 가격대의 노트북은 성능, 무게, 화질, 저장공간, 제품마감 등 여러 요소 중 하나는 포기해야 제대로 활용할 수 있는 노트북을 고를 수 있습니다.
+        가격과 용도를 고려하여 포기할건 포기하고 취할건 취한 가격대별 베스트 노트북을 골랐습니다.
+      </p>
+
+      <!-- 공정 추천 배지 -->
+      <div class="fair-badge">
+        <span class="badge-icon">🏆</span>
+        <span class="badge-text">공정하게 추천합니다!</span>
+        <p class="badge-description">
+          제품협찬, 광고비 등 어떠한 대가도 받지 않았으며, 철저하게 소비자 입장에서 비교하여 추천합니다.
+        </p>
+      </div>
+
+      <div class="section-label">
+        <span class="label-badge">📌</span>
+        <span class="label-text">노트북 추천 & 리뷰 : 가격대별 TOP 3</span>
+      </div>
+    </div>
+
+    <!-- 제품 카드들 -->
+    {products.map((product, index) => (
+      <section class="product-section">
+        <ProductCard
+          product={product}
+          rank={index + 1}
+          title={index === 0 ? '50만 원대 추천 노트북' : index === 1 ? '60~70만 원대 추천 노트북' : '70~80만 원대 추천 노트북'}
+        />
+
+        <PriceComparison prices={product.prices} />
+
+        <div class="product-description">
+          <h4 class="desc-title">
+            {index === 0 && '1.59kg으로 가벼운 극강 가성비 HP노트북 무광 블랙 컬러라 외관도 진짜 깔끔함!'}
+            {index === 1 && '운영체제 직접 설치하는 방법을 모른다면? 윈도우 11이 설치 된 가성비 LG노트북👍'}
+            {index === 2 && '라이젠5 8640HS + 16GB RAM 1.33kg으로 가벼운 25년형 가성비 노트북!'}
+          </h4>
+          <div class="desc-content">
+            {product.description.split('\n').map((line) => (
+              <p>{line}</p>
+            ))}
+          </div>
+          <button class="more-button">더 자세한 리뷰 확인하기</button>
+        </div>
+      </section>
+    ))}
+
+    <!-- 스펙 비교 테이블 -->
+    <SpecTable products={products} specLabels={specLabels} />
+
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .category-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .tab {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    background: #F5F5F5;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .tab:hover {
+    background: #E5E5E5;
+  }
+
+  .tab.active {
+    background: #1A1A1A;
+    color: #fff;
+  }
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .author-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #256FFF;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+
+  .update-date {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .page-description {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #1A1A1A;
+    margin-bottom: 1.5rem;
+  }
+
+  .fair-badge {
+    padding: 16px;
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-icon {
+    font-size: 16px;
+  }
+
+  .badge-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #166534;
+    margin-left: 4px;
+  }
+
+  .badge-description {
+    font-size: 13px;
+    color: #166534;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #1A1A1A;
+    margin-bottom: 2rem;
+  }
+
+  .label-badge {
+    font-size: 14px;
+  }
+
+  .label-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .product-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .product-description {
+    margin-top: 1.5rem;
+    padding: 20px;
+    background: #FAFAFA;
+    border-radius: 10px;
+  }
+
+  .desc-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+  }
+
+  .desc-content {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .desc-content p {
+    margin-bottom: 0.75rem;
+  }
+
+  .desc-content p:empty {
+    display: none;
+  }
+
+  .more-button {
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid #DFDFDF;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1A1A;
+    cursor: pointer;
+  }
+
+  .more-button:hover {
+    background: #F5F5F5;
+  }
+</style>

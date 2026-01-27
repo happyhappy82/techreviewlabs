@@ -1,0 +1,172 @@
+---
+interface Product {
+  name: string;
+  brand: string;
+  image: string;
+  priceRange: string;
+  badge?: string;
+  specs: Record<string, string>;
+}
+
+interface Props {
+  products: Product[];
+  specLabels: { key: string; label: string }[];
+}
+
+const { products, specLabels } = Astro.props;
+---
+
+<div class="spec-table-wrapper">
+  <div class="table-header">
+    <span class="table-title">픽 제품 비교</span>
+  </div>
+
+  <div class="table-container">
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th class="label-cell">제품 정보</th>
+          {products.map((product) => (
+            <th class="product-cell">
+              {product.badge && <span class="product-badge">{product.badge}</span>}
+              <img src={product.image} alt={product.name} class="product-thumb" />
+              <span class="brand">{product.brand}</span>
+              <span class="name">{product.name}</span>
+              <span class="price">{product.priceRange}</span>
+              <a href="#" class="detail-link">
+                자세히 보기 <span class="arrow">→</span>
+              </a>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {specLabels.map((spec) => (
+          <tr>
+            <td class="label-cell">{spec.label}</td>
+            {products.map((product) => (
+              <td class="value-cell">{product.specs[spec.key] || '-'}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .spec-table-wrapper {
+    margin: 2rem 0;
+  }
+
+  .table-header {
+    margin-bottom: 1rem;
+  }
+
+  .table-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+  }
+
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #DFDFDF;
+  }
+
+  .spec-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .label-cell {
+    background: #F9F9F9;
+    font-weight: 700;
+    color: #1A1A1A;
+    text-align: left !important;
+    min-width: 120px;
+  }
+
+  .product-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px;
+    min-width: 180px;
+    background: #fff;
+  }
+
+  .product-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #00997E;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .product-thumb {
+    width: 100px;
+    height: 80px;
+    object-fit: contain;
+    background: #F9F9F9;
+    border-radius: 4px;
+  }
+
+  .brand {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+  }
+
+  .name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1A1A1A;
+    text-align: center;
+  }
+
+  .price {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .detail-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #256FFF;
+    text-decoration: none;
+  }
+
+  .detail-link:hover {
+    text-decoration: underline;
+  }
+
+  .value-cell {
+    color: #1A1A1A;
+    background: #fff;
+  }
+
+  .value-cell:nth-child(even) {
+    background: #FAFAFA;
+  }
+</style>

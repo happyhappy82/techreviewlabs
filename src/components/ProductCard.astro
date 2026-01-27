@@ -1,0 +1,457 @@
+---
+interface Props {
+  product: {
+    name: string;
+    brand: string;
+    image: string;
+    priceRange: string;
+    badge?: string;
+    totalScore: number;
+    scores: {
+      price: number;
+      performance: number;
+      display: number;
+      screenSize: number;
+      storage: number;
+      portability: number;
+      usability: number;
+    };
+    specs: {
+      screenSize: string;
+      resolution: string;
+      cpuType: string;
+      cpuModel: string;
+      ram?: string;
+      storage?: string;
+      weight?: string;
+    };
+  };
+  rank?: number;
+  title?: string;
+}
+
+const { product, rank = 1, title } = Astro.props;
+
+// 점수에 따른 색상 반환
+function getScoreColor(score: number): string {
+  if (score >= 80) return 'var(--ns-blue)';
+  if (score >= 70) return 'var(--ns-green)';
+  if (score >= 60) return 'var(--ns-orange)';
+  return 'var(--ns-red)';
+}
+
+// 종합점수 색상
+function getTotalScoreColor(score: number): string {
+  if (score >= 75) return 'var(--ns-green)';
+  if (score >= 65) return 'var(--ns-blue)';
+  if (score >= 55) return 'var(--ns-orange)';
+  return 'var(--ns-red)';
+}
+---
+
+<div class="product-card">
+  <!-- 헤더 -->
+  <div class="card-header">
+    <div class="header-left">
+      <span class="rank-badge">{rank}</span>
+      <span class="section-title">{title || `${product.brand} 추천 노트북`}</span>
+    </div>
+    <button class="spec-button">스펙 전체보기</button>
+  </div>
+
+  <!-- 메인 카드 -->
+  <div class="card-body">
+    <!-- 왼쪽: 이미지 -->
+    <div class="product-image-section">
+      <img src={product.image} alt={product.name} class="product-image" />
+      <button class="compare-button">
+        <span class="vs-icon">VS</span>
+        비교하기
+      </button>
+    </div>
+
+    <!-- 오른쪽: 정보 -->
+    <div class="product-info-section">
+      <!-- 뱃지 + 제품명 -->
+      <div class="product-header">
+        {product.badge && <span class="product-badge">{product.badge}</span>}
+        <h3 class="product-name">{product.brand} {product.name}</h3>
+        <div class="price-range">{product.priceRange}</div>
+      </div>
+
+      <!-- 스펙 그리드 -->
+      <div class="specs-grid">
+        <div class="spec-item">
+          <span class="spec-label">화면 크기(inch)</span>
+          <span class="spec-value">{product.specs.screenSize}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">해상도</span>
+          <span class="spec-value">{product.specs.resolution}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">CPU종류</span>
+          <span class="spec-value">{product.specs.cpuType}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">CPU 넘버</span>
+          <span class="spec-value">{product.specs.cpuModel}</span>
+        </div>
+      </div>
+
+      <!-- 점수 섹션 -->
+      <div class="scores-section">
+        <!-- 종합점수 -->
+        <div class="total-score">
+          <span class="score-label">종합점수</span>
+          <div class="score-circle" style={`--score-color: ${getTotalScoreColor(product.totalScore)}`}>
+            <svg viewBox="0 0 100 100" class="score-ring">
+              <circle cx="50" cy="50" r="45" class="ring-bg" />
+              <circle
+                cx="50" cy="50" r="45"
+                class="ring-progress"
+                style={`stroke-dasharray: ${product.totalScore * 2.83} 283`}
+              />
+            </svg>
+            <span class="score-number">{product.totalScore}</span>
+          </div>
+        </div>
+
+        <!-- 개별 점수 -->
+        <div class="individual-scores">
+          <div class="score-item">
+            <span class="score-name">가격</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.price)}`}>
+              {product.scores.price}
+            </span>
+          </div>
+          <div class="score-item">
+            <span class="score-name">처리성능</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.performance)}`}>
+              {product.scores.performance}
+            </span>
+          </div>
+          <div class="score-item">
+            <span class="score-name">화면크기</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.screenSize)}`}>
+              {product.scores.screenSize}
+            </span>
+          </div>
+          <div class="score-item">
+            <span class="score-name">디스플레이</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.display)}`}>
+              {product.scores.display}
+            </span>
+          </div>
+          <div class="score-item">
+            <span class="score-name">저장공간</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.storage)}`}>
+              {product.scores.storage}
+            </span>
+          </div>
+          <div class="score-item">
+            <span class="score-name">휴대성</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.portability)}`}>
+              {product.scores.portability}
+            </span>
+          </div>
+          <div class="score-item">
+            <span class="score-name">사용성</span>
+            <span class="score-value" style={`color: ${getScoreColor(product.scores.usability)}`}>
+              {product.scores.usability}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 자세히 알아보기 -->
+      <div class="detail-link">
+        <span>자세히 알아보기</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-card {
+    margin-bottom: 2rem;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    background: #1A1A1A;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1A1A1A;
+  }
+
+  .spec-button {
+    padding: 8px 16px;
+    border: 1px solid #DFDFDF;
+    border-radius: 20px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1A1A1A;
+    cursor: pointer;
+  }
+
+  .spec-button:hover {
+    background: #F9F9F9;
+  }
+
+  .card-body {
+    display: flex;
+    gap: 24px;
+    padding: 20px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .product-image-section {
+    flex-shrink: 0;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #F9F9F9;
+    border-radius: 8px;
+  }
+
+  .compare-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #256FFF;
+    border-radius: 8px;
+    background: #fff;
+    color: #256FFF;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .compare-button:hover {
+    background: #F0F6FF;
+  }
+
+  .vs-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #256FFF;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+
+  .product-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .product-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 2px 6px;
+    background: #00997E;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .product-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin: 0;
+  }
+
+  .price-range {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 24px;
+  }
+
+  .spec-item {
+    display: flex;
+    gap: 8px;
+  }
+
+  .spec-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .spec-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1A1A1A;
+  }
+
+  .scores-section {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .total-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .total-score .score-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .score-circle {
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+
+  .score-ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring-bg {
+    fill: none;
+    stroke: #E5E7EB;
+    stroke-width: 8;
+  }
+
+  .ring-progress {
+    fill: none;
+    stroke: var(--score-color);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s ease;
+  }
+
+  .score-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--score-color);
+  }
+
+  .individual-scores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px 16px;
+    flex: 1;
+  }
+
+  .score-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .score-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1A1A1A;
+  }
+
+  .score-value {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .detail-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    cursor: pointer;
+  }
+
+  .detail-link:hover {
+    text-decoration: underline;
+  }
+
+  .arrow {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    .card-body {
+      flex-direction: column;
+    }
+
+    .product-image-section {
+      width: 100%;
+    }
+
+    .individual-scores {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

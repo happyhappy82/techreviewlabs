@@ -1,0 +1,122 @@
+---
+interface PriceItem {
+  mall: string;
+  logo: string;
+  price: number;
+  url: string;
+  fastDelivery?: boolean;
+}
+
+interface Props {
+  prices: PriceItem[];
+}
+
+const { prices } = Astro.props;
+
+// 최저가 찾기
+const lowestPrice = Math.min(...prices.map(p => p.price));
+
+// 가격 포맷팅
+function formatPrice(price: number): string {
+  return price.toLocaleString('ko-KR') + '원';
+}
+---
+
+<div class="price-comparison">
+  {prices.map((item, index) => (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={['price-item', { 'lowest': item.price === lowestPrice }]}
+    >
+      <div class="mall-info">
+        <img src={item.logo} alt={item.mall} class="mall-logo" />
+        {item.fastDelivery && <span class="fast-delivery">빠른배송</span>}
+      </div>
+      <div class="price-info">
+        <span class="price">{formatPrice(item.price)}</span>
+        {item.price === lowestPrice && <span class="lowest-badge">최저가</span>}
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .price-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #DFDFDF;
+    border-radius: 8px;
+    background: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .price-item:hover {
+    background: #F9F9F9;
+  }
+
+  .price-item.lowest {
+    border-color: #FF455B;
+    border-width: 2px;
+  }
+
+  .mall-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mall-logo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .fast-delivery {
+    font-size: 12px;
+    font-weight: 700;
+    color: #256FFF;
+  }
+
+  .price-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+
+  .lowest .price {
+    color: #FF455B;
+  }
+
+  .lowest-badge {
+    padding: 2px 6px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .price-comparison {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,1051 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+// 제품 데이터
+const products = [
+  {
+    id: 1,
+    name: "HP 15-fc0223AU",
+    subtitle: "50만원대 가성비 끝판왕",
+    badge: "가성비 1위",
+    image: "https://img.danawa.com/prod_img/500000/648/682/img/27682648_1.jpg",
+    price: 573000,
+    originalPrice: 689000,
+    specs: {
+      cpu: "AMD 라이젠5 7430U",
+      ram: "16GB DDR4",
+      storage: "SSD 256GB",
+      display: "15.6인치 FHD IPS",
+      weight: "1.59kg",
+      battery: "41Wh",
+      os: "프리도스",
+    },
+    pros: [
+      "50만원대 유일한 16GB RAM",
+      "1.59kg 가벼운 무게",
+      "HP 브랜드 A/S 안심",
+      "무광 블랙 깔끔한 디자인",
+    ],
+    cons: [
+      "SSD 256GB 용량 부족할 수 있음",
+      "윈도우 별도 설치 필요",
+    ],
+    buyUrl: "#",
+    forWho: "대학생 과제용, 직장인 사무용",
+  },
+  {
+    id: 2,
+    name: "LG 울트라PC 15U50T-GA5HK",
+    subtitle: "윈도우 포함 가성비 LG",
+    badge: "A/S 최강",
+    image: "https://img.danawa.com/prod_img/500000/559/938/img/28938559_1.jpg",
+    price: 767400,
+    originalPrice: 899000,
+    specs: {
+      cpu: "인텔 i5-1334U (13세대)",
+      ram: "16GB DDR4",
+      storage: "SSD 256GB",
+      display: "15.6인치 FHD IPS",
+      weight: "1.7kg",
+      battery: "51Wh",
+      os: "Windows 11 Home",
+    },
+    pros: [
+      "윈도우 11 정품 포함",
+      "LG전자 전국 A/S망",
+      "RAM, SSD 확장 슬롯 있음",
+      "51Wh 넉넉한 배터리",
+    ],
+    cons: [
+      "1.7kg 다소 무거움",
+      "내장그래픽 성능 평범",
+    ],
+    buyUrl: "#",
+    forWho: "윈도우 설치 모르는 분, A/S 중요시하는 분",
+  },
+  {
+    id: 3,
+    name: "레노버 아이디어패드 Slim3 14",
+    subtitle: "OLED 탑재 가성비 노트북",
+    badge: "디스플레이 최고",
+    image: "https://img.danawa.com/prod_img/500000/814/983/img/28983814_1.jpg",
+    price: 829000,
+    originalPrice: 999000,
+    specs: {
+      cpu: "AMD 라이젠5 8640HS",
+      ram: "16GB DDR5",
+      storage: "SSD 256GB",
+      display: "14인치 WUXGA OLED",
+      weight: "1.33kg",
+      battery: "60Wh",
+      os: "프리도스",
+    },
+    pros: [
+      "OLED 디스플레이 색감 최고",
+      "1.33kg 초경량",
+      "DDR5 최신 RAM",
+      "60Wh 대용량 배터리",
+    ],
+    cons: [
+      "14인치 작은 화면",
+      "SSD 용량 부족",
+    ],
+    buyUrl: "#",
+    forWho: "디자인 전공, 영상 시청 많이 하는 분",
+  },
+  {
+    id: 4,
+    name: "삼성 갤럭시북4 NT750XGR-A51A",
+    subtitle: "삼성 생태계 완벽 연동",
+    badge: "삼성 유저 필수",
+    image: "https://img.danawa.com/prod_img/500000/270/795/img/28795270_1.jpg",
+    price: 899000,
+    originalPrice: 1090000,
+    specs: {
+      cpu: "인텔 i5-1335U (13세대)",
+      ram: "16GB DDR4",
+      storage: "SSD 512GB",
+      display: "15.6인치 FHD AMOLED",
+      weight: "1.55kg",
+      battery: "54Wh",
+      os: "Windows 11 Home",
+    },
+    pros: [
+      "갤럭시 스마트폰 연동 최고",
+      "AMOLED 선명한 화면",
+      "512GB 넉넉한 저장공간",
+      "삼성 전국 서비스센터",
+    ],
+    cons: [
+      "가격대가 좀 있음",
+      "발열 관리 평범",
+    ],
+    buyUrl: "#",
+    forWho: "갤럭시 폰 사용자, 삼성 팬",
+  },
+  {
+    id: 5,
+    name: "ASUS 비보북 X1504VA-NJ516",
+    subtitle: "가성비 인텔 12세대",
+    badge: "숨은 가성비",
+    image: "https://img.danawa.com/prod_img/500000/999/590/img/26590999_1.jpg",
+    price: 599000,
+    originalPrice: 749000,
+    specs: {
+      cpu: "인텔 i5-1335U (13세대)",
+      ram: "16GB DDR4",
+      storage: "SSD 512GB",
+      display: "15.6인치 FHD IPS",
+      weight: "1.7kg",
+      battery: "42Wh",
+      os: "프리도스",
+    },
+    pros: [
+      "60만원 미만 512GB SSD",
+      "인텔 13세대 CPU",
+      "180도 힌지",
+      "숫자 키패드 포함",
+    ],
+    cons: [
+      "A/S 접근성 낮음",
+      "디스플레이 밝기 부족",
+    ],
+    buyUrl: "#",
+    forWho: "저장공간 많이 필요한 분, 예산 빠듯한 분",
+  },
+];
+
+// 스펙 비교 테이블용 키
+const specKeys = [
+  { key: 'cpu', label: 'CPU' },
+  { key: 'ram', label: 'RAM' },
+  { key: 'storage', label: '저장장치' },
+  { key: 'display', label: '디스플레이' },
+  { key: 'weight', label: '무게' },
+  { key: 'battery', label: '배터리' },
+  { key: 'os', label: '운영체제' },
+];
+
+// FAQ 데이터
+const faqs = [
+  {
+    q: "50만원대 노트북으로 뭘 할 수 있나요?",
+    a: "웹서핑, 문서작업, 유튜브/넷플릭스, 줌 화상회의, 간단한 코딩까지 가능합니다. 게임이나 영상편집은 어렵습니다."
+  },
+  {
+    q: "RAM 8GB vs 16GB 차이가 크나요?",
+    a: "체감 차이 큽니다. 크롬 탭 여러 개 + 한글/엑셀 동시 사용하면 8GB는 버벅이고, 16GB는 쾌적합니다. 2026년 기준 16GB 권장합니다."
+  },
+  {
+    q: "프리도스 사면 윈도우 어떻게 설치하나요?",
+    a: "마이크로소프트 공식 사이트에서 USB로 설치 가능합니다. 유튜브에 '윈도우 11 설치' 검색하면 10분 만에 할 수 있습니다. 라이선스는 쿠팡에서 2만원대에 구매 가능합니다."
+  },
+  {
+    q: "대학생인데 어떤 거 사야 하나요?",
+    a: "전공에 따라 다릅니다. 문과/경영은 1번 HP 추천, 공대/디자인은 3번 레노버 OLED 추천, 컴공은 RAM 확장 가능한 2번 LG 추천합니다."
+  },
+  {
+    q: "가격 더 떨어질까요?",
+    a: "신제품 출시 전(보통 3월, 9월)에 재고 정리 세일이 있습니다. 하지만 인기 모델은 오히려 품절되어 가격이 오르기도 합니다. 필요할 때가 살 때입니다."
+  },
+];
+
+const updateDate = "2026년 1월 27일";
+
+// 구조화된 데이터
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "2026년 가성비 노트북 추천 TOP 5",
+  "itemListElement": products.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": p.name,
+      "image": p.image,
+      "offers": {
+        "@type": "Offer",
+        "price": p.price,
+        "priceCurrency": "KRW"
+      }
+    }
+  }))
+};
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="2026 가성비 노트북 추천 TOP 5 - 50~90만원대 비교"
+  description="2026년 가성비 노트북 추천 순위. 50만원대부터 90만원대까지 HP, LG, 레노버, 삼성, ASUS 노트북 스펙 비교 및 장단점 분석."
+>
+  <Header />
+
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
+
+  <main>
+    <article>
+      <!-- 헤더 영역 -->
+      <header class="article-header">
+        <h1 class="title">2026 가성비 노트북 추천 TOP 5</h1>
+        <p class="subtitle">50만원~90만원대, 용도별 완벽 정리</p>
+
+        <div class="meta">
+          <span class="author">TechReviewLabs</span>
+          <time datetime="2026-01-27">{updateDate}</time>
+        </div>
+
+        <!-- 한줄결론 -->
+        <div class="tldr">
+          <strong>한줄결론:</strong>
+          대학생·사무용은 <mark>1위 HP 57만원</mark>,
+          윈도우 포함 원하면 <mark>2위 LG 76만원</mark>,
+          디스플레이 중시하면 <mark>3위 레노버 OLED 82만원</mark>
+        </div>
+      </header>
+
+      <!-- 목차 -->
+      <nav class="toc">
+        <strong>목차</strong>
+        <ol>
+          <li><a href="#intro">들어가며</a></li>
+          {products.map((p, i) => (
+            <li><a href={`#product-${p.id}`}>{i + 1}위. {p.name}</a></li>
+          ))}
+          <li><a href="#comparison">스펙 비교표</a></li>
+          <li><a href="#faq">자주 묻는 질문</a></li>
+          <li><a href="#conclusion">최종 결론</a></li>
+        </ol>
+      </nav>
+
+      <!-- 도입부 -->
+      <section id="intro" class="section intro">
+        <h2>들어가며</h2>
+        <p>
+          "노트북 뭐 사야 해요?"<br/>
+          이 질문을 받으면 저는 항상 이렇게 되묻습니다.
+        </p>
+        <p>
+          <strong>"예산이 얼마예요? 뭐에 쓸 건데요?"</strong>
+        </p>
+        <p>
+          100만원 이하 가성비 노트북 시장은 선택지가 너무 많습니다.
+          그래서 <strong>용도별, 가격대별로 딱 5개만</strong> 추렸습니다.
+        </p>
+        <p>
+          광고비, 협찬 없이 순수하게 스펙과 가성비만 보고 골랐습니다.<br/>
+          이 글 하나로 고민 끝내세요.
+        </p>
+      </section>
+
+      <!-- 제품 리스트 -->
+      {products.map((product, index) => (
+        <section id={`product-${product.id}`} class="section product-section">
+          <div class="product-header">
+            <span class="rank">{index + 1}위</span>
+            <span class="badge">{product.badge}</span>
+          </div>
+
+          <h2 class="product-title">{product.name}</h2>
+          <p class="product-subtitle">{product.subtitle}</p>
+
+          <div class="product-card">
+            <div class="product-image-area">
+              <img
+                src={product.image}
+                alt={`${product.name} 제품 이미지`}
+                class="product-image"
+                loading="lazy"
+                width="280"
+                height="200"
+              />
+              <div class="price-tag">
+                <span class="original">{product.originalPrice.toLocaleString()}원</span>
+                <span class="current">{product.price.toLocaleString()}원</span>
+              </div>
+            </div>
+
+            <div class="product-details">
+              <!-- 추천 대상 -->
+              <div class="for-who">
+                <strong>추천 대상:</strong> {product.forWho}
+              </div>
+
+              <!-- 스펙 -->
+              <div class="spec-list">
+                <h3>주요 스펙</h3>
+                <table class="spec-mini-table">
+                  <tbody>
+                    <tr><th>CPU</th><td>{product.specs.cpu}</td></tr>
+                    <tr><th>RAM</th><td>{product.specs.ram}</td></tr>
+                    <tr><th>저장장치</th><td>{product.specs.storage}</td></tr>
+                    <tr><th>화면</th><td>{product.specs.display}</td></tr>
+                    <tr><th>무게</th><td>{product.specs.weight}</td></tr>
+                    <tr><th>OS</th><td>{product.specs.os}</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 장단점 -->
+              <div class="pros-cons">
+                <div class="pros">
+                  <h3>장점</h3>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h3>단점</h3>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <a href={product.buyUrl} class="buy-btn" rel="sponsored nofollow">
+                쿠팡 최저가 보러가기 →
+              </a>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <!-- 스펙 비교표 -->
+      <section id="comparison" class="section">
+        <h2>스펙 비교표</h2>
+        <p class="section-desc">5개 제품 한눈에 비교하기</p>
+
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {products.map((p, i) => (
+                  <th>
+                    <span class="rank-small">{i + 1}위</span><br/>
+                    {p.name.split(' ')[0]}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>가격</th>
+                {products.map(p => (
+                  <td class="price-cell">{(p.price / 10000).toFixed(1)}만원</td>
+                ))}
+              </tr>
+              {specKeys.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {products.map(p => (
+                    <td>{p.specs[spec.key]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Q&A -->
+      <section id="faq" class="section">
+        <h2>자주 묻는 질문</h2>
+
+        <div class="faq-list">
+          {faqs.map((faq, i) => (
+            <details class="faq-item" open={i === 0}>
+              <summary>{faq.q}</summary>
+              <p>{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- 최종 결론 -->
+      <section id="conclusion" class="section conclusion">
+        <h2>최종 결론</h2>
+
+        <div class="conclusion-grid">
+          <div class="conclusion-card">
+            <span class="emoji">🎓</span>
+            <strong>대학생·사무용</strong>
+            <p>HP 15-fc0223AU</p>
+            <span class="price">57만원</span>
+          </div>
+          <div class="conclusion-card">
+            <span class="emoji">🪟</span>
+            <strong>윈도우 포함</strong>
+            <p>LG 울트라PC</p>
+            <span class="price">76만원</span>
+          </div>
+          <div class="conclusion-card">
+            <span class="emoji">🎨</span>
+            <strong>디스플레이 중시</strong>
+            <p>레노버 Slim3 OLED</p>
+            <span class="price">82만원</span>
+          </div>
+          <div class="conclusion-card">
+            <span class="emoji">📱</span>
+            <strong>갤럭시 유저</strong>
+            <p>삼성 갤럭시북4</p>
+            <span class="price">89만원</span>
+          </div>
+          <div class="conclusion-card">
+            <span class="emoji">💾</span>
+            <strong>저장공간 중시</strong>
+            <p>ASUS 비보북</p>
+            <span class="price">59만원</span>
+          </div>
+        </div>
+
+        <div class="final-message">
+          <p>
+            <strong>결국 정답은 없습니다.</strong><br/>
+            자신의 용도와 예산에 맞는 게 최고입니다.
+          </p>
+          <p>
+            그래도 하나만 고르라면?<br/>
+            <mark>가성비 1위 HP 15-fc0223AU</mark> 추천합니다.
+          </p>
+        </div>
+
+        <a href="#product-1" class="final-cta">
+          1위 HP 노트북 다시 보기 →
+        </a>
+      </section>
+
+      <!-- 작성자 정보 -->
+      <footer class="author-box">
+        <div class="author-info">
+          <div class="author-avatar">TRL</div>
+          <div>
+            <strong>TechReviewLabs</strong>
+            <p>광고 없이, 소비자 관점에서 IT 제품을 분석합니다.</p>
+          </div>
+        </div>
+        <p class="disclaimer">
+          * 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+        </p>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* 헤더 */
+  .article-header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #666;
+    margin: 0 0 20px;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 24px;
+  }
+
+  .author {
+    font-weight: 600;
+    color: #555;
+  }
+
+  .tldr {
+    text-align: left;
+    padding: 20px;
+    background: #FFFBEB;
+    border-left: 4px solid #F59E0B;
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .tldr mark {
+    background: #FEF08A;
+    padding: 2px 6px;
+    font-weight: 700;
+    border-radius: 3px;
+  }
+
+  /* 목차 */
+  .toc {
+    padding: 24px;
+    background: #F8F9FA;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+  }
+
+  .toc strong {
+    font-size: 15px;
+    color: #1A1A1A;
+  }
+
+  .toc ol {
+    margin: 16px 0 0;
+    padding-left: 24px;
+    columns: 2;
+    column-gap: 24px;
+  }
+
+  .toc li {
+    margin-bottom: 8px;
+    break-inside: avoid;
+  }
+
+  .toc a {
+    font-size: 14px;
+    color: #256FFF;
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  /* 섹션 공통 */
+  .section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .section h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin: 0 0 16px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  /* 도입부 */
+  .intro p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  /* 제품 섹션 */
+  .product-section {
+    scroll-margin-top: 20px;
+  }
+
+  .product-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #1A1A1A;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+  }
+
+  .badge {
+    padding: 6px 12px;
+    background: #DCFCE7;
+    color: #166534;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+  }
+
+  .product-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 4px;
+  }
+
+  .product-subtitle {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 20px;
+  }
+
+  .product-card {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #E5E5E5;
+    border-radius: 16px;
+  }
+
+  .product-image-area {
+    flex-shrink: 0;
+    width: 240px;
+    text-align: center;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background: #F9F9F9;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+
+  .price-tag {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .price-tag .original {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .price-tag .current {
+    font-size: 22px;
+    font-weight: 800;
+    color: #FF455B;
+  }
+
+  .product-details {
+    flex: 1;
+  }
+
+  .for-who {
+    padding: 12px 16px;
+    background: #F0F9FF;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #0369A1;
+    margin-bottom: 16px;
+  }
+
+  /* 스펙 테이블 (미니) */
+  .spec-list h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 8px;
+  }
+
+  .spec-mini-table {
+    width: 100%;
+    font-size: 13px;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+  }
+
+  .spec-mini-table th,
+  .spec-mini-table td {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #F0F0F0;
+  }
+
+  .spec-mini-table th {
+    width: 80px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .spec-mini-table td {
+    color: #1A1A1A;
+  }
+
+  /* 장단점 */
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .pros-cons h3 {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .pros h3 { color: #166534; }
+  .cons h3 { color: #991B1B; }
+
+  .pros-cons ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .pros ul { color: #166534; }
+  .cons ul { color: #991B1B; }
+
+  .pros li::marker { content: "✓ "; }
+  .cons li::marker { content: "✗ "; }
+
+  /* CTA 버튼 */
+  .buy-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .buy-btn:hover {
+    background: #E63E50;
+  }
+
+  /* 비교 테이블 */
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .comparison-table thead th {
+    background: #F8F9FA;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .comparison-table tbody th {
+    background: #FAFAFA;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 16px;
+  }
+
+  .comparison-table tbody td {
+    color: #333;
+  }
+
+  .rank-small {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #1A1A1A;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+
+  .price-cell {
+    font-weight: 700;
+    color: #FF455B;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+    cursor: pointer;
+    background: #fff;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::before {
+    content: "Q. ";
+    color: #256FFF;
+    font-weight: 700;
+  }
+
+  .faq-item[open] summary {
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .faq-item p {
+    padding: 16px 20px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    background: #FAFAFA;
+  }
+
+  /* 결론 */
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .conclusion-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 20px 12px;
+    background: #F8F9FA;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .conclusion-card .emoji {
+    font-size: 28px;
+  }
+
+  .conclusion-card strong {
+    font-size: 12px;
+    color: #666;
+  }
+
+  .conclusion-card p {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+  }
+
+  .conclusion-card .price {
+    font-size: 14px;
+    font-weight: 800;
+    color: #FF455B;
+  }
+
+  .final-message {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .final-message p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  .final-message mark {
+    background: #FEF08A;
+    padding: 2px 8px;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+
+  .final-cta {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 16px 32px;
+    background: #1A1A1A;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .final-cta:hover {
+    background: #333;
+  }
+
+  /* Author */
+  .author-box {
+    margin-top: 3rem;
+    padding: 24px;
+    background: #F8F9FA;
+    border-radius: 12px;
+  }
+
+  .author-info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #256FFF;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .author-info strong {
+    display: block;
+    font-size: 15px;
+    color: #1A1A1A;
+  }
+
+  .author-info p {
+    font-size: 13px;
+    color: #666;
+    margin: 4px 0 0;
+  }
+
+  .disclaimer {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+    padding-top: 16px;
+    border-top: 1px solid #E5E5E5;
+  }
+
+  /* 반응형 */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 26px;
+    }
+
+    .toc ol {
+      columns: 1;
+    }
+
+    .product-card {
+      flex-direction: column;
+    }
+
+    .product-image-area {
+      width: 100%;
+    }
+
+    .pros-cons {
+      grid-template-columns: 1fr;
+    }
+
+    .conclusion-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .conclusion-grid .conclusion-card:last-child {
+      grid-column: span 2;
+    }
+  }
+</style>

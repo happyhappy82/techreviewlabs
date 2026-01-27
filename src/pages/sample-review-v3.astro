@@ -1,0 +1,1086 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+// 구조화된 데이터 (JSON-LD)
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "HP 15-fc0223AU 16GB램",
+  "image": "https://img.danawa.com/prod_img/500000/648/682/img/27682648_1.jpg",
+  "description": "50만원대 가성비 노트북. 라이젠5 7430U, 16GB RAM, 256GB SSD 탑재.",
+  "brand": {
+    "@type": "Brand",
+    "name": "HP"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.coupang.com/",
+    "priceCurrency": "KRW",
+    "price": "573000",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "128"
+  }
+};
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "50만원대 노트북 중 가장 추천하는 제품은?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026년 1월 기준, HP 15-fc0223AU 16GB램 모델을 추천합니다. 50만원대 유일하게 16GB RAM을 탑재했으며, 라이젠5 7430U CPU로 사무용·대학생 과제용으로 충분한 성능을 제공합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "대학생 노트북 얼마짜리 사야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "전공에 따라 다르지만, 문과·경영·인문계열은 50-60만원대면 충분합니다. 공대·디자인과는 80만원 이상을 권장합니다. 일반적인 과제, PPT, 줌 강의용이라면 50만원대 16GB RAM 노트북이 가성비 최고입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "노트북 RAM 8GB vs 16GB 차이가 큰가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "체감 차이가 큽니다. 8GB는 크롬 탭 10개 이상 열면 버벅이고, 16GB는 여유롭게 멀티태스킹이 가능합니다. 2026년 기준 최소 16GB를 권장하며, 8GB 노트북은 1-2년 후 답답해질 수 있습니다."
+      }
+    }
+  ]
+};
+
+// 제품 데이터
+const product = {
+  name: "HP 15-fc0223AU 16GB램",
+  brand: "HP",
+  image: "https://img.danawa.com/prod_img/500000/648/682/img/27682648_1.jpg",
+  price: 573000,
+  originalPrice: 689000,
+  releaseDate: "2024년",
+  rating: 4.5,
+  reviewCount: 128,
+  specs: {
+    cpu: "AMD 라이젠5 7430U (Zen3)",
+    ram: "16GB DDR4",
+    storage: "NVMe SSD 256GB",
+    display: "15.6인치 FHD IPS (1920x1080)",
+    weight: "1.59kg",
+    battery: "41Wh (최대 8시간)",
+    os: "Windows 11 Home (프리도스 선택 가능)",
+    ports: "USB-C, USB-A x2, HDMI, SD카드"
+  },
+};
+
+const updateDate = "2026년 1월 26일";
+const author = "TechReviewLabs";
+---
+
+<BaseLayout
+  title="50만원대 노트북 추천 2026 - 가성비 1위 HP 15-fc0223AU 리뷰"
+  description="2026년 50만원대 노트북 추천 순위. HP 15-fc0223AU 16GB RAM 모델 상세 리뷰. 대학생, 직장인 사무용 가성비 노트북 비교."
+>
+  <Header />
+
+  <!-- 구조화된 데이터 삽입 -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
+
+  <main>
+    <!-- Breadcrumb (SEO) -->
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/"><span itemprop="name">홈</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/notebooks"><span itemprop="name">노트북</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">50만원대 추천</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </nav>
+
+    <article itemscope itemtype="https://schema.org/Article">
+      <!-- 메타 정보 (SEO/GEO) -->
+      <meta itemprop="datePublished" content="2026-01-26" />
+      <meta itemprop="dateModified" content="2026-01-26" />
+      <meta itemprop="author" content={author} />
+
+      <!-- 히어로 섹션 -->
+      <header class="hero">
+        <span class="category-tag">노트북 추천</span>
+        <h1 itemprop="headline">
+          50만원대 노트북 추천 (2026년)<br/>
+          <span class="subtitle">가성비 1위, 더 고민하지 마세요</span>
+        </h1>
+
+        <div class="meta-info">
+          <span class="author">{author}</span>
+          <time datetime="2026-01-26">{updateDate} 업데이트</time>
+        </div>
+
+        <!-- TL;DR - AEO 최적화 (Featured Snippet 노리기) -->
+        <div class="tldr-box">
+          <strong>한줄 결론:</strong> 2026년 1월 기준, 50만원대 노트북 중 <mark>HP 15-fc0223AU 16GB램</mark>이 가성비 1위입니다.
+          같은 가격대 유일하게 16GB RAM 탑재, 1.59kg 경량, HP A/S까지 갖췄습니다.
+        </div>
+      </header>
+
+      <!-- 목차 (SEO) -->
+      <nav class="toc">
+        <strong>목차</strong>
+        <ol>
+          <li><a href="#recommendation">추천 대상</a></li>
+          <li><a href="#product">제품 상세 정보</a></li>
+          <li><a href="#why">왜 이 제품인가?</a></li>
+          <li><a href="#specs">상세 스펙</a></li>
+          <li><a href="#faq">자주 묻는 질문</a></li>
+          <li><a href="#verdict">최종 결론</a></li>
+        </ol>
+      </nav>
+
+      <!-- 추천 대상 섹션 -->
+      <section id="recommendation" class="section">
+        <h2>이런 분께 추천합니다</h2>
+
+        <div class="target-grid">
+          <div class="target-card">
+            <span class="target-emoji">🎓</span>
+            <div class="target-content">
+              <strong>대학생</strong>
+              <p>과제, PPT, 줌 강의용. 4년 내내 쓸 수 있음</p>
+            </div>
+          </div>
+          <div class="target-card">
+            <span class="target-emoji">💼</span>
+            <div class="target-content">
+              <strong>직장인 (사무직)</strong>
+              <p>엑셀, 문서작업, 화상회의 위주</p>
+            </div>
+          </div>
+          <div class="target-card">
+            <span class="target-emoji">🏠</span>
+            <div class="target-content">
+              <strong>가정용</strong>
+              <p>웹서핑, 넷플릭스, 유튜브 시청</p>
+            </div>
+          </div>
+          <div class="target-card">
+            <span class="target-emoji">💰</span>
+            <div class="target-content">
+              <strong>예산 제한</strong>
+              <p>70만원 이상은 부담, 가성비 중시</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 비추천 대상 명시 (신뢰도 향상) -->
+        <div class="not-for">
+          <strong>이런 분께는 비추천:</strong>
+          게임용, 영상편집, 3D 작업, 개발자 → 80만원 이상 고사양 모델 권장
+        </div>
+      </section>
+
+      <!-- 제품 카드 -->
+      <section id="product" class="section">
+        <h2>제품 상세 정보</h2>
+
+        <div class="product-card" itemscope itemtype="https://schema.org/Product">
+          <div class="product-image-wrap">
+            <img
+              src={product.image}
+              alt="HP 15-fc0223AU 노트북 제품 이미지"
+              itemprop="image"
+              class="product-image"
+              loading="lazy"
+              width="400"
+              height="300"
+            />
+            <div class="discount-badge">17% 할인</div>
+          </div>
+
+          <div class="product-info">
+            <div class="product-header">
+              <span class="brand" itemprop="brand">{product.brand}</span>
+              <h3 class="product-name" itemprop="name">{product.name}</h3>
+              <div class="rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                <span class="stars">★★★★☆</span>
+                <span itemprop="ratingValue">{product.rating}</span>/5
+                <span class="review-count">(<span itemprop="reviewCount">{product.reviewCount}</span>개 리뷰)</span>
+              </div>
+            </div>
+
+            <div class="price-area" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="KRW" />
+              <span class="original-price">{product.originalPrice.toLocaleString()}원</span>
+              <span class="current-price" itemprop="price" content={product.price}>
+                {product.price.toLocaleString()}원
+              </span>
+              <link itemprop="availability" href="https://schema.org/InStock" />
+            </div>
+
+            <a href="#" class="buy-button" rel="sponsored nofollow">
+              쿠팡에서 최저가로 구매하기
+              <span class="arrow">→</span>
+            </a>
+
+            <ul class="buy-benefits">
+              <li>✓ 로켓배송 - 내일 도착</li>
+              <li>✓ 무료배송</li>
+              <li>✓ 30일 무료반품</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 왜 이 제품인가 -->
+      <section id="why" class="section">
+        <h2>왜 이 노트북을 추천하나요?</h2>
+
+        <div class="why-content">
+          <div class="why-item">
+            <h3>1. 50만원대 유일한 16GB RAM</h3>
+            <p>
+              같은 가격대 다른 노트북은 대부분 <strong>8GB RAM</strong>입니다.<br/>
+              8GB로는 크롬 탭 10개만 열어도 버벅입니다.<br/>
+              <strong>16GB는 멀티태스킹에서 확실한 체감 차이</strong>가 있습니다.
+            </p>
+            <div class="comparison-box">
+              <div class="comparison-item bad">
+                <strong>8GB</strong>
+                <span>크롬 + 한글 + 줌 = 버벅</span>
+              </div>
+              <div class="comparison-item good">
+                <strong>16GB</strong>
+                <span>동시 실행해도 쾌적</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <h3>2. 무게 1.59kg - 휴대성 확보</h3>
+            <p>
+              15.6인치 화면에 <strong>1.59kg</strong>은 상당히 가벼운 편입니다.<br/>
+              매일 학교나 카페에 들고 다녀도 어깨가 아프지 않습니다.<br/>
+              2kg 이상 노트북은 휴대용으로 부적합합니다.
+            </p>
+          </div>
+
+          <div class="why-item">
+            <h3>3. HP 브랜드 - A/S 안심</h3>
+            <p>
+              중소기업 노트북은 고장 시 A/S가 어렵습니다.<br/>
+              <strong>HP는 전국 공식 서비스센터</strong>가 있어 안심하고 사용할 수 있습니다.<br/>
+              노트북은 브랜드가 곧 보험입니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상세 스펙 테이블 -->
+      <section id="specs" class="section">
+        <h2>상세 스펙</h2>
+
+        <table class="spec-table">
+          <caption>HP 15-fc0223AU 16GB램 상세 사양</caption>
+          <tbody>
+            <tr>
+              <th scope="row">CPU (프로세서)</th>
+              <td>{product.specs.cpu}</td>
+            </tr>
+            <tr>
+              <th scope="row">RAM (메모리)</th>
+              <td><strong>{product.specs.ram}</strong></td>
+            </tr>
+            <tr>
+              <th scope="row">저장장치</th>
+              <td>{product.specs.storage}</td>
+            </tr>
+            <tr>
+              <th scope="row">디스플레이</th>
+              <td>{product.specs.display}</td>
+            </tr>
+            <tr>
+              <th scope="row">무게</th>
+              <td>{product.specs.weight}</td>
+            </tr>
+            <tr>
+              <th scope="row">배터리</th>
+              <td>{product.specs.battery}</td>
+            </tr>
+            <tr>
+              <th scope="row">운영체제</th>
+              <td>{product.specs.os}</td>
+            </tr>
+            <tr>
+              <th scope="row">포트</th>
+              <td>{product.specs.ports}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- FAQ 섹션 (AEO 핵심) -->
+      <section id="faq" class="section">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-q">50만원대 노트북 중 가장 추천하는 제품은?</summary>
+            <div class="faq-a">
+              <p>
+                <strong>2026년 1월 기준, HP 15-fc0223AU 16GB램 모델</strong>을 추천합니다.
+              </p>
+              <p>
+                50만원대에서 유일하게 16GB RAM을 탑재했으며,
+                라이젠5 7430U CPU로 사무용·대학생 과제용으로 충분한 성능을 제공합니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">대학생 노트북 얼마짜리 사야 하나요?</summary>
+            <div class="faq-a">
+              <p>전공에 따라 다릅니다:</p>
+              <ul>
+                <li><strong>문과, 경영, 인문계열:</strong> 50-60만원대면 충분</li>
+                <li><strong>공대, 디자인과:</strong> 80만원 이상 권장</li>
+                <li><strong>의대, 간호학과:</strong> 50-70만원대 OK</li>
+              </ul>
+              <p>
+                일반적인 과제, PPT, 줌 강의용이라면
+                <strong>50만원대 16GB RAM 노트북</strong>이 가성비 최고입니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">노트북 RAM 8GB vs 16GB 차이가 큰가요?</summary>
+            <div class="faq-a">
+              <p>
+                <strong>체감 차이가 큽니다.</strong>
+              </p>
+              <ul>
+                <li><strong>8GB:</strong> 크롬 탭 10개 이상 열면 버벅임</li>
+                <li><strong>16GB:</strong> 여유롭게 멀티태스킹 가능</li>
+              </ul>
+              <p>
+                2026년 기준 최소 16GB를 권장하며,
+                8GB 노트북은 1-2년 후 답답해질 수 있습니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">이 가격 더 떨어질까요? 기다려야 하나요?</summary>
+            <div class="faq-a">
+              <p>
+                <strong>기다리면 오히려 손해일 가능성이 높습니다.</strong>
+              </p>
+              <p>
+                작년 모델들은 단종 후 오히려 가격이 올랐습니다.
+                현재 57만원대가 최저가 구간이며,
+                할인 행사가 끝나면 60만원대로 복귀할 수 있습니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">게임도 할 수 있나요?</summary>
+            <div class="faq-a">
+              <p>
+                <strong>가벼운 게임만 가능합니다.</strong>
+              </p>
+              <ul>
+                <li><strong>가능:</strong> 롤, 메이플, 발로란트 (낮음 옵션)</li>
+                <li><strong>불가:</strong> 배그, GTA5, 최신 3D 게임</li>
+              </ul>
+              <p>
+                게임이 주 목적이라면 80만원 이상 게이밍 노트북을 추천합니다.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 최종 결론 -->
+      <section id="verdict" class="section">
+        <h2>최종 결론</h2>
+
+        <div class="verdict-box">
+          <div class="verdict-score">
+            <span class="score-label">추천 점수</span>
+            <span class="score-value">9.2<small>/10</small></span>
+          </div>
+
+          <div class="verdict-summary">
+            <h3>50만원대 가성비 노트북의 정답</h3>
+            <p>
+              <strong>HP 15-fc0223AU 16GB램</strong>은
+              2026년 현재 50만원대에서 가장 균형 잡힌 선택입니다.
+            </p>
+            <ul class="verdict-pros">
+              <li>✓ 50만원대 유일 16GB RAM</li>
+              <li>✓ 1.59kg 가벼운 무게</li>
+              <li>✓ HP 브랜드 A/S 안심</li>
+              <li>✓ 대학생·사무용 최적</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 최종 CTA -->
+        <div class="final-cta">
+          <p class="cta-text">
+            더 고민할 필요 없습니다.<br/>
+            <strong>50만원대에선 이거 아니면 뭘 사요?</strong>
+          </p>
+          <a href="#" class="buy-button large" rel="sponsored nofollow">
+            쿠팡 최저가로 구매하기
+            <span class="arrow">→</span>
+          </a>
+          <p class="cta-sub">쿠팡 로켓배송 · 무료배송 · 30일 무료반품</p>
+        </div>
+      </section>
+
+      <!-- 작성자 정보 (E-E-A-T) -->
+      <footer class="author-box">
+        <div class="author-info">
+          <div class="author-avatar">TRL</div>
+          <div class="author-detail">
+            <strong>{author}</strong>
+            <p>IT 제품 리뷰 전문 미디어. 광고비·협찬 없이 소비자 관점에서 제품을 분석합니다.</p>
+          </div>
+        </div>
+        <p class="disclaimer">
+          * 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+        </p>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    padding: 16px 0;
+    font-size: 13px;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "›";
+    margin-left: 8px;
+    color: #999;
+  }
+
+  .breadcrumb a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  /* 히어로 */
+  .hero {
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #F0F0F0;
+    color: #666;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.35;
+    color: #1A1A1A;
+    margin: 0 0 16px 0;
+  }
+
+  .hero .subtitle {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #256FFF;
+  }
+
+  .meta-info {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+
+  .meta-info .author {
+    font-weight: 600;
+    color: #555;
+  }
+
+  .tldr-box {
+    padding: 16px 20px;
+    background: #FFFBEB;
+    border-left: 4px solid #F59E0B;
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .tldr-box mark {
+    background: #FEF08A;
+    padding: 2px 4px;
+    font-weight: 700;
+  }
+
+  /* 목차 */
+  .toc {
+    padding: 20px;
+    background: #F9FAFB;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .toc strong {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .toc ol {
+    margin: 12px 0 0 0;
+    padding-left: 20px;
+  }
+
+  .toc li {
+    margin-bottom: 6px;
+  }
+
+  .toc a {
+    font-size: 14px;
+    color: #256FFF;
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  /* 섹션 공통 */
+  .section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .section h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin: 0 0 1.5rem 0;
+  }
+
+  /* 타겟 그리드 */
+  .target-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .target-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #F8F9FA;
+    border-radius: 10px;
+  }
+
+  .target-emoji {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .target-content strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .target-content p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .not-for {
+    padding: 12px 16px;
+    background: #FEF2F2;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #991B1B;
+  }
+
+  /* 제품 카드 */
+  .product-card {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: #fff;
+    border: 2px solid #1A1A1A;
+    border-radius: 12px;
+  }
+
+  .product-image-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    background: #F9F9F9;
+    border-radius: 8px;
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 4px 8px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+
+  .product-info {
+    flex: 1;
+  }
+
+  .product-header {
+    margin-bottom: 12px;
+  }
+
+  .brand {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .product-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 4px 0;
+  }
+
+  .rating {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .stars {
+    color: #F59E0B;
+    letter-spacing: -2px;
+  }
+
+  .review-count {
+    color: #999;
+  }
+
+  .price-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .original-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .current-price {
+    font-size: 26px;
+    font-weight: 800;
+    color: #FF455B;
+  }
+
+  .buy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 24px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .buy-button:hover {
+    background: #E63E50;
+  }
+
+  .buy-button.large {
+    padding: 18px 32px;
+    font-size: 18px;
+  }
+
+  .buy-benefits {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: #666;
+  }
+
+  /* Why 섹션 */
+  .why-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .why-item {
+    padding: 20px;
+    background: #F9FAFB;
+    border-radius: 10px;
+  }
+
+  .why-item h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 12px 0;
+  }
+
+  .why-item p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
+  }
+
+  .comparison-box {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .comparison-item {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .comparison-item.bad {
+    background: #FEE2E2;
+  }
+
+  .comparison-item.good {
+    background: #DCFCE7;
+  }
+
+  .comparison-item strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .comparison-item span {
+    font-size: 13px;
+    color: #555;
+  }
+
+  /* 스펙 테이블 */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .spec-table caption {
+    text-align: left;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .spec-table th {
+    width: 140px;
+    background: #F9FAFB;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .spec-table td {
+    color: #1A1A1A;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+    cursor: pointer;
+    background: #fff;
+  }
+
+  .faq-q:hover {
+    background: #F9FAFB;
+  }
+
+  .faq-a {
+    padding: 0 20px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .faq-a p {
+    margin: 0 0 8px 0;
+  }
+
+  .faq-a ul {
+    margin: 8px 0;
+    padding-left: 20px;
+  }
+
+  .faq-a li {
+    margin-bottom: 4px;
+  }
+
+  /* Verdict */
+  .verdict-box {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: #F0FDF4;
+    border: 2px solid #22C55E;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .verdict-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 100px;
+  }
+
+  .score-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+
+  .score-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: #16A34A;
+  }
+
+  .score-value small {
+    font-size: 18px;
+    font-weight: 600;
+    color: #888;
+  }
+
+  .verdict-summary h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 8px 0;
+  }
+
+  .verdict-summary p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0 0 12px 0;
+  }
+
+  .verdict-pros {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 13px;
+    color: #166534;
+  }
+
+  /* Final CTA */
+  .final-cta {
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #1A1A1A 0%, #333 100%);
+    border-radius: 12px;
+  }
+
+  .cta-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: #999;
+    margin-top: 12px;
+  }
+
+  /* Author Box */
+  .author-box {
+    margin-top: 2rem;
+    padding: 20px;
+    background: #F9FAFB;
+    border-radius: 10px;
+  }
+
+  .author-info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #256FFF;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .author-detail strong {
+    display: block;
+    font-size: 15px;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+  }
+
+  .author-detail p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .disclaimer {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid #E5E5E5;
+  }
+
+  /* 반응형 */
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 24px;
+    }
+
+    .target-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-card {
+      flex-direction: column;
+    }
+
+    .product-image-wrap {
+      width: 100%;
+    }
+
+    .verdict-box {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .verdict-score {
+      width: 100%;
+    }
+
+    .verdict-pros {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

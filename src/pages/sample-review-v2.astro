@@ -1,0 +1,588 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+// 샘플 제품 데이터
+const product = {
+  name: "15-fc0223AU 16GB램",
+  brand: "HP",
+  image: "https://img.danawa.com/prod_img/500000/648/682/img/27682648_1.jpg",
+  price: 573000,
+  originalPrice: 689000,
+  specs: {
+    cpu: "라이젠5 7430U",
+    ram: "16GB",
+    storage: "SSD 256GB",
+    display: "15.6인치 FHD IPS",
+    weight: "1.59kg",
+    battery: "41Wh (최대 8시간)",
+  },
+};
+---
+
+<BaseLayout
+  title="50만원대 노트북 추천 - 2026년 가성비 끝판왕"
+  description="50만원대에서 이거 아니면 뭘 사? 대학생, 직장인 사무용 노트북 추천"
+>
+  <Header />
+
+  <main>
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+      <div class="hero-badge">2026 가성비 1위</div>
+      <h1 class="hero-title">
+        50만원대 노트북,<br/>
+        <span class="highlight">더 고민하지 마세요.</span>
+      </h1>
+      <p class="hero-desc">
+        "이 가격에 이 스펙이요?" 라는 말이 자동으로 나옴
+      </p>
+    </section>
+
+    <!-- 타겟 섹션 -->
+    <section class="target-section">
+      <h2 class="section-title">이런 분이면 그냥 이거 사세요</h2>
+      <div class="target-grid">
+        <div class="target-card">
+          <span class="target-emoji">🎓</span>
+          <span class="target-text">과제, PPT, 줌 강의용 노트북 찾는 대학생</span>
+        </div>
+        <div class="target-card">
+          <span class="target-emoji">💼</span>
+          <span class="target-text">엑셀, 문서작업 위주의 직장인</span>
+        </div>
+        <div class="target-card">
+          <span class="target-emoji">🏠</span>
+          <span class="target-text">집에서 넷플릭스, 유튜브 보는 용도</span>
+        </div>
+        <div class="target-card">
+          <span class="target-emoji">💰</span>
+          <span class="target-text">가성비 중시, 70만원 이상은 부담</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제품 카드 -->
+    <section class="product-section">
+      <div class="product-card">
+        <div class="product-image-wrap">
+          <img src={product.image} alt={product.name} class="product-image" />
+          <div class="discount-badge">17% 할인중</div>
+        </div>
+
+        <div class="product-info">
+          <div class="product-header">
+            <span class="brand">{product.brand}</span>
+            <h3 class="product-name">{product.name}</h3>
+          </div>
+
+          <div class="price-area">
+            <span class="original-price">{product.originalPrice.toLocaleString()}원</span>
+            <span class="current-price">{product.price.toLocaleString()}원</span>
+          </div>
+
+          <a href="#" class="buy-button">
+            지금 최저가로 구매하기
+            <span class="arrow">→</span>
+          </a>
+
+          <p class="buy-notice">* 쿠팡 로켓배송 · 내일 도착</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 왜 이 제품인가 -->
+    <section class="why-section">
+      <h2 class="section-title">왜 이 노트북인가?</h2>
+
+      <div class="why-content">
+        <div class="why-item">
+          <div class="why-header">
+            <span class="why-number">1</span>
+            <h3>50만원대에서 16GB 램은 얘밖에 없음</h3>
+          </div>
+          <p>
+            같은 가격대 다른 노트북들? 다 8GB임.<br/>
+            8GB로 크롬 탭 10개 열면 버벅임. 경험해봤으면 앎.<br/>
+            <strong>16GB는 진짜 다름. 체감됨.</strong>
+          </p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-header">
+            <span class="why-number">2</span>
+            <h3>무게 1.59kg, 매일 들고 다녀도 됨</h3>
+          </div>
+          <p>
+            15.6인치 화면에 1.59kg이면 진짜 가벼운 편.<br/>
+            카페 갈 때, 학교 갈 때 부담 없음.<br/>
+            <strong>2kg 넘어가면 어깨 아픔. 진짜로.</strong>
+          </p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-header">
+            <span class="why-number">3</span>
+            <h3>HP라서 AS 걱정 없음</h3>
+          </div>
+          <p>
+            중국 듣보 브랜드 사면 고장났을 때 멘붕옴.<br/>
+            HP는 전국 서비스센터 있음. 마음 편함.<br/>
+            <strong>노트북은 브랜드가 보험임.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 스펙 요약 -->
+    <section class="spec-section">
+      <h2 class="section-title">스펙 한눈에</h2>
+      <div class="spec-grid">
+        <div class="spec-item">
+          <span class="spec-label">CPU</span>
+          <span class="spec-value">{product.specs.cpu}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">메모리</span>
+          <span class="spec-value highlight">{product.specs.ram}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">저장공간</span>
+          <span class="spec-value">{product.specs.storage}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">화면</span>
+          <span class="spec-value">{product.specs.display}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">무게</span>
+          <span class="spec-value">{product.specs.weight}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">배터리</span>
+          <span class="spec-value">{product.specs.battery}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 불안 제거 -->
+    <section class="faq-section">
+      <h2 class="section-title">아직 고민되시면</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">"더 싼 거 없어요?"</div>
+          <div class="faq-a">
+            있음. 근데 8GB에 느린 CPU 달림.<br/>
+            1년 쓰다가 답답해서 또 사게 됨. 돈 두 번 씀.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">"더 좋은 거 사야 하지 않을까요?"</div>
+          <div class="faq-a">
+            게임 안 하고, 영상편집 안 하면 이거면 충분.<br/>
+            괜히 100만원짜리 사면 그냥 돈 버리는 거임.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">"나중에 더 싸질까요?"</div>
+          <div class="faq-a">
+            작년 모델 단종되자마자 10만원 올랐음.<br/>
+            지금 가격이 최저임. 기다리면 손해.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 최종 CTA -->
+    <section class="final-cta">
+      <div class="cta-box">
+        <p class="cta-text">
+          50만원대 노트북,<br/>
+          <strong>이거 아니면 뭘 사요?</strong>
+        </p>
+        <a href="#" class="buy-button large">
+          지금 바로 구매하기
+          <span class="arrow">→</span>
+        </a>
+        <p class="cta-sub">쿠팡 로켓배송 · 무료배송 · 무료반품</p>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* 히어로 */
+  .hero {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title .highlight {
+    color: #256FFF;
+  }
+
+  .hero-desc {
+    font-size: 18px;
+    color: #666;
+  }
+
+  /* 섹션 공통 */
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 타겟 섹션 */
+  .target-section {
+    padding: 2rem 0;
+  }
+
+  .target-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .target-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #F8F9FA;
+    border-radius: 12px;
+  }
+
+  .target-emoji {
+    font-size: 24px;
+  }
+
+  .target-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1A1A1A;
+    line-height: 1.4;
+  }
+
+  /* 제품 카드 */
+  .product-section {
+    padding: 2rem 0;
+  }
+
+  .product-card {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: #fff;
+    border: 2px solid #1A1A1A;
+    border-radius: 16px;
+  }
+
+  .product-image-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: #F9F9F9;
+    border-radius: 8px;
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 4px 8px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-header {
+    margin-bottom: 12px;
+  }
+
+  .brand {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .product-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 4px 0 0 0;
+  }
+
+  .price-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .original-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .current-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #FF455B;
+  }
+
+  .buy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: #FF455B;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .buy-button:hover {
+    background: #E63E50;
+  }
+
+  .buy-button .arrow {
+    font-size: 18px;
+  }
+
+  .buy-button.large {
+    padding: 18px 32px;
+    font-size: 18px;
+  }
+
+  .buy-notice {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  /* 왜 이 제품인가 */
+  .why-section {
+    padding: 2rem 0;
+  }
+
+  .why-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .why-item {
+    padding: 20px;
+    background: #F8F9FA;
+    border-radius: 12px;
+  }
+
+  .why-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .why-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #1A1A1A;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 50%;
+  }
+
+  .why-header h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+  }
+
+  .why-item p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
+  }
+
+  .why-item strong {
+    color: #1A1A1A;
+  }
+
+  /* 스펙 */
+  .spec-section {
+    padding: 2rem 0;
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .spec-label {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .spec-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .spec-value.highlight {
+    color: #256FFF;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 2rem 0;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+  }
+
+  .faq-q {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+  }
+
+  .faq-a {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* 최종 CTA */
+  .final-cta {
+    padding: 3rem 0;
+  }
+
+  .cta-box {
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #1A1A1A 0%, #333 100%);
+    border-radius: 16px;
+  }
+
+  .cta-text {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+
+  .cta-text strong {
+    font-weight: 800;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: #999;
+    margin-top: 12px;
+  }
+
+  /* 반응형 */
+  @media (max-width: 640px) {
+    .hero-title {
+      font-size: 26px;
+    }
+
+    .target-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-card {
+      flex-direction: column;
+    }
+
+    .product-image-wrap {
+      width: 100%;
+    }
+
+    .spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

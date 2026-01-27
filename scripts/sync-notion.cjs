@@ -5,6 +5,7 @@ const path = require('path');
 const https = require('https');
 const http = require('http');
 const matter = require('gray-matter');
+const { generateRichPage } = require('./generate-rich-page.cjs');
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -143,6 +144,13 @@ async function getPageProperties(pageId) {
     return textArray.map(item => item.plain_text || '').join('');
   };
 
+  // Type 속성 확인 (일반 / 리치UI)
+  let pageType = '일반';
+  const typeProperty = properties.Type || properties.타입 || properties.유형;
+  if (typeProperty) {
+    pageType = typeProperty?.select?.name || typeProperty?.status?.name || '일반';
+  }
+
   return {
     pageId: page.id,
     title: getFullText(properties.제목?.title) || getFullText(properties.Title?.title) || '',
@@ -154,6 +162,7 @@ async function getPageProperties(pageId) {
     lightColor: getFullText(properties.밝은색?.rich_text) || getFullText(properties.LightColor?.rich_text) || '#c53030',
     darkColor: getFullText(properties.어두운색?.rich_text) || getFullText(properties.DarkColor?.rich_text) || '#9b2c2c',
     status: status,
+    type: pageType,  // 일반 or 리치UI
   };
 }
 
@@ -199,6 +208,19 @@ async function processPage(pageId, isNew = false) {
   const slug = generateSlug(props.title);
   console.log(`\n📝 Processing: ${props.title} (${slug})`);
   console.log(`   Status: ${props.status}, Date: ${props.date}`);
+
+  // 모든 글을 리치 UI Astro 페이지로 생성
+  console.log(`   🎨 Generating Rich UI page...`);
+  try {
+    const richSlug = await generateRichPage(pageId);
+    if (richSlug) {
+      console.log(`   ✅ Rich page generated: ${richSlug}.astro`);
+      return richSlug;
+    }
+  } catch (error) {
+    console.error(`   ❌ Failed to generate rich page: ${error.message}`);
+  }
+  return null;
 
   // Check if file exists with different slug (title changed)
   const existingFile = findExistingFileByPageId(pageId);
