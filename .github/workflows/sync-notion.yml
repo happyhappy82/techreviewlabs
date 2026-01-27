@@ -63,6 +63,7 @@ jobs:
         run: |
           git add -A src/content/reviews/
           git add -A src/pages/
+          git add -A src/data/
           git add -A public/notion-images/
 
           git commit -m "Sync reviews from Notion"

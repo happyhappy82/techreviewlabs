@@ -3,12 +3,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import ReviewCard from '../components/ReviewCard.astro';
 import { getCollection } from 'astro:content';
+import richPagesData from '../data/rich-pages.json';
 
+// Content Collection 리뷰
 const reviews = await getCollection('reviews');
 
-// Sort by date descending
-const sortedReviews = reviews.sort((a, b) => {
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+// 마크다운 리뷰를 통일된 형식으로 변환
+const mdReviews = reviews.map(review => ({
+  slug: review.slug,
+  title: review.data.title,
+  date: review.data.date,
+  excerpt: review.data.excerpt,
+  lightColor: review.data.lightColor || '#c53030',
+  isRichPage: false
+}));
+
+// 리치 페이지 목록 (JSON에서)
+const richReviews = (richPagesData as any[]).map(page => ({
+  slug: page.slug,
+  title: page.title,
+  date: page.date,
+  excerpt: page.excerpt,
+  lightColor: '#256FFF',
+  isRichPage: true
+}));
+
+// 합쳐서 날짜순 정렬
+const allReviews = [...mdReviews, ...richReviews].sort((a, b) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
 });
 
 function formatDateForDisplay(date: string): string {
@@ -25,17 +47,17 @@ function formatDateForDisplay(date: string): string {
   <main>
     <h1 class="sr-only">테크리뷰Lab - 전자제품 리뷰 사이트</h1>
     <div class="relative -top-[10px] flex flex-col gap-8">
-      {sortedReviews.length === 0 ? (
+      {allReviews.length === 0 ? (
         <p>No reviews yet.</p>
       ) : (
-        sortedReviews.map((review) => (
+        allReviews.map((review) => (
           <ReviewCard
-            title={review.data.title}
-            date={review.data.date}
-            displayDate={formatDateForDisplay(review.data.date)}
-            excerpt={review.data.excerpt}
+            title={review.title}
+            date={review.date}
+            displayDate={formatDateForDisplay(review.date)}
+            excerpt={review.excerpt}
             slug={review.slug}
-            lightColor={review.data.lightColor}
+            lightColor={review.lightColor}
           />
         ))
       )}

@@ -12,6 +12,35 @@ const path = require('path');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const PAGES_DIR = path.join(process.cwd(), 'src/pages');
+const RICH_PAGES_JSON = path.join(process.cwd(), 'src/data/rich-pages.json');
+
+// 리치 페이지 메타데이터 저장/업데이트
+function updateRichPagesRegistry(pageData) {
+  let registry = [];
+
+  if (fs.existsSync(RICH_PAGES_JSON)) {
+    try {
+      registry = JSON.parse(fs.readFileSync(RICH_PAGES_JSON, 'utf-8'));
+    } catch (e) {
+      registry = [];
+    }
+  }
+
+  // 기존 항목 찾기
+  const existingIndex = registry.findIndex(p => p.slug === pageData.slug);
+
+  if (existingIndex >= 0) {
+    registry[existingIndex] = pageData;
+  } else {
+    registry.push(pageData);
+  }
+
+  // 날짜순 정렬 (최신순)
+  registry.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  fs.writeFileSync(RICH_PAGES_JSON, JSON.stringify(registry, null, 2), 'utf-8');
+  console.log(`   📝 Updated rich-pages.json`);
+}
 
 function generateSlug(title) {
   return title
@@ -57,16 +86,28 @@ async function parseTable(blockId) {
 
 // 노션 블록들을 파싱하여 구조화된 데이터 추출
 async function parseNotionContent(pageId) {
-  // 페이지 제목 가져오기
+  // 페이지 속성 가져오기
   const page = await notion.pages.retrieve({ page_id: pageId });
-  const titleProp = page.properties.Title || page.properties.제목 || page.properties.Name;
+  const props = page.properties;
+
+  const titleProp = props.Title || props.제목 || props.Name;
   const pageTitle = titleProp?.title ? richTextToPlain(titleProp.title) : '';
+
+  // 날짜 속성
+  const dateProp = props.Date || props.날짜;
+  const pageDate = dateProp?.date?.start || new Date().toISOString().split('T')[0];
+
+  // 요약 속성
+  const excerptProp = props.Excerpt || props.요약;
+  const pageExcerpt = excerptProp?.rich_text ? richTextToPlain(excerptProp.rich_text) : '';
 
   // 블록 내용 가져오기
   const blocks = await notion.blocks.children.list({ block_id: pageId, page_size: 100 });
 
   const result = {
     title: pageTitle,
+    date: pageDate,
+    excerpt: pageExcerpt,
     intro: '',
     topicTitle: '',
     topicExplanation: '',
@@ -605,6 +646,22 @@ async function generateRichPage(pageId) {
 
   fs.writeFileSync(filePath, astroContent, 'utf-8');
   console.log(`✅ Generated: ${slug}.astro`);
+
+  // 자동 생성 excerpt (intro에서 추출)
+  let excerpt = data.excerpt;
+  if (!excerpt && data.intro) {
+    excerpt = data.intro.substring(0, 150).trim();
+    if (data.intro.length > 150) excerpt += '...';
+  }
+
+  // 홈페이지 목록용 메타데이터 저장
+  updateRichPagesRegistry({
+    slug: slug,
+    title: data.title,
+    date: data.date,
+    excerpt: excerpt || `${data.title}에 대한 리뷰입니다.`,
+    isRichPage: true
+  });
 
   return slug;
 }
