@@ -87,11 +87,15 @@ const organizationSchema = {
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
 
+    <!-- Pretendard Font -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
     <!-- Schema.org -->
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   </head>
-  <body class="mx-auto max-w-2xl bg-white px-5 py-12 text-black">
+  <body class="mx-auto max-w-ns bg-white px-5 py-12 text-ns-text font-pretendard">
     <slot />
 
     <!-- Google Tag Manager (noscript) -->
@@ -136,7 +140,15 @@ const organizationSchema = {
 
   :root {
     --bg: #ffffff;
-    --text: #000000;
+    --text: #1A1A1A;
+    --ns-green: #00B574;
+    --ns-blue: #36B7FF;
+    --ns-orange: #FF9900;
+    --ns-red: #FF455B;
+    --ns-badge-green: #00997E;
+    --ns-accent-blue: #256FFF;
+    --ns-border: #DFDFDF;
+    --ns-bg: #F9F9F9;
   }
 
   * {
@@ -153,15 +165,51 @@ const organizationSchema = {
   body {
     color: var(--text);
     background: var(--bg);
-    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Noto Sans KR", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.7;
+    line-height: 1.5;
     word-break: keep-all;
   }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  /* 노서치 스타일 유틸리티 */
+  .ns-card {
+    border: 1px solid var(--ns-border);
+    border-radius: 10px;
+    padding: 16px;
+    background: #fff;
+  }
+
+  .ns-badge {
+    display: inline-block;
+    padding: 0 4px;
+    background: var(--ns-badge-green);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .ns-score-green { color: var(--ns-green); }
+  .ns-score-blue { color: var(--ns-blue); }
+  .ns-score-orange { color: var(--ns-orange); }
+  .ns-score-red { color: var(--ns-red); }
+
+  .ns-number-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    background: #1A1A1A;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 4px;
   }
 </style>

@@ -161,7 +161,7 @@ const breadcrumbSchema = {
       </div>
 
       <!-- 본문 콘텐츠 -->
-      <div class="prose prose-lg ns-prose" style="max-width: 2400px;">
+      <div class="ns-prose">
         <Content />
       </div>
     </article>
@@ -174,9 +174,9 @@ const breadcrumbSchema = {
 </BaseLayout>
 
 <style>
-  /* prose 기본 max-width 강제 해제 */
-  .prose.ns-prose {
-    max-width: 2400px !important;
+  /* 본문 너비 2400px */
+  .ns-prose {
+    max-width: 2400px;
   }
 
   /* 노서치 스타일 prose */
