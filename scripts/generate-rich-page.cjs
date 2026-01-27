@@ -585,7 +585,7 @@ const comparisonSpecs = ${comparisonSpecsCode};
 
 // 메인 함수
 async function generateRichPage(pageId) {
-  console.log(\`📄 Parsing Notion page: \${pageId}\`);
+  console.log(`📄 Parsing Notion page: ${pageId}`);
 
   const data = await parseNotionContent(pageId);
 
@@ -595,16 +595,16 @@ async function generateRichPage(pageId) {
   }
 
   const slug = generateSlug(data.title);
-  console.log(\`   Title: \${data.title}\`);
-  console.log(\`   Slug: \${slug}\`);
-  console.log(\`   Products: \${data.products.length}\`);
-  console.log(\`   FAQs: \${data.faqs.length}\`);
+  console.log(`   Title: ${data.title}`);
+  console.log(`   Slug: ${slug}`);
+  console.log(`   Products: ${data.products.length}`);
+  console.log(`   FAQs: ${data.faqs.length}`);
 
   const astroContent = generateAstroPage(data);
-  const filePath = path.join(PAGES_DIR, \`\${slug}.astro\`);
+  const filePath = path.join(PAGES_DIR, `${slug}.astro`);
 
   fs.writeFileSync(filePath, astroContent, 'utf-8');
-  console.log(\`✅ Generated: \${slug}.astro\`);
+  console.log(`✅ Generated: ${slug}.astro`);
 
   return slug;
 }
