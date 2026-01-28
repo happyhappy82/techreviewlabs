@@ -377,10 +377,12 @@ async function parseNotionContent(pageId) {
       }
 
       // 섹션 헤더 키워드 (중첩 불릿의 부모)
-      const isSpecHeader = text.includes('스펙') || text.includes('사양');
-      const isProsHeader = text === '장점' || text.startsWith('장점:') || text.includes('👍');
-      const isConsHeader = text === '단점' || text.startsWith('단점:') || text.includes('👎');
-      const isRecommendHeader = text.includes('추천') || text.includes('이런 분');
+      const trimmedText = text.trim();
+      const isSpecHeader = trimmedText.includes('스펙') || trimmedText.includes('사양') || trimmedText.includes('주요');
+      // 짧은 텍스트(5자 이하)에서 "장점"/"단점" 포함 = 헤더
+      const isProsHeader = (trimmedText.length <= 5 && trimmedText.includes('장점')) || trimmedText.includes('👍');
+      const isConsHeader = (trimmedText.length <= 5 && trimmedText.includes('단점')) || trimmedText.includes('👎');
+      const isRecommendHeader = trimmedText.includes('추천') || trimmedText.includes('이런 분');
 
       // 중첩 불릿 처리
       if (block.has_children && currentProduct) {
