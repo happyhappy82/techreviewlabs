@@ -614,7 +614,14 @@ function generateAstroPage(data) {
   const closingText = data.closing.trim() || '위 내용이 여러분께 도움이 되길 바랍니다.';
   const selectionGuideText = data.selectionGuide.trim();
 
+  const generatedAt = new Date().toISOString();
+
   return `---
+/**
+ * Auto-generated from Notion
+ * Generated at: ${generatedAt}
+ * Do not edit manually
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 
