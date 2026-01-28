@@ -92,8 +92,12 @@ function inferSectionType(title) {
   if (t.includes('비교')) {
     return 'comparison';
   }
-  // 선택 가이드
-  if (t.includes('선택') || t.includes('가이드') || t.includes('고르') || t.includes('어떤')) {
+  // 선택 가이드 (어떤 + 선택/골라/할까 조합이거나 명시적 키워드)
+  if (t.includes('선택') || t.includes('가이드') || t.includes('고르')) {
+    return 'guide';
+  }
+  // "어떤 제품을 선택해야 할까요?" 패턴 (어떤 + 제품/노트북 + 할까)
+  if (t.includes('어떤') && (t.includes('제품') || t.includes('노트북')) && t.includes('할까')) {
     return 'guide';
   }
   // 상세 리뷰 (top, 추천, 리뷰 등)
