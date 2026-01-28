@@ -345,10 +345,10 @@ async function parseNotionContent(pageId) {
       } else if (currentSection === 'topic') {
         result.topicExplanation += text + '\n';
       } else if (currentSection === 'products' && currentProduct) {
-        // "이런 분께 추천합니다:" 패턴 감지
-        const recommendMatch = text.match(/이런\s*분께?\s*추천합니다[:\s]*(.*)/);
-        if (recommendMatch) {
-          const recommendText = recommendMatch[1].trim();
+        // "이런 분께 추천합니다:" 패턴 감지 (다양한 변형 대응)
+        if (text.includes('이런') && text.includes('추천')) {
+          const colonIdx = text.indexOf(':');
+          const recommendText = colonIdx > 0 ? text.substring(colonIdx + 1).trim() : text.replace(/.*추천합니다\.?\s*/, '').trim();
           if (recommendText) {
             currentProduct.recommendFor.push(recommendText);
           }
