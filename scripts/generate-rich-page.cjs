@@ -1,8 +1,7 @@
 /**
  * 노션 컨텐츠를 리치 UI Astro 페이지로 변환
- * - 모든 글을 리치 UI 형식으로 통일
- * - 이미지 없이 CTA 버튼만 사용
- * - 장점(녹색), 단점(빨강), 추천(파랑) 색상
+ * - 스마트 패턴 인식으로 자동 구조화
+ * - 키워드 의존 최소화, 구조 기반 분석
  */
 
 const { Client } = require('@notionhq/client');
@@ -13,6 +12,101 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const PAGES_DIR = path.join(process.cwd(), 'src/pages');
 const RICH_PAGES_JSON = path.join(process.cwd(), 'src/data/rich-pages.json');
+
+// ============================================================
+// 스마트 패턴 인식 유틸리티
+// ============================================================
+
+// 긍정적 키워드 (장점 판별)
+const POSITIVE_KEYWORDS = [
+  '좋', '뛰어나', '우수', '빠른', '빠르', '강력', '훌륭', '최고', '최상',
+  '높은', '넓은', '가벼', '편리', '쉬운', '부드러', '선명', '깔끔',
+  '저렴', '가성비', '효율', '안정', '조용', '쿨링', '오래', '내구'
+];
+
+// 부정적 키워드 (단점 판별)
+const NEGATIVE_KEYWORDS = [
+  '아쉬', '부족', '느린', '느리', '비싼', '비싸', '무거', '불편',
+  '어려', '시끄러', '발열', '뜨거', '약한', '좁은', '낮은', '짧은',
+  '제한', '단점', '아쉬움', '불안정'
+];
+
+// 스펙 키워드
+const SPEC_KEYWORDS = [
+  'cpu', 'gpu', 'ram', 'ssd', 'hdd', '프로세서', '그래픽', '메모리',
+  '저장', '디스플레이', '화면', '배터리', '무게', '크기', '해상도',
+  '주사율', 'hz', '인치', 'gb', 'tb', 'w', 'wh'
+];
+
+// 구매 링크 도메인
+const BUY_LINK_DOMAINS = [
+  'coupang.com', 'link.coupang.com', '11st.co.kr', 'gmarket.co.kr',
+  'auction.co.kr', 'danawa.com', 'smartstore.naver.com', 'amazon'
+];
+
+// 텍스트가 긍정적인지 판별
+function isPositiveText(text) {
+  const lower = text.toLowerCase();
+  return POSITIVE_KEYWORDS.some(kw => lower.includes(kw));
+}
+
+// 텍스트가 부정적인지 판별
+function isNegativeText(text) {
+  const lower = text.toLowerCase();
+  return NEGATIVE_KEYWORDS.some(kw => lower.includes(kw));
+}
+
+// 텍스트가 스펙 형태인지 판별 (key: value)
+function isSpecFormat(text) {
+  const colonIdx = text.indexOf(':');
+  if (colonIdx < 1 || colonIdx > 20) return false;
+  const key = text.substring(0, colonIdx).toLowerCase();
+  return SPEC_KEYWORDS.some(kw => key.includes(kw)) || colonIdx < 15;
+}
+
+// 구매 링크인지 판별
+function isBuyLink(url) {
+  if (!url) return false;
+  return BUY_LINK_DOMAINS.some(domain => url.includes(domain));
+}
+
+// 테이블이 요약 테이블인지 판별 (제품명/이름 컬럼 존재)
+function isSummaryTable(headers) {
+  const summaryKeywords = ['제품', '이름', '모델', '노트북', '상품'];
+  return headers.some(h => summaryKeywords.some(kw => h.includes(kw)));
+}
+
+// h2 제목으로 섹션 타입 추론
+function inferSectionType(title) {
+  const t = title.toLowerCase();
+
+  // FAQ 섹션
+  if (t.includes('faq') || t.includes('자주') || t.includes('질문') || t.includes('q&a')) {
+    return 'faq';
+  }
+  // 마무리/결론 섹션
+  if (t.includes('마무리') || t.includes('마치') || t.includes('결론') || t.includes('정리')) {
+    return 'closing';
+  }
+  // 비교 섹션
+  if (t.includes('비교')) {
+    return 'comparison';
+  }
+  // 선택 가이드
+  if (t.includes('선택') || t.includes('가이드') || t.includes('고르') || t.includes('어떤')) {
+    return 'guide';
+  }
+  // 상세 리뷰 (top, 추천, 리뷰 등)
+  if (t.includes('top') || t.includes('추천') || t.includes('리뷰') || t.includes('상세')) {
+    return 'products';
+  }
+  // 요약 테이블 섹션
+  if (t.includes('핵심') || t.includes('요약') || t.includes('한눈')) {
+    return 'summary';
+  }
+  // 기타는 소개/설명 섹션
+  return 'topic';
+}
 
 // 리치 페이지 메타데이터 저장/업데이트
 function updateRichPagesRegistry(pageData) {
@@ -95,7 +189,10 @@ async function parseTable(blockId) {
   return rows;
 }
 
-// 노션 블록들을 파싱하여 구조화된 데이터 추출
+// ============================================================
+// 스마트 파싱: 2-Pass 구조 기반 콘텐츠 분석
+// ============================================================
+
 async function parseNotionContent(pageId) {
   // 페이지 속성 가져오기
   const page = await notion.pages.retrieve({ page_id: pageId });
@@ -104,11 +201,9 @@ async function parseNotionContent(pageId) {
   const titleProp = props.Title || props.제목 || props.Name;
   const pageTitle = titleProp?.title ? richTextToPlain(titleProp.title) : '';
 
-  // 날짜 속성
   const dateProp = props.Date || props.날짜;
   const pageDate = dateProp?.date?.start || new Date().toISOString().split('T')[0];
 
-  // 요약 속성
   const excerptProp = props.Excerpt || props.요약;
   const pageExcerpt = excerptProp?.rich_text ? richTextToPlain(excerptProp.rich_text) : '';
 
@@ -130,121 +225,115 @@ async function parseNotionContent(pageId) {
     faqs: []
   };
 
+  // ========== PASS 1: 구조 분석 ==========
+  let tableCount = 0;
   let currentSection = 'intro';
   let currentProduct = null;
-  let currentSubSection = null;
-  let collectingSpecs = false;
-  let collectingPros = false;
-  let collectingCons = false;
-  let collectingRecommend = false;
+  let pendingBullets = []; // 섹션 헤더 없이 온 불릿들
 
   for (let i = 0; i < blocks.results.length; i++) {
     const block = blocks.results[i];
     const type = block.type;
 
-    // h2 섹션 제목
+    // ===== h2: 섹션 시작 =====
     if (type === 'heading_2') {
       const text = richTextToPlain(block.heading_2.rich_text);
+      const sectionType = inferSectionType(text);
 
-      // 섹션 구분
-      if (text.includes('핵심만 콕')) {
-        currentSection = 'summary';
-      } else if (text.includes('상세 리뷰') || text.includes('Top5') || text.includes('TOP5')) {
-        currentSection = 'products';
-      } else if (text.includes('선택') || text.includes('어떤 제품')) {
-        currentSection = 'guide';
-      } else if (text.includes('비교표')) {
-        currentSection = 'comparison';
-      } else if (text.includes('마치며') || text.includes('마무리')) {
-        currentSection = 'closing';
-      } else if (text.includes('FAQ') || text.includes('자주 묻는')) {
-        currentSection = 'faq';
-      } else if (!result.topicTitle) {
-        // 특정 키워드에 매칭되지 않는 첫 번째 h2는 주제 설명 제목
+      // topic 섹션이고 아직 topicTitle이 없으면 설정
+      if (sectionType === 'topic' && !result.topicTitle) {
         result.topicTitle = text;
-        currentSection = 'topic';
       }
 
+      currentSection = sectionType;
       currentProduct = null;
-      collectingSpecs = false;
-      collectingPros = false;
-      collectingCons = false;
-      collectingRecommend = false;
+      pendingBullets = [];
       continue;
     }
 
-    // h3 - 제품 제목 (1. 제품명, 2. 제품명 등)
+    // ===== h3: 제품 리뷰 시작 (숫자. 제품명 or 그냥 제품명) =====
     if (type === 'heading_3') {
       const text = richTextToPlain(block.heading_3.rich_text);
-      const productMatch = text.match(/^(\d+)\.\s*(.+)/);
 
-      if (productMatch) {
-        currentSection = 'products';
-        currentProduct = {
-          id: parseInt(productMatch[1]),
-          name: productMatch[2].trim(),
-          summary: '',
-          keyPoint: '',
-          target: '',
-          buyUrl: '',
-          description: '',
-          specs: [],
-          pros: [],
-          cons: [],
-          recommendFor: []
-        };
-        result.products.push(currentProduct);
-        collectingSpecs = false;
-        collectingPros = false;
-        collectingCons = false;
-        collectingRecommend = false;
-      }
+      // "1. 제품명" 또는 "제품명" 패턴
+      const numberedMatch = text.match(/^(\d+)\.\s*(.+)/);
+      const productName = numberedMatch ? numberedMatch[2].trim() : text.trim();
+      const productId = numberedMatch ? parseInt(numberedMatch[1]) : result.products.length + 1;
+
+      currentSection = 'products';
+      currentProduct = {
+        id: productId,
+        name: productName,
+        summary: '',
+        keyPoint: '',
+        target: '',
+        buyUrl: '',
+        description: '',
+        specs: [],
+        pros: [],
+        cons: [],
+        recommendFor: []
+      };
+      result.products.push(currentProduct);
+      pendingBullets = [];
       continue;
     }
 
-    // 테이블 (요약 테이블 또는 비교표)
+    // ===== 테이블: 위치와 구조로 판별 =====
     if (type === 'table') {
       const tableData = await parseTable(block.id);
+      tableCount++;
 
-      if (currentSection === 'summary' || result.summaryTable.length === 0) {
-        result.summaryTable = tableData;
-      } else if (currentSection === 'comparison') {
-        result.comparisonTable = tableData;
+      if (tableData.length > 0) {
+        const headers = tableData[0];
+
+        // 첫 번째 테이블 또는 요약 테이블 패턴
+        if (tableCount === 1 || isSummaryTable(headers)) {
+          if (result.summaryTable.length === 0) {
+            result.summaryTable = tableData;
+          }
+        } else {
+          // 두 번째 이후 테이블은 비교표
+          result.comparisonTable = tableData;
+        }
       }
       continue;
     }
 
-    // 문단
+    // ===== 문단 =====
     if (type === 'paragraph') {
       const text = richTextToPlain(block.paragraph.rich_text);
       const url = extractUrl(block.paragraph.rich_text);
 
       if (!text.trim()) continue;
 
-      // 쿠팡 링크 감지
-      if (url && url.includes('coupang.com') && currentProduct) {
-        currentProduct.buyUrl = url;
+      // 쿠팡파트너스 고지 건너뛰기
+      if (text.includes('쿠팡파트너스') || text.includes('파트너스 활동')) continue;
+
+      // 구매 링크 감지
+      if (url && isBuyLink(url)) {
+        if (currentProduct) {
+          currentProduct.buyUrl = url;
+        }
         continue;
       }
 
-      if (text.includes('최저가 보러가기') && currentProduct) {
+      // "최저가" 텍스트에서 링크 추출
+      if (text.includes('최저가') || text.includes('구매하기') || text.includes('보러가기')) {
         const linkMatch = text.match(/https?:\/\/[^\s\)]+/);
-        if (linkMatch) currentProduct.buyUrl = linkMatch[0];
+        if (linkMatch && currentProduct) {
+          currentProduct.buyUrl = linkMatch[0];
+        }
         continue;
       }
 
-      // 쿠팡파트너스 고지는 건너뛰기
-      if (text.includes('쿠팡파트너스')) continue;
-
-      if (currentSection === 'intro' && !result.topicTitle) {
+      // 섹션별 문단 처리
+      if (currentSection === 'intro') {
         result.intro += text + '\n';
       } else if (currentSection === 'topic') {
         result.topicExplanation += text + '\n';
       } else if (currentSection === 'products' && currentProduct) {
-        // 제품 설명 문단
-        if (!collectingSpecs && !collectingPros && !collectingCons && !collectingRecommend) {
-          currentProduct.description += text + '\n';
-        }
+        currentProduct.description += text + '\n';
       } else if (currentSection === 'guide') {
         result.selectionGuide += text + '\n';
       } else if (currentSection === 'closing') {
@@ -253,20 +342,27 @@ async function parseNotionContent(pageId) {
       continue;
     }
 
-    // 불릿 리스트
+    // ===== 불릿 리스트: 스마트 분류 =====
     if (type === 'bulleted_list_item') {
       const text = richTextToPlain(block.bulleted_list_item.rich_text);
+      const url = extractUrl(block.bulleted_list_item.rich_text);
 
       if (!text.trim()) continue;
 
-      // 섹션 구분 키워드 - 중첩된 자식 불릿 처리
-      const isSectionHeader =
-        text.includes('주요 스펙') || text === '스펙' ||
-        text === '장점' || text === '단점' ||
-        text.includes('추천') || text.includes('이런 분께');
+      // 구매 링크
+      if (url && isBuyLink(url) && currentProduct) {
+        currentProduct.buyUrl = url;
+        continue;
+      }
 
-      if (isSectionHeader && block.has_children && currentProduct) {
-        // 중첩 불릿 구조: 부모에서 섹션 타입 결정, 자식에서 데이터 수집
+      // 섹션 헤더 키워드 (중첩 불릿의 부모)
+      const isSpecHeader = text.includes('스펙') || text.includes('사양');
+      const isProsHeader = text === '장점' || text.startsWith('장점:') || text.includes('👍');
+      const isConsHeader = text === '단점' || text.startsWith('단점:') || text.includes('👎');
+      const isRecommendHeader = text.includes('추천') || text.includes('이런 분');
+
+      // 중첩 불릿 처리
+      if (block.has_children && currentProduct) {
         const children = await notion.blocks.children.list({ block_id: block.id });
 
         for (const child of children.results) {
@@ -274,8 +370,8 @@ async function parseNotionContent(pageId) {
             const childText = richTextToPlain(child.bulleted_list_item.rich_text);
             if (!childText.trim()) continue;
 
-            if (text.includes('주요 스펙') || text === '스펙') {
-              // 스펙은 "CPU: Intel..." 형태
+            if (isSpecHeader) {
+              // 스펙: key: value 형태
               const colonIdx = childText.indexOf(':');
               if (colonIdx > 0) {
                 currentProduct.specs.push({
@@ -283,122 +379,160 @@ async function parseNotionContent(pageId) {
                   value: childText.substring(colonIdx + 1).trim()
                 });
               }
-            } else if (text === '장점') {
+            } else if (isProsHeader) {
               currentProduct.pros.push(childText);
-            } else if (text === '단점') {
+            } else if (isConsHeader) {
               currentProduct.cons.push(childText);
-            } else if (text.includes('추천') || text.includes('이런 분께')) {
+            } else if (isRecommendHeader) {
               currentProduct.recommendFor.push(childText);
+            } else {
+              // 헤더가 명확하지 않으면 스마트 분류
+              classifyBulletItem(childText, currentProduct);
             }
           }
         }
         continue;
       }
 
-      // 플랫 구조 불릿 처리 (중첩 아닌 경우)
-      if (text.includes('주요 스펙') || text === '스펙') {
-        collectingSpecs = true;
-        collectingPros = false;
-        collectingCons = false;
-        collectingRecommend = false;
-        continue;
-      }
-      if (text === '장점' || text.startsWith('장점')) {
-        collectingSpecs = false;
-        collectingPros = true;
-        collectingCons = false;
-        collectingRecommend = false;
-        if (text === '장점') continue;
-      }
-      if (text === '단점' || text.startsWith('단점')) {
-        collectingSpecs = false;
-        collectingPros = false;
-        collectingCons = true;
-        collectingRecommend = false;
-        if (text === '단점') continue;
-      }
-      if (text.includes('추천') || text.includes('이런 분께')) {
-        collectingSpecs = false;
-        collectingPros = false;
-        collectingCons = false;
-        collectingRecommend = true;
+      // 플랫 불릿 (헤더만 있는 경우 건너뛰기)
+      if (isSpecHeader || isProsHeader || isConsHeader || isRecommendHeader) {
         continue;
       }
 
-      // 현재 제품에 데이터 추가 (플랫 구조)
+      // 제품 컨텍스트에서 스마트 분류
       if (currentProduct) {
-        if (collectingPros) {
-          currentProduct.pros.push(text);
-        } else if (collectingCons) {
-          currentProduct.cons.push(text);
-        } else if (collectingRecommend) {
-          currentProduct.recommendFor.push(text);
-        } else if (collectingSpecs) {
-          // 스펙은 "CPU: Intel..." 형태
-          const colonIdx = text.indexOf(':');
-          if (colonIdx > 0) {
-            currentProduct.specs.push({
-              label: text.substring(0, colonIdx).trim(),
-              value: text.substring(colonIdx + 1).trim()
-            });
-          }
-        }
+        classifyBulletItem(text, currentProduct);
       }
 
-      // FAQ 토글 항목
+      // FAQ 섹션
       if (currentSection === 'faq') {
-        if (text.startsWith('Q') || text.includes('?')) {
+        if (text.includes('?') || text.startsWith('Q')) {
           result.faqs.push({ q: text.replace(/^Q[:.]\s*/, ''), a: '' });
-        } else if (text.startsWith('A') && result.faqs.length > 0) {
-          result.faqs[result.faqs.length - 1].a = text.replace(/^A[:.]\s*/, '');
+        } else if ((text.startsWith('A') || text.startsWith('-')) && result.faqs.length > 0) {
+          result.faqs[result.faqs.length - 1].a += text.replace(/^A[:.]\s*/, '') + ' ';
         }
       }
       continue;
     }
 
-    // 토글 (FAQ)
+    // ===== 토글: FAQ 자동 감지 =====
     if (type === 'toggle') {
       const toggleTitle = richTextToPlain(block.toggle.rich_text);
 
-      if (currentSection === 'faq' || toggleTitle.includes('?')) {
-        // 토글 내용 가져오기
+      // 질문 형태면 FAQ로 처리
+      if (toggleTitle.includes('?') || currentSection === 'faq') {
         let answer = '';
         if (block.has_children) {
           const children = await notion.blocks.children.list({ block_id: block.id });
           for (const child of children.results) {
             if (child.type === 'paragraph') {
               answer += richTextToPlain(child.paragraph.rich_text) + ' ';
+            } else if (child.type === 'bulleted_list_item') {
+              answer += '• ' + richTextToPlain(child.bulleted_list_item.rich_text) + ' ';
             }
           }
         }
 
         result.faqs.push({
-          q: toggleTitle.replace(/^▶\s*/, '').replace(/^Q[:.]\s*/, ''),
-          a: answer.trim().replace(/^A[:.]\s*/, '')
+          q: toggleTitle.replace(/^[▶►]\s*/, '').replace(/^Q[:.]\s*/, '').trim(),
+          a: answer.trim()
         });
       }
       continue;
     }
   }
 
-  // 요약 테이블에서 제품 정보 보완
+  // ========== PASS 2: 데이터 보완 ==========
+
+  // 요약 테이블에서 제품 정보 추출
   if (result.summaryTable.length > 1 && result.products.length > 0) {
-    const headers = result.summaryTable[0];
-    const keyPointIdx = headers.findIndex(h => h.includes('핵심') || h.includes('장점'));
-    const summaryIdx = headers.findIndex(h => h.includes('한 줄') || h.includes('평'));
-    const targetIdx = headers.findIndex(h => h.includes('추천') || h.includes('대상'));
+    enrichProductsFromTable(result.summaryTable, result.products);
+  }
 
-    for (let i = 1; i < result.summaryTable.length && i <= result.products.length; i++) {
-      const row = result.summaryTable[i];
-      const product = result.products[i - 1];
+  // intro가 없으면 topicExplanation 첫 문장 사용
+  if (!result.intro.trim() && result.topicExplanation.trim()) {
+    const firstSentence = result.topicExplanation.split('.')[0];
+    result.intro = firstSentence ? firstSentence + '.' : '';
+  }
 
-      if (keyPointIdx >= 0 && row[keyPointIdx]) product.keyPoint = row[keyPointIdx];
-      if (summaryIdx >= 0 && row[summaryIdx]) product.summary = row[summaryIdx];
-      if (targetIdx >= 0 && row[targetIdx]) product.target = row[targetIdx];
-    }
+  // topicTitle 기본값
+  if (!result.topicTitle && result.title) {
+    result.topicTitle = result.title.includes('추천')
+      ? result.title.replace(/추천.*/, '') + ', 왜 중요할까요?'
+      : '소개';
   }
 
   return result;
+}
+
+// 불릿 아이템 스마트 분류
+function classifyBulletItem(text, product) {
+  // 스펙 형태 (key: value)
+  if (isSpecFormat(text)) {
+    const colonIdx = text.indexOf(':');
+    product.specs.push({
+      label: text.substring(0, colonIdx).trim(),
+      value: text.substring(colonIdx + 1).trim()
+    });
+    return;
+  }
+
+  // 긍정/부정 키워드로 분류
+  const hasPositive = isPositiveText(text);
+  const hasNegative = isNegativeText(text);
+
+  if (hasNegative && !hasPositive) {
+    product.cons.push(text);
+  } else if (hasPositive && !hasNegative) {
+    product.pros.push(text);
+  } else {
+    // 분류 불가시 장점으로 (대부분 장점을 먼저 씀)
+    product.pros.push(text);
+  }
+}
+
+// 테이블에서 제품 정보 보완
+function enrichProductsFromTable(table, products) {
+  if (table.length < 2) return;
+
+  const headers = table[0].map(h => h.toLowerCase());
+
+  // 컬럼 인덱스 찾기 (유연한 키워드 매칭)
+  const findColIdx = (keywords) => {
+    return headers.findIndex(h => keywords.some(kw => h.includes(kw)));
+  };
+
+  const nameIdx = findColIdx(['제품', '이름', '모델', '노트북']);
+  const keyPointIdx = findColIdx(['핵심', '장점', '특징', '포인트']);
+  const summaryIdx = findColIdx(['한 줄', '평가', '요약', '코멘트']);
+  const targetIdx = findColIdx(['추천', '대상', '타겟', '적합']);
+
+  // 테이블 행과 제품 매칭
+  for (let i = 1; i < table.length; i++) {
+    const row = table[i];
+
+    // 제품명으로 매칭 시도
+    let matchedProduct = null;
+
+    if (nameIdx >= 0 && row[nameIdx]) {
+      const tableName = row[nameIdx].toLowerCase();
+      matchedProduct = products.find(p =>
+        p.name.toLowerCase().includes(tableName) ||
+        tableName.includes(p.name.toLowerCase().substring(0, 10))
+      );
+    }
+
+    // 매칭 실패시 순서대로
+    if (!matchedProduct && i <= products.length) {
+      matchedProduct = products[i - 1];
+    }
+
+    if (matchedProduct) {
+      if (keyPointIdx >= 0 && row[keyPointIdx]) matchedProduct.keyPoint = row[keyPointIdx];
+      if (summaryIdx >= 0 && row[summaryIdx]) matchedProduct.summary = row[summaryIdx];
+      if (targetIdx >= 0 && row[targetIdx]) matchedProduct.target = row[targetIdx];
+    }
+  }
 }
 
 // Astro 페이지 템플릿 생성
