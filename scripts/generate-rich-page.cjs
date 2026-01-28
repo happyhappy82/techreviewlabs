@@ -612,6 +612,7 @@ function generateAstroPage(data) {
   const topicTitle = data.topicTitle || '소개';
   const topicText = data.topicExplanation.trim();
   const closingText = data.closing.trim() || '위 내용이 여러분께 도움이 되길 바랍니다.';
+  const selectionGuideText = data.selectionGuide.trim();
 
   return `---
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -621,6 +622,7 @@ const products = ${productsJson};
 const faqs = ${faqsJson};
 const comparisonData = ${comparisonDataCode};
 const comparisonSpecs = ${comparisonSpecsCode};
+const selectionGuide = ${JSON.stringify(selectionGuideText)};
 ---
 
 <BaseLayout
@@ -727,6 +729,17 @@ const comparisonSpecs = ${comparisonSpecsCode};
         ))}
       </section>
 
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]\s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
       <section class="section">
         <h2>제품 비교표</h2>
         <div class="table-wrapper">
@@ -820,6 +833,9 @@ const comparisonSpecs = ${comparisonSpecsCode};
   .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
   .faq-item[open] summary::before { content: "▼ "; }
   .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
   @media (max-width: 768px) {
     .article-header h1 { font-size: 31px; }
     .buy-link { width: 100%; justify-content: center; }
