@@ -345,7 +345,16 @@ async function parseNotionContent(pageId) {
       } else if (currentSection === 'topic') {
         result.topicExplanation += text + '\n';
       } else if (currentSection === 'products' && currentProduct) {
-        currentProduct.description += text + '\n';
+        // "이런 분께 추천합니다:" 패턴 감지
+        const recommendMatch = text.match(/이런\s*분께?\s*추천합니다[:\s]*(.*)/);
+        if (recommendMatch) {
+          const recommendText = recommendMatch[1].trim();
+          if (recommendText) {
+            currentProduct.recommendFor.push(recommendText);
+          }
+        } else {
+          currentProduct.description += text + '\n';
+        }
       } else if (currentSection === 'guide') {
         result.selectionGuide += text + '\n';
       } else if (currentSection === 'closing') {
