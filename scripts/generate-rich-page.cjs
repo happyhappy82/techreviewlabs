@@ -26,10 +26,21 @@ function updateRichPagesRegistry(pageData) {
     }
   }
 
-  // 기존 항목 찾기
-  const existingIndex = registry.findIndex(p => p.slug === pageData.slug);
+  // notionPageId로 기존 항목 찾기 (제목 변경되어도 같은 페이지로 인식)
+  let existingIndex = registry.findIndex(p => p.notionPageId === pageData.notionPageId);
 
   if (existingIndex >= 0) {
+    const oldSlug = registry[existingIndex].slug;
+
+    // slug가 변경됐으면 이전 .astro 파일 삭제
+    if (oldSlug !== pageData.slug) {
+      const oldFilePath = path.join(PAGES_DIR, `${oldSlug}.astro`);
+      if (fs.existsSync(oldFilePath)) {
+        fs.unlinkSync(oldFilePath);
+        console.log(`   🗑️  Deleted old file: ${oldSlug}.astro (title changed)`);
+      }
+    }
+
     registry[existingIndex] = pageData;
   } else {
     registry.push(pageData);
@@ -690,13 +701,14 @@ async function generateRichPage(pageId) {
     if (data.intro.length > 150) excerpt += '...';
   }
 
-  // 홈페이지 목록용 메타데이터 저장
+  // 홈페이지 목록용 메타데이터 저장 (notionPageId로 중복 방지)
   updateRichPagesRegistry({
     slug: slug,
     title: data.title,
     date: data.date,
     excerpt: excerpt || `${data.title}에 대한 리뷰입니다.`,
-    isRichPage: true
+    isRichPage: true,
+    notionPageId: pageId
   });
 
   return slug;
