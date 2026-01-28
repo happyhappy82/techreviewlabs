@@ -422,6 +422,18 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
+      // 선택 가이드 섹션 불릿
+      if (currentSection === 'guide') {
+        result.selectionGuide += '• ' + text + '\n';
+        continue;
+      }
+
+      // 마무리 섹션 불릿
+      if (currentSection === 'closing') {
+        result.closing += '• ' + text + '\n';
+        continue;
+      }
+
       // 제품 컨텍스트에서 스마트 분류
       if (currentProduct) {
         classifyBulletItem(text, currentProduct);
