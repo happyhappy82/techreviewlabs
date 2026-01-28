@@ -546,24 +546,45 @@ function enrichProductsFromTable(table, products) {
   const summaryIdx = findColIdx(['한 줄', '평가', '요약', '코멘트']);
   const targetIdx = findColIdx(['추천', '대상', '타겟', '적합']);
 
-  // 테이블 행과 제품 매칭
+  // 유사도 점수 계산 (공통 단어 수)
+  const getSimilarityScore = (str1, str2) => {
+    const words1 = str1.toLowerCase().split(/\s+/);
+    const words2 = str2.toLowerCase().split(/\s+/);
+    let score = 0;
+    for (const w1 of words1) {
+      if (w1.length < 2) continue;
+      for (const w2 of words2) {
+        if (w2.includes(w1) || w1.includes(w2)) score++;
+      }
+    }
+    return score;
+  };
+
+  // 테이블 행과 제품 매칭 (순서 기반 - 테이블과 제품 순서가 동일하다고 가정)
   for (let i = 1; i < table.length; i++) {
     const row = table[i];
+    const rowIdx = i - 1; // 0-based product index
 
-    // 제품명으로 매칭 시도
-    let matchedProduct = null;
+    // 순서대로 매칭 (가장 신뢰할 수 있는 방법)
+    let matchedProduct = products[rowIdx] || null;
 
-    if (nameIdx >= 0 && row[nameIdx]) {
-      const tableName = row[nameIdx].toLowerCase();
-      matchedProduct = products.find(p =>
-        p.name.toLowerCase().includes(tableName) ||
-        tableName.includes(p.name.toLowerCase().substring(0, 10))
-      );
-    }
+    // 순서 매칭 실패 시 이름 유사도로 BEST 매칭 찾기
+    if (!matchedProduct && nameIdx >= 0 && row[nameIdx]) {
+      const tableName = row[nameIdx];
+      let bestScore = 0;
+      let bestMatch = null;
 
-    // 매칭 실패시 순서대로
-    if (!matchedProduct && i <= products.length) {
-      matchedProduct = products[i - 1];
+      for (const p of products) {
+        const score = getSimilarityScore(tableName, p.name);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = p;
+        }
+      }
+
+      if (bestScore >= 2) {
+        matchedProduct = bestMatch;
+      }
     }
 
     if (matchedProduct) {
