@@ -159,8 +159,8 @@ async function parseNotionContent(pageId) {
         currentSection = 'closing';
       } else if (text.includes('FAQ') || text.includes('자주 묻는')) {
         currentSection = 'faq';
-      } else if (!result.topicTitle && currentSection === 'intro') {
-        // 첫 번째 h2는 주제 설명 제목
+      } else if (!result.topicTitle) {
+        // 특정 키워드에 매칭되지 않는 첫 번째 h2는 주제 설명 제목
         result.topicTitle = text;
         currentSection = 'topic';
       }
