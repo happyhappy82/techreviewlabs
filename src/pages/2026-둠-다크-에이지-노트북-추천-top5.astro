@@ -1,4 +1,9 @@
 ---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-01-28T12:10:26.010Z
+ * Do not edit manually
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 
@@ -424,6 +429,7 @@ const comparisonSpecs = [
     "label": "LG 그램 16"
   }
 ];
+const selectionGuide = "";
 ---
 
 <BaseLayout
@@ -466,8 +472,9 @@ const comparisonSpecs = [
       </section>
 
       <section class="section topic-intro">
-        <h2>2026 둠 다크 에이지 노트북 , 왜 중요할까요?</h2>
-        
+        <h2>들어가며 - 2026 둠 다크 에이지, 어떤 게임인가요?</h2>
+        <p>둠 시리즈는 오랫동안 게이머들의 심장을 뛰게 만든 FPS 게임의 대명사죠. 특히 2026년 출시 예정인 '둠 다크 에이지'는 기존 둠 시리즈의 프리퀄이자 새로운 다크 판타지 세계관을 선보이며 큰 기대를 모으고 있습니다. 중세 시대에 악마들이 침공하는 배경 속에서, 플레이어는 '둠 슬레이어'가 아닌 '둠 가이'로서 강력한 무기와 능력을 활용해 잔혹한 전투를 펼치게 됩니다.</p>
+        <p>이 게임은 시리즈 특유의 빠르고 격렬한 전투, 압도적인 비주얼과 사운드를 자랑할 것으로 예상됩니다. 광원 효과, 몬스터 디테일, 환경 요소 등 시각적인 부분에서도 최신 기술이 집약될 것으로 보여, 쾌적한 플레이를 위해서는 강력한 그래픽 카드와 고주사율 디스플레이를 갖춘 노트북이 필수적입니다. 단순히 게임을 구동하는 것을 넘어, 둠 특유의 몰입감 넘치는 경험을 온전히 느끼기 위해서는 오늘 소개해 드릴 노트북들이 좋은 선택이 될 거예요.</p>
         <div class="affiliate-notice">
           이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
         </div>
@@ -529,6 +536,17 @@ const comparisonSpecs = [
           </div>
         ))}
       </section>
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
 
       <section class="section">
         <h2>제품 비교표</h2>
@@ -623,6 +641,9 @@ const comparisonSpecs = [
   .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
   .faq-item[open] summary::before { content: "▼ "; }
   .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
   @media (max-width: 768px) {
     .article-header h1 { font-size: 31px; }
     .buy-link { width: 100%; justify-content: center; }
