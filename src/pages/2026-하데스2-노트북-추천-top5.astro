@@ -451,7 +451,7 @@ const comparisonSpecs = [
       </header>
 
       <section class="section summary-section">
-        <h2>핵심만 콕!</h2>
+        <h2 id="summary">핵심만 콕!</h2>
         <div class="table-wrapper">
           <table class="summary-table">
             <thead>
@@ -477,7 +477,7 @@ const comparisonSpecs = [
       </section>
 
       <section class="section topic-intro">
-        <h2>소개</h2>
+        <h2 id="intro">소개</h2>
         
         <div class="affiliate-notice">
           이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
@@ -485,7 +485,7 @@ const comparisonSpecs = [
       </section>
 
       <section class="section">
-        <h2>상세 리뷰</h2>
+        <h2 id="reviews">상세 리뷰</h2>
         {products.map((product, index) => (
           <div class="product-review" id={`product-${product.id}`}>
             <h3 class="product-title">
@@ -542,7 +542,7 @@ const comparisonSpecs = [
       </section>
 
       <section class="section">
-        <h2>제품 비교표</h2>
+        <h2 id="comparison">제품 비교표</h2>
         <div class="table-wrapper">
           <table class="comparison-table">
             <thead>
@@ -564,13 +564,13 @@ const comparisonSpecs = [
       </section>
 
       <section class="section closing">
-        <h2>마무리</h2>
+        <h2 id="conclusion">마무리</h2>
         <p>오늘은 2026년 기대작 하데스2를 위한 게이밍 노트북 추천 제품들을 살펴보았습니다. 각자의 예산과 사용 목적에 맞춰 가장 적합한 노트북을 선택하신다면, 하데스2의 매력적인 세계관과 짜릿한 액션을 최고의 환경에서 경험하실 수 있을 것입니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
       </section>
 
       {faqs.length > 0 && (
         <section class="section faq-section">
-          <h2>자주 묻는 질문 (FAQ)</h2>
+          <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
           <div class="faq-list">
             {faqs.map(faq => (
               <details class="faq-item">

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 
 const products = [
   {
@@ -440,7 +441,7 @@ const comparisonSpecs = [
       </header>
 
       <section class="section summary-section">
-        <h2>핵심만 콕!</h2>
+        <h2 id="summary">핵심만 콕!</h2>
         <div class="table-wrapper">
           <table class="summary-table">
             <thead>
@@ -466,7 +467,7 @@ const comparisonSpecs = [
       </section>
 
       <section class="section topic-intro">
-        <h2>소개</h2>
+        <h2 id="intro">소개</h2>
         
         <div class="affiliate-notice">
           이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
@@ -474,7 +475,7 @@ const comparisonSpecs = [
       </section>
 
       <section class="section">
-        <h2>상세 리뷰</h2>
+        <h2 id="reviews">상세 리뷰</h2>
         {products.map((product, index) => (
           <div class="product-review" id={`product-${product.id}`}>
             <h3 class="product-title">
@@ -531,7 +532,7 @@ const comparisonSpecs = [
       </section>
 
       <section class="section">
-        <h2>제품 비교표</h2>
+        <h2 id="comparison">제품 비교표</h2>
         <div class="table-wrapper">
           <table class="comparison-table">
             <thead>
@@ -553,13 +554,13 @@ const comparisonSpecs = [
       </section>
 
       <section class="section closing">
-        <h2>마무리</h2>
+        <h2 id="conclusion">마무리</h2>
         <p>오늘은 2026 둠: 더 다크 에이지를 위한 게이밍 노트북 Top5에 대해 말씀드렸습니다. 둠의 박진감 넘치는 전투와 압도적인 비주얼을 온전히 경험하기 위해서는 강력한 성능의 노트북이 필수적이죠. 오늘 소개해 드린 제품들은 각기 다른 장점과 특징을 가지고 있으니, 여러분의 예산, 사용 목적, 그리고 중요하게 생각하는 가치에 따라 현명한 선택을 하시길 바랍니다. 최상의 퍼포먼스를 원한다면 레노버 리전 프로5를, 합리적인 가격에 준수한 성능을 원한다면 기가바이트 게이밍 A16이나 레노버 LOQ e 15IAX9E를, 휴대성과 다용도 활용을 중시한다면 델 G16 또는 LG 그램 16을 고려해 보세요. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
       </section>
 
       {faqs.length > 0 && (
         <section class="section faq-section">
-          <h2>자주 묻는 질문 (FAQ)</h2>
+          <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
           <div class="faq-list">
             {faqs.map(faq => (
               <details class="faq-item">
@@ -572,10 +573,11 @@ const comparisonSpecs = [
       )}
     </article>
   </main>
+  <TableOfContents />
 </BaseLayout>
 
 <style>
-  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
   .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
   .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
   .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
