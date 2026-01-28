@@ -120,8 +120,18 @@ function updateRichPagesRegistry(pageData) {
     }
   }
 
-  // notionPageId로 기존 항목 찾기 (제목 변경되어도 같은 페이지로 인식)
+  // notionPageId로 기존 항목 찾기
   let existingIndex = registry.findIndex(p => p.notionPageId === pageData.notionPageId);
+
+  // 못 찾으면 slug로 찾기 (기존 데이터 호환)
+  if (existingIndex < 0) {
+    existingIndex = registry.findIndex(p => p.slug === pageData.slug && !p.notionPageId);
+  }
+
+  // 그래도 못 찾으면 같은 slug가 있는지 확인 (중복 방지)
+  if (existingIndex < 0) {
+    existingIndex = registry.findIndex(p => p.slug === pageData.slug);
+  }
 
   if (existingIndex >= 0) {
     const oldSlug = registry[existingIndex].slug;
@@ -136,8 +146,10 @@ function updateRichPagesRegistry(pageData) {
     }
 
     registry[existingIndex] = pageData;
+    console.log(`   ♻️  Updated existing entry: ${pageData.slug}`);
   } else {
     registry.push(pageData);
+    console.log(`   ➕ Added new entry: ${pageData.slug}`);
   }
 
   // 날짜순 정렬 (최신순)
