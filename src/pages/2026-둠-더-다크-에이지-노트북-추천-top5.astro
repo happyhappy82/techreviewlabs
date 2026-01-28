@@ -1,0 +1,630 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "기가바이트 2025 게이밍 A16 코어9 인텔 13세대 지포스 RTX 4050",
+    "summary": "100만원대 초반, 둠을 위한 합리적인 선택",
+    "keyPoint": "RTX 4050, 165Hz 디스플레이, 뛰어난 가성비",
+    "target": "예산 한정 게이머, 가성비 중시 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzYuuK",
+    "description": "기가바이트 게이밍 A16은 100만원대 초반이라는 놀라운 가격에 RTX 4050을 탑재해 뛰어난 가성비를 자랑하는 모델입니다. 둠: 더 다크 에이지스 같은 고사양 게임도 충분히 즐길 수 있는 성능을 제공하며, 165Hz 고주사율 디스플레이로 부드러운 화면 전환을 경험할 수 있습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i5-13420H (8코어/12스레드, 최대 4.6GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4050 6GB GDDR6"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5 5200MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WUXGA (1920x1200), 165Hz, 300nits, IPS"
+      },
+      {
+        "label": "배터리",
+        "value": "76Wh Li-Polymer"
+      },
+      {
+        "label": "무게",
+        "value": "2.2kg"
+      }
+    ],
+    "pros": [
+      "100만원대 초반에 RTX 4050을 탑재한 뛰어난 가성비",
+      "DLSS 3.5 지원으로 AI 기반 고품질 그래픽 렌더링 가능",
+      "MUX 스위치 적용으로 외장 그래픽 단독 모드 지원",
+      "16:10 화면비로 세로 정보 표시 공간 증가",
+      "76Wh 대용량 배터리로 긴 사용 시간",
+      "듀얼 채널 메모리 및 최대 4TB SSD 확장 가능"
+    ],
+    "cons": [
+      "NTSC 45% 색재현율로 그래픽 작업에는 부적합",
+      "2.2kg의 무게는 휴대성에 다소 부담",
+      "터보 모드에서 팬 소음이 큰 편",
+      "키보드 백라이트 커스터마이징 제한"
+    ],
+    "recommendFor": [
+      "예산은 한정되어 있지만 둠: 더 다크 에이지스를 쾌적하게 즐기고 싶은 게이머",
+      "게임 플레이가 주 목적이며, 가성비를 최우선으로 고려하는 사용자",
+      "외부에서 충전기 없이도 어느 정도 사용하고 싶은 분"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "델 2024 게이밍 G16 DG7630 코어i7 인텔 13세대 지포스 RTX 4060",
+    "summary": "고해상도 고주사율로 몰입감 넘치는 둠 경험",
+    "keyPoint": "RTX 4060, QHD+ 240Hz, 100% DCI-P3",
+    "target": "고품질 디스플레이 선호 게이머, 그래픽 작업 병행 사용자",
+    "buyUrl": "https://link.coupang.com/a/dAdyAZ",
+    "description": "델 게이밍 G16은 고성능 인텔 코어 i7 프로세서와 RTX 4060 그래픽카드를 탑재하여 둠: 더 다크 에이지는 물론 대부분의 AAA 게임을 고품질로 즐길 수 있는 모델입니다. 특히 16인치 QHD+ 240Hz 디스플레이는 100% DCI-P3 색재현율과 G-SYNC를 지원하여 압도적인 비주얼 경험을 선사합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-13650HX (14코어/20스레드, 최대 4.9GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4060 8GB GDDR6 (TGP 140W)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe PCIe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 QHD+ (2560x1600) 16:10 240Hz 100% DCI-P3 G-SYNC"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "배터리",
+        "value": "86Wh"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.52kg"
+      }
+    ],
+    "pros": [
+      "강력한 Intel Core i7-13650HX 프로세서와 RTX 4060 그래픽 성능",
+      "QHD+ 해상도와 240Hz 고주사율로 최상의 게이밍 비주얼",
+      "100% DCI-P3 색재현율로 영상 편집이나 컬러 작업에도 적합",
+      "1TB 대용량 NVMe SSD 기본 탑재",
+      "Alienware 영감의 고급 냉각 솔루션 (4개 히트파이프, Element 31, 베이퍼 체임버)",
+      "Windows 11 Home 기본 탑재"
+    ],
+    "cons": [
+      "약 2.52kg의 무게로 휴대성은 다소 떨어짐",
+      "16GB RAM은 일부 최신 고사양 작업시 부족할 수 있음"
+    ],
+    "recommendFor": [
+      "둠: 더 다크 에이지스를 QHD 해상도로 최고 옵션에 가깝게 즐기고 싶은 게이머",
+      "게임과 더불어 영상 편집, 그래픽 디자인 등 전문적인 작업을 병행하는 사용자",
+      "뛰어난 디스플레이 품질과 강력한 냉각 성능을 중요하게 생각하는 분"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "레노버 2025 리전 프로5 16IAX10H 코어Ultra9 지포스 RTX 5070 T",
+    "summary": "둠을 넘어선 최상위 퍼포먼스, 압도적인 비주얼",
+    "keyPoint": "RTX 5070 Ti, Core Ultra 9, OLED 2.5K 240Hz",
+    "target": "최고 사양, 극한의 게이밍 경험을 원하는 사용자",
+    "buyUrl": "https://link.coupang.com/a/dAfXuQ",
+    "description": "레노버 리전 프로5는 인텔 최신 Core Ultra 9 프로세서와 차세대 RTX 5070 Ti 그래픽카드를 탑재한 궁극의 게이밍 노트북입니다. 16인치 2.5K OLED 240Hz 디스플레이는 HDR True Black 1000 인증까지 받아 압도적인 색감과 명암비를 자랑하며, 둠: 더 다크 에이지스의 어두운 분위기와 화려한 이펙트를 가장 생생하게 표현해 줄 것입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (애로우레이크, 24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 Ti 12GB GDDR7 (140W Max TGP)"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5 5600MT/s (CTO 업그레이드)"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe PCIe Gen4 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 2.5K WQXGA (2560x1600) OLED, 240Hz, DCI-P3 100%, 500nits, HDR True Black 1000"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "네트워크",
+        "value": "Wi-Fi 7 + 블루투스 5.4"
+      }
+    ],
+    "pros": [
+      "Core Ultra 9 275HX와 RTX 5070 Ti의 최신, 최강 조합",
+      "16인치 OLED 2.5K 240Hz 디스플레이로 압도적인 시각 경험",
+      "HDR True Black 1000 인증으로 완벽한 블랙 표현과 선명한 색감",
+      "64GB 대용량 RAM으로 어떤 작업도 거뜬",
+      "Lenovo AI Engine+와 NPU 탑재로 AI 작업 효율 극대화",
+      "Wi-Fi 7 지원으로 초고속 무선 네트워크 환경",
+      "강화 알루미늄 상판의 프리미엄 빌드 퀄리티"
+    ],
+    "cons": [
+      "400만원대의 높은 가격대",
+      "OLED 디스플레이의 번인 가능성 (장시간 정적 화면 사용 주의 필요)",
+      "고성능 부품과 OLED로 인한 상대적으로 빠른 배터리 소모",
+      "CTO 모델로 개봉 후 출고되어 단순변심 교환에 제한이 있을 수 있음"
+    ],
+    "recommendFor": [
+      "둠: 더 다크 에이지스를 최고 사양과 최고의 디스플레이로 경험하고 싶은 궁극의 게이머",
+      "게임뿐만 아니라 최신 AI 기술 기반의 영상 편집, 3D 렌더링 등 고성능 작업이 필수적인 전문가",
+      "예산에 구애받지 않고 현존하는 최고의 게이밍 노트북을 원하는 사용자"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "레노버 2024 LOQ e 15IAX9E 15.6 코어i5 인텔 12세대 지포스 RTX 2050",
+    "summary": "가볍고 실용적인, 올라운드 게이밍 노트북",
+    "keyPoint": "RTX 4050, 144Hz 100% sRGB, 슬림 디자인",
+    "target": "휴대성과 가성비를 동시에 잡고 싶은 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzYa8q",
+    "description": "레노버 LOQ e 15IAX9E는 RTX 4050 그래픽카드를 탑재하고도 100만원대 초반의 합리적인 가격을 자랑하는 가성비 게이밍 노트북입니다. 1.77kg의 가벼운 무게와 슬림한 디자인으로 휴대성까지 겸비하여, 둠: 더 다크 에이지스를 집 밖에서도 즐기고 싶은 분들께 좋은 선택이 될 것입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i5-12450HX (8코어/12스레드, 최대 4.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4050 GDDR6 6GB"
+      },
+      {
+        "label": "RAM",
+        "value": "12GB DDR5-4800 (1슬롯)"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB NVMe M.2 SSD PCIe 4.0"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.6인치 FHD (1920x1080) IPS, 144Hz, 300nit, 100% sRGB"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      },
+      {
+        "label": "무게",
+        "value": "약 1.77kg"
+      }
+    ],
+    "pros": [
+      "i5-12450HX와 RTX 4050 조합으로 100만원대 최고의 가성비",
+      "144Hz 고주사율, 100% sRGB 디스플레이로 게이밍과 작업 모두 적합",
+      "약 1.77kg의 가벼운 무게와 슬림한 디자인으로 뛰어난 휴대성",
+      "프라이버시 셔터 카메라로 보안 강화",
+      "1년 프리미엄케어 + 1년 ADP + 1년 무상보증 서비스 제공",
+      "발열 및 소음 관리가 우수하다는 사용자 평가"
+    ],
+    "cons": [
+      "Free DOS 제품으로 Windows 11을 별도로 설치해야 함",
+      "RAM이 12GB로 다소 적으며, 1슬롯만 제공하여 확장 시 기존 RAM 교체 필요",
+      "키보드 백라이트 미지원",
+      "웹캠 화질이 HD 720p로 다소 아쉬움",
+      "USB-C 포트가 데이터 전송만 지원 (DP/PD 미지원)"
+    ],
+    "recommendFor": [
+      "둠: 더 다크 에이지스를 플레이하면서 휴대성도 중요하게 생각하는 게이머",
+      "합리적인 가격에 준수한 게이밍 성능과 작업 성능을 모두 원하는 사용자",
+      "직접 윈도우를 설치할 수 있거나, 윈도우 포함 옵션을 선택할 예정인 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "LG전자 2025 그램 16 코어Ultra5",
+    "summary": "압도적인 휴대성, 둠은 가볍게, 일상은 스마트하게",
+    "keyPoint": "초경량, DCI-P3 99% 디스플레이, AI 기능",
+    "target": "높은 휴대성 중시 사용자, 캐주얼 게이머, 업무/학업용",
+    "buyUrl": "https://link.coupang.com/a/dAgdVC",
+    "description": "LG 그램 16은 초경량 노트북의 대명사답게 약 1.2kg의 압도적인 휴대성을 자랑합니다. 인텔 Core Ultra 5 프로세서에 내장된 Arc GPU와 AI Boost 엔진 덕분에 둠: 더 다크 에이지스와 같은 게임을 가볍게 즐길 수 있으며, DCI-P3 99% 색재현율의 고품질 디스플레이로 어떤 콘텐츠든 생생하게 감상할 수 있습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 5 (Arc GPU 내장, AI Boost NPU)"
+      },
+      {
+        "label": "GPU",
+        "value": "Intel Arc Graphics (내장)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5X 7467MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "256GB NVMe SSD (듀얼 NVMe SSD 확장 지원)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600), DCI-P3 99%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "약 1.2kg"
+      }
+    ],
+    "pros": [
+      "약 1.2kg의 초경량으로 최고의 휴대성",
+      "DCI-P3 99% 색재현율의 고품질 WQXGA 디스플레이",
+      "AI 전용 엔진(NPU) 탑재로 AI 기능 및 작업 효율성 증대",
+      "LPDDR5X 7467MHz 고속 메모리",
+      "듀얼 NVMe SSD 확장 지원으로 저장 공간 부족 문제 해결 가능",
+      "LG전자 공식 A/S 지원과 다양한 구매 혜택 (사은품, 보조배터리 등)"
+    ],
+    "cons": [
+      "내장 그래픽(Intel Arc Graphics)으로 고사양 게임 플레이는 제한적",
+      "256GB의 기본 저장 용량이 다소 적음",
+      "RAM이 온보드 방식이라 업그레이드가 불가",
+      "둠: 더 다크 에이지 같은 고사양 게임을 최고 옵션으로 즐기기에는 한계"
+    ],
+    "recommendFor": [
+      "둠: 더 다크 에이지를 가끔 가볍게 즐기면서, 주로 업무나 학업용으로 노트북을 사용하는 사용자",
+      "매일 노트북을 휴대해야 하는 직장인이나 학생",
+      "휴대성과 고품질 디스플레이, AI 기능을 최우선으로 고려하는 분"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "둠: 더 다크 에이지스를 플레이하려면 어떤 그래픽카드가 최소 사양인가요?",
+    "a": "둠: 더 다크 에이지스는 아직 출시 전이라 정확한 최소 사양이 공개되지는 않았습니다. 하지만 게임의 특징과 이전 시리즈를 고려할 때, 쾌적한 플레이를 위해서는 최소 RTX 3050 이상, 권장 사양으로는 RTX 4050 또는 그 이상의 그래픽카드를 사용하는 것이 좋습니다. 오늘 소개해 드린 RTX 4050 이상의 제품들은 충분히 만족스러운 경험을 제공할 것입니다."
+  },
+  {
+    "q": "게이밍 노트북은 발열과 소음 문제가 심하다고 들었습니다. 괜찮을까요?",
+    "a": "고성능 게이밍 노트북은 게임 플레이 시 발열과 팬 소음이 발생할 수 있습니다. 하지만 최근 출시되는 제품들은 효율적인 쿨링 시스템을 탑재하여 과거보다 훨씬 개선된 모습을 보입니다. 특히 델 G16이나 레노버 리전 프로5와 같은 제품들은 고급 냉각 솔루션을 적용하여 발열 관리에 신경을 썼습니다. 터보 모드 사용 시 소음이 커질 수 있지만, 대부분의 경우 게임 몰입에 방해가 될 정도는 아닐 것입니다."
+  },
+  {
+    "q": "Free DOS 노트북은 윈도우 설치가 어렵지 않나요?",
+    "a": "Free DOS 제품은 운영체제가 설치되어 있지 않아 구매 후 사용자가 직접 Windows를 설치해야 합니다. USB를 이용한 설치 방식이 일반적이며, 인터넷에서 관련 가이드를 쉽게 찾아볼 수 있습니다. 만약 직접 설치하는 것이 부담스럽다면, 윈도우가 기본 탑재된 모델을 선택하거나, 윈도우 설치 서비스를 제공하는 판매처를 이용하는 것을 추천합니다."
+  },
+  {
+    "q": "노트북 RAM 용량은 어느 정도가 적당한가요?",
+    "a": "둠: 더 다크 에이지스 같은 최신 게임을 포함하여 대부분의 게이밍 및 일반 작업 환경에서는 16GB RAM이 기본적으로 권장됩니다. 만약 고사양 게임과 함께 영상 편집, 3D 모델링, 다수의 프로그램 동시 실행 등 전문적인 작업을 주로 하신다면 32GB 또는 64GB RAM을 고려하는 것이 좋습니다. 오늘 소개해 드린 제품 중에는 64GB RAM을 제공하는 레노버 리전 프로5도 있습니다."
+  },
+  {
+    "q": "OLED 디스플레이는 번인 현상이 걱정되는데 괜찮을까요?",
+    "a": "OLED 디스플레이는 뛰어난 색감과 명암비로 최상의 시각 경험을 제공하지만, 장시간 정적인 화면을 표시할 경우 번인(잔상) 현상이 발생할 가능성이 있습니다. 하지만 최근 OLED 기술은 많이 발전하여 일상적인 사용으로는 큰 문제가 되지 않습니다. 레노버 리전 프로5와 같은 OLED 노트북을 사용하실 때는 화면 보호기 사용, 작업 표시줄 자동 숨김, 장시간 같은 화면 표시 피하기 등의 관리 습관을 들이시는 것이 좋습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "CPU",
+    "기가바이트_a16": "i5-13420H",
+    "델_g16_dg7630": "i7-13650HX",
+    "레노버_리전_프로5": "Ultra 9 275HX",
+    "레노버_loq_e_15iax9e": "i5-12450HX",
+    "lg_그램_16": "Ultra 5"
+  },
+  {
+    "name": "GPU",
+    "기가바이트_a16": "RTX 4050",
+    "델_g16_dg7630": "RTX 4060",
+    "레노버_리전_프로5": "RTX 5070 Ti",
+    "레노버_loq_e_15iax9e": "RTX 4050",
+    "lg_그램_16": "Intel Arc"
+  },
+  {
+    "name": "RAM",
+    "기가바이트_a16": "16GB DDR5",
+    "델_g16_dg7630": "16GB DDR5",
+    "레노버_리전_프로5": "64GB DDR5",
+    "레노버_loq_e_15iax9e": "12GB DDR5",
+    "lg_그램_16": "16GB LPDDR5X"
+  },
+  {
+    "name": "저장장치",
+    "기가바이트_a16": "512GB SSD",
+    "델_g16_dg7630": "1TB SSD",
+    "레노버_리전_프로5": "1TB SSD",
+    "레노버_loq_e_15iax9e": "512GB SSD",
+    "lg_그램_16": "256GB SSD"
+  },
+  {
+    "name": "디스플레이",
+    "기가바이트_a16": "16\" WUXGA 165Hz IPS",
+    "델_g16_dg7630": "16\" QHD+ 240Hz DCI-P3 G-SYNC",
+    "레노버_리전_프로5": "16\" 2.5K OLED 240Hz HDR1000",
+    "레노버_loq_e_15iax9e": "15.6\" FHD 144Hz 100% sRGB IPS",
+    "lg_그램_16": "16\" WQXGA DCI-P3 99%"
+  },
+  {
+    "name": "운영체제",
+    "기가바이트_a16": "Windows 11 Home",
+    "델_g16_dg7630": "Windows 11 Home",
+    "레노버_리전_프로5": "Windows 11 Home",
+    "레노버_loq_e_15iax9e": "Free DOS",
+    "lg_그램_16": "Windows 11 Home"
+  },
+  {
+    "name": "무게",
+    "기가바이트_a16": "2.2kg",
+    "델_g16_dg7630": "2.52kg",
+    "레노버_리전_프로5": "미제공 (게이밍 노트북 평균)",
+    "레노버_loq_e_15iax9e": "1.77kg",
+    "lg_그램_16": "1.2kg"
+  },
+  {
+    "name": "휴대성",
+    "기가바이트_a16": "보통",
+    "델_g16_dg7630": "낮음",
+    "레노버_리전_프로5": "보통",
+    "레노버_loq_e_15iax9e": "좋음",
+    "lg_그램_16": "최상"
+  },
+  {
+    "name": "가성비",
+    "기가바이트_a16": "최상",
+    "델_g16_dg7630": "좋음",
+    "레노버_리전_프로5": "보통",
+    "레노버_loq_e_15iax9e": "좋음",
+    "lg_그램_16": "보통"
+  },
+  {
+    "name": "게임 성능",
+    "기가바이트_a16": "중상",
+    "델_g16_dg7630": "상",
+    "레노버_리전_프로5": "최상",
+    "레노버_loq_e_15iax9e": "중상",
+    "lg_그램_16": "하 (캐주얼)"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "기가바이트_a16",
+    "label": "기가바이트 A16"
+  },
+  {
+    "key": "델_g16_dg7630",
+    "label": "델 G16 DG7630"
+  },
+  {
+    "key": "레노버_리전_프로5",
+    "label": "레노버 리전 프로5"
+  },
+  {
+    "key": "레노버_loq_e_15iax9e",
+    "label": "레노버 LOQ e 15IAX9E"
+  },
+  {
+    "key": "lg_그램_16",
+    "label": "LG 그램 16"
+  }
+];
+---
+
+<BaseLayout
+  title="2026 둠: 더 다크 에이지 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026 둠: 더 다크 에이지를 위한 최고의 게이밍 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>2026 둠: 더 다크 에이지 노트북 추천 Top5</h1>
+        <p class="intro-text">안녕하세요. 오늘은 2026 둠: 더 다크 에이지를 위한 최고의 게이밍 노트북 추천에 대해 말씀드릴게요.</p>
+      </header>
+
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint}</td>
+                  <td>{p.summary}</td>
+                  <td>{p.target}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section topic-intro">
+        <h2>소개</h2>
+        
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            <p class="product-desc">{product.description}</p>
+            <div class="product-content">
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              <div class="product-details">
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026 둠: 더 다크 에이지를 위한 게이밍 노트북 Top5에 대해 말씀드렸습니다. 둠의 박진감 넘치는 전투와 압도적인 비주얼을 온전히 경험하기 위해서는 강력한 성능의 노트북이 필수적이죠. 오늘 소개해 드린 제품들은 각기 다른 장점과 특징을 가지고 있으니, 여러분의 예산, 사용 목적, 그리고 중요하게 생각하는 가치에 따라 현명한 선택을 하시길 바랍니다. 최상의 퍼포먼스를 원한다면 레노버 리전 프로5를, 합리적인 가격에 준수한 성능을 원한다면 기가바이트 게이밍 A16이나 레노버 LOQ e 15IAX9E를, 휴대성과 다용도 활용을 중시한다면 델 G16 또는 LG 그램 16을 고려해 보세요. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
