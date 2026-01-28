@@ -1,0 +1,547 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "에이수스 2025 TUF 게이밍 A14 라이젠7 지포스 RTX 4050 퍼포먼스",
+    "summary": "휴대성과 성능을 모두 잡은 14인치 게이밍 노트북의 새로운 기준",
+    "keyPoint": "1.46kg 초경량 게이밍, RTX 5050, 2.5K 165Hz 디스플레이",
+    "target": "이동이 잦고, 컴팩트한 사이즈에서 게이밍과 크리에이티브 작업을 원하는 분",
+    "buyUrl": "https://link.coupang.com/a/dzXVdt",
+    "description": "에이수스 TUF 게이밍 A14는 TUF 시리즈 중에서도 휴대성을 극대화한 14인치 모델입니다. 1.46kg의 초경량 무게와 콤팩트한 사이즈로 언제 어디서든 강력한 게이밍 성능을 경험하고 싶은 분들에게 안성맞춤입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 260 (Zen 4, 8코어 16스레드, 최대 5.1GHz, 16TOPS NPU)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5050 (Blackwell, 8GB GDDR7, 최대 105W TGP)"
+      },
+      {
+        "label": "RAM",
+        "value": "LPDDR5X 16GB (7500MHz, 온보드)"
+      },
+      {
+        "label": "SSD",
+        "value": "512GB PCIe 4.0 NVMe M.2 (M.2 슬롯 2개, 최대 2TB 확장)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "14인치 WQXGA+ (2560x1400), IPS-level, 165Hz, 400nits, 100% sRGB, G-SYNC"
+      },
+      {
+        "label": "무게",
+        "value": "1.46kg"
+      },
+      {
+        "label": "배터리",
+        "value": "73Wh (30분 50% 고속충전)"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": [
+      "  이동이 잦아 가벼운 게이밍 노트북을 찾는 분",
+      "  작지만 강력한 성능으로 게임과 일상 작업을 모두 처리하고 싶은 분",
+      "  합리적인 가격에 최신 기술이 적용된 노트북을 원하는 분"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "레노버 2025 LOQ 15IRX10 15.6 코어i7 인텔 13세대 지포스 RTX 4050",
+    "summary": "최신 GPU와 선명한 화면으로 게임과 작업 모두 만족시키는 가성비 게이밍",
+    "keyPoint": "RTX 5060, 100% sRGB 디스플레이, 뛰어난 가성비",
+    "target": "예산 효율을 중시하며, 게임과 기본적인 영상 편집을 함께 즐기려는 분",
+    "buyUrl": "https://link.coupang.com/a/dzYnDs",
+    "description": "레노버 LOQ 15IRX10은 최신 RTX 5060 그래픽 카드와 인텔 13세대 코어 i7 프로세서를 탑재하여 강력한 성능을 제공하는 가성비 게이밍 노트북입니다. 15.6인치 100% sRGB 디스플레이는 게임뿐만 아니라 콘텐츠 감상 및 제작에도 적합합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-13650HX (14코어 20스레드, 최대 4.9GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 (8GB GDDR7, 100W TGP)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5-4800MHz (SO-DIMM 2슬롯)"
+      },
+      {
+        "label": "SSD",
+        "value": "512GB NVMe PCIe 4.0 SSD (M.2 SSD 슬롯 추가 가능)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.6인치 FHD (1920x1080), IPS, 144Hz, 300nits, 100% sRGB, G-Sync"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.4kg"
+      },
+      {
+        "label": "배터리",
+        "value": "60Wh"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": [
+      "  최신 게임을 즐기면서도 예산에 민감한 게이머",
+      "  게임과 함께 영상 편집 등 색 정확도가 필요한 작업을 하는 분",
+      "  안정적인 AS와 편의 기능을 중시하는 분"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "MSI 소드 GF76 HX B14WGK-i9 i9-14900HX RTX5070 WIN11 설치",
+    "summary": "데스크톱급 성능과 대용량 저장 공간으로 모든 작업에 최적화된 궁극의 괴물",
+    "keyPoint": "i9-14900HX, RTX 5070, 64GB RAM, 4TB SSD (CTO)",
+    "target": "최고 사양의 게임과 전문적인 영상 편집, 3D 렌더링을 위한 전문가 및 하드코어 게이머",
+    "buyUrl": "https://link.coupang.com/a/dAfQcO",
+    "description": "MSI 소드 GF76 HX는 인텔 i9-14900HX 프로세서와 RTX 5070 GPU의 최강 조합으로 데스크톱급 성능을 자랑하는 괴물 같은 노트북입니다. CTO 맞춤형 제품으로 64GB RAM과 4TB SSD까지 업그레이드 가능하여, 최고 사양의 게임과 전문적인 작업까지 완벽하게 소화할 수 있습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i9-14900HX (14세대 Raptor Lake HX, 24코어 32스레드, 최대 5.8GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 Laptop GPU (8GB GDDR7, 115W TGP, 798 AI TOPS)"
+      },
+      {
+        "label": "RAM",
+        "value": "DDR5 64GB (업그레이드 옵션, 최대 96GB)"
+      },
+      {
+        "label": "SSD",
+        "value": "4TB NVMe M.2 SSD (업그레이드 옵션)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "17.3인치 QHD (2560x1440), IPS 타입, 240Hz, 100% DCI-P3, 300nits"
+      },
+      {
+        "label": "무게",
+        "value": "2.7kg"
+      },
+      {
+        "label": "배터리",
+        "value": "75Whr"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Pro (CTO 설치)"
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": [
+      "  타협 없는 최고의 게이밍 성능과 작업 효율을 추구하는 하드코어 게이머 및 전문가",
+      "  대용량 메모리와 저장 공간이 필수적인 영상 편집, 3D 렌더링 작업자",
+      "  데스크톱 대용으로 사용할 고성능 노트북을 찾는 분"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "기가바이트 2025 에어로 X16 라이젠7 AI 라이젠 AI 300 시리즈",
+    "summary": "AI 시대의 크리에이터와 게이머를 위한 강력한 휴대용 워크스테이션",
+    "keyPoint": "1.9kg 경량, RTX 5070, 50 TOPS NPU, Pantone 인증 디스플레이",
+    "target": "휴대성을 중요하게 생각하며, AI 기능과 크리에이티브 작업을 병행하는 분",
+    "buyUrl": "https://link.coupang.com/a/dzX5HT",
+    "description": "기가바이트 에어로 X16은 1.9kg의 가벼운 무게에 AMD Ryzen AI 7 350 프로세서와 RTX 5070 GPU를 탑재하여 휴대성과 강력한 AI 성능을 겸비한 크리에이터 노트북입니다. 50 TOPS의 NPU 성능과 Pantone 인증 디스플레이는 AI 작업과 콘텐츠 제작에 최적화된 환경을 제공합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen AI 7 350 (8코어, 최대 5GHz, 50 TOPS NPU, Copilot+ PC 지원)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 (8GB GDDR7, DLSS 4, 798 AI TOPS)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5"
+      },
+      {
+        "label": "SSD",
+        "value": "1TB NVMe Gen4 SSD (2슬롯)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600), 165Hz, 3ms, sRGB 100%, Pantone 인증"
+      },
+      {
+        "label": "무게",
+        "value": "1.9kg"
+      },
+      {
+        "label": "배터리",
+        "value": "최대 12시간 사용 (30분 50% 고속충전)"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": [
+      "  휴대성과 강력한 성능, 그리고 AI 기능을 모두 원하는 크리에이터",
+      "  게임과 함께 영상 편집, 3D 렌더링 등 전문적인 작업을 하는 분",
+      "  선명하고 정확한 색감의 디스플레이를 중요하게 생각하는 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "HP 2025 오멘 16 라이젠9 라이숌 8000 시리즈 지포스 RTX 4070",
+    "summary": "압도적인 퍼포먼스와 몰입감 넘치는 디스플레이로 게임의 한계를 넘어서다",
+    "keyPoint": "Ryzen 9 8940HX, RTX 5060, 240Hz WQXGA 디스플레이, Windows 11",
+    "target": "고성능 CPU와 고주사율 디스플레이로 최상급 게이밍 경험을 원하는 분",
+    "buyUrl": "https://link.coupang.com/a/dzYjQ1",
+    "description": "HP 2025 오멘 16은 AMD Ryzen 9 8940HX 프로세서와 NVIDIA GeForce RTX 5060 GPU를 탑재하여 최고의 게이밍 경험을 선사합니다. 240Hz 주사율의 WQXGA 디스플레이와 OMEN TEMPEST COOLING 시스템은 고사양 게임을 끊김 없이, 시원하게 즐길 수 있도록 돕습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 8940HX (16코어 32스레드, 최대 5.3GHz, TDP 75W)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 (Blackwell)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB (16GB x 1)"
+      },
+      {
+        "label": "SSD",
+        "value": "NVMe Gen4 SSD 1TB"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600), IPS VRR, 240Hz, 500nits, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": [
+      "  최고의 CPU 성능과 고주사율 디스플레이로 게임의 한계를 경험하고 싶은 분",
+      "  Windows가 기본 탑재된 고성능 게이밍 노트북을 찾는 분",
+      "  안정적인 AS와 추가 보증 서비스를 중요하게 생각하는 분"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "RTX 5050으로도 '클레르 옵스퀴르 33 익스페디션'을 플레이할 수 있을까요?",
+    "a": "네, RTX 5050은 중급형 GPU로, 게임의 최적화 수준에 따라 중간~높음 옵션으로 충분히 플레이 가능할 것으로 예상됩니다. DLSS 4와 같은 AI 업스케일링 기술을 활용하면 더욱 부드러운 프레임을 확보할 수 있습니다."
+  },
+  {
+    "q": "Free DOS 제품은 윈도우 설치가 어렵나요?",
+    "a": "컴퓨터를 잘 다루지 못하는 분들에게는 다소 어려울 수 있지만, 온라인에 많은 설치 가이드가 있습니다. USB에 윈도우 설치 파일을 담아 직접 설치하거나, 주변의 도움을 받거나, 초기 설치 서비스를 제공하는 판매처를 이용하는 방법도 있습니다."
+  },
+  {
+    "q": "노트북 무게가 게임 성능에 영향을 주나요?",
+    "a": "직접적인 성능 영향은 없지만, 무거운 노트북은 강력한 쿨링 시스템을 탑재하여 고성능을 더 안정적으로 유지하는 경향이 있습니다. 반대로 가벼운 노트북은 휴대성이 좋지만, 쿨링 성능이 상대적으로 제한될 수 있습니다."
+  },
+  {
+    "q": "RAM 용량이 16GB면 충분한가요?",
+    "a": "'클레르 옵스퀴르: 익스페디션 33'과 같은 고사양 게임을 플레이하는 데 16GB RAM은 기본적인 요구 사항을 충족합니다. 하지만 게임 외에 영상 편집, 3D 모델링 등 전문적인 작업을 병행한다면 32GB 이상을 고려하는 것이 좋습니다."
+  },
+  {
+    "q": "쿠팡 안심케어는 어떤 장점이 있나요?",
+    "a": "쿠팡 안심케어는 제조사 보증 기간 이후에도 추가 보증을 제공하며, 우발적인 파손(액정 파손, 침수 등)에 대한 수리비를 보장해 주는 경우가 많습니다. 고가의 노트북을 오래 사용하고 싶다면 고려해 볼 만한 서비스입니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "에이수스 TUF 게이밍 A14",
+    "cpu": "AMD Ryzen 7 260",
+    "gpu": "RTX 5050 (105W)",
+    "ram": "16GB LPDDR5X",
+    "ssd": "512GB (슬롯 2개)",
+    "디스플레이": "14인치 WQXGA+ 165Hz",
+    "무게": "1.46kg"
+  },
+  {
+    "name": "레노버 LOQ 15IRX10",
+    "cpu": "Intel Core i7-13650HX",
+    "gpu": "RTX 5060 (100W)",
+    "ram": "16GB DDR5",
+    "ssd": "512GB (슬롯 추가)",
+    "디스플레이": "15.6인치 FHD 144Hz",
+    "무게": "2.4kg"
+  },
+  {
+    "name": "MSI 소드 GF76 HX",
+    "cpu": "Intel Core i9-14900HX",
+    "gpu": "RTX 5070 (115W)",
+    "ram": "64GB DDR5 (최대 96GB)",
+    "ssd": "4TB NVMe (CTO)",
+    "디스플레이": "17.3인치 QHD 240Hz",
+    "무게": "2.7kg"
+  },
+  {
+    "name": "기가바이트 에어로 X16",
+    "cpu": "AMD Ryzen AI 7 350",
+    "gpu": "RTX 5070",
+    "ram": "32GB DDR5",
+    "ssd": "1TB NVMe (슬롯 2개)",
+    "디스플레이": "16인치 WQXGA 165Hz",
+    "무게": "1.9kg"
+  },
+  {
+    "name": "HP 오멘 16",
+    "cpu": "AMD Ryzen 9 8940HX",
+    "gpu": "RTX 5060",
+    "ram": "16GB (16GB x 1)",
+    "ssd": "1TB NVMe",
+    "디스플레이": "16인치 WQXGA 240Hz",
+    "무게": "정보 미표기"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "ssd",
+    "label": "SSD"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  }
+];
+---
+
+<BaseLayout
+  title="2026 클레르 옵스퀴르 33 익스페디션  노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026년 기대작 '클레르 옵스퀴르 33 익스페디션' 게임을 완벽하게 즐기기 위한 최적의 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>2026 클레르 옵스퀴르 33 익스페디션  노트북 추천 Top5</h1>
+        <p class="intro-text">안녕하세요. 오늘은 2026년 기대작 '클레르 옵스퀴르 33 익스페디션' 게임을 완벽하게 즐기기 위한 최적의 노트북 추천에 대해 말씀드릴게요.</p>
+      </header>
+
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint}</td>
+                  <td>{p.summary}</td>
+                  <td>{p.target}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section topic-intro">
+        <h2>소개</h2>
+        
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            <p class="product-desc">{product.description}</p>
+            <div class="product-content">
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              <div class="product-details">
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 '2026 클레르 옵스퀴르 33 익스페디션' 게임에 최적화된 노트북 추천에 대해 말씀드렸습니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다. 여러분의 게임 경험이 더욱 풍부해지기를 바라며, 즐거운 게이밍 라이프를 응원합니다!</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
