@@ -2,8 +2,10 @@ name: Sync Notion to Reviews
 
 on:
   schedule:
+    - cron: '0 1 * * *'  # 매일 오전 10시 (KST)
     - cron: '0 4 * * *'  # 매일 오후 1시 (KST)
     - cron: '0 9 * * *'  # 매일 오후 6시 (KST)
+    - cron: '0 11 * * *' # 매일 저녁 8시 (KST)
   workflow_dispatch:
   repository_dispatch:
     types: [notion-webhook]

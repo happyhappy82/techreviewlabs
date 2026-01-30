@@ -21,14 +21,17 @@ const RICH_PAGES_JSON = path.join(process.cwd(), 'src/data/rich-pages.json');
 const POSITIVE_KEYWORDS = [
   '좋', '뛰어나', '우수', '빠른', '빠르', '강력', '훌륭', '최고', '최상',
   '높은', '넓은', '가벼', '편리', '쉬운', '부드러', '선명', '깔끔',
-  '저렴', '가성비', '효율', '안정', '조용', '쿨링', '오래', '내구'
+  '저렴', '가성비', '효율', '안정', '조용', '쿨링', '오래', '내구',
+  '견고', '튼튼', '정확', '밝은', '세련', '프리미엄', '고급', '쾌적',
+  '풍부', '지원', '탑재', '만족', '충분', '넉넉', '탁월', '우월'
 ];
 
 // 부정적 키워드 (단점 판별)
 const NEGATIVE_KEYWORDS = [
   '아쉬', '부족', '느린', '느리', '비싼', '비싸', '무거', '불편',
   '어려', '시끄러', '발열', '뜨거', '약한', '좁은', '낮은', '짧은',
-  '제한', '단점', '아쉬움', '불안정'
+  '제한', '단점', '아쉬움', '불안정', '번거로', '부담', '소음',
+  '한계', '미흡', '없는', '없음', '못하', '못한', '필요', '별도'
 ];
 
 // 스펙 키워드
@@ -245,15 +248,41 @@ async function parseNotionContent(pageId) {
   let tableCount = 0;
   let currentSection = 'intro';
   let currentProduct = null;
-  let pendingBullets = []; // 섹션 헤더 없이 온 불릿들
+  let productSubSection = null; // 제품 내 하위 섹션: 'specs' | 'pros' | 'cons' | 'recommend' | null
 
   for (let i = 0; i < blocks.results.length; i++) {
     const block = blocks.results[i];
     const type = block.type;
 
-    // ===== h2: 섹션 시작 =====
+    // ===== h2: 섹션 시작 또는 제품 (번호 패턴이면 제품으로 처리) =====
     if (type === 'heading_2') {
       const text = richTextToPlain(block.heading_2.rich_text);
+
+      // "1. 제품명" 패턴이면 h3처럼 제품으로 처리
+      const numberedMatch = text.match(/^(\d+)\.\s*(.+)/);
+      if (numberedMatch) {
+        const productName = numberedMatch[2].trim();
+        const productId = parseInt(numberedMatch[1]);
+
+        currentSection = 'products';
+        currentProduct = {
+          id: productId,
+          name: productName,
+          summary: '',
+          keyPoint: '',
+          target: '',
+          buyUrl: '',
+          description: '',
+          specs: [],
+          pros: [],
+          cons: [],
+          recommendFor: []
+        };
+        result.products.push(currentProduct);
+        productSubSection = null;
+        continue;
+      }
+
       const sectionType = inferSectionType(text);
 
       // topic 섹션이고 아직 topicTitle이 없으면 설정
@@ -263,13 +292,18 @@ async function parseNotionContent(pageId) {
 
       currentSection = sectionType;
       currentProduct = null;
-      pendingBullets = [];
+      productSubSection = null;
       continue;
     }
 
     // ===== h3: 제품 리뷰 시작 (숫자. 제품명 or 그냥 제품명) =====
     if (type === 'heading_3') {
       const text = richTextToPlain(block.heading_3.rich_text);
+
+      // FAQ/마무리 섹션 내 h3는 제품으로 처리하지 않음
+      if (currentSection === 'faq' || currentSection === 'closing') {
+        continue;
+      }
 
       // "1. 제품명" 또는 "제품명" 패턴
       const numberedMatch = text.match(/^(\d+)\.\s*(.+)/);
@@ -291,7 +325,7 @@ async function parseNotionContent(pageId) {
         recommendFor: []
       };
       result.products.push(currentProduct);
-      pendingBullets = [];
+      productSubSection = null;
       continue;
     }
 
@@ -316,10 +350,13 @@ async function parseNotionContent(pageId) {
       continue;
     }
 
-    // ===== 문단 =====
-    if (type === 'paragraph') {
-      const text = richTextToPlain(block.paragraph.rich_text);
-      const url = extractUrl(block.paragraph.rich_text);
+    // ===== 문단 / 인용 / 콜아웃 통합 처리 =====
+    if (type === 'paragraph' || type === 'quote' || type === 'callout') {
+      const richText = type === 'paragraph' ? block.paragraph.rich_text
+        : type === 'quote' ? block.quote.rich_text
+        : block.callout.rich_text;
+      const text = richTextToPlain(richText);
+      const url = extractUrl(richText);
 
       if (!text.trim()) continue;
 
@@ -343,14 +380,44 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
+      // 제품 섹션 내 bold 라벨 감지 (장점:, 단점:, 주요 스펙:, 추천 대상:)
+      if (currentSection === 'products' && currentProduct) {
+        const stripped = text.replace(/[\*\s]/g, '').replace(/:$/, '');
+        if (stripped.length <= 10) {
+          if (stripped.includes('스펙') || stripped.includes('사양')) {
+            productSubSection = 'specs';
+            continue;
+          }
+          if (stripped.includes('장점')) {
+            productSubSection = 'pros';
+            continue;
+          }
+          if (stripped.includes('단점')) {
+            productSubSection = 'cons';
+            continue;
+          }
+          if (stripped.includes('추천') || stripped.includes('타겟') || stripped.includes('대상')) {
+            productSubSection = 'recommend';
+            continue;
+          }
+        }
+      }
+
       // 섹션별 문단 처리
       if (currentSection === 'intro') {
         result.intro += text + '\n';
       } else if (currentSection === 'topic') {
         result.topicExplanation += text + '\n';
       } else if (currentSection === 'products' && currentProduct) {
-        // "이런 분께 추천합니다:" 패턴 감지 (다양한 변형 대응)
-        if (text.includes('이런') && text.includes('추천')) {
+        // 현재 하위 섹션에 따라 라우팅
+        if (productSubSection === 'recommend') {
+          currentProduct.recommendFor.push(text);
+        } else if (productSubSection === 'pros') {
+          currentProduct.pros.push(text);
+        } else if (productSubSection === 'cons') {
+          currentProduct.cons.push(text);
+        } else if (text.includes('이런') && text.includes('추천')) {
+          // "이런 분께 추천합니다:" 패턴 감지
           const colonIdx = text.indexOf(':');
           const recommendText = colonIdx > 0 ? text.substring(colonIdx + 1).trim() : text.replace(/.*추천합니다\.?\s*/, '').trim();
           if (recommendText) {
@@ -380,49 +447,67 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
-      // 섹션 헤더 키워드 (중첩 불릿의 부모)
-      const trimmedText = text.trim();
-      const isSpecHeader = trimmedText.includes('스펙') || trimmedText.includes('사양') || trimmedText.includes('주요');
-      // 짧은 텍스트(5자 이하)에서 "장점"/"단점" 포함 = 헤더
-      const isProsHeader = (trimmedText.length <= 5 && trimmedText.includes('장점')) || trimmedText.includes('👍');
-      const isConsHeader = (trimmedText.length <= 5 && trimmedText.includes('단점')) || trimmedText.includes('👎');
-      const isRecommendHeader = trimmedText.includes('추천') || trimmedText.includes('이런 분');
-
-      // 중첩 불릿 처리
-      if (block.has_children && currentProduct) {
-        const children = await notion.blocks.children.list({ block_id: block.id });
-
-        for (const child of children.results) {
-          if (child.type === 'bulleted_list_item') {
-            const childText = richTextToPlain(child.bulleted_list_item.rich_text);
-            if (!childText.trim()) continue;
-
-            if (isSpecHeader) {
-              // 스펙: key: value 형태
-              const colonIdx = childText.indexOf(':');
-              if (colonIdx > 0) {
-                currentProduct.specs.push({
-                  label: childText.substring(0, colonIdx).trim(),
-                  value: childText.substring(colonIdx + 1).trim()
-                });
-              }
-            } else if (isProsHeader) {
-              currentProduct.pros.push(childText);
-            } else if (isConsHeader) {
-              currentProduct.cons.push(childText);
-            } else if (isRecommendHeader) {
-              currentProduct.recommendFor.push(childText);
-            } else {
-              // 헤더가 명확하지 않으면 스마트 분류
-              classifyBulletItem(childText, currentProduct);
-            }
-          }
+      // FAQ 섹션은 별도 처리 (제품 분류보다 우선)
+      if (currentSection === 'faq') {
+        if (text.includes('?') || text.startsWith('Q')) {
+          result.faqs.push({ q: text.replace(/^Q[:.]\s*/, ''), a: '' });
+        } else if ((text.startsWith('A') || text.startsWith('-')) && result.faqs.length > 0) {
+          result.faqs[result.faqs.length - 1].a += text.replace(/^A[:.]\s*/, '') + ' ';
         }
         continue;
       }
 
-      // 플랫 불릿 (헤더만 있는 경우 건너뛰기)
+      // 섹션 헤더 키워드 (중첩 불릿의 부모)
+      const trimmedText = text.trim();
+      const isSpecHeader = trimmedText.includes('스펙') || trimmedText.includes('사양') || trimmedText.includes('주요');
+      // 짧은 텍스트(8자 이하)에서 "장점"/"단점" 포함 = 헤더
+      const isProsHeader = (trimmedText.length <= 8 && trimmedText.includes('장점')) || trimmedText.includes('👍');
+      const isConsHeader = (trimmedText.length <= 8 && trimmedText.includes('단점')) || trimmedText.includes('👎');
+      const isRecommendHeader = trimmedText.includes('추천') || trimmedText.includes('이런 분');
+
+      // 중첩 불릿 처리
+      if (block.has_children && currentProduct) {
+        try {
+          const children = await notion.blocks.children.list({ block_id: block.id });
+
+          for (const child of children.results) {
+            if (child.type === 'bulleted_list_item') {
+              const childText = richTextToPlain(child.bulleted_list_item.rich_text);
+              if (!childText.trim()) continue;
+
+              if (isSpecHeader) {
+                // 스펙: key: value 형태
+                const colonIdx = childText.indexOf(':');
+                if (colonIdx > 0) {
+                  currentProduct.specs.push({
+                    label: childText.substring(0, colonIdx).trim(),
+                    value: childText.substring(colonIdx + 1).trim()
+                  });
+                }
+              } else if (isProsHeader) {
+                currentProduct.pros.push(childText);
+              } else if (isConsHeader) {
+                currentProduct.cons.push(childText);
+              } else if (isRecommendHeader) {
+                currentProduct.recommendFor.push(childText);
+              } else {
+                // 헤더가 명확하지 않으면 스마트 분류
+                classifyBulletItem(childText, currentProduct);
+              }
+            }
+          }
+        } catch (err) {
+          console.warn(`   ⚠️  Failed to fetch children for block ${block.id}:`, err.message);
+        }
+        continue;
+      }
+
+      // 플랫 불릿 헤더 → productSubSection 설정 후 건너뛰기
       if (isSpecHeader || isProsHeader || isConsHeader || isRecommendHeader) {
+        if (isSpecHeader) productSubSection = 'specs';
+        else if (isProsHeader) productSubSection = 'pros';
+        else if (isConsHeader) productSubSection = 'cons';
+        else if (isRecommendHeader) productSubSection = 'recommend';
         continue;
       }
 
@@ -438,17 +523,26 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
-      // 제품 컨텍스트에서 스마트 분류
+      // 제품 컨텍스트에서 하위 섹션 기반 분류 (productSubSection 우선)
       if (currentProduct) {
-        classifyBulletItem(text, currentProduct);
-      }
-
-      // FAQ 섹션
-      if (currentSection === 'faq') {
-        if (text.includes('?') || text.startsWith('Q')) {
-          result.faqs.push({ q: text.replace(/^Q[:.]\s*/, ''), a: '' });
-        } else if ((text.startsWith('A') || text.startsWith('-')) && result.faqs.length > 0) {
-          result.faqs[result.faqs.length - 1].a += text.replace(/^A[:.]\s*/, '') + ' ';
+        if (productSubSection === 'specs') {
+          const colonIdx = text.indexOf(':');
+          if (colonIdx > 0) {
+            currentProduct.specs.push({
+              label: text.substring(0, colonIdx).trim(),
+              value: text.substring(colonIdx + 1).trim()
+            });
+          } else {
+            classifyBulletItem(text, currentProduct);
+          }
+        } else if (productSubSection === 'pros') {
+          currentProduct.pros.push(text);
+        } else if (productSubSection === 'cons') {
+          currentProduct.cons.push(text);
+        } else if (productSubSection === 'recommend') {
+          currentProduct.recommendFor.push(text);
+        } else {
+          classifyBulletItem(text, currentProduct);
         }
       }
       continue;
@@ -462,13 +556,21 @@ async function parseNotionContent(pageId) {
       if (toggleTitle.includes('?') || currentSection === 'faq') {
         let answer = '';
         if (block.has_children) {
-          const children = await notion.blocks.children.list({ block_id: block.id });
-          for (const child of children.results) {
-            if (child.type === 'paragraph') {
-              answer += richTextToPlain(child.paragraph.rich_text) + ' ';
-            } else if (child.type === 'bulleted_list_item') {
-              answer += '• ' + richTextToPlain(child.bulleted_list_item.rich_text) + ' ';
+          try {
+            const children = await notion.blocks.children.list({ block_id: block.id });
+            for (const child of children.results) {
+              if (child.type === 'paragraph') {
+                answer += richTextToPlain(child.paragraph.rich_text) + ' ';
+              } else if (child.type === 'bulleted_list_item') {
+                answer += '• ' + richTextToPlain(child.bulleted_list_item.rich_text) + ' ';
+              } else if (child.type === 'numbered_list_item') {
+                answer += richTextToPlain(child.numbered_list_item.rich_text) + ' ';
+              } else if (child.type === 'quote') {
+                answer += richTextToPlain(child.quote.rich_text) + ' ';
+              }
             }
+          } catch (err) {
+            console.warn(`   ⚠️  Failed to fetch toggle children for block ${block.id}:`, err.message);
           }
         }
 
@@ -682,6 +784,7 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
         <p class="intro-text">${introText}</p>
       </header>
 
+      {products.length > 0 && (
       <section class="section summary-section">
         <h2>핵심만 콕!</h2>
         <div class="table-wrapper">
@@ -698,15 +801,16 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
               {products.map(p => (
                 <tr>
                   <td class="product-name-cell">{p.name}</td>
-                  <td>{p.keyPoint}</td>
-                  <td>{p.summary}</td>
-                  <td>{p.target}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </section>
+      )}
 
       <section class="section topic-intro">
         <h2>${topicTitle}</h2>
@@ -716,6 +820,7 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
         </div>
       </section>
 
+      {products.length > 0 && (
       <section class="section">
         <h2>상세 리뷰</h2>
         {products.map((product, index) => (
@@ -724,8 +829,9 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
               <span class="rank-num">{index + 1}.</span>
               {product.name}
             </h3>
-            <p class="product-desc">{product.description}</p>
+            {product.description && <p class="product-desc">{product.description}</p>}
             <div class="product-content">
+              {product.buyUrl && (
               <div class="product-cta">
                 <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
                   <span class="coupang-icon">
@@ -738,7 +844,9 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
                   <span class="arrow">→</span>
                 </a>
               </div>
+              )}
               <div class="product-details">
+                {product.specs.length > 0 && (
                 <div class="spec-block">
                   <h4>주요 스펙</h4>
                   <ul class="spec-list">
@@ -747,18 +855,23 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
                     ))}
                   </ul>
                 </div>
+                )}
+                {product.pros.length > 0 && (
                 <div class="pros-block">
                   <h4>장점</h4>
                   <ul>
                     {product.pros.map(pro => <li>{pro}</li>)}
                   </ul>
                 </div>
+                )}
+                {product.cons.length > 0 && (
                 <div class="cons-block">
                   <h4>단점</h4>
                   <ul>
                     {product.cons.map(con => <li>{con}</li>)}
                   </ul>
                 </div>
+                )}
                 {product.recommendFor.length > 0 && (
                   <div class="recommend-block">
                     <h4>이런 분께 추천합니다</h4>
@@ -772,6 +885,7 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
           </div>
         ))}
       </section>
+      )}
 
       {selectionGuide && (
         <section class="section selection-guide">
@@ -784,6 +898,7 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
         </section>
       )}
 
+      {comparisonData.length > 0 && (
       <section class="section">
         <h2>제품 비교표</h2>
         <div class="table-wrapper">
@@ -805,6 +920,7 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
           </table>
         </div>
       </section>
+      )}
 
       <section class="section closing">
         <h2>마무리</h2>
