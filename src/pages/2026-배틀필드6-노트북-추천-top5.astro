@@ -1,7 +1,7 @@
 ---
 /**
  * Auto-generated from Notion
- * Generated at: 2026-01-30T05:05:06.196Z
+ * Generated at: 2026-01-30T09:51:41.309Z
  * Do not edit manually
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -417,6 +417,7 @@ const selectionGuide = "";
         <p class="intro-text">안녕하세요. 오늘은 2026 배틀필드6 노트북 추천 Top5에 대해 말씀드릴게요.</p>
       </header>
 
+      {products.length > 0 && (
       <section class="section summary-section">
         <h2>핵심만 콕!</h2>
         <div class="table-wrapper">
@@ -433,15 +434,16 @@ const selectionGuide = "";
               {products.map(p => (
                 <tr>
                   <td class="product-name-cell">{p.name}</td>
-                  <td>{p.keyPoint}</td>
-                  <td>{p.summary}</td>
-                  <td>{p.target}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </section>
+      )}
 
       <section class="section topic-intro">
         <h2>들어가며</h2>
@@ -452,6 +454,7 @@ const selectionGuide = "";
         </div>
       </section>
 
+      {products.length > 0 && (
       <section class="section">
         <h2>상세 리뷰</h2>
         {products.map((product, index) => (
@@ -460,8 +463,9 @@ const selectionGuide = "";
               <span class="rank-num">{index + 1}.</span>
               {product.name}
             </h3>
-            <p class="product-desc">{product.description}</p>
+            {product.description && <p class="product-desc">{product.description}</p>}
             <div class="product-content">
+              {product.buyUrl && (
               <div class="product-cta">
                 <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
                   <span class="coupang-icon">
@@ -474,7 +478,9 @@ const selectionGuide = "";
                   <span class="arrow">→</span>
                 </a>
               </div>
+              )}
               <div class="product-details">
+                {product.specs.length > 0 && (
                 <div class="spec-block">
                   <h4>주요 스펙</h4>
                   <ul class="spec-list">
@@ -483,18 +489,23 @@ const selectionGuide = "";
                     ))}
                   </ul>
                 </div>
+                )}
+                {product.pros.length > 0 && (
                 <div class="pros-block">
                   <h4>장점</h4>
                   <ul>
                     {product.pros.map(pro => <li>{pro}</li>)}
                   </ul>
                 </div>
+                )}
+                {product.cons.length > 0 && (
                 <div class="cons-block">
                   <h4>단점</h4>
                   <ul>
                     {product.cons.map(con => <li>{con}</li>)}
                   </ul>
                 </div>
+                )}
                 {product.recommendFor.length > 0 && (
                   <div class="recommend-block">
                     <h4>이런 분께 추천합니다</h4>
@@ -508,6 +519,7 @@ const selectionGuide = "";
           </div>
         ))}
       </section>
+      )}
 
       {selectionGuide && (
         <section class="section selection-guide">
@@ -520,6 +532,7 @@ const selectionGuide = "";
         </section>
       )}
 
+      {comparisonData.length > 0 && (
       <section class="section">
         <h2>제품 비교표</h2>
         <div class="table-wrapper">
@@ -541,6 +554,7 @@ const selectionGuide = "";
           </table>
         </div>
       </section>
+      )}
 
       <section class="section closing">
         <h2>마무리</h2>

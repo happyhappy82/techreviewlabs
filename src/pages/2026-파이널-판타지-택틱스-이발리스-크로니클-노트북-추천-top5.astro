@@ -1,0 +1,610 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-01-30T09:50:31.345Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "레노버 2025 리전 7 16IAX10 코어Ultra9 인텔 14세대 지포스 RTX 5070",
+    "summary": "최상급 게이밍과 생산성을 모두 잡은 궁극의 머신",
+    "keyPoint": "압도적인 성능과 OLED 디스플레이",
+    "target": "최고 사양을 원하는 프로 게이머 및 크리에이터",
+    "buyUrl": "https://link.coupang.com/a/dzXUzy",
+    "description": "최고의 성능을 추구하는 분들을 위한 플래그십 모델입니다. 2026년 대작 게임을 완벽하게 즐기기에 부족함이 없는 스펙을 자랑합니다.\n",
+    "specs": [
+      {
+        "label": "프로세서",
+        "value": "Intel Core Ultra 9 275HX (Arrow Lake), 24코어 24스레드"
+      },
+      {
+        "label": "그래픽",
+        "value": "NVIDIA GeForce RTX 5070 (Blackwell), 8GB GDDR7, TGP 115W (Max)"
+      },
+      {
+        "label": "메모리",
+        "value": "DDR5 64GB (32GB x 2), 6400MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "NVMe SSD 4TB"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA 2560 x 1600 (2.5K) OLED, 240Hz, 500nits, 100% DCI-P3"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Pro DSP"
+      },
+      {
+        "label": "무게",
+        "value": "약 2kg"
+      },
+      {
+        "label": "두께",
+        "value": "17.9mm"
+      }
+    ],
+    "pros": [
+      "인텔 최신 Ultra 9 프로세서와 RTX 5070 GPU의 압도적인 조합으로 모든 고사양 게임 및 작업 완벽 소화",
+      "OLED 디스플레이의 뛰어난 색감과 명암비로 게임 및 미디어 콘텐츠 몰입감 최고",
+      "64GB 대용량 메모리와 4TB SSD로 멀티태스킹 및 대용량 파일 작업에 최적화",
+      "게이밍 노트북임에도 불구하고 우수한 휴대성을 제공하는 슬림 디자인",
+      "Wi-Fi 7 지원으로 초고속 무선 인터넷 환경 구축"
+    ],
+    "cons": [
+      "높은 가격대로 인한 초기 구매 부담",
+      "OLED 패널의 특성상 장시간 정적 이미지 사용 시 번인 현상 가능성",
+      "배터리 사용 시간 정보가 명확히 공개되지 않아 아쉬움"
+    ],
+    "recommendFor": [
+      "2026 파이널 판타지 택틱스 이발리스 크로니클을 최고 옵션으로 즐기고 싶은 하이엔드 게이머",
+      "영상 편집, 3D 렌더링 등 고성능 크리에이티브 작업을 하는 전문가",
+      "휴대성과 강력한 성능을 동시에 원하는 사용자"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "기가바이트 2025 에어로 X16 라이젠 AI 라이젠 AI 300 시리즈",
+    "summary": "휴대성과 AI 성능, 게이밍까지 겸비한 만능 노트북",
+    "keyPoint": "AI 프로세서와 RTX 5070의 조화",
+    "target": "AI 작업과 게이밍을 동시에 추구하는 전문가",
+    "buyUrl": "https://link.coupang.com/a/dzXsLk",
+    "description": "AI 시대에 발맞춘 AMD 라이젠 AI 프로세서와 RTX 5070의 조합으로 게이밍과 AI 작업 모두를 만족시키는 모델입니다.\n",
+    "specs": [
+      {
+        "label": "프로세서",
+        "value": "AMD Ryzen AI 7 350, 8코어 (Zen 5 4개 + Zen 5c 4개), 50 TOPS NPU"
+      },
+      {
+        "label": "그래픽",
+        "value": "NVIDIA GeForce RTX 5070, 8GB GDDR7"
+      },
+      {
+        "label": "메모리",
+        "value": "32GB RAM"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe Gen4 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 2560x1600 WQXGA, 165Hz, 3ms 응답속도, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      },
+      {
+        "label": "무게",
+        "value": "1.9kg"
+      },
+      {
+        "label": "두께",
+        "value": "16.7mm"
+      }
+    ],
+    "pros": [
+      "50 TOPS NPU를 탑재하여 로컬 AI 모델 구동 및 AI 작업에 매우 강력함",
+      "RTX 5070으로 고사양 게임과 크리에이티브 작업을 모두 쾌적하게 수행 가능",
+      "1.9kg의 가벼운 무게와 최대 12시간 배터리로 이동 중 사용에 매우 유리",
+      "고급스러운 NIL 공정 디자인과 2년 무상보증으로 높은 만족도",
+      "165Hz 고주사율과 3ms 응답속도로 게임 몰입감 향상"
+    ],
+    "cons": [
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 하는 번거로움",
+      "게이밍 노트북 중 비교적 높은 가격대",
+      "GPU TGP 정보가 명확하지 않아 실제 게이밍 성능에 대한 궁금증"
+    ],
+    "recommendFor": [
+      "AI 기술을 활용한 작업과 고사양 게이밍을 동시에 원하는 전문가",
+      "휴대성을 중시하면서도 강력한 성능을 포기할 수 없는 사용자",
+      "AMD 라이젠 프로세서의 효율성과 AI 성능에 관심 있는 분"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "HP 2025 오멘 16 라이젠9 라이젠 8000 시리즈 지포스 RTX 4060",
+    "summary": "강력한 AMD 성능으로 몰입감 넘치는 게이밍 경험",
+    "keyPoint": "라이젠 9과 240Hz 디스플레이",
+    "target": "고주사율과 AMD 프로세서를 선호하는 게이머",
+    "buyUrl": "https://link.coupang.com/a/dzX8g3",
+    "description": "강력한 AMD 라이젠 9 프로세서와 240Hz 고주사율 디스플레이로 최고의 게이밍 경험을 제공하는 HP 오멘 시리즈의 최신작입니다.\n",
+    "specs": [
+      {
+        "label": "프로세서",
+        "value": "AMD Ryzen 9 8940HX, 16코어 32스레드 (Zen 4, 5nm)"
+      },
+      {
+        "label": "그래픽",
+        "value": "NVIDIA GeForce RTX 5060 (Blackwell 아키텍처)"
+      },
+      {
+        "label": "메모리",
+        "value": "32GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe Gen4 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) IPS VRR, 240Hz, 500nits"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      },
+      {
+        "label": "무게",
+        "value": "2.44kg"
+      }
+    ],
+    "pros": [
+      "Ryzen 9 8940HX의 강력한 성능으로 모든 고사양 게임 및 작업 원활",
+      "240Hz VRR 디스플레이로 e스포츠 및 AAA 게임에서 압도적인 몰입감",
+      "500nits의 밝은 화면으로 야외나 밝은 실내에서도 선명한 화면",
+      "HP ADP 서비스 포함으로 파손 걱정 없이 안심하고 사용 가능",
+      "합리적인 가격대에 강력한 게이밍 성능 제공"
+    ],
+    "cons": [
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 함",
+      "게이밍 노트북 특성상 배터리 소모가 빠르고 무게가 다소 나감",
+      "RTX 5060이 RTX 5070 대비 성능이 아쉬울 수 있음"
+    ],
+    "recommendFor": [
+      "2026 파이널 판타지 택틱스 이발리스 크로니클을 고주사율 환경에서 즐기고 싶은 게이머",
+      "AMD 라이젠 프로세서의 성능과 효율성을 선호하는 사용자",
+      "뛰어난 A/S 서비스와 파손 보장을 중요하게 생각하는 분"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "HP 2024 오멘 16 16.1 코어i7 인텔 14세대 지포스 RTX 4060",
+    "summary": "합리적인 가격에 밸런스 좋은 게이밍 성능",
+    "keyPoint": "인텔 14세대 i7과 RTX 4060",
+    "target": "가성비와 안정적인 성능을 찾는 게이머",
+    "buyUrl": "https://link.coupang.com/a/dzX2rU",
+    "description": "합리적인 가격에 인텔 14세대 코어 i7과 RTX 4060의 균형 잡힌 성능을 제공하는 가성비 게이밍 노트북입니다.\n",
+    "specs": [
+      {
+        "label": "프로세서",
+        "value": "Intel Core i7-14700HX (14세대 Raptor Lake), 20코어 28스레드"
+      },
+      {
+        "label": "그래픽",
+        "value": "NVIDIA GeForce RTX 4060 8GB GDDR6, DLSS 3 지원"
+      },
+      {
+        "label": "메모리",
+        "value": "32GB DDR5 5600MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe Gen4 NVMe M.2 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16.1인치 QHD (2560x1440) IPS, 240Hz, 3ms, G-SYNC, 100% sRGB, 300nits"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.4kg"
+      }
+    ],
+    "pros": [
+      "200만원대 초반의 합리적인 가격에 뛰어난 게이밍 성능 제공",
+      "14세대 i7-14700HX와 RTX 4060의 밸런스 좋은 조합",
+      "32GB RAM 기본 탑재로 고사양 게임 및 영상 편집 등 멀티태스킹 쾌적",
+      "QHD 240Hz 디스플레이로 선명하고 부드러운 게이밍 경험",
+      "Windows 11 Home 기본 탑재로 별도 OS 설치 불필요"
+    ],
+    "cons": [
+      "512GB SSD 기본 용량이 다소 부족하여 업그레이드 고려 필요",
+      "2.4kg의 무게와 대형 280W 어댑터로 휴대성이 좋지 않음",
+      "배터리 소모가 빠르며 충전 제한 기능이 없어 배터리 관리가 어려울 수 있음"
+    ],
+    "recommendFor": [
+      "예산은 한정적이지만 QHD 고주사율 게이밍을 포기할 수 없는 게이머",
+      "영상 편집이나 CAD 등 전문 작업도 겸하는 사용자",
+      "윈도우가 기본 탑재된 노트북을 선호하는 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "에이서 2025 니트로 V 16S 라이젠7 라이젠 200 시리즈 AI",
+    "summary": "최신 기술을 합리적인 가격에 경험하는 입문용 게이밍",
+    "keyPoint": "100만원대 RTX 5050 가성비",
+    "target": "예산은 한정적이지만 최신 게임을 즐기고 싶은 분",
+    "buyUrl": "https://link.coupang.com/a/dzXs3J",
+    "description": "100만원대 중반 가격으로 최신 RTX 5050 그래픽과 라이젠 AI 프로세서를 경험할 수 있는 가성비 게이밍 노트북입니다.\n",
+    "specs": [
+      {
+        "label": "프로세서",
+        "value": "AMD Ryzen 7 260, 8코어 16스레드, 16 TOPS NPU"
+      },
+      {
+        "label": "그래픽",
+        "value": "NVIDIA GeForce RTX 5050 (Blackwell), DLSS 4, Ray Tracing, G-SYNC 지원"
+      },
+      {
+        "label": "메모리",
+        "value": "16GB DDR5 5600MHz (최대 32GB 확장 가능)"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe NVMe (최대 2TB 확장 가능)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 (40.8cm) WUXGA 1920x1200 IPS, 180Hz, 400nit, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      },
+      {
+        "label": "무게",
+        "value": "2.1kg"
+      },
+      {
+        "label": "두께",
+        "value": "19.9mm"
+      }
+    ],
+    "pros": [
+      "130만원대의 매우 뛰어난 가성비로 최신 RTX 50 시리즈 경험 가능",
+      "RTX 5050으로 2026 파이널 판타지 택틱스: 이발리스 크로니클을 중상옵션으로 쾌적하게 플레이 가능",
+      "180Hz 고주사율 디스플레이로 게임 몰입감 향상",
+      "USB4, Wi-Fi 6E 등 최신 포트 및 무선 연결성 지원",
+      "RAM 및 SSD 확장성이 좋아 추후 업그레이드 용이"
+    ],
+    "cons": [
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 함",
+      "RTX 5050은 엔트리급 GPU로 최고 옵션 게이밍에는 한계가 있음",
+      "WUXGA 해상도로 QHD 대비 화면 선명도가 다소 아쉬울 수 있음"
+    ],
+    "recommendFor": [
+      "예산은 한정적이지만 최신 대작 게임을 즐기고 싶은 학생 또는 직장인",
+      "가성비 좋은 게이밍 노트북으로 입문하고 싶은 분",
+      "휴대성과 합리적인 성능의 균형을 중시하는 사용자"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "2026년 출시 게임인데 지금 노트북을 사도 괜찮을까요?",
+    "a": "A. 네, 지금 추천드린 노트북들은 2025년에 출시되거나 최신 스펙을 갖춘 모델들입니다. RTX 50 시리즈나 강력한 AI 프로세서가 탑재되어 2026년 게임도 충분히 쾌적하게 즐길 수 있을 것입니다. 다만, 게임 출시 직전에는 더 새로운 기술이 나올 수도 있으니, 급하지 않다면 출시 직전에 다시 한번 확인해보는 것도 좋습니다."
+  },
+  {
+    "q": "Free DOS 제품은 윈도우 설치가 어렵지 않나요?",
+    "a": "A. Free DOS 제품은 운영체제가 포함되어 있지 않아 사용자가 직접 윈도우를 설치해야 합니다. USB를 이용한 윈도우 설치는 온라인에 많은 가이드가 있으니 참고하시면 크게 어렵지 않습니다. 하지만 이런 과정이 번거롭다면 윈도우가 기본 탑재된 모델을 선택하는 것이 좋습니다."
+  },
+  {
+    "q": "게이밍 노트북은 발열과 소음이 심하다고 들었는데 괜찮을까요?",
+    "a": "A. 고성능 게이밍 노트북은 풀로드 시 발열과 팬 소음이 발생할 수 있습니다. 하지만 최근 모델들은 쿨링 시스템이 많이 개선되어 일반적인 사용 환경에서는 크게 문제 되지 않습니다. 게임 중에도 헤드셋을 사용하면 소음으로부터 자유로울 수 있고, 각 제조사의 전용 소프트웨어(예: OMEN Gaming Hub, Legion Space)로 쿨링 모드를 조절할 수 있습니다."
+  },
+  {
+    "q": "노트북 구매 시 A/S는 어떻게 확인해야 하나요?",
+    "a": "A. 노트북 제조사마다 A/S 정책이 다릅니다. HP의 ADP 서비스나 레노버의 프리미엄 케어처럼 우발적 파손까지 보장하는 서비스가 있는 제품도 있으니 확인해보세요. 또한, 쿠팡 로켓배송 제품의 경우 쿠팡 자체의 안심케어 서비스나 무상 A/S가 제공되는 경우도 있으니 구매 페이지에서 꼼꼼히 확인하는 것이 좋습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "레노버 2025 리전 7 1...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "DDR5 64GB (32GB x 2), 6400MHz",
+    "storage": "NVMe SSD 4TB",
+    "display": "16인치 WQXGA 2560 x 1600 (2.5K) OLED, 240Hz, 500nits, 100% DCI-P3",
+    "weight": "약 2kg"
+  },
+  {
+    "name": "기가바이트 2025 에어로 ...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "32GB RAM",
+    "storage": "1TB NVMe Gen4 SSD",
+    "display": "16인치 2560x1600 WQXGA, 165Hz, 3ms 응답속도, sRGB 100%",
+    "weight": "1.9kg"
+  },
+  {
+    "name": "HP 2025 오멘 16 라...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "32GB DDR5",
+    "storage": "1TB NVMe Gen4 SSD",
+    "display": "16인치 WQXGA (2560x1600) IPS VRR, 240Hz, 500nits",
+    "weight": "2.44kg"
+  },
+  {
+    "name": "HP 2024 오멘 16 1...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "32GB DDR5 5600MHz",
+    "storage": "512GB PCIe Gen4 NVMe M.2 SSD",
+    "display": "16.1인치 QHD (2560x1440) IPS, 240Hz, 3ms, G-SYNC, 100% sRGB, 300nits",
+    "weight": "약 2.4kg"
+  },
+  {
+    "name": "에이서 2025 니트로 V ...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "16GB DDR5 5600MHz (최대 32GB 확장 가능)",
+    "storage": "512GB PCIe NVMe (최대 2TB 확장 가능)",
+    "display": "16인치 (40.8cm) WUXGA 1920x1200 IPS, 180Hz, 400nit, sRGB 100%",
+    "weight": "2.1kg"
+  }
+];
+const comparisonSpecs = [
+  { key: 'cpu', label: 'CPU' },
+  { key: 'gpu', label: 'GPU' },
+  { key: 'ram', label: 'RAM' },
+  { key: 'storage', label: '저장장치' },
+  { key: 'display', label: '디스플레이' },
+  { key: 'weight', label: '무게' },
+];
+const selectionGuide = "파이널 판타지 택틱스 이발리스 크로니클은 2026년 출시되는 게임인 만큼, 권장 사양이 높을 것으로 예상됩니다. 따라서 노트북 선택 시 가장 중요한 것은 GPU 성능입니다.\n• AI 작업과 휴대성, 게이밍을 동시에: 2위 기가바이트 에어로 X16이 좋은 선택입니다. AMD의 강력한 AI 프로세서와 RTX 5070의 조합은 생산성과 게이밍 모두를 만족시키며, 가벼운 무게로 휴대성까지 잡았습니다.\n• AMD 성능과 고주사율 게이밍: 3위 HP 오멘 16 라이젠9은 라이젠 9과 240Hz 디스플레이로 부드럽고 강력한 게이밍 경험을 선사합니다. HP의 뛰어난 A/S 정책도 큰 장점입니다.\n• 가성비와 안정적인 게이밍: 4위 HP 오멘 16 코어i7은 200만원대 초반에 인텔 14세대 i7과 RTX 4060의 균형 잡힌 성능을 제공합니다. 윈도우가 기본 탑재되어 편리하며, SSD 업그레이드를 고려한다면 더욱 만족스러운 선택이 될 것입니다.\n• 예산이 한정적이지만 최신 게임을: 5위 에이서 니트로 V 16S는 100만원대 중반으로 RTX 5050을 경험할 수 있는 최고의 가성비 모델입니다. 이발리스 크로니클을 중상옵션으로 즐기기에 충분하며, 추후 업그레이드도 가능합니다.\n본인의 예산과 주된 사용 목적(순수 게이밍, 작업 겸용, 휴대성 등)을 고려하여 현명한 선택을 하시길 바랍니다.";
+---
+
+<BaseLayout
+  title="2026 파이널 판타지 택틱스 이발리스 크로니클 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026년 출시 예정인 대작, 파이널 판타지 택틱스: 이발리스 크로니클을 쾌적하게 즐길 수 있는 노트북 추천 Top5에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>2026 파이널 판타지 택틱스 이발리스 크로니클 노트북 추천 Top5</h1>
+        <p class="intro-text">안녕하세요. 오늘은 2026년 출시 예정인 대작, 파이널 판타지 택틱스: 이발리스 크로니클을 쾌적하게 즐길 수 있는 노트북 추천 Top5에 대해 말씀드릴게요.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 2026 파이널 판타지 택틱스 이발리스 크로니클, 어떤 게임일까요?</h2>
+        <p>파이널 판타지 택틱스 이발리스 크로니클은 2026년 출시 예정인 스퀘어 에닉스의 전설적인 전략 RPG 시리즈의 최신작입니다. 아름다운 이발리스 세계관을 배경으로, 깊이 있는 전술적 전투와 몰입감 넘치는 스토리가 특징이죠. 전작들이 보여준 뛰어난 스토리텔링과 캐릭터 디자인을 계승하면서도, 2026년이라는 출시 시점을 고려할 때, 한층 더 발전된 그래픽과 복잡한 환경 상호작용, 그리고 수많은 유닛들이 펼치는 화려한 전투 이펙트를 자랑할 것으로 예상됩니다.</p>
+        <p>이 게임은 단순히 그래픽만 뛰어난 것이 아니라, 다양한 직업 시스템, 캐릭터 커스터마이징, 그리고 전략적 요소들이 복합적으로 얽혀 있어 플레이어의 깊은 사고를 요구합니다. 따라서 이러한 대작을 최상의 환경에서 즐기기 위해서는 강력한 프로세서와 고성능 그래픽카드, 그리고 충분한 메모리를 갖춘 노트북이 필수적입니다. 복잡한 AI 연산과 다수의 캐릭터 모델링, 실시간 렌더링이 원활하게 이루어져야만 이발리스의 장대한 서사를 끊김 없이 경험할 수 있을 테니까요.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026 파이널 판타지 택틱스: 이발리스 크로니클을 위한 노트북 추천 Top5에 대해 말씀드렸습니다. 각 제품의 장단점과 특징을 꼼꼼히 비교하여 여러분의 게임 라이프에 맞는 최고의 선택을 하시길 바랍니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
