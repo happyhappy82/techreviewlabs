@@ -145,17 +145,6 @@ function updateRichPagesRegistry(pageData) {
   }
 
   if (existingIndex >= 0) {
-    const oldSlug = registry[existingIndex].slug;
-
-    // slug가 변경됐으면 이전 .astro 파일 삭제
-    if (oldSlug !== pageData.slug) {
-      const oldFilePath = path.join(PAGES_DIR, `${oldSlug}.astro`);
-      if (fs.existsSync(oldFilePath)) {
-        fs.unlinkSync(oldFilePath);
-        console.log(`   🗑️  Deleted old file: ${oldSlug}.astro (title changed)`);
-      }
-    }
-
     registry[existingIndex] = pageData;
     console.log(`   ♻️  Updated existing entry: ${pageData.slug}`);
   } else {
@@ -1019,7 +1008,20 @@ async function generateRichPage(pageId) {
     return null;
   }
 
-  const slug = generateSlug(data.title);
+  // 기존 pageId가 있으면 slug 유지 (제목 바뀌어도 URL 변경 안 함)
+  let slug = null;
+  if (fs.existsSync(RICH_PAGES_JSON)) {
+    try {
+      const registry = JSON.parse(fs.readFileSync(RICH_PAGES_JSON, 'utf-8'));
+      const existing = registry.find(p => p.notionPageId === pageId);
+      if (existing) {
+        slug = existing.slug;
+      }
+    } catch (e) { /* ignore */ }
+  }
+  if (!slug) {
+    slug = generateSlug(data.title);
+  }
   console.log(`   Title: ${data.title}`);
   console.log(`   Slug: ${slug}`);
   console.log(`   Products: ${data.products.length}`);
