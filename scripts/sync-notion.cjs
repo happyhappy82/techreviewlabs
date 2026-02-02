@@ -359,6 +359,13 @@ async function scheduledSync() {
 
     const slug = generateSlug(props.title);
 
+    // 이미 .md 파일로 존재하는 글은 리치 페이지로 재생성하지 않음
+    const existingMd = findExistingFileByPageId(pageId);
+    if (existingMd.exists) {
+      console.log(`\nℹ️  Already exists as .md: ${existingMd.fileName} (skipping)`);
+      continue;
+    }
+
     // rich-pages.json에서 기존 글 확인 (.astro 페이지 기준)
     let isExisting = false;
     const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
@@ -469,6 +476,13 @@ async function webhookSync() {
 
   // Handle publish/update
   if (status === 'Published') {
+    // 이미 .md 파일로 존재하는 글은 리치 페이지로 재생성하지 않음
+    const existingMd = findExistingFileByPageId(pageId);
+    if (existingMd.exists) {
+      console.log(`\nℹ️  Already exists as .md: ${existingMd.fileName} (skipping rich page generation)`);
+      return false;
+    }
+
     // rich-pages.json에서 동일 pageId 확인 (.astro 페이지 기준)
     let isExisting = false;
     const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');

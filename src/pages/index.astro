@@ -28,8 +28,11 @@ const richReviews = (richPagesData as any[]).map(page => ({
   isRichPage: true
 }));
 
-// 합쳐서 날짜순 정렬
-const allReviews = [...mdReviews, ...richReviews].sort((a, b) => {
+// mdReviews의 slug 목록 (중복 제거용)
+const mdSlugs = new Set(mdReviews.map(r => r.slug));
+
+// richReviews에서 md와 slug가 겹치는 항목 제외 후 합치기
+const allReviews = [...mdReviews, ...richReviews.filter(r => !mdSlugs.has(r.slug))].sort((a, b) => {
   return new Date(b.date).getTime() - new Date(a.date).getTime();
 });
 
