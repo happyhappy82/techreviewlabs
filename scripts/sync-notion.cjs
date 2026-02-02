@@ -421,9 +421,17 @@ async function webhookSync() {
 
   // Handle publish/update
   if (status === 'Published') {
-    const existingFile = findExistingFileByPageId(pageId);
+    // rich-pages.json에서 동일 pageId 확인 (.astro 페이지 기준)
+    let isExisting = false;
+    const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
+    if (fs.existsSync(richPagesPath)) {
+      try {
+        const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
+        isExisting = richPages.some(p => p.notionPageId === pageId);
+      } catch (e) { /* ignore */ }
+    }
 
-    if (existingFile.exists) {
+    if (isExisting) {
       console.log(`\n✏️  Updating existing review: ${slug}`);
       await processPage(pageId, false);
       return true;
