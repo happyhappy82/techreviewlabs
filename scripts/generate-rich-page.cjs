@@ -95,6 +95,10 @@ function inferSectionType(title) {
   if (t.includes('비교')) {
     return 'comparison';
   }
+  // 들어가며/도입 섹션 (guide보다 우선 판별)
+  if (t.includes('들어가')) {
+    return 'topic';
+  }
   // 선택 가이드 (어떤 + 선택/골라/할까 조합이거나 명시적 키워드)
   if (t.includes('선택') || t.includes('가이드') || t.includes('고르')) {
     return 'guide';
