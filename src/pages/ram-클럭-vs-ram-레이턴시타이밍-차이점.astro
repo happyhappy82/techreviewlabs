@@ -1,0 +1,437 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-02T10:01:39.068Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "RAM 클럭이란 무엇일까요?",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "RAM 클럭은 RAM이 데이터를 처리하는 '속도'를 의미합니다. 보통 MHz(메가헤르츠) 단위로 표시되며, 숫자가 높을수록 더 많은 데이터를 한 번에 빠르게 주고받을 수 있다는 뜻입니다.\n",
+    "specs": [
+      {
+        "label": "데이터 처리량",
+        "value": "클럭이 높을수록 단위 시간당 처리할 수 있는 데이터의 양이 늘어납니다."
+      },
+      {
+        "label": "고속도로의 제한 속도",
+        "value": "비유하자면, RAM 클럭은 고속도로의 '제한 속도'와 같습니다. 제한 속도가 높을수록 더 빠르게 이동할 수 있겠죠?"
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "RAM 레이턴시(타이밍)란 무엇일까요?",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "RAM 레이턴시는 RAM이 CPU의 명령을 받고 데이터를 전달하기 시작하기까지 걸리는 '지연 시간'을 의미합니다. CL(CAS Latency)이라는 단위로 표시되며, 숫자가 낮을수록 지연 시간이 짧아 더 빠르게 반응한다는 뜻입니다.\n",
+    "specs": [
+      {
+        "label": "명령 응답 시간",
+        "value": "레이턴시가 낮을수록 CPU가 요청한 데이터를 더 신속하게 전달받을 수 있습니다."
+      }
+    ],
+    "pros": [
+      "  고속도로 톨게이트 통과 시간: 비유하자면, RAM 레이턴시는 고속도로 톨게이트를 통과하는 '시간'과 같습니다. 톨게이트 통과 시간이 짧을수록 목적지에 더 빨리 도착하겠죠?"
+    ],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 3,
+    "name": "클럭과 레이턴시, 어떤 관계일까요?",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "많은 분들이 '클럭이 높으면 무조건 좋은 것 아닌가요?'라고 생각하시지만, 사실 클럭과 레이턴시는 서로 뗄 수 없는 관계입니다. 단순히 클럭만 높다고 해서 무조건 최고 성능을 내는 것은 아닙니다.\n",
+    "specs": [
+      {
+        "label": "상호 보완적인 관계",
+        "value": "높은 클럭으로 많은 데이터를 빠르게 전송해도, 레이턴시가 높아 명령에 대한 응답이 늦으면 실제 체감 성능은 기대보다 낮을 수 있습니다. 반대로 레이턴시가 낮아 빠르게 반응해도, 클럭이 낮아 데이터 처리량이 적으면 전체적인 속도가 느려질 수 있죠."
+      },
+      {
+        "label": "빠른 차와 톨게이트",
+        "value": "아무리 빠른 차(높은 클럭)라도 톨게이트(레이턴시)에서 오래 멈춰 있으면 전체 이동 시간은 길어질 수밖에 없습니다. 최적의 성능을 위해서는 빠른 차가 톨게이트도 빠르게 통과해야 하는 것처럼, 클럭과 레이턴시의 균형이 중요합니다."
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 4,
+    "name": "RAM 클럭의 장점과 고려사항",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [
+      "    -   데이터 처리량 증가: 한 번에 더 많은 데이터를 처리하여 대용량 파일 작업이나 멀티태스킹에 유리합니다.",
+      "    -   고사양 작업 효율 향상: 3D 렌더링, 고해상도 영상 편집, 복잡한 시뮬레이션 등 대역폭 요구 작업에서 성능 향상을 체감하기 좋습니다.",
+      "    -   게임 성능 향상: 특히 오픈월드 게임이나 최신 고사양 게임에서 높은 프레임을 유지하는 데 도움이 됩니다.",
+      "  고려사항:",
+      "    -   가격 상승 요인: 높은 클럭의 RAM은 일반적으로 가격이 더 비쌉니다.",
+      "    -   메인보드 및 CPU 지원: 사용 중인 메인보드와 CPU가 해당 클럭을 지원하는지 반드시 확인해야 합니다. 지원하지 않는 클럭의 RAM은 제 성능을 내지 못하거나 아예 작동하지 않을 수 있습니다.",
+      "    -   오버클럭 안정성: 제조사가 보장하는 클럭 이상의 오버클럭은 시스템 안정성 문제를 야기할 수 있습니다."
+    ],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 5,
+    "name": "RAM 레이턴시의 장점과 고려사항",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [
+      "    -   명령 응답 속도 향상: CPU의 명령에 더 빠르게 반응하여 시스템 전반의 반응성이 향상됩니다.",
+      "    -   게임 최저 프레임 방어: CPU 코어 간 통신이 잦은 게임에서 최저 프레임 방어에 유리하여, 부드러운 게임 플레이에 기여합니다.",
+      "    -   멀티태스킹 반응성: 여러 프로그램을 동시에 실행할 때 더 민첩한 전환과 반응 속도를 제공합니다.",
+      "  고려사항:",
+      "    -   상대적 고가: 낮은 레이턴시의 RAM 역시 높은 클럭 RAM과 마찬가지로 가격이 비싼 편입니다.",
+      "    -   체감 난이도: 클럭만큼 직관적인 성능 향상을 모든 상황에서 체감하기 어려울 수 있습니다. 특정 작업이나 게임에서 더 두드러지게 나타납니다.",
+      "    -   오버클럭 난이도: 레이턴시(타이밍)를 수동으로 조절하는 오버클럭은 초보자에게 다소 복잡하고 까다로울 수 있습니다."
+    ],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 6,
+    "name": "그래서, 무엇이 더 중요할까요?",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "결론부터 말씀드리자면, '무엇이 더 중요하다'고 단정하기는 어렵습니다. 하지만 일반적인 사용 환경에서는 '클럭'이 성능에 미치는 영향이 더 크다고 알려져 있습니다. 특히 고사양 게임이나 전문적인 작업에서는 높은 클럭이 주는 대역폭 증가 효과를 무시할 수 없습니다.\n하지만 최고의 성능을 추구한다면 클럭과 레이턴시의 '균형'이 중요합니다. 예를 들어, DDR4-3600MHz CL18 램과 DDR4-3200MHz CL16 램을 비교할 때, 단순히 클럭만 보고 3600MHz가 좋다고 할 수만은 없습니다. 실제 성능은 미묘하게 다를 수 있으며, 사용 목적에 따라 체감 효과가 달라질 수 있습니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  }
+];
+const faqs = [];
+const comparisonData = [
+  {
+    "name": "RAM 클럭이란 무엇일까요?",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "RAM 레이턴시(타이밍)란 ...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "클럭과 레이턴시, 어떤 관계...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "RAM 클럭의 장점과 고려사...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "RAM 레이턴시의 장점과 고...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "그래서, 무엇이 더 중요할까...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  }
+];
+const comparisonSpecs = [
+  { key: 'cpu', label: 'CPU' },
+  { key: 'gpu', label: 'GPU' },
+  { key: 'ram', label: 'RAM' },
+  { key: 'storage', label: '저장장치' },
+  { key: 'display', label: '디스플레이' },
+  { key: 'weight', label: '무게' },
+];
+const selectionGuide = "";
+---
+
+<BaseLayout
+  title="RAM 클럭 vs RAM 레이턴시(타이밍) 차이점"
+  description="RAM(Random Access Memory)은 PC가 작업을 처리하는 데 필요한 데이터를 임시로 저장하는 공간입니다."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>RAM 클럭 vs RAM 레이턴시(타이밍) 차이점</h1>
+        <p class="intro-text">RAM(Random Access Memory)은 PC가 작업을 처리하는 데 필요한 데이터를 임시로 저장하는 공간입니다.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>RAM, PC 성능의 숨은 공신</h2>
+        <p>RAM(Random Access Memory)은 PC가 작업을 처리하는 데 필요한 데이터를 임시로 저장하는 공간입니다. CPU가 빠르고 효율적으로 일할 수 있도록 데이터를 즉시 공급해주는 역할을 하죠. RAM의 성능이 좋지 않으면 아무리 좋은 CPU나 그래픽카드를 사용하더라도 병목 현상이 발생해 전체적인 PC 속도가 느려질 수 있습니다. 마치 아무리 빠른 스포츠카라도 좁은 도로에서는 제 속도를 낼 수 없는 것과 같아요.</p>
+        <p>그럼 RAM의 성능을 결정하는 두 가지 핵심 요소, 클럭과 레이턴시에 대해 자세히 알아볼까요?</p>
+        <p>두 가지 개념의 차이를 이해했으니, 이제 각 요소의 장점과 구매 전 고려해야 할 사항들을 솔직하게 알려드릴게요.</p>
+        <p>이제 이론적인 이야기는 잠시 접어두고, 실제 여러분의 PC 사용 환경에서 클럭과 레이턴시가 어떻게 체감될 수 있는지 알아볼까요?</p>
+        <p>    -   높은 클럭과 낮은 레이턴시는 게임의 로딩 시간을 단축하고, 복잡한 장면에서의 프레임 드랍을 줄여줍니다. 특히 CPU 의존도가 높은 게임에서는 낮은 레이턴시가 최저 프레임을 안정적으로 유지하는 데 큰 도움이 됩니다. 끊김 없는 부드러운 플레이를 원한다면 이 두 가지 요소의 균형이 중요합니다.</p>
+        <p>    -   4K 이상의 고해상도 영상 편집이나 3D 렌더링 작업은 엄청난 양의 데이터를 빠르게 처리해야 합니다. 이때는 높은 클럭의 RAM이 데이터 처리량을 늘려 작업 속도를 눈에 띄게 향상시켜 줍니다. 프리뷰 재생이 더 부드러워지고, 렌더링 시간이 단축되는 것을 체감할 수 있을 거예요.</p>
+        <p>    -   웹 브라우징, 문서 작업, 동영상 시청 등 일반적인 용도에서는 RAM의 '용량'이 클럭이나 레이턴시보다 더 중요할 수 있습니다. 하지만 적절한 클럭과 레이턴시는 프로그램 실행 속도나 멀티태스킹 시 시스템의 전반적인 반응성을 향상시켜 조금 더 쾌적한 사용 환경을 제공합니다.</p>
+        <p>가장 중요한 것은 '내 사용 패턴'을 먼저 고려하는 것입니다. 무조건 비싸고 스펙이 높은 RAM을 사는 것보다, 자신이 주로 어떤 작업을 하는지 파악하고 그에 맞는 클럭과 레이턴시의 RAM을 선택하는 것이 현명한 소비입니다.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 RAM 클럭과 RAM 레이턴시(타이밍)의 차이점과 이들이 실제 PC 성능에 어떻게 영향을 미 미치는지에 대해 자세히 말씀드렸습니다. 복잡하게만 느껴졌던 RAM 스펙이 조금은 이해되셨기를 바랍니다.
+클럭은 속도, 레이턴시는 지연 시간이라는 핵심 개념만 기억해도 앞으로 RAM을 선택하거나 PC를 업그레이드할 때 큰 도움이 될 거예요. 위 글 내용이 여러분들께 조금이라도 도움이 되었으면 좋겠네요!
+다음에도 유익하고 재미있는 테크 정보로 찾아오겠습니다. 가람이었습니다!</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>

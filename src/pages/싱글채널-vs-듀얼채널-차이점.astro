@@ -1,0 +1,388 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-02T10:01:36.864Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "싱글채널 (Single Channel)",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [
+      "CPU와 RAM이 데이터를 주고받는 통로가 '하나'인 방식입니다.",
+      "RAM 슬롯에 램이 한 개만 꽂혀 있거나, 두 개가 꽂혀 있어도 메인보드 설계상 싱글채널로 작동하는 경우를 말합니다. (요즘 메인보드는 거의 듀얼채널을 지원합니다)"
+    ],
+    "cons": [
+      "데이터 전송 대역폭이 제한적이라 병목 현상이 발생할 수 있습니다."
+    ],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "듀얼채널 (Dual Channel)",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [
+      "CPU와 RAM이 데이터를 주고받는 통로가 '두 개'인 방식입니다.",
+      "일반적으로 동일한 용량과 클럭의 램 두 개를 메인보드의 지정된 슬롯(예: 1번/3번 또는 2번/4번)에 장착했을 때 활성화됩니다.",
+      "통로가 두 개이므로 데이터 전송 대역폭이 이론상 두 배로 늘어나, 더 많은 데이터를 동시에 빠르게 처리할 수 있습니다."
+    ],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 3,
+    "name": "듀얼채널의 장점",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "    - CPU가 RAM에서 데이터를 가져오는 속도가 빨라지므로, 운영체제 부팅이나 프로그램 실행 속도가 개선됩니다.\n    - 여러 프로그램을 동시에 실행할 때도 더욱 쾌적한 멀티태스킹이 가능합니다.\n    - 게임은 CPU와 RAM 간의 데이터 교환이 매우 활발하게 이루어지는 작업입니다. 듀얼채널 구성 시 프레임 드롭이 줄어들고, 최소 프레임 방어에 유리해 더욱 부드러운 게임 플레이를 경험할 수 있습니다.\n    - 외장 그래픽카드 없이 CPU에 내장된 그래픽(APU)을 사용하는 경우, 내장 그래픽은 시스템 RAM을 공유해서 사용합니다. 듀얼채널 구성은 내장 그래픽이 사용할 수 있는 RAM 대역폭을 두 배로 늘려주므로, 내장 그래픽의 성능이 획기적으로 향상됩니다. 이는 캐주얼 게임이나 간단한 그래픽 작업에 큰 영향을 미칩니다.\n    - CPU의 처리 속도가 아무리 빨라도 RAM에서 데이터를 제때 공급해주지 못하면 CPU는 쉬게 됩니다. 듀얼채널은 이러한 병목 현상을 줄여 CPU의 잠재력을 최대한 발휘할 수 있도록 돕습니다.\n",
+    "specs": [
+      {
+        "label": "전반적인 시스템 성능 향상",
+        "value": ""
+      },
+      {
+        "label": "게임 성능 향상",
+        "value": ""
+      },
+      {
+        "label": "내장 그래픽 성능 대폭 상승",
+        "value": ""
+      },
+      {
+        "label": "병목 현상 완화",
+        "value": ""
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 4,
+    "name": "듀얼채널 구성 시 주의사항 (단점이라기보다는 팁!)",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "    - 듀얼채널을 제대로 활성화하려면 가급적 '동일한 제조사, 동일한 용량, 동일한 클럭'의 램 두 개를 사용하는 것이 가장 좋습니다. 스펙이 다르면 듀얼채널이 활성화되지 않거나, 불안정하게 작동할 수 있습니다.\n    - 듀얼채널 활성화를 위한 슬롯은 메인보드마다 다릅니다. 보통 1번/3번 또는 2번/4번 슬롯에 장착하도록 되어 있으니, 메인보드 매뉴얼을 꼭 확인하세요.\n    - 8GB 램 한 개보다 4GB 램 두 개가 미세하게 비쌀 수 있습니다. 하지만 성능 향상 폭을 고려하면 충분히 투자할 가치가 있습니다.\n",
+    "specs": [
+      {
+        "label": "동일한 램 두 개 준비",
+        "value": ""
+      },
+      {
+        "label": "메인보드 슬롯 확인",
+        "value": ""
+      },
+      {
+        "label": "초기 비용 증가",
+        "value": ""
+      }
+    ],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  }
+];
+const faqs = [];
+const comparisonData = [
+  {
+    "name": "싱글채널 (Single Ch...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "듀얼채널 (Dual Chan...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "듀얼채널의 장점",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "듀얼채널 구성 시 주의사항 ...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  }
+];
+const comparisonSpecs = [
+  { key: 'cpu', label: 'CPU' },
+  { key: 'gpu', label: 'GPU' },
+  { key: 'ram', label: 'RAM' },
+  { key: 'storage', label: '저장장치' },
+  { key: 'display', label: '디스플레이' },
+  { key: 'weight', label: '무게' },
+];
+const selectionGuide = "";
+---
+
+<BaseLayout
+  title="싱글채널 vs 듀얼채널 차이점"
+  description="안녕하세요, 가람입니다! 오늘은 많은 분들이 궁금해하시지만 막상 찾아보면 어렵게 느껴지는 주제, 바로 '싱글채널과 듀얼채널의 차이점'에 대해 쉽고 친절하게 말씀드릴게요. 컴퓨터를 새로 맞추거나 업그레이드를 고민하시는 분들이라면 꼭 알아두셔야 할 중요한 내용이니, 저와 "
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>싱글채널 vs 듀얼채널 차이점</h1>
+        <p class="intro-text">안녕하세요, 가람입니다! 오늘은 많은 분들이 궁금해하시지만 막상 찾아보면 어렵게 느껴지는 주제, 바로 '싱글채널과 듀얼채널의 차이점'에 대해 쉽고 친절하게 말씀드릴게요. 컴퓨터를 새로 맞추거나 업그레이드를 고민하시는 분들이라면 꼭 알아두셔야 할 중요한 내용이니, 저와 함께 차근차근 살펴보시죠!</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>싱글채널과 듀얼채널, 그게 뭔데요?</h2>
+        <p>우리 컴퓨터의 '뇌' 역할을 하는 CPU가 똑똑하게 일하려면, 처리할 데이터를 임시로 저장해두는 공간이 필요한데요. 이 공간이 바로 'RAM(램)'입니다. RAM은 CPU가 필요할 때마다 빠르게 데이터를 주고받는 통로 역할을 하죠.</p>
+        <p>이때, CPU와 RAM이 데이터를 주고받는 '통로'의 개수에 따라 싱글채널과 듀얼채널로 나뉘게 됩니다. 쉽게 말해, 고속도로의 차선 수와 같다고 보시면 돼요.</p>
+        <p>싱글채널과 듀얼채널의 차이는 단순히 숫자의 차이가 아닙니다. 여러분의 PC 사용 경험에 직접적인 영향을 미치죠. 특히 특정 작업에서는 그 효과가 더욱 두드러집니다.</p>
+        <p>네, 저는 무조건 '네!'라고 말씀드리고 싶어요. 특히 최근에는 내장 그래픽 성능이 좋아지면서 외장 그래픽카드 없이 PC를 사용하는 분들이 많은데요. 이런 분들에게 듀얼채널은 '필수'라고 할 수 있습니다.</p>
+        <p>예를 들어, 라이젠(Ryzen) APU를 탑재한 노트북이나 데스크톱을 사용하면서 리그 오브 레전드나 오버워치 같은 게임을 즐기신다면, 싱글채널과 듀얼채널의 차이는 '게임이 버벅이는가'와 '부드럽게 플레이 가능한가'를 가르는 결정적인 요소가 될 수 있습니다. 실제로 듀얼채널로 구성했을 때 프레임이 20~30% 이상 향상되는 경우도 흔합니다.</p>
+        <p>고사양 외장 그래픽카드를 사용하시는 분들도 마찬가지입니다. 아무리 좋은 그래픽카드가 있어도 CPU가 RAM에서 데이터를 빠르게 가져오지 못하면, 그래픽카드가 제 성능을 내지 못하고 놀고 있게 됩니다. 듀얼채널은 시스템의 균형을 맞춰주는 중요한 역할을 합니다.</p>
+        <p>RAM은 용량도 중요하지만, 그 용량을 얼마나 효율적으로 활용하는지도 중요합니다. 듀얼채널은 바로 이 효율성을 극대화하는 가장 쉽고 효과적인 방법입니다.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 싱글채널과 듀얼채널의 차이점, 그리고 듀얼채널의 중요성에 대해 말씀드렸습니다. PC를 구매하시거나 업그레이드하실 때, 램 용량뿐만 아니라 듀얼채널 구성 여부까지 꼭 확인하셔서 여러분의 PC가 최고의 성능을 발휘할 수 있도록 해주세요.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>

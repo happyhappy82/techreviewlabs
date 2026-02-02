@@ -1,0 +1,373 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-02T10:01:26.698Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "IOPS가 중요한 경우",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "-운영체제 부팅 및 프로그램 실행\n-웹 서버, 데이터베이스 서버 등에서 작은 파일 무작위 입출력\n-가상 머신 환경에서 여러 가상 운영체제 동시 실행\n-게임 로딩 시 수많은 작은 리소스 파일 로드\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "MB/s가 중요한 경우",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "-대용량 파일 (고화질 영상, 고음질 음악, 대형 소프트웨어 설치 파일 등) 복사 및 이동\n-4K 이상 고해상도 영상 편집 및 렌더링\n-대용량 백업 및 복구\n-대용량 게임 설치 및 패치\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 3,
+    "name": "핵심 차이점 한눈에 보기",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 4,
+    "name": "일반적인 PC 사용자 및 게이머:",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "    -운영체제 부팅, 프로그램 실행, 게임 로딩 등은 IOPS가 중요하게 작용합니다. 하지만 최신 게임이나 고해상도 미디어 파일은 MB/s도 중요하죠.\n    -요즘 나오는 NVMe SSD들은 대부분 IOPS와 MB/s 모두 준수한 성능을 보여줍니다. 이 경우, 두 지표 모두 높은 제품을 선택하는 것이 좋습니다. 특히 IOPS는 체감 속도에 큰 영향을 미 미칩니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 5,
+    "name": "영상 편집자, 그래픽 디자이너, 대용량 파일 작업자:",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "    -대용량 파일을 자주 옮기거나, 실시간으로 렌더링 작업을 한다면 MB/s가 훨씬 중요합니다. 4K 이상의 영상을 다룬다면 순차 읽기/쓰기 속도가 높은 NVMe SSD가 필수적입니다.\n    -물론 작은 프리셋 파일이나 프로젝트 파일 처리에는 IOPS도 중요하지만, 작업의 '메인'은 MB/s 성능에 크게 좌우됩니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 6,
+    "name": "서버 관리자, 데이터베이스 개발자:",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "    -수많은 동시 접속자와 쿼리를 처리해야 하는 서버 환경에서는 IOPS가 절대적으로 중요합니다. 작은 데이터 조각들을 얼마나 빠르게 읽고 쓸 수 있느냐가 핵심입니다.\n    -엔터프라이즈급 SSD는 일반 소비자용 SSD보다 훨씬 높은 IOPS를 제공하도록 설계됩니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 7,
+    "name": "주의사항:",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "-스펙 시트의 IOPS와 MB/s 수치는 '최대 성능'을 나타낼 때가 많습니다. 실제 사용 환경에서는 이보다 낮을 수 있다는 점을 염두에 두세요.\n-단순히 높은 숫자만을 쫓기보다는, 자신의 주요 작업 유형에 맞는 지표를 우선적으로 고려하는 것이 현명합니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  }
+];
+const faqs = [];
+const comparisonData = [
+  {
+    "name": "측정 단위",
+    "iops": "초당 입출력 작업 횟수 (Operations Per Second)",
+    "mb/s_(전송속도)": "초당 데이터 전송량 (Megabytes Per Second)"
+  },
+  {
+    "name": "중점",
+    "iops": "작은 파일의 무작위 입출력 처리 빈도",
+    "mb/s_(전송속도)": "큰 파일의 순차적인 데이터 전송량"
+  },
+  {
+    "name": "주요 활용",
+    "iops": "운영체제 부팅, 프로그램 실행, 데이터베이스 쿼리, 가상 머신",
+    "mb/s_(전송속도)": "대용량 파일 복사, 영상 편집, 게임 설치, 백업"
+  },
+  {
+    "name": "비유",
+    "iops": "사서가 짧은 시간 안에 여러 책을 빠르게 처리",
+    "mb/s_(전송속도)": "사서가 한 번에 많은 책을 카트에 싣고 빠르게 이동"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "iops",
+    "label": "IOPS"
+  },
+  {
+    "key": "mb/s_(전송속도)",
+    "label": "MB/s (전송속도)"
+  }
+];
+const selectionGuide = "그렇다면 어떤 저장장치를 선택해야 할까요? 정답은 '사용 목적'에 따라 다릅니다.";
+---
+
+<BaseLayout
+  title="IOPS vs MB/s(전송속도) 차이점"
+  description="컴퓨터의 두뇌가 CPU라면, 저장장치는 컴퓨터의 기억력을 담당합니다."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>IOPS vs MB/s(전송속도) 차이점</h1>
+        <p class="intro-text">컴퓨터의 두뇌가 CPU라면, 저장장치는 컴퓨터의 기억력을 담당합니다.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>저장장치 성능, 왜 중요할까요?</h2>
+        <p>컴퓨터의 두뇌가 CPU라면, 저장장치는 컴퓨터의 기억력을 담당합니다. 운영체제를 부팅하고, 프로그램을 실행하며, 파일을 열고 저장하는 모든 과정에서 저장장치의 성능이 직접적으로 영향을 미치죠. 아무리 좋은 CPU와 넉넉한 램을 가지고 있어도 저장장치가 느리다면 전체 시스템의 속도가 저하될 수밖에 없습니다. 그래서 저장장치 스펙을 제대로 이해하는 것이 정말 중요해요.</p>
+        <p>IOPS는 "Input/Output Operations Per Second"의 약자입니다. 말 그대로 '초당 몇 번의 입출력 작업을 처리할 수 있는가'를 나타내는 지표예요. 비유하자면, 도서관에서 사서가 책을 얼마나 '자주' 꺼내고 넣을 수 있는지를 측정하는 것과 비슷합니다. 한 번에 많은 양의 책을 옮기는 것보다는, 짧은 시간에 여러 권의 책을 빠르게 처리하는 능력에 가깝죠.</p>
+        <p>IOPS는 주로 작은 크기의 파일을 무작위로 읽거나 쓰는 작업에서 중요하게 작용합니다. 예를 들어, 운영체제가 수많은 작은 시스템 파일을 읽어들여 부팅을 하거나, 웹 브라우저가 캐시 파일을 처리하고, 데이터베이스 서버가 수많은 작은 쿼리를 처리할 때 IOPS 성능이 높을수록 작업 속도가 빨라집니다.</p>
+        <p>MB/s는 "Megabytes Per Second"의 약자로, '초당 몇 메가바이트의 데이터를 전송할 수 있는가'를 나타내는 지표입니다. 이는 '순차 전송 속도'라고도 불리며, 한 번에 얼마나 '많은 양'의 데이터를 얼마나 '빠르게' 옮길 수 있는지를 나타냅니다. 도서관 비유로 다시 돌아가자면, 사서가 한 번에 수십 권의 책을 카트에 싣고 빠르게 이동시키는 능력에 해당합니다.</p>
+        <p>MB/s는 주로 크기가 큰 파일을 순차적으로 읽거나 쓰는 작업에서 중요하게 작용합니다. 예를 들어, 대용량 동영상 파일을 복사하거나, 고해상도 영상 편집 작업을 하거나, 큰 용량의 게임을 설치할 때 MB/s 성능이 높을수록 작업이 빠르게 완료됩니다.</p>
+        <p>두 지표 모두 저장장치의 성능을 나타내지만, 측정하는 '방식'과 중요하게 작용하는 '작업 환경'이 다릅니다. IOPS는 '얼마나 자주' 처리하는지에 초점을 맞추고, MB/s는 '얼마나 많은 양'을 처리하는지에 초점을 맞춘다고 생각하시면 이해하기 쉽습니다.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 IOPS와 MB/s(전송속도)의 차이점에 대해 말씀드렸습니다. 이 두 지표는 저장장치의 성능을 이해하는 데 필수적인 개념이며, 어떤 작업을 주로 하는지에 따라 그 중요도가 달라집니다. 여러분의 작업 환경과 목적에 맞춰 IOPS와 MB/s를 현명하게 고려하여 최적의 저장장치를 선택하시길 바랍니다. 위 글 내용이 여러분들께 조금이라도 도움이 되었으면 좋겠네요!</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>

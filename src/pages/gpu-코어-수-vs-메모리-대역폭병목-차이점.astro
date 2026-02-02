@@ -1,0 +1,405 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-02T10:01:58.638Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "GPU 코어의 역할과 중요성",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "-역할: 주로 그래픽 렌더링, 물리 연산, 텍스처 처리 등 수많은 계산을 동시에 수행합니다.\n-중요성:\n    -높은 병렬 처리 능력: 코어 수가 많을수록 한 번에 더 많은 데이터를 처리할 수 있어 전반적인 연산 속도가 빨라집니다.\n    -다양한 작업 처리: 게임의 복잡한 그래픽, 3D 렌더링, 영상 편집, 그리고 인공지능(AI) 딥러닝 학습 등 병렬 연산이 필수적인 작업에서 절대적인 성능을 발휘합니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "코어 수의 장점과 주의사항",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [
+      "    -고사양 게임에서 높은 프레임률과 부드러운 화면을 제공합니다.",
+      "    -3D 모델링, 영상 렌더링 시간을 크게 단축시켜 줍니다.",
+      "    -AI/딥러닝 분야에서 모델 학습 속도를 향상시킵니다.",
+      "-주의사항:",
+      "    -단순히 코어 수가 많다고 무조건 좋은 것은 아닙니다. 코어의 효율성(아키텍처)도 중요하며, GPU 제조사마다 코어의 종류와 성능이 다르기 때문에 단순 수치 비교는 어렵습니다.",
+      "    -코어 수가 많아질수록 전력 소모량과 발열도 증가할 수 있습니다."
+    ],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 3,
+    "name": "메모리 대역폭의 역할과 중요성",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "-역할: GPU 코어가 연산에 필요한 데이터를 VRAM에서 가져오고, 처리된 데이터를 다시 VRAM에 저장하는 통로 역할을 합니다.\n-중요성:\n    -데이터 전송 속도: 대역폭이 넓을수록 더 많은 데이터를 더 빠르게 전송할 수 있어, GPU 코어가 데이터를 기다리는 시간을 줄여줍니다.\n    -고해상도 및 고품질 작업: 4K 이상의 고해상도 게임, 대용량 텍스처, 복잡한 3D 장면 등 많은 그래픽 데이터를 처리해야 하는 작업에서 특히 중요합니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 4,
+    "name": "메모리 대역폭의 장점과 주의사항",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [
+      "    -고해상도 환경에서 끊김 없는 게임 플레이와 부드러운 화면 전환을 가능하게 합니다.",
+      "    -대용량 데이터를 다루는 전문가용 애플리케이션(CAD, VFX 등)에서 작업 효율을 높여줍니다.",
+      "    -VR(가상현실)과 같은 실시간 고품질 렌더링 환경에서 뛰어난 성능을 발휘합니다.",
+      "-주의사항:",
+      "    -VRAM 용량과 함께 고려해야 합니다. 아무리 대역폭이 넓어도 VRAM 용량이 부족하면 결국 병목 현상이 발생할 수 있습니다.",
+      "    -대역폭이 무조건 높다고 해서 모든 작업에서 성능 향상을 체감하는 것은 아닙니다. 특정 작업 환경에서 그 중요성이 더 부각됩니다."
+    ],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 5,
+    "name": "실제 사용 환경에 따른 인사이트",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "1.게이머라면?:\n    -FHD/QHD 해상도 게임: 대부분의 최신 게임은 GPU 코어 수가 많을수록 유리합니다. 메모리 대역폭도 중요하지만, 코어 수가 높은 쪽이 전체적인 프레임 확보에 더 큰 영향을 줍니다.\n    -4K UHD 해상도 게임: 고해상도 게임은 처리해야 할 데이터 양이 기하급수적으로 늘어나기 때문에, 메모리 대역폭의 중요성이 커집니다. 넓은 대역폭과 충분한 VRAM 용량이 없다면 아무리 코어 수가 많아도 병목 현상으로 제 성능을 내기 어렵습니다.\n2.영상 편집/3D 렌더링 전문가라면?:\n    -두 요소 모두 매우 중요합니다. 복잡한 3D 모델링이나 고해상도 영상 편집은 엄청난 병렬 연산을 요구하므로 높은 코어 수가 필수적입니다. 동시에 수많은 텍스처와 데이터를 빠르게 주고받아야 하므로 넓은 메모리 대역폭과 충분한 VRAM 용량도 반드시 필요합니다.\n3.AI/딥러닝 개발자라면?:\n    -주로 대규모 행렬 연산을 수행하므로, GPU 코어 수가 절대적으로 중요합니다. 또한 학습 데이터의 크기에 따라 메모리 대역폭과 VRAM 용량도 중요하게 고려해야 합니다. 특히 VRAM 용량은 학습 가능한 모델의 크기를 결정짓는 핵심 요소입니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 6,
+    "name": "구매 전 주의사항: 균형이 핵심!",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "-자신의 사용 목적: 자신이 주로 어떤 작업을 할 것인지 명확히 파악하고, 그에 맞는 스펙을 가진 GPU를 선택하는 것이 가장 현명합니다. 고해상도 게임이나 전문 작업이 아니라면, 무리해서 최고 사양을 고집할 필요는 없습니다.\n",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  }
+];
+const faqs = [];
+const comparisonData = [
+  {
+    "name": "GPU 코어의 역할과 중요성",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "코어 수의 장점과 주의사항",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "메모리 대역폭의 역할과 중요...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "메모리 대역폭의 장점과 주의...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "실제 사용 환경에 따른 인사...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  },
+  {
+    "name": "구매 전 주의사항: 균형이 ...",
+    "cpu": "-",
+    "gpu": "-",
+    "ram": "-",
+    "storage": "-",
+    "display": "-",
+    "weight": "-"
+  }
+];
+const comparisonSpecs = [
+  { key: 'cpu', label: 'CPU' },
+  { key: 'gpu', label: 'GPU' },
+  { key: 'ram', label: 'RAM' },
+  { key: 'storage', label: '저장장치' },
+  { key: 'display', label: '디스플레이' },
+  { key: 'weight', label: '무게' },
+];
+const selectionGuide = "";
+---
+
+<BaseLayout
+  title="GPU 코어 수 vs 메모리 대역폭(병목) 차이점"
+  description="안녕하세요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>GPU 코어 수 vs 메모리 대역폭(병목) 차이점</h1>
+        <p class="intro-text">안녕하세요.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>GPU 코어 수 vs 메모리 대역폭(병목) 차이점</h2>
+        <p>안녕하세요. 오늘은 많은 분들이 궁금해하시지만, 막상 들여다보면 조금 복잡하게 느껴지는 'GPU 코어 수'와 '메모리 대역폭'에 대해 말씀드릴게요. 이 두 가지는 GPU의 성능을 좌우하는 핵심 요소인데요, 각각 어떤 역할을 하고, 왜 중요한지, 그리고 어떤 상황에서 더 우선시해야 하는지  쉽고 친절하게 알려드리겠습니다!</p>
+        <p>GPU 코어 수는 그래픽카드의 '근육'이라고 생각하시면 이해하기 쉬울 거예요. CPU가 소수의 강력한 코어로 복잡한 작업을 순차적으로 처리한다면, GPU는 수천 개에 달하는 작은 코어들로 수많은 단순 작업을 동시에, 병렬적으로 처리하는 데 특화되어 있습니다.</p>
+        <p>메모리 대역폭은 GPU 코어와 그래픽 메모리(VRAM) 사이의 '데이터 고속도로'라고 생각하시면 됩니다. GPU 코어가 아무리 강력해도, 필요한 데이터를 빠르게 받아오지 못하면 제 성능을 발휘하기 어렵겠죠? 이 데이터를 얼마나 빠르고 많이 주고받을 수 있는지를 나타내는 것이 바로 메모리 대역폭입니다.</p>
+        <p>GPU 코어 수와 메모리 대역폭은 마치 자동차의 엔진 출력과 도로 폭과 같습니다. 엔진이 아무리 강력해도(코어 수가 많아도) 도로가 좁으면(메모리 대역폭이 좁으면) 제 속도를 낼 수 없습니다. 반대로 도로가 아무리 넓어도(메모리 대역폭이 넓어도) 엔진 출력이 약하면(코어 수가 적으면) 제 속도를 내지 못하겠죠.</p>
+        <p>이처럼 GPU의 전체 성능은 이 두 요소가 얼마나 균형 있게 작동하는지에 따라 결정됩니다. 한쪽이 너무 부족하면 다른 쪽이 아무리 뛰어나도 전체 성능을 저하시키는 '병목 현상(Bottleneck)'이 발생합니다.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 GPU 코어 수와 메모리 대역폭의 차이점, 그리고 이 둘이 어떻게 GPU 성능에 영향을 미치는지에 대해 말씀드렸습니다. 복잡하게만 보였던 GPU 스펙이 이제는 조금 더 명확하게 이해되셨기를 바랍니다. 여러분의 소중한 PC 업그레이드나 구매 결정에 위 글 내용이 조금이라도 도움이 되었으면 좋겠네요!</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
