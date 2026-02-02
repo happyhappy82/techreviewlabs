@@ -351,6 +351,18 @@ async function scheduledSync() {
 
   let newPublishedSlugs = [];
 
+  // rich-pages.json 기반으로 기존 페이지 확인
+  const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
+  let existingPageIds = new Set();
+  if (fs.existsSync(richPagesPath)) {
+    try {
+      const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
+      existingPageIds = new Set(richPages.map(p => p.notionPageId));
+    } catch (e) {
+      console.log('⚠️  Could not read rich-pages.json, treating all as new');
+    }
+  }
+
   for (const page of response.results) {
     const pageId = page.id;
     const props = await getPageProperties(pageId);
@@ -358,17 +370,13 @@ async function scheduledSync() {
     if (!props.title) continue;
 
     const slug = generateSlug(props.title);
-    const existingFile = findExistingFileByPageId(pageId);
+    const isNew = !existingPageIds.has(pageId);
 
-    if (!existingFile.exists) {
-      // 신규 발행
-      console.log(`\n✨ New review detected: ${slug}`);
-      const publishedSlug = await processPage(pageId, true);
-      if (publishedSlug) {
-        newPublishedSlugs.push(publishedSlug);
-      }
-    } else {
-      console.log(`\nℹ️  Already published: ${slug} (skipping)`);
+    // 항상 재생성 (코드 변경사항 반영을 위해)
+    console.log(`\n${isNew ? '✨ New' : '🔄 Regenerating'}: ${slug}`);
+    const publishedSlug = await processPage(pageId, isNew);
+    if (publishedSlug && isNew) {
+      newPublishedSlugs.push(publishedSlug);
     }
   }
 

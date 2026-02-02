@@ -752,8 +752,8 @@ function generateAstroPage(data) {
   }
 
   const introText = data.intro.trim() || `오늘은 ${data.title}에 대해 말씀드릴게요.`;
-  const topicTitle = data.topicTitle || '소개';
-  const topicText = data.topicExplanation.trim();
+  const topicTitle = data.topicTitle || '들어가며';
+  const topicText = data.topicExplanation.trim() || `오늘은 ${data.title}에 대해 자세히 알아보겠습니다.`;
   const closingText = data.closing.trim() || '위 내용이 여러분께 도움이 되길 바랍니다.';
   const selectionGuideText = data.selectionGuide.trim();
 
