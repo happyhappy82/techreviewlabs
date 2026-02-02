@@ -358,9 +358,18 @@ async function scheduledSync() {
     if (!props.title) continue;
 
     const slug = generateSlug(props.title);
-    const existingFile = findExistingFileByPageId(pageId);
 
-    if (!existingFile.exists) {
+    // rich-pages.json에서 기존 글 확인 (.astro 페이지 기준)
+    let isExisting = false;
+    const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
+    if (fs.existsSync(richPagesPath)) {
+      try {
+        const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
+        isExisting = richPages.some(p => p.notionPageId === pageId);
+      } catch (e) { /* ignore */ }
+    }
+
+    if (!isExisting) {
       // 신규 발행
       console.log(`\n✨ New review detected: ${slug}`);
       const publishedSlug = await processPage(pageId, true);
@@ -414,9 +423,48 @@ async function webhookSync() {
 
   // Handle deletion
   if (status === 'Deleted') {
-    console.log(`\n🗑️  Deleting review: ${slug}`);
+    console.log(`\n🗑️  Deleting review...`);
+
+    // rich-pages.json에서 pageId로 기존 slug 찾기
+    const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
+    let deletedAny = false;
+
+    if (fs.existsSync(richPagesPath)) {
+      try {
+        const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
+        const existing = richPages.find(p => p.notionPageId === pageId);
+
+        if (existing) {
+          const existingSlug = existing.slug;
+
+          // .astro 파일 삭제
+          const astroPath = path.join(process.cwd(), 'src/pages', `${existingSlug}.astro`);
+          if (fs.existsSync(astroPath)) {
+            fs.unlinkSync(astroPath);
+            console.log(`  🗑️  Deleted: ${existingSlug}.astro`);
+            deletedAny = true;
+          }
+
+          // rich-pages.json에서 항목 제거
+          const updated = richPages.filter(p => p.notionPageId !== pageId);
+          fs.writeFileSync(richPagesPath, JSON.stringify(updated, null, 2), 'utf-8');
+          console.log(`  🗑️  Removed from rich-pages.json: ${existingSlug}`);
+          deletedAny = true;
+        }
+      } catch (e) {
+        console.error(`  ❌ Failed to process deletion: ${e.message}`);
+      }
+    }
+
+    // .md 파일도 혹시 있으면 삭제
     const deleted = deleteReviewFile(slug);
-    return deleted;
+    deletedAny = deletedAny || deleted;
+
+    if (!deletedAny) {
+      console.log(`  ⚠️  No files found to delete for pageId: ${pageId}`);
+    }
+
+    return deletedAny;
   }
 
   // Handle publish/update
