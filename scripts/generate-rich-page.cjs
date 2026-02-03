@@ -766,7 +766,7 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
 
 <BaseLayout
   title="${data.title}"
-  description="${introText.substring(0, 150).replace(/\n/g, ' ').replace(/"/g, '\\"')}"
+  description="${introText.substring(0, 150).replace(/\n/g, ' ').replace(/"/g, '&quot;')}"
 >
   <Header />
 
