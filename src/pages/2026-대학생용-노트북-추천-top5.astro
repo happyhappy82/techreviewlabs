@@ -1,0 +1,835 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-05T03:30:44.142Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "에이서 2025 프레데터 헬리오스 네오 16 AI 코어Ultra9 인텔 15세대",
+    "summary": "압도적인 성능과 쿨링으로 어떤 작업이든 완벽하게 소화하는 궁극의 게이밍/작업용 노트북",
+    "keyPoint": "최고 성능 CPU/GPU, 뛰어난 쿨링, 240Hz WQXGA 디스플레이",
+    "target": "고사양 게임, 4K 영상 편집, 3D 디자인, AI/딥러닝 등 최상급 성능이 필요한 대학생",
+    "buyUrl": "https://link.coupang.com/a/dzYsEK",
+    "description": "최고의 성능을 합리적인 가격에 경험하고 싶은 대학생이라면 주목해야 할 모델입니다. 최신 인텔 Core Ultra 9 프로세서와 엔비디아 RTX 5070 Ti GPU 조합으로 어떤 고사양 작업도 거침없이 처리합니다. 특히 압도적인 쿨링 시스템은 장시간 사용에도 안정적인 성능을 유지시켜 줍니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 Ti 12GB GDDR7 (TGP 140W)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5-6400MHz 듀얼 채널 (최대 64GB)"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 IPS WQXGA (2560x1600) 16:10, 240Hz, 500nits, DCI-P3, G-Sync"
+      },
+      {
+        "label": "OS",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "2.45kg"
+      },
+      {
+        "label": "쿠팡케어 가입 권장",
+        "value": "고가 제품이므로 장기 보증을 위해 쿠팡케어 가입을 고려해 보세요."
+      },
+      {
+        "label": "윈도우 포함 모델",
+        "value": "이 모델은 Windows 11 Home이 포함되어 있어 별도 설치가 필요 없습니다."
+      },
+      {
+        "label": "PD 충전 지원",
+        "value": "USB-C로 최대 100W PD 충전이 가능하여 비상시 유용합니다."
+      },
+      {
+        "label": "RAM 업그레이드",
+        "value": "듀얼 채널 슬롯으로 최대 64GB까지 확장 가능합니다."
+      },
+      {
+        "label": "게이밍",
+        "value": "⭐⭐⭐⭐⭐ - RTX 5070 Ti로 AAA 게임 최고 옵션 구동, 240Hz로 부드러운 플레이가 가능합니다."
+      },
+      {
+        "label": "영상편집",
+        "value": "⭐⭐⭐⭐⭐ - 4K 영상 여러 개를 동시에 돌려도 버벅임이 없으며, DCI-P3 색역으로 전문 작업에 적합합니다."
+      },
+      {
+        "label": "3D 디자인",
+        "value": "⭐⭐⭐⭐⭐ - 강력한 GPU로 렌더링 시간을 단축할 수 있습니다."
+      },
+      {
+        "label": "프로그래밍",
+        "value": "⭐⭐⭐⭐⭐ - 32GB RAM과 강력한 CPU로 어떤 개발 환경이든 쾌적하게 구동합니다."
+      },
+      {
+        "label": "휴대용",
+        "value": "⭐⭐⭐ - 성능은 최고지만 2.45kg 무게는 휴대하기에 부담스러울 수 있습니다."
+      },
+      {
+        "label": "국내 보증",
+        "value": "2년 무상보증 (메인보드 2년)"
+      },
+      {
+        "label": "해외 보증",
+        "value": "1년 ITW (해외 여행자 보증)"
+      }
+    ],
+    "pros": [
+      "가격 대비 최상급 성능: i9 275HX + RTX 5070 Ti 조합이 이 가격대에서 독보적입니다.",
+      "강력한 쿨링 시스템: 5세대 에어로블레이드와 액체금속 써멀 그리스로 발열 관리가 우수합니다.",
+      "240Hz 고해상도 디스플레이: WQXGA 해상도와 DCI-P3 색역으로 게임과 영상편집 모두 적합합니다.",
+      "안정적인 작동: 장시간 고사양 사용에도 멈춤이나 강제 종료 없이 안정적입니다.",
+      "쿨링 소음 관리: 균형 모드에서는 팬 소음이 조용합니다.",
+      "다양한 포트: Thunderbolt 4, USB 3.2 x3, HDMI 2.1, microSD 슬롯 등 확장성이 좋습니다.",
+      "\"영상 편집용으로 고심 끝에 고른 제품. 4K 영상 여러 개를 동시에 돌리거나 자막, 효과, 색보정까지 넣어도 버벅임이 거의 없어요. 무게랑 발열이 아쉬운 점.\"",
+      "\"무게 빼고 다 좋은 컴퓨터. 속도, 안정성, 소음, 가성비 모두 만족합니다.\"",
+      "\"투자대비 기대 이상의 퍼포먼스를 원한다면 망설이지 마세요. 균형 모드로도 충분한 퍼포먼스입니다.\""
+    ],
+    "cons": [
+      "무게: 2.45kg으로 매일 들고 다니기에는 다소 무겁습니다.",
+      "게임 모드 팬 소음: 고성능 모드에서는 팬 소음이 크게 느껴질 수 있습니다.",
+      "지문 자국: 블랙 표면에 지문이 잘 남는다는 점은 아쉽습니다.",
+      "배터리 소모: 고사양 작업 시 배터리 소모가 빠르므로 전원 연결이 필수입니다."
+    ],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "HP 2025 오멘 16 코어Ultra9 지포스 RTX 5080",
+    "summary": "데스크탑 대체 가능한 최강 성능, 럭셔리한 디자인까지 겸비한 하이엔드 게이밍 머신",
+    "keyPoint": "노트북 최상위 RTX 5080, Core Ultra 9, Wi-Fi 7, 프리미엄 빌드",
+    "target": "예산이 넉넉하고 최고 사양의 게이밍, 전문 작업, AI 학습 환경을 원하는 대학생",
+    "buyUrl": "https://link.coupang.com/a/dD7p21",
+    "description": "예산에 구애받지 않고 데스크탑급 성능을 노트북으로 경험하고 싶은 대학생에게 추천하는 최상위 모델입니다. 노트북 GPU 중 최강의 RTX 5080과 최신 Core Ultra 9 프로세서가 만나 어떤 작업도 압도적인 속도로 처리합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (Arrow Lake, 24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5080 16GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 IPS WQXGA (2560x1600) 240Hz"
+      },
+      {
+        "label": "OS",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무선",
+        "value": "Wi-Fi 7 + Bluetooth 5.4"
+      },
+      {
+        "label": "색상 선택",
+        "value": "Ceramic White는 디자인이 뛰어나지만 지문 자국에 유의해야 하며, Shadow Black은 무난합니다."
+      },
+      {
+        "label": "쿠팡안심케어",
+        "value": "고가 제품이므로 5년 무상보증 연장 플랜을 강력히 권장합니다."
+      },
+      {
+        "label": "전원 사용",
+        "value": "최고 성능을 위해서는 어댑터를 항상 연결하는 것이 필수입니다."
+      },
+      {
+        "label": "용도 확인",
+        "value": "단순 게이밍용이라면 RTX 5070 모델이 가성비가 더 뛰어날 수 있습니다."
+      },
+      {
+        "label": "AAA 게이밍",
+        "value": "⭐⭐⭐⭐⭐ - RTX 5080으로 WQXGA 최고/울트라 설정과 레이트레이싱도 원활합니다."
+      },
+      {
+        "label": "e스포츠",
+        "value": "⭐⭐⭐⭐⭐ - 240Hz와 초고성능 GPU로 경쟁 게임에 최적화된 환경을 제공합니다."
+      },
+      {
+        "label": "영상 편집",
+        "value": "⭐⭐⭐⭐⭐ - 16GB VRAM으로 8K 영상 편집도 가능한 수준입니다."
+      },
+      {
+        "label": "3D 모델링/렌더링",
+        "value": "⭐⭐⭐⭐⭐ - 16GB VRAM으로 대규모 3D 프로젝트도 원활하게 처리합니다."
+      },
+      {
+        "label": "AI/딥러닝",
+        "value": "⭐⭐⭐⭐⭐ - RTX 5080 Tensor 코어로 대규모 AI 모델 학습 및 추론이 가능합니다."
+      },
+      {
+        "label": "사무/학습",
+        "value": "⭐⭐⭐⭐⭐ - 모든 사무 작업에 완전한 오버스펙으로 쾌적합니다."
+      },
+      {
+        "label": "휴대용",
+        "value": "⭐⭐ - 16인치 하이엔드 게이밍 노트북으로 이동 시 부담이 클 수 있습니다."
+      },
+      {
+        "label": "판매자",
+        "value": "쿠팡(주) 외 2개 판매자"
+      },
+      {
+        "label": "반품/교환",
+        "value": "제품 수령 후 30일 이내 (단순변심), 와우멤버십 회원 무료 반품/교환"
+      }
+    ],
+    "pros": [
+      "RTX 5080 16GB: 노트북 GPU 최상위급 성능으로 데스크탑을 대체할 수 있습니다.",
+      "Core Ultra 9 275HX: Arrow Lake 최신 CPU 24코어로 어떤 작업도 무리 없이 소화합니다.",
+      "뛰어난 쿨링 설계: 열 관리가 훌륭하여 고성능에도 생각보다 조용하다는 평가가 많습니다.",
+      "Wi-Fi 7 지원: 최신 무선 규격으로 미래 지향적인 네트워크 환경을 제공합니다.",
+      "프리미엄 디자인: Ceramic White 색상 선택이 가능하며, 세련된 하단부 바형 조명이 특징입니다.",
+      "Windows 11 Home 기본 포함: OS 추가 구매 없이 바로 사용할 수 있습니다.",
+      "\"흰색이 색상이 이뻐서 흰색으로 구매. 16인치 IPS 화면은 적당하고 240Hz 덕에 게이밍 완벽. FC25, LoL, 스타크래프트 잘 돌아갑니다.\"",
+      "\"하이엔드 게이밍 노트북 입문하기엔 좋은데 동일 사양 에일리언웨어 대비 100만원 넘게 싸요. 어댑터 꽂으면 무적입니다.\"",
+      "\"열 관리가 아주 훌륭한 듯. 생각보다 조용하네요.\""
+    ],
+    "cons": [
+      "높은 가격: 440만원대로 예산 부담이 매우 큰 편입니다.",
+      "어댑터 분리 시 성능 저하: 고성능을 위해서는 항상 전원 어댑터를 연결해야 합니다.",
+      "화살표 키 불편: 화살표 키(위/아래)가 작아 사용이 불편하다는 의견이 있습니다.",
+      "절전 모드 스피커 튜닝: 절전 모드에서 화면 복귀 시 간헐적으로 스피커 튜닝 소리가 발생할 수 있습니다."
+    ],
+    "recommendFor": []
+  },
+  {
+    "id": 3,
+    "name": "레노버 2025 LOQ 15IRX10 코어i7 인텔 13세대 지포스",
+    "summary": "가성비와 성능을 동시에 잡은, 입문용 게이밍 및 다용도 노트북의 현명한 선택",
+    "keyPoint": "합리적인 가격에 RTX 5060, 인텔 13세대 i7, WIN11 기본 포함",
+    "target": "예산 제약이 있지만 게이밍, 영상 편집, 프로그래밍 등 다양한 작업을 하고 싶은 대학생",
+    "buyUrl": "https://link.coupang.com/a/dD7gKZ",
+    "description": "예산은 한정되어 있지만 게이밍과 다양한 작업을 포기할 수 없는 대학생에게 최고의 가성비를 제공하는 모델입니다. RTX 5060 GPU와 인텔 13세대 i7 프로세서 조합으로 최신 AAA 게임과 영상 편집까지 무리 없이 소화합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-13650HX (14코어/20스레드, 최대 4.9GHz, 13세대)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.6인치 FHD IPS"
+      },
+      {
+        "label": "OS",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무선",
+        "value": "Intel AX201 Wi-Fi 6"
+      },
+      {
+        "label": "SSD 증설",
+        "value": "512GB는 부족할 수 있으므로, M.2 슬롯 여유분을 확인하여 추가 SSD 장착을 고려해 보세요."
+      },
+      {
+        "label": "RAM 업그레이드",
+        "value": "게임과 스트리밍을 동시에 한다면 32GB로 업그레이드하는 것이 좋습니다."
+      },
+      {
+        "label": "쿠팡안심케어",
+        "value": "게이밍 노트북 특성상 발열이 많으므로 무상보증 연장을 추천합니다."
+      },
+      {
+        "label": "AAA 게이밍",
+        "value": "⭐⭐⭐⭐ - RTX 5060으로 대부분의 최신 게임을 FHD 기준 높은 프레임으로 플레이할 수 있습니다."
+      },
+      {
+        "label": "e스포츠",
+        "value": "⭐⭐⭐⭐⭐ - LoL, 발로란트 등 경쟁 게임을 고프레임으로 안정적으로 구동합니다."
+      },
+      {
+        "label": "영상 편집",
+        "value": "⭐⭐⭐⭐ - 프리미어 프로, 다빈치 리졸브 등 FHD 영상 편집 작업이 원활합니다."
+      },
+      {
+        "label": "3D 작업",
+        "value": "⭐⭐⭐ - 중급 수준의 3D 모델링 및 렌더링이 가능하며, RAM 업그레이드 시 더 좋습니다."
+      },
+      {
+        "label": "사무/학습",
+        "value": "⭐⭐⭐⭐⭐ - 오피스, 웹 브라우징 등 일상 작업에는 오버스펙 수준으로 쾌적합니다."
+      },
+      {
+        "label": "프로그래밍",
+        "value": "⭐⭐⭐⭐ - IDE, 컴파일, 가상 머신 등 개발 환경에 적합합니다."
+      },
+      {
+        "label": "휴대용",
+        "value": "⭐⭐⭐ - 15.6인치 게이밍 노트북 특성상 무게와 크기가 있어 이동 시 부담이 있을 수 있습니다."
+      },
+      {
+        "label": "판매자",
+        "value": "쿠팡(주)"
+      },
+      {
+        "label": "반품/교환",
+        "value": "제품 수령 후 30일 이내 (단순변심), 와우멤버십 회원 무료 반품/교환"
+      }
+    ],
+    "pros": [
+      "합리적인 가격: 175만원대에 RTX 5060을 탑재한 게이밍 노트북으로 뛰어난 가성비를 자랑합니다.",
+      "RTX 5060 GPU: 최신 AAA 게임을 원활하게 플레이할 수 있는 성능을 제공합니다.",
+      "Windows 11 Home 기본 포함: OS 별도 구매 비용을 절감할 수 있습니다.",
+      "인텔 13세대 i7 고성능 프로세서: 게임 외 다양한 작업에도 충분한 성능을 발휘합니다.",
+      "빠른 체감 속도: DDR5 메모리와 NVMe SSD 조합으로 쾌적한 사용 환경을 제공합니다.",
+      "로켓배송 지원: 빠르게 제품을 수령할 수 있습니다.",
+      "리뷰 데이터가 부족하여 추후 업데이트 예정입니다. (현재 리뷰 2개, 모두 최고 평점)"
+    ],
+    "cons": [
+      "RAM 16GB: 고사양 멀티태스킹 시 부족할 수 있어 업그레이드를 권장합니다.",
+      "저장공간 512GB: 대용량 게임을 여러 개 설치하기에는 부족할 수 있습니다.",
+      "13세대 CPU: 최신 14세대 대비 전력 효율이 다소 낮을 수 있습니다.",
+      "Wi-Fi 6 지원: 최신 Wi-Fi 6E가 아닌 점은 아쉽습니다.",
+      "애매한 휴대성: 15.6인치 게이밍 노트북 특성상 휴대성과 대화면 사이에서 다소 애매한 포지션입니다."
+    ],
+    "recommendFor": []
+  },
+  {
+    "id": 4,
+    "name": "HP 2025 오멘 16 코어i7 인텔 14세대 지포스 RTX 5060 퍼포먼스",
+    "summary": "성능과 디스플레이 퀄리티를 모두 잡은, 균형 잡힌 고성능 게이밍/작업 노트북",
+    "keyPoint": "14세대 i7, RTX 5060, 240Hz WQXGA 디스플레이, 32GB RAM",
+    "target": "고사양 게임과 전문적인 영상/그래픽 작업을 병행하며 좋은 디스플레이를 원하는 대학생",
+    "buyUrl": "https://link.coupang.com/a/dzYu08",
+    "description": "고사양 게임과 전문적인 작업을 모두 아우르면서도 뛰어난 디스플레이 품질을 원하는 대학생에게 적합한 모델입니다. 최신 14세대 인텔 Core i7 프로세서와 RTX 5060 GPU, 그리고 선명한 WQXGA 240Hz 디스플레이가 완벽한 균형을 이룹니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-14700HX (20코어/28스레드, 최대 5.5GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7 (Blackwell, TGP 최대 140W)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5-5600MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16.1인치 WQXGA (2560x1600), 240Hz, 500nits, sRGB 100%, G-SYNC"
+      },
+      {
+        "label": "OS",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.3kg"
+      }
+    ],
+    "pros": [
+      "RTX 50시리즈 최신 GPU: DLSS 4 멀티프레임 생성 지원으로 미래 지향적인 게이밍 성능을 제공합니다.",
+      "14세대 인텔 Core i7-14700HX: 강력한 멀티태스킹 성능으로 어떤 작업도 빠르게 처리합니다.",
+      "240Hz 고주사율 + WQXGA 고해상도: 선명하고 부드러운 화면으로 게임과 작업 몰입도를 높입니다.",
+      "OMEN Tempest Cooling: 효율적인 발열 관리 시스템으로 안정적인 성능을 유지합니다.",
+      "32GB 대용량 메모리 기본 탑재: 고사양 작업과 멀티태스킹에 충분한 RAM을 제공합니다.",
+      "HP ADP 케어팩: 우발적 파손까지 1년 무상 보장하여 안심하고 사용할 수 있습니다.",
+      "\"RTX 5060과 i7-14700HX 조합으로 고사양 게임에 적합합니다.\"",
+      "\"AAA 게임을 높은 옵션에서 100+ FPS로 즐길 수 있을 것으로 예상됩니다.\"",
+      "\"게이밍과 영상 편집 모두 쾌적하게 처리 가능하여 만족스럽습니다.\""
+    ],
+    "cons": [
+      "무게: 2.3kg으로 휴대성에 다소 부담이 될 수 있습니다.",
+      "Free DOS: 윈도우가 미포함되어 있어 별도로 설치해야 합니다."
+    ],
+    "recommendFor": [
+      "고사양 게임과 전문적인 영상/그래픽 작업을 병행하며 좋은 디스플레이를 원하는 대학생",
+      "32GB RAM으로 여유로운 멀티태스킹 환경이 필요한 대학생"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "에이서 2025 프레데터 헬리오스 네오 16S AI 코어Ultra9 인텔 15세대",
+    "summary": "환상적인 OLED 디스플레이와 강력한 성능으로 시각적 만족감까지 선사하는 게이밍/전문 작업 노트북",
+    "keyPoint": "Core Ultra 9, RTX 5070, 16인치 OLED 240Hz 디스플레이, 뛰어난 발열 관리",
+    "target": "최상의 디스플레이 경험과 높은 성능을 동시에 추구하는 게이머, 크리에이터, AI 개발자 대학생",
+    "buyUrl": "https://link.coupang.com/a/dzYbEq",
+    "description": "최고의 시각적 경험을 제공하는 OLED 디스플레이와 강력한 성능을 동시에 원하는 대학생에게 이상적인 모델입니다. Core Ultra 9 프로세서와 RTX 5070 GPU, 그리고 16인치 OLED 240Hz 디스플레이는 게임과 전문 작업 모두에서 압도적인 만족감을 선사합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 8GB GDDR7 (TGP 115W, MUX Switch 지원)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5-6400MT/s 듀얼채널 (최대 64GB)"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe SSD (M.2 슬롯 x2)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 OLED WQXGA (2560x1600) 16:10, 240Hz, 500nit (HDR 500), DCI-P3 100%, 1ms"
+      },
+      {
+        "label": "OS",
+        "value": "Free DOS (윈도우 미포함, Windows 11만 지원)"
+      },
+      {
+        "label": "무게",
+        "value": "2.3kg"
+      },
+      {
+        "label": "윈도우 설치",
+        "value": "Free DOS 제품이므로 Windows 11 설치가 필수입니다. 설치 시 IRST 드라이버 로드가 필요할 수 있습니다."
+      },
+      {
+        "label": "SSD 추가장착",
+        "value": "2번 슬롯에 방열판이 없으므로, 방열판이 있는 SSD 장착 시 공간 협소에 유의해야 합니다."
+      },
+      {
+        "label": "쿠팡안심케어",
+        "value": "3년/5년 무상보증 옵션을 추가하여 장기적인 사용에 대비하는 것을 추천합니다."
+      },
+      {
+        "label": "고사양 게임",
+        "value": "⭐⭐⭐⭐⭐ - RTX 5070과 240Hz OLED로 최고의 게이밍 경험을 선사합니다."
+      },
+      {
+        "label": "영상 편집/3D 작업",
+        "value": "⭐⭐⭐⭐⭐ - DCI-P3 100%와 Core Ultra 9으로 전문적인 작업이 가능합니다."
+      },
+      {
+        "label": "AI/딥러닝",
+        "value": "⭐⭐⭐⭐⭐ - AI Boost 13TOPS와 RTX 5070으로 AI 작업에 강력한 성능을 발휘합니다."
+      },
+      {
+        "label": "사무용",
+        "value": "⭐⭐⭐⭐ - 과한 스펙일 수 있지만, 모든 업무를 쾌적하게 처리합니다."
+      },
+      {
+        "label": "휴대용",
+        "value": "⭐⭐⭐ - 2.3kg 무게와 큰 어댑터로 휴대성은 다소 아쉽습니다."
+      },
+      {
+        "label": "제조사",
+        "value": "Acer Incorporated"
+      },
+      {
+        "label": "국내 보증",
+        "value": "2년 무상보증 (메인보드 2년)"
+      },
+      {
+        "label": "해외 보증",
+        "value": "1년 해외 여행자보증 (ITW)"
+      }
+    ],
+    "pros": [
+      "Core Ultra 9 + RTX 5070 조합: 최고 수준의 게이밍 및 작업 성능을 제공합니다.",
+      "16인치 OLED 240Hz 디스플레이: 압도적인 명암비와 색 표현력, 빠른 응답속도로 몰입감 있는 시각적 경험을 선사합니다.",
+      "DCI-P3 100% 색 재현: 전문 그래픽 및 영상 작업에도 적합합니다.",
+      "우수한 발열 관리: 리퀴드메탈과 5세대 AeroBlade 3D 팬으로 발열 제어가 뛰어납니다.",
+      "18.9mm 초슬림 디자인: 강력한 성능의 게이밍 노트북임에도 얇은 편입니다.",
+      "2년 국내 무상보증 + 1년 해외 여행자보증: 긴 보증 기간으로 안심하고 사용할 수 있습니다.",
+      "\"에이서 헬리오스 네오16s - 한 달 실사용 후 장단점. 고성능 게이밍 노트북 치고는 발열 제어가 상당히 잘 되어 있습니다. 동급 대비 낮은 가격으로 가성비 노트북 찾는 분들에게는 매력적인 선택지가 됩니다.\"",
+      "\"제품은 가성비 좋으나 한 두 가지 모자람. 뒷판 뜯기가 생각보다 어렵습니다. 메모리나 SSD 추가를 고려하는 분들은 이 부분이 부담이 될 수 있습니다.\"",
+      "\"성능은 기대 이상 뛰어나요! 가격 대비 성능, 발열 관리, 배터리에서 만족도가 높습니다.\""
+    ],
+    "cons": [
+      "Free DOS: 윈도우가 미포함되어 있어 Windows 11을 별도로 설치해야 합니다.",
+      "하판 분해 난이도: RAM이나 SSD 업그레이드 시 하판 분해가 어렵다는 의견이 있습니다.",
+      "A/S 인프라: 대기업 대비 A/S 센터 인프라가 부족할 수 있습니다.",
+      "무게: 2.3kg으로 휴대성은 다소 아쉽습니다.",
+      "어댑터 크기: 230W 어댑터의 크기가 큰 편입니다."
+    ],
+    "recommendFor": []
+  }
+];
+const faqs = [
+  {
+    "q": "대학생 노트북, 어떤 성능이 필수적인가요?",
+    "a": "A. 전공에 따라 다르지만, 일반적으로 문서 작업, 웹 서핑, 강의 시청 위주라면 인텔 i5/AMD 라이젠 5급 CPU와 8GB RAM으로도 충분합니다. 하지만 영상 편집, 3D 디자인, 프로그래밍, 고사양 게임 등을 한다면 인텔 i7/AMD 라이젠 7급 이상 CPU, 16GB 이상 RAM, 그리고 전용 그래픽카드(RTX 3050 이상)가 필수적입니다."
+  },
+  {
+    "q": "휴대성이 중요한데, 게이밍 노트북도 괜찮을까요?",
+    "a": "A. 게이밍 노트북은 일반적으로 무게가 2kg 이상으로 무거운 편이며, 배터리 지속 시간도 짧아 휴대성이 떨어집니다. 매일 노트북을 들고 다니며 이동이 잦다면 1.5kg 이하의 경량 노트북을 추천하며, 고성능이 필요하다면 태블릿이나 가벼운 서브 노트북을 함께 사용하는 것을 고려해 볼 수 있습니다."
+  },
+  {
+    "q": "Free DOS 모델은 어떻게 해야 하나요?",
+    "a": "A. Free DOS 모델은 운영체제가 포함되어 있지 않아 직접 Windows 11을 설치해야 합니다. Windows 11 정품 라이선스를 구매하고 USB를 이용해 설치 디스크를 만들어야 합니다. 이 과정이 번거롭거나 익숙하지 않다면 Windows가 포함된 모델을 구매하는 것이 편리합니다."
+  },
+  {
+    "q": "쿠팡케어 같은 추가 보증 서비스는 꼭 필요할까요?",
+    "a": "A. 노트북은 고가 장비이며, 특히 게이밍 노트북은 높은 발열 등으로 고장 위험이 일반 노트북보다 높을 수 있습니다. 쿠팡케어와 같은 추가 보증 서비스는 제품의 수명을 연장하고, 예상치 못한 고장이나 파손 시 수리 비용 부담을 줄여주므로 고가 제품일수록 가입을 강력히 추천합니다."
+  },
+  {
+    "q": "OLED 디스플레이와 IPS 디스플레이 중 어떤 것이 더 좋나요?",
+    "a": "A. OLED 디스플레이는 자발광 방식이라 완벽한 검은색 표현과 무한대 명암비, 넓은 색 재현율, 빠른 응답 속도가 장점입니다. 영화 감상이나 전문적인 그래픽 작업, 게임에 유리합니다. IPS 디스플레이는 시야각이 넓고 색상 왜곡이 적으며 번인 현상 걱정이 없다는 장점이 있습니다. 예산과 사용 목적에 따라 선택이 달라질 수 있습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "CPU",
+    "에이서_프레데터_헬리오스_네오_16_ai": "Intel Core Ultra 9 275HX",
+    "hp_오멘_16_rtx_5080": "Intel Core Ultra 9 275HX",
+    "레노버_loq_15irx10": "Intel Core i7-13650HX",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "Intel Core i7-14700HX",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "Intel Core Ultra 9 275HX"
+  },
+  {
+    "name": "GPU",
+    "에이서_프레데터_헬리오스_네오_16_ai": "NVIDIA GeForce RTX 5070 Ti 12GB",
+    "hp_오멘_16_rtx_5080": "NVIDIA GeForce RTX 5080 16GB",
+    "레노버_loq_15irx10": "NVIDIA GeForce RTX 5060 8GB",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "NVIDIA GeForce RTX 5060 8GB",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "NVIDIA GeForce RTX 5070 8GB"
+  },
+  {
+    "name": "RAM",
+    "에이서_프레데터_헬리오스_네오_16_ai": "32GB DDR5",
+    "hp_오멘_16_rtx_5080": "32GB DDR5",
+    "레노버_loq_15irx10": "16GB DDR5",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "32GB DDR5",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "32GB DDR5"
+  },
+  {
+    "name": "저장장치",
+    "에이서_프레데터_헬리오스_네오_16_ai": "1TB PCIe Gen4 NVMe SSD",
+    "hp_오멘_16_rtx_5080": "1TB NVMe SSD",
+    "레노버_loq_15irx10": "512GB NVMe SSD",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "1TB PCIe Gen4 NVMe SSD",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "1TB PCIe Gen4 NVMe SSD"
+  },
+  {
+    "name": "디스플레이",
+    "에이서_프레데터_헬리오스_네오_16_ai": "16인치 IPS WQXGA 240Hz",
+    "hp_오멘_16_rtx_5080": "16인치 IPS WQXGA 240Hz",
+    "레노버_loq_15irx10": "15.6인치 FHD IPS",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "16.1인치 WQXGA 240Hz",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "16인치 OLED WQXGA 240Hz"
+  },
+  {
+    "name": "OS",
+    "에이서_프레데터_헬리오스_네오_16_ai": "Windows 11 Home",
+    "hp_오멘_16_rtx_5080": "Windows 11 Home",
+    "레노버_loq_15irx10": "Windows 11 Home",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "Free DOS",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "Free DOS"
+  },
+  {
+    "name": "무게",
+    "에이서_프레데터_헬리오스_네오_16_ai": "2.45kg",
+    "hp_오멘_16_rtx_5080": "미표기 (16인치 게이밍)",
+    "레노버_loq_15irx10": "미표기 (15.6인치 게이밍)",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "약 2.3kg",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "2.3kg"
+  },
+  {
+    "name": "무선",
+    "에이서_프레데터_헬리오스_네오_16_ai": "Killer Wi-Fi 6E",
+    "hp_오멘_16_rtx_5080": "Wi-Fi 7",
+    "레노버_loq_15irx10": "Intel AX201 Wi-Fi 6",
+    "hp_오멘_16_rtx_5060_퍼포먼스": "미표기",
+    "에이서_프레데터_헬리오스_네오_16s_ai": "Wi-Fi 6E"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "에이서_프레데터_헬리오스_네오_16_ai",
+    "label": "에이서 프레데터 헬리오스 네오 16 AI"
+  },
+  {
+    "key": "hp_오멘_16_rtx_5080",
+    "label": "HP 오멘 16 RTX 5080"
+  },
+  {
+    "key": "레노버_loq_15irx10",
+    "label": "레노버 LOQ 15IRX10"
+  },
+  {
+    "key": "hp_오멘_16_rtx_5060_퍼포먼스",
+    "label": "HP 오멘 16 RTX 5060 퍼포먼스"
+  },
+  {
+    "key": "에이서_프레데터_헬리오스_네오_16s_ai",
+    "label": "에이서 프레데터 헬리오스 네오 16S AI"
+  }
+];
+const selectionGuide = "";
+---
+
+<BaseLayout
+  title="2026 대학생용 노트북 추천 Top5"
+  description="안녕하세요, 오늘은 2026년 대학생을 위한 노트북 추천이라는  주제로 찾아왔습니다. 입학을 앞두고 있거나 기존 노트북의 업그레이드를 고민하는 분들이라면 오늘 포스팅에 주목해 주세요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>2026 대학생용 노트북 추천 Top5</h1>
+        <p class="intro-text">안녕하세요, 오늘은 2026년 대학생을 위한 노트북 추천이라는  주제로 찾아왔습니다. 입학을 앞두고 있거나 기존 노트북의 업그레이드를 고민하는 분들이라면 오늘 포스팅에 주목해 주세요.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 대학생용 노트북, 왜 중요할까요?</h2>
+        <p>대학생에게 노트북은 단순히 학습 도구를 넘어섭니다. 강의를 듣고 과제를 작성하며 팀 프로젝트를 수행하는 기본 학업 활동부터, 취미로 즐기는 게임, 영상 시청, 사진 편집, 심지어는 프로그래밍이나 3D 모델링 같은 전문적인 작업까지, 노트북 하나로 이 모든 것을 해결해야 하는 만능 도구죠.</p>
+        <p>2026년 현재, 노트북 시장은 AI 기능의 강화, 고성능 CPU와 GPU의 발전, 그리고 고주사율 디스플레이의 대중화로 그 어느 때보다 빠르게 변화하고 있습니다. 특히 대학생들은 전공에 따라 요구되는 성능이 천차만별인데요. 문서 작업과 웹 서핑 위주의 인문사회 계열 학생부터, 영상 편집과 디자인 작업을 하는 예체능 계열, 그리고 복잡한 코딩과 시뮬레이션을 돌리는 공학 계열 학생들까지, 각자의 필요에 맞는 노트북을 선택하는 것이 무엇보다 중요합니다.</p>
+        <p>이번 포스팅에서는 최신 트렌드를 반영하여 학업은 물론, 여가 활동까지 완벽하게 지원하는 대학생 노트북 Top 5를 선정해 보았습니다. 각 제품의 특징과 장단점을 꼼꼼히 분석하여 여러분의 현명한 선택을 돕겠습니다.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 대학생을 위한 노트북 추천 Top 5를 자세히 살펴보았습니다. 각 제품마다 강력한 성능과 독특한 매력을 가지고 있어, 여러분의 전공, 예산, 그리고 사용 목적에 따라 최적의 선택지가 될 수 있습니다.
+• 최고의 성능과 합리적인 가격을 원한다면 에이서 프레데터 헬리오스 네오 16 AI 모델이 좋습니다.
+• 가성비를 최우선으로 고려하며 게임과 학업을 병행하고 싶다면 레노버 LOQ 15IRX10 모델이 현명한 선택입니다.
+• 성능과 디스플레이 퀄리티의 균형을 중시한다면 HP 오멘 16 RTX 5060 퍼포먼스 모델이 만족스러울 것입니다.
+• 환상적인 OLED 디스플레이 경험과 강력한 성능을 동시에 원한다면 에이서 프레데터 헬리오스 네오 16S AI 모델이 제격입니다.
+위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다. 여러분의 대학 생활을 빛내줄 최고의 노트북을 찾으시길 진심으로 응원합니다!</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
