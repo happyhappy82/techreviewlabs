@@ -107,8 +107,8 @@ function deduplicateProducts(products) {
       if (used.has(j)) continue;
 
       const other = products[j];
-      const nameMatch = normalizeProductName(base.name) === normalizeProductName(other.name) ||
-                         getSimilarityScore(base.name, other.name) >= 3;
+      // 정확히 같은 이름만 병합 (유사도 기반 병합은 다른 모델을 합칠 위험)
+      const nameMatch = normalizeProductName(base.name) === normalizeProductName(other.name);
 
       if (nameMatch) {
         // 비어있지 않은 값을 우선 사용하여 병합
@@ -406,16 +406,27 @@ async function parseNotionContent(pageId) {
       const numberedMatch = text.match(/^(\d+)\.\s*(.+)/);
       const productName = numberedMatch ? numberedMatch[2].trim() : text.trim();
 
-      // ★ 이미 같은 이름의 제품이 있으면 중복 생성하지 않고 기존 제품 재사용
-      const existingProduct = result.products.find(p =>
-        normalizeProductName(p.name) === normalizeProductName(productName) ||
-        getSimilarityScore(p.name, productName) >= 3
-      );
+      // ★ 직전 h2에서 만든 currentProduct와 동일한 제품이면 중복 생성하지 않고 재사용
+      //   (전체 검색하면 같은 브랜드 다른 모델끼리 잘못 매칭됨)
+      if (currentProduct && currentSection === 'products') {
+        const exactMatch = normalizeProductName(currentProduct.name) === normalizeProductName(productName);
+        const similarEnough = getSimilarityScore(currentProduct.name, productName) >= 3;
+        if (exactMatch || similarEnough) {
+          // h3 이름이 더 상세하면 이름 업데이트
+          if (productName.length > currentProduct.name.length) {
+            currentProduct.name = productName;
+          }
+          productSubSection = null;
+          continue;
+        }
+      }
 
-      if (existingProduct) {
-        currentProduct = existingProduct;
-        currentSection = 'products';
-        productSubSection = null;
+      // 현재 제품 컨텍스트에서 짧고 숫자 없는 h3 = 서브섹션 헤더 (제품 설명, 장점 등)
+      if (currentProduct && productName.length <= 10 && !(/\d/.test(productName))) {
+        if (productName.includes('스펙') || productName.includes('사양')) productSubSection = 'specs';
+        else if (productName.includes('장점')) productSubSection = 'pros';
+        else if (productName.includes('단점')) productSubSection = 'cons';
+        else if (productName.includes('추천')) productSubSection = 'recommend';
         continue;
       }
 
