@@ -73,10 +73,15 @@ function isBuyLink(url) {
   return BUY_LINK_DOMAINS.some(domain => url.includes(domain));
 }
 
-// 테이블이 요약 테이블인지 판별 (제품명/이름 컬럼 존재)
+// 테이블이 요약 테이블인지 판별 (첫 번째 헤더가 제품 식별자 + 평가 항목 존재)
 function isSummaryTable(headers) {
-  const summaryKeywords = ['제품', '이름', '모델', '노트북', '상품'];
-  return headers.some(h => summaryKeywords.some(kw => h.includes(kw)));
+  if (headers.length < 2) return false;
+  const firstHeader = (headers[0] || '').toLowerCase();
+  const summaryFirstCol = ['제품', '이름', '모델', '상품', '순위'];
+  const hasSummaryFirstCol = summaryFirstCol.some(kw => firstHeader.includes(kw));
+  const evalKeywords = ['핵심', '한 줄', '추천', '평가', '요약', '장점', '특징', '코멘트', '대상'];
+  const hasEvalCol = headers.slice(1).some(h => evalKeywords.some(kw => h.toLowerCase().includes(kw)));
+  return hasSummaryFirstCol && hasEvalCol;
 }
 
 // h2 제목으로 섹션 타입 추론
@@ -219,8 +224,19 @@ async function parseNotionContent(pageId) {
   const excerptProp = props.Excerpt || props.요약;
   const pageExcerpt = excerptProp?.rich_text ? richTextToPlain(excerptProp.rich_text) : '';
 
-  // 블록 내용 가져오기
-  const blocks = await notion.blocks.children.list({ block_id: pageId, page_size: 100 });
+  // 블록 내용 가져오기 (페이지네이션으로 전체 블록 수집)
+  let allBlockResults = [];
+  let startCursor = undefined;
+  do {
+    const response = await notion.blocks.children.list({
+      block_id: pageId,
+      page_size: 100,
+      start_cursor: startCursor
+    });
+    allBlockResults = allBlockResults.concat(response.results);
+    startCursor = response.has_more ? response.next_cursor : undefined;
+  } while (startCursor);
+  const blocks = { results: allBlockResults };
 
   const result = {
     title: pageTitle,
@@ -251,10 +267,32 @@ async function parseNotionContent(pageId) {
     if (type === 'heading_2') {
       const text = richTextToPlain(block.heading_2.rich_text);
 
-      // "1. 제품명" 패턴이면 h3처럼 제품으로 처리
+      // "1. 제품명" 패턴 감지 — 섹션 헤더와 제품명을 구분
       const numberedMatch = text.match(/^(\d+)\.\s*(.+)/);
       if (numberedMatch) {
-        const productName = numberedMatch[2].trim();
+        const afterNumber = numberedMatch[2].trim();
+        const sectionType = inferSectionType(afterNumber);
+
+        // inferSectionType이 명확한 섹션 타입을 반환하면 섹션 헤더로 처리
+        if (sectionType !== 'topic') {
+          currentSection = sectionType;
+          currentProduct = null;
+          productSubSection = null;
+          continue;
+        }
+
+        // 제품이 아닌 도입부 키워드 체크
+        const topicIndicators = ['들어가', '왜', '소개', '개요', '중요', '알아', '살펴'];
+        if (topicIndicators.some(kw => afterNumber.includes(kw))) {
+          currentSection = 'topic';
+          if (!result.topicTitle) result.topicTitle = afterNumber;
+          currentProduct = null;
+          productSubSection = null;
+          continue;
+        }
+
+        // 제품으로 처리
+        const productName = afterNumber;
         const productId = parseInt(numberedMatch[1]);
 
         currentSection = 'products';
@@ -293,8 +331,10 @@ async function parseNotionContent(pageId) {
     if (type === 'heading_3') {
       const text = richTextToPlain(block.heading_3.rich_text);
 
-      // FAQ/마무리 섹션 내 h3는 제품으로 처리하지 않음
-      if (currentSection === 'faq' || currentSection === 'closing') {
+      // 제품 섹션이 아닌 곳의 h3는 제품으로 처리하지 않음
+      if (currentSection === 'faq' || currentSection === 'closing' ||
+          currentSection === 'guide' || currentSection === 'comparison' ||
+          currentSection === 'summary') {
         continue;
       }
 
@@ -330,13 +370,10 @@ async function parseNotionContent(pageId) {
       if (tableData.length > 0) {
         const headers = tableData[0];
 
-        // 첫 번째 테이블 또는 요약 테이블 패턴
-        if (tableCount === 1 || isSummaryTable(headers)) {
-          if (result.summaryTable.length === 0) {
-            result.summaryTable = tableData;
-          }
+        // 콘텐츠 기반 테이블 종류 판별 (순서가 아닌 구조로 판단)
+        if (isSummaryTable(headers) && result.summaryTable.length === 0) {
+          result.summaryTable = tableData;
         } else {
-          // 두 번째 이후 테이블은 비교표
           result.comparisonTable = tableData;
         }
       }
@@ -541,6 +578,61 @@ async function parseNotionContent(pageId) {
       continue;
     }
 
+    // ===== 번호 리스트: 불릿 리스트와 동일하게 처리 =====
+    if (type === 'numbered_list_item') {
+      const text = richTextToPlain(block.numbered_list_item.rich_text);
+      const url = extractUrl(block.numbered_list_item.rich_text);
+
+      if (!text.trim()) continue;
+
+      if (url && isBuyLink(url) && currentProduct) {
+        currentProduct.buyUrl = url;
+        continue;
+      }
+
+      if (currentSection === 'faq') {
+        if (text.includes('?') || text.startsWith('Q')) {
+          result.faqs.push({ q: text.replace(/^Q[:.]\s*/, ''), a: '' });
+        } else if (result.faqs.length > 0) {
+          result.faqs[result.faqs.length - 1].a += text.replace(/^A[:.]\s*/, '') + ' ';
+        }
+        continue;
+      }
+
+      if (currentSection === 'guide') {
+        result.selectionGuide += '• ' + text + '\n';
+        continue;
+      }
+
+      if (currentSection === 'closing') {
+        result.closing += '• ' + text + '\n';
+        continue;
+      }
+
+      if (currentProduct) {
+        if (productSubSection === 'specs') {
+          const colonIdx = text.indexOf(':');
+          if (colonIdx > 0) {
+            currentProduct.specs.push({
+              label: text.substring(0, colonIdx).trim(),
+              value: text.substring(colonIdx + 1).trim()
+            });
+          } else {
+            classifyBulletItem(text, currentProduct);
+          }
+        } else if (productSubSection === 'pros') {
+          currentProduct.pros.push(text);
+        } else if (productSubSection === 'cons') {
+          currentProduct.cons.push(text);
+        } else if (productSubSection === 'recommend') {
+          currentProduct.recommendFor.push(text);
+        } else {
+          classifyBulletItem(text, currentProduct);
+        }
+      }
+      continue;
+    }
+
     // ===== 토글: FAQ 자동 감지 =====
     if (type === 'toggle') {
       const toggleTitle = richTextToPlain(block.toggle.rich_text);
@@ -620,8 +712,8 @@ function classifyBulletItem(text, product) {
   } else if (hasPositive && !hasNegative) {
     product.pros.push(text);
   } else {
-    // 분류 불가시 장점으로 (대부분 장점을 먼저 씀)
-    product.pros.push(text);
+    // 분류 불가시 설명에 추가 (잘못된 장점 분류 방지)
+    product.description += text + '\n';
   }
 }
 
@@ -701,23 +793,62 @@ function generateAstroPage(data) {
 
   if (data.comparisonTable.length > 1) {
     const headers = data.comparisonTable[0];
-    const compData = [];
+    const dataRows = data.comparisonTable.slice(1);
 
-    for (let i = 1; i < data.comparisonTable.length; i++) {
-      const row = data.comparisonTable[i];
-      const item = { name: row[0] || '' };
+    // 테이블 방향 감지
+    // Format A: 제품이 열 헤더 (스펙이 행) — "구분 | Prod1 | Prod2" / "CPU | i7 | R7"
+    // Format B: 제품이 행 (스펙이 열 헤더) — "제품명 | CPU | GPU" / "Prod1 | i7 | 5060"
+    const specDetectKeywords = ['cpu', 'gpu', 'ram', 'ssd', 'hdd', '프로세서', '그래픽', '메모리',
+      '저장', '디스플레이', '화면', '배터리', '무게', '크기', '해상도', '주사율', '가격', '운영체제', '포트'];
+    const firstColValues = dataRows.map(r => (r[0] || '').toLowerCase());
+    const firstColSpecCount = firstColValues.filter(v => specDetectKeywords.some(kw => v.includes(kw))).length;
+    const headerSpecCount = headers.slice(1).map(h => h.toLowerCase())
+      .filter(h => specDetectKeywords.some(kw => h.includes(kw))).length;
+
+    // Format A: 첫 번째 열에 스펙 키워드가 2개 이상 있거나,
+    //           열 수가 제품 수와 일치하고 행 수가 제품 수와 불일치
+    const isFormatA = firstColSpecCount >= 2 ||
+      (headers.length - 1 === data.products.length && dataRows.length !== data.products.length && firstColSpecCount > headerSpecCount);
+
+    if (isFormatA) {
+      // Format A: 제품이 열 → 전치하여 제품별 객체 생성
+      const compData = [];
       for (let j = 1; j < headers.length; j++) {
-        const key = headers[j].toLowerCase().replace(/\s+/g, '_');
-        item[key] = row[j] || '-';
+        const product = { name: headers[j] || '' };
+        for (let i = 0; i < dataRows.length; i++) {
+          const rawLabel = dataRows[i][0] || '';
+          const key = rawLabel.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9가-힣_]/g, '') || `row_${i}`;
+          product[key] = dataRows[i][j] || '-';
+        }
+        compData.push(product);
       }
-      compData.push(item);
+      comparisonDataCode = JSON.stringify(compData, null, 2);
+      comparisonSpecsCode = JSON.stringify(
+        dataRows.map((r, i) => {
+          const label = r[0] || `항목 ${i + 1}`;
+          const key = label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9가-힣_]/g, '') || `row_${i}`;
+          return { key, label };
+        }),
+        null, 2
+      );
+    } else {
+      // Format B: 제품이 행 (기존 로직)
+      const compData = [];
+      for (let i = 0; i < dataRows.length; i++) {
+        const row = dataRows[i];
+        const item = { name: row[0] || '' };
+        for (let j = 1; j < headers.length; j++) {
+          const key = headers[j].toLowerCase().replace(/\s+/g, '_');
+          item[key] = row[j] || '-';
+        }
+        compData.push(item);
+      }
+      comparisonDataCode = JSON.stringify(compData, null, 2);
+      comparisonSpecsCode = JSON.stringify(
+        headers.slice(1).map(h => ({ key: h.toLowerCase().replace(/\s+/g, '_'), label: h })),
+        null, 2
+      );
     }
-
-    comparisonDataCode = JSON.stringify(compData, null, 2);
-    comparisonSpecsCode = JSON.stringify(
-      headers.slice(1).map(h => ({ key: h.toLowerCase().replace(/\s+/g, '_'), label: h })),
-      null, 2
-    );
   } else {
     // 비교표가 없으면 제품 스펙에서 생성
     const compData = data.products.map(p => ({
