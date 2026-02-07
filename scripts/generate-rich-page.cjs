@@ -12,6 +12,7 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const PAGES_DIR = path.join(process.cwd(), 'src/pages');
 const RICH_PAGES_JSON = path.join(process.cwd(), 'src/data/rich-pages.json');
+const LOCKED_PAGES_JSON = path.join(process.cwd(), 'src/data/locked-pages.json');
 
 // ============================================================
 // 스마트 패턴 인식 유틸리티
@@ -1026,6 +1027,17 @@ async function generateRichPage(pageId) {
   console.log(`   Slug: ${slug}`);
   console.log(`   Products: ${data.products.length}`);
   console.log(`   FAQs: ${data.faqs.length}`);
+
+  // 수동 수정 잠금 파일 체크 — locked-pages.json에 등록된 slug는 덮어쓰지 않음
+  if (fs.existsSync(LOCKED_PAGES_JSON)) {
+    try {
+      const lockedSlugs = JSON.parse(fs.readFileSync(LOCKED_PAGES_JSON, 'utf-8'));
+      if (Array.isArray(lockedSlugs) && lockedSlugs.includes(slug)) {
+        console.log(`🔒 Skipped (locked): ${slug}.astro — 수동 수정된 파일이므로 덮어쓰기 방지`);
+        return slug;
+      }
+    } catch (e) { /* ignore */ }
+  }
 
   const astroContent = generateAstroPage(data);
   const filePath = path.join(PAGES_DIR, `${slug}.astro`);
