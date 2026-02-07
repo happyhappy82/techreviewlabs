@@ -73,6 +73,70 @@ function isBuyLink(url) {
   return BUY_LINK_DOMAINS.some(domain => url.includes(domain));
 }
 
+// 유사도 점수 계산 (공통 단어 수) — 제품 매칭에 사용
+function getSimilarityScore(str1, str2) {
+  if (!str1 || !str2) return 0;
+  const words1 = str1.toLowerCase().split(/\s+/);
+  const words2 = str2.toLowerCase().split(/\s+/);
+  let score = 0;
+  for (const w1 of words1) {
+    if (w1.length < 2) continue;
+    for (const w2 of words2) {
+      if (w2.includes(w1) || w1.includes(w2)) score++;
+    }
+  }
+  return score;
+}
+
+// 제품명 정규화 (비교용)
+function normalizeProductName(name) {
+  return name.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+// 중복 제품 병합: 같은 이름의 제품 엔트리를 하나로 합침
+function deduplicateProducts(products) {
+  const merged = [];
+  const used = new Set();
+
+  for (let i = 0; i < products.length; i++) {
+    if (used.has(i)) continue;
+
+    let base = { ...products[i] };
+
+    for (let j = i + 1; j < products.length; j++) {
+      if (used.has(j)) continue;
+
+      const other = products[j];
+      const nameMatch = normalizeProductName(base.name) === normalizeProductName(other.name) ||
+                         getSimilarityScore(base.name, other.name) >= 3;
+
+      if (nameMatch) {
+        // 비어있지 않은 값을 우선 사용하여 병합
+        base = {
+          ...base,
+          summary: base.summary || other.summary,
+          keyPoint: base.keyPoint || other.keyPoint,
+          target: base.target || other.target,
+          buyUrl: base.buyUrl || other.buyUrl,
+          description: base.description || other.description,
+          specs: base.specs.length > 0 ? base.specs : other.specs,
+          pros: base.pros.length > 0 ? base.pros : other.pros,
+          cons: base.cons.length > 0 ? base.cons : other.cons,
+          recommendFor: base.recommendFor.length > 0 ? base.recommendFor : other.recommendFor,
+        };
+        used.add(j);
+      }
+    }
+
+    merged.push(base);
+  }
+
+  // ID 재정렬
+  merged.forEach((p, idx) => { p.id = idx + 1; });
+
+  return merged;
+}
+
 // 테이블이 요약 테이블인지 판별 (첫 번째 헤더가 제품 식별자 + 평가 항목 존재)
 function isSummaryTable(headers) {
   if (headers.length < 2) return false;
@@ -341,6 +405,20 @@ async function parseNotionContent(pageId) {
       // "1. 제품명" 또는 "제품명" 패턴
       const numberedMatch = text.match(/^(\d+)\.\s*(.+)/);
       const productName = numberedMatch ? numberedMatch[2].trim() : text.trim();
+
+      // ★ 이미 같은 이름의 제품이 있으면 중복 생성하지 않고 기존 제품 재사용
+      const existingProduct = result.products.find(p =>
+        normalizeProductName(p.name) === normalizeProductName(productName) ||
+        getSimilarityScore(p.name, productName) >= 3
+      );
+
+      if (existingProduct) {
+        currentProduct = existingProduct;
+        currentSection = 'products';
+        productSubSection = null;
+        continue;
+      }
+
       const productId = numberedMatch ? parseInt(numberedMatch[1]) : result.products.length + 1;
 
       currentSection = 'products';
@@ -668,6 +746,11 @@ async function parseNotionContent(pageId) {
     }
   }
 
+  // ========== PASS 1.5: 중복 제품 병합 ==========
+  if (result.products.length > 0) {
+    result.products = deduplicateProducts(result.products);
+  }
+
   // ========== PASS 2: 데이터 보완 ==========
 
   // 요약 테이블에서 제품 정보 추출
@@ -733,35 +816,23 @@ function enrichProductsFromTable(table, products) {
   const summaryIdx = findColIdx(['한 줄', '평가', '요약', '코멘트']);
   const targetIdx = findColIdx(['추천', '대상', '타겟', '적합']);
 
-  // 유사도 점수 계산 (공통 단어 수)
-  const getSimilarityScore = (str1, str2) => {
-    const words1 = str1.toLowerCase().split(/\s+/);
-    const words2 = str2.toLowerCase().split(/\s+/);
-    let score = 0;
-    for (const w1 of words1) {
-      if (w1.length < 2) continue;
-      for (const w2 of words2) {
-        if (w2.includes(w1) || w1.includes(w2)) score++;
-      }
-    }
-    return score;
-  };
+  // 이미 매칭된 제품 추적 (중복 매칭 방지)
+  const matched = new Set();
 
-  // 테이블 행과 제품 매칭 (순서 기반 - 테이블과 제품 순서가 동일하다고 가정)
   for (let i = 1; i < table.length; i++) {
     const row = table[i];
     const rowIdx = i - 1; // 0-based product index
 
-    // 순서대로 매칭 (가장 신뢰할 수 있는 방법)
-    let matchedProduct = products[rowIdx] || null;
+    let matchedProduct = null;
 
-    // 순서 매칭 실패 시 이름 유사도로 BEST 매칭 찾기
-    if (!matchedProduct && nameIdx >= 0 && row[nameIdx]) {
+    // 1차: 이름 유사도 매칭 (가장 정확)
+    if (nameIdx >= 0 && row[nameIdx]) {
       const tableName = row[nameIdx];
       let bestScore = 0;
       let bestMatch = null;
 
       for (const p of products) {
+        if (matched.has(p)) continue; // 이미 매칭된 제품 스킵
         const score = getSimilarityScore(tableName, p.name);
         if (score > bestScore) {
           bestScore = score;
@@ -774,7 +845,13 @@ function enrichProductsFromTable(table, products) {
       }
     }
 
+    // 2차: 순서 매칭 (이름 매칭 실패 시)
+    if (!matchedProduct && products[rowIdx] && !matched.has(products[rowIdx])) {
+      matchedProduct = products[rowIdx];
+    }
+
     if (matchedProduct) {
+      matched.add(matchedProduct);
       if (keyPointIdx >= 0 && row[keyPointIdx]) matchedProduct.keyPoint = row[keyPointIdx];
       if (summaryIdx >= 0 && row[summaryIdx]) matchedProduct.summary = row[summaryIdx];
       if (targetIdx >= 0 && row[targetIdx]) matchedProduct.target = row[targetIdx];
