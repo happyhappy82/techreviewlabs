@@ -1,0 +1,368 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-08T09:39:26.310Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [];
+const faqs = [
+  {
+    "q": "Free DOS 노트북은 어떻게 사용하나요?",
+    "a": "A. Free DOS 제품은 운영체제(Windows 등)가 설치되어 있지 않으므로, 노트북을 구매하신 후 별도로 윈도우 운영체제를 구매하여 설치해야 합니다. 보통 USB를 이용해 설치하며, 제조사 홈페이지에서 드라이버를 다운로드하여 설치해야 합니다."
+  },
+  {
+    "q": "게이밍 노트북은 일반 노트북과 무엇이 다른가요?",
+    "a": "A. 게이밍 노트북은 고사양 게임을 원활하게 구동하기 위해 강력한 CPU와 GPU, 충분한 RAM, 빠른 저장장치, 그리고 고주사율 디스플레이를 탑재합니다. 또한, 발열 관리를 위한 강력한 쿨링 시스템과 게이밍에 특화된 키보드 등도 특징입니다. 일반 노트북은 문서 작업, 웹 서핑 등 일상적인 용도에 맞춰져 있어 게이밍 노트북보다 사양이 낮고 가볍고 얇은 경우가 많습니다."
+  },
+  {
+    "q": "노트북 구매 후 주의할 점이 있나요?",
+    "a": "A. Free DOS 제품의 경우 윈도우 설치 후 제조사 홈페이지에서 모든 드라이버를 설치해야 최적의 성능을 낼 수 있습니다. 또한, 게이밍 노트북은 높은 성능만큼 발열이 발생하므로, 장시간 고사양 작업을 할 때는 쿨링패드 사용을 고려해볼 수 있습니다. 배터리 수명 관리를 위해 과충전을 피하고, 주기적으로 배터리를 완전 방전 후 충전하는 것이 좋습니다."
+  },
+  {
+    "q": "RTX 4060, RTX 5050, RTX 5060, RTX 5070 등 그래픽카드 숫자가 의미하는 것은 무엇인가요?",
+    "a": "A. 그래픽카드의 숫자는 일반적으로 세대와 등급을 나타냅니다. 예를 들어, RTX 4060과 RTX 5060에서 앞의 40과 50은 각각 4000번대(Ada Lovelace)와 5000번대(Blackwell) 세대를 의미합니다. 숫자가 높을수록 최신 세대입니다. 뒤의 60, 50, 70 등은 해당 세대 내에서의 성능 등급을 나타내며, 숫자가 높을수록 더 높은 성능을 가집니다. 일반적으로 70 > 60 > 50 순으로 성능이 좋습니다. 즉, RTX 5070이 RTX 5060보다 좋고, RTX 5060은 RTX 5050보다 좋습니다. 세대가 바뀌면 이전 세대의 상위 모델과 비슷하거나 더 좋은 성능을 내기도 합니다."
+  },
+  {
+    "q": "OLED 디스플레이의 장점과 단점은 무엇인가요?",
+    "a": "A. OLED 디스플레이는 자체 발광 소자를 사용하여 완벽한 검은색 표현과 무한대에 가까운 명암비, 뛰어난 색재현율, 그리고 매우 빠른 응답 속도가 장점입니다. 게임이나 영상 감상 시 압도적인 몰입감을 제공합니다. 단점으로는 비교적 높은 가격, 장시간 같은 화면을 띄워 놓을 경우 발생할 수 있는 번인(Burn-in) 현상, 그리고 상대적으로 낮은 최대 밝기(일부 모델 제외) 등이 있습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "에이수스 TUF A14",
+    "프로세서": "AMD Ryzen 7 260",
+    "그래픽": "RTX 5050",
+    "메모리": "16GB LPDDR5X",
+    "저장장치": "512GB SSD",
+    "디스플레이": "14인치 2.5K 165Hz IPS",
+    "무게": "1.46kg",
+    "os": "Free DOS",
+    "주요_특징": "초경량, 휴대성, 가성비",
+    "추천_대상": "가성비/휴대성 게이머"
+  },
+  {
+    "name": "델 프로 맥스 16",
+    "프로세서": "Intel Core Ultra 7 265H",
+    "그래픽": "RTX PRO 1000",
+    "메모리": "32GB DDR5",
+    "저장장치": "1TB SSD",
+    "디스플레이": "16인치 FHD+ 300nits WVA",
+    "무게": "2.11kg",
+    "os": "Windows 11 Pro",
+    "주요_특징": "전문가용 워크스테이션, vPro, Wi-Fi 7, NBD A/S",
+    "추천_대상": "전문 작업, 기업용"
+  },
+  {
+    "name": "HP 빅터스 15",
+    "프로세서": "AMD Ryzen 9 8945HS",
+    "그래픽": "RTX 4060",
+    "메모리": "16GB DDR5",
+    "저장장치": "512GB SSD",
+    "디스플레이": "15.6인치 FHD 144Hz IPS",
+    "무게": "2.29kg",
+    "os": "Free DOS",
+    "주요_특징": "가성비 게이밍, 라이젠 9 + RTX 4060",
+    "추천_대상": "가성비 게이머/크리에이터"
+  },
+  {
+    "name": "에이수스 ROG G14",
+    "프로세서": "AMD Ryzen 9 270",
+    "그래픽": "RTX 5060",
+    "메모리": "32GB LPDDR5X",
+    "저장장치": "1TB SSD",
+    "디스플레이": "14인치 3K 120Hz OLED",
+    "무게": "1.50kg",
+    "os": "Windows 11 Home",
+    "주요_특징": "초경량, 3K OLED, 최고급 디스플레이",
+    "추천_대상": "휴대성/화질 중시 게이머/크리에이터"
+  },
+  {
+    "name": "기가바이트 에어로 X16",
+    "프로세서": "AMD Ryzen AI 7 350",
+    "그래픽": "RTX 5070",
+    "메모리": "32GB",
+    "저장장치": "1TB SSD",
+    "디스플레이": "16인치 2.5K 165Hz sRGB 100%",
+    "무게": "1.9kg",
+    "os": "Free DOS",
+    "주요_특징": "AI NPU 50 TOPS, RTX 5070, Pantone Display",
+    "추천_대상": "AI/3D/고사양 올라운더"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "프로세서",
+    "label": "프로세서"
+  },
+  {
+    "key": "그래픽",
+    "label": "그래픽"
+  },
+  {
+    "key": "메모리",
+    "label": "메모리"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "os",
+    "label": "OS"
+  },
+  {
+    "key": "주요_특징",
+    "label": "주요 특징"
+  },
+  {
+    "key": "추천_대상",
+    "label": "추천 대상"
+  }
+];
+const selectionGuide = "메트로이드 프라임4 비욘드를 위한 노트북을 선택하는 것은 단순히 스펙을 비교하는 것 이상의 의미가 있습니다. 여러분의 주된 사용 목적과 예산, 그리고 중요하게 생각하는 가치에 따라 최적의 선택이 달라질 수 있습니다.\n• 휴대성이 최우선이라면?\n• 최고의 가성비를 원한다면?\n• 전문 작업과 AI 성능이 중요하다면?\n• 최상급 디스플레이와 게이밍 경험을 원한다면?\n여러분에게 가장 중요한 가치를 기준으로 선택하신다면, 후회 없는 노트북 구매가 될 것입니다.";
+---
+
+<BaseLayout
+  title="2026 메트로이드 프라임4 비욘드 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026년 출시 예정인 대작, 메트로이드 프라임 4: 비욘드를 위한 최고의 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>2026 메트로이드 프라임4 비욘드 노트북 추천 Top5</h1>
+        <p class="intro-text">안녕하세요. 오늘은 2026년 출시 예정인 대작, 메트로이드 프라임 4: 비욘드를 위한 최고의 노트북 추천에 대해 말씀드릴게요.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 메트로이드 프라임4는 어떤게임인가요?</h2>
+        <p>메트로이드 프라임4 비욘드는 닌텐도의 전설적인 액션 어드벤처 시리즈 '메트로이드'의 최신작입니다. 아름답고 신비로운 외계 행성을 탐험하며 강력한 무기와 능력을 활용해 적들과 싸우고 퍼즐을 풀어 나가는 방식의 1인칭 어드벤처 게임이죠. 특유의 고독하고 몰입감 넘치는 분위기와 함께, 출시된다면 압도적인 그래픽과 섬세한 환경 디자인으로 플레이어들에게 깊은 인상을 줄 것으로 기대됩니다.</p>
+        <p>물론 메트로이드 프라임4 비욘드는 닌텐도 스위치 플랫폼으로 출시될 예정이지만, 만약 이 게임이 PC로 출시된다면 어떤 노트북이 완벽하게 대응할 수 있을지 상상해 보는 것도 즐거운 일입니다. 고해상도의 압도적인 비주얼, 복잡한 물리 엔진, 실시간 레이 트레이싱 같은 최신 그래픽 기술을 완벽하게 구현하려면 강력한 CPU와 GPU, 빠른 메모리, 그리고 고주사율 디스플레이를 갖춘 노트북이 필수적일 겁니다.</p>
+        <p>오늘 제가 소개해 드릴 노트북들은 이러한 가상의 '메트로이드 프라임 4: 비욘드 PC 버전'을 넘어, 현재 출시되는 모든 고사양 게임과 크리에이티브 작업을 완벽하게 소화할 수 있는 강력한 성능을 자랑합니다. 여러분의 게이밍 경험을 한 차원 높여줄 최고의 파트너들을 지금부터 만나보시죠!</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 대작 메트로이드 프라임4 비욘드를 위한, 그리고 현존하는 모든 고사양 게임과 작업을 위한 최고의 노트북들을 소개해 드렸습니다. 각 제품의 특징과 장단점을 꼼꼼히 살펴보시고, 여러분의 사용 목적과 예산에 가장 적합한 노트북을 선택하는 데 도움이 되셨기를 바랍니다.
+궁금한 점이 있다면 언제든지 댓글로 문의해 주세요. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
