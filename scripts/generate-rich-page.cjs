@@ -148,44 +148,57 @@ function isSummaryTable(headers) {
   return hasSummaryFirstCol && hasEvalCol;
 }
 
+// 롱테일 키워드 매칭 패턴 (우선순위 순)
+const SECTION_PATTERNS = [
+  // FAQ
+  { pattern: '자주 묻는 질문', type: 'faq' },
+  { pattern: 'q&a', type: 'faq' },
+  { pattern: 'faq', type: 'faq' },
+
+  // 마무리
+  { pattern: '이 글을 마치며', type: 'closing' },
+  { pattern: '마무리', type: 'closing' },
+  { pattern: '결론', type: 'closing' },
+  { pattern: '정리하며', type: 'closing' },
+
+  // 요약
+  { pattern: '핵심만 콕', type: 'summary' },
+  { pattern: '한눈에 보기', type: 'summary' },
+  { pattern: '핵심 요약', type: 'summary' },
+
+  // 도입
+  { pattern: '들어가며', type: 'topic' },
+
+  // 비교
+  { pattern: '제품 비교표', type: 'comparison' },
+  { pattern: '제품 비교', type: 'comparison' },
+  { pattern: '비교표', type: 'comparison' },
+
+  // 선택 가이드
+  { pattern: '어떤 제품을 선택해야', type: 'guide' },
+  { pattern: '구매 가이드', type: 'guide' },
+  { pattern: '선택 가이드', type: 'guide' },
+  { pattern: '선택해야 할까', type: 'guide' },
+
+  // 제품 설명 섹션 헤더 (제품 이름이 아님!)
+  { pattern: '제품 설명', type: 'products' },
+  { pattern: '제품 리뷰', type: 'products' },
+  { pattern: '제품 소개', type: 'products' },
+];
+
 // h2 제목으로 섹션 타입 추론
 function inferSectionType(title) {
-  const t = title.toLowerCase();
+  const t = title.toLowerCase().trim();
 
-  // FAQ 섹션
-  if (t.includes('faq') || t.includes('자주') || t.includes('질문') || t.includes('q&a')) {
-    return 'faq';
+  // 롱테일 패턴 매칭 (숏 키워드 폴백 없음 — 롱테일 강제 정책)
+  for (const { pattern, type } of SECTION_PATTERNS) {
+    if (t.includes(pattern)) {
+      return type;
+    }
   }
-  // 마무리/결론 섹션
-  if (t.includes('마무리') || t.includes('마치') || t.includes('결론') || t.includes('정리')) {
-    return 'closing';
-  }
-  // 비교 섹션
-  if (t.includes('비교')) {
-    return 'comparison';
-  }
-  // 들어가며/도입 섹션 (guide보다 우선 판별)
-  if (t.includes('들어가')) {
-    return 'topic';
-  }
-  // 선택 가이드 (어떤 + 선택/골라/할까 조합이거나 명시적 키워드)
-  if (t.includes('선택') || t.includes('가이드') || t.includes('고르')) {
-    return 'guide';
-  }
-  // "어떤 제품을 선택해야 할까요?" 패턴 (어떤 + 제품/노트북 + 할까)
-  if (t.includes('어떤') && (t.includes('제품') || t.includes('노트북')) && t.includes('할까')) {
-    return 'guide';
-  }
-  // 상세 리뷰 (top, 추천, 리뷰 등)
-  if (t.includes('top') || t.includes('추천') || t.includes('리뷰') || t.includes('상세')) {
-    return 'products';
-  }
-  // 요약 테이블 섹션
-  if (t.includes('핵심') || t.includes('요약') || t.includes('한눈')) {
-    return 'summary';
-  }
-  // 기타는 소개/설명 섹션
-  return 'topic';
+
+  // 매칭 실패 → null (제품명으로 처리)
+  return null;
 }
 
 // 리치 페이지 메타데이터 저장/업데이트
@@ -337,25 +350,18 @@ async function parseNotionContent(pageId) {
         const afterNumber = numberedMatch[2].trim();
         const sectionType = inferSectionType(afterNumber);
 
-        // inferSectionType이 명확한 섹션 타입을 반환하면 섹션 헤더로 처리
-        if (sectionType !== 'topic') {
+        if (sectionType !== null) {
+          // 롱테일 or 숏키워드로 인식된 섹션 헤더
           currentSection = sectionType;
+          if (sectionType === 'topic' && !result.topicTitle) {
+            result.topicTitle = afterNumber;
+          }
           currentProduct = null;
           productSubSection = null;
           continue;
         }
 
-        // 제품이 아닌 도입부 키워드 체크
-        const topicIndicators = ['들어가', '왜', '소개', '개요', '중요', '알아', '살펴'];
-        if (topicIndicators.some(kw => afterNumber.includes(kw))) {
-          currentSection = 'topic';
-          if (!result.topicTitle) result.topicTitle = afterNumber;
-          currentProduct = null;
-          productSubSection = null;
-          continue;
-        }
-
-        // 제품으로 처리
+        // null → 인식 안 됨 → 제품명으로 처리
         const productName = afterNumber;
         const productId = parseInt(numberedMatch[1]);
 
@@ -378,16 +384,8 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
-      const sectionType = inferSectionType(text);
-
-      // topic 섹션이고 아직 topicTitle이 없으면 설정
-      if (sectionType === 'topic' && !result.topicTitle) {
-        result.topicTitle = text;
-      }
-
-      currentSection = sectionType;
-      currentProduct = null;
-      productSubSection = null;
+      // 번호 없는 h2는 무시 (번호 필수 정책)
+      console.warn(`   ⚠️  번호 없는 h2 무시: "${text}"`);
       continue;
     }
 
@@ -667,6 +665,12 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
+      // topic 섹션 불릿
+      if (currentSection === 'topic') {
+        result.topicExplanation += '• ' + text + '\n';
+        continue;
+      }
+
       // 제품 컨텍스트에서 하위 섹션 기반 분류 (productSubSection 우선)
       if (currentProduct) {
         if (productSubSection === 'specs') {
@@ -720,6 +724,12 @@ async function parseNotionContent(pageId) {
 
       if (currentSection === 'closing') {
         result.closing += '• ' + text + '\n';
+        continue;
+      }
+
+      // topic 섹션 번호 리스트
+      if (currentSection === 'topic') {
+        result.topicExplanation += '• ' + text + '\n';
         continue;
       }
 
@@ -794,10 +804,14 @@ async function parseNotionContent(pageId) {
     enrichProductsFromTable(result.summaryTable, result.products);
   }
 
-  // intro가 없으면 topicExplanation 첫 문장 사용
+  // intro가 없으면 topicExplanation 첫 문장 사용 (짧으면 추가)
   if (!result.intro.trim() && result.topicExplanation.trim()) {
-    const firstSentence = result.topicExplanation.split('.')[0];
-    result.intro = firstSentence ? firstSentence + '.' : '';
+    const sentences = result.topicExplanation.split(/(?<=[.!?])\s+/);
+    let intro = sentences[0] || '';
+    if (intro.length < 30 && sentences.length > 1) {
+      intro += ' ' + sentences[1];
+    }
+    result.intro = intro.trim();
   }
 
   // topicTitle 기본값
