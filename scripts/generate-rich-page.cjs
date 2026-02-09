@@ -407,17 +407,42 @@ async function parseNotionContent(pageId) {
       const productName = numberedMatch ? numberedMatch[2].trim() : text.trim();
 
       // ★ 직전 h2에서 만든 currentProduct와 동일한 제품이면 중복 생성하지 않고 재사용
-      //   (전체 검색하면 같은 브랜드 다른 모델끼리 잘못 매칭됨)
+      //   번호가 다르면 무조건 새 제품 (같은 스펙 키워드 공유해도 다른 모델임)
       if (currentProduct && currentSection === 'products') {
-        const exactMatch = normalizeProductName(currentProduct.name) === normalizeProductName(productName);
-        const similarEnough = getSimilarityScore(currentProduct.name, productName) >= 3;
-        if (exactMatch || similarEnough) {
-          // h3 이름이 더 상세하면 이름 업데이트
-          if (productName.length > currentProduct.name.length) {
-            currentProduct.name = productName;
+        // 번호가 있는 h3: 번호로 확실하게 판별
+        if (numberedMatch) {
+          const newId = parseInt(numberedMatch[1]);
+          if (newId === currentProduct.id) {
+            // 같은 번호 → 같은 제품의 상세 h3 (이름 업데이트만)
+            if (productName.length > currentProduct.name.length) {
+              currentProduct.name = productName;
+            }
+            productSubSection = null;
+            continue;
           }
-          productSubSection = null;
-          continue;
+          // 다른 번호 → 새 제품 (아래에서 생성)
+        } else {
+          // 번호 없는 h3 → 정확한 이름 일치 또는 높은 비율 유사도만 허용
+          const exactMatch = normalizeProductName(currentProduct.name) === normalizeProductName(productName);
+          if (exactMatch) {
+            if (productName.length > currentProduct.name.length) {
+              currentProduct.name = productName;
+            }
+            productSubSection = null;
+            continue;
+          }
+          // 비율 기반 유사도: 공통 단어가 짧은 쪽의 60% 이상이어야 같은 제품
+          const score = getSimilarityScore(currentProduct.name, productName);
+          const words1Len = currentProduct.name.toLowerCase().split(/\s+/).filter(w => w.length >= 2).length;
+          const words2Len = productName.toLowerCase().split(/\s+/).filter(w => w.length >= 2).length;
+          const minWords = Math.min(words1Len, words2Len);
+          if (minWords > 0 && score / minWords >= 0.6) {
+            if (productName.length > currentProduct.name.length) {
+              currentProduct.name = productName;
+            }
+            productSubSection = null;
+            continue;
+          }
         }
       }
 
