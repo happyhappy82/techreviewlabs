@@ -608,35 +608,51 @@ async function parseNotionContent(pageId) {
       const isRecommendHeader = trimmedText.includes('추천') || trimmedText.includes('이런 분');
 
       // 중첩 불릿 처리
-      if (block.has_children && currentProduct) {
+      if (block.has_children) {
         try {
           const children = await notion.blocks.children.list({ block_id: block.id });
 
-          for (const child of children.results) {
-            if (child.type === 'bulleted_list_item') {
-              const childText = richTextToPlain(child.bulleted_list_item.rich_text);
-              if (!childText.trim()) continue;
-
-              if (isSpecHeader) {
-                // 스펙: key: value 형태
-                const colonIdx = childText.indexOf(':');
-                if (colonIdx > 0) {
-                  currentProduct.specs.push({
-                    label: childText.substring(0, colonIdx).trim(),
-                    value: childText.substring(colonIdx + 1).trim()
-                  });
-                }
-              } else if (isProsHeader) {
-                currentProduct.pros.push(childText);
-              } else if (isConsHeader) {
-                currentProduct.cons.push(childText);
-              } else if (isRecommendHeader) {
-                currentProduct.recommendFor.push(childText);
-              } else {
-                // 헤더가 명확하지 않으면 스마트 분류
-                classifyBulletItem(childText, currentProduct);
+          // guide/closing/topic 섹션: 부모 + 자식 텍스트 모두 해당 섹션에 추가
+          if (currentSection === 'guide' || currentSection === 'closing' || currentSection === 'topic') {
+            const targetKey = currentSection === 'guide' ? 'selectionGuide'
+              : currentSection === 'closing' ? 'closing' : 'topicExplanation';
+            result[targetKey] += '• ' + text + '\n';
+            for (const child of children.results) {
+              if (child.type === 'bulleted_list_item') {
+                const childText = richTextToPlain(child.bulleted_list_item.rich_text);
+                if (childText.trim()) result[targetKey] += '  • ' + childText + '\n';
               }
             }
+            continue;
+          }
+
+          // 제품 섹션: 기존 스마트 분류
+          if (currentProduct) {
+            for (const child of children.results) {
+              if (child.type === 'bulleted_list_item') {
+                const childText = richTextToPlain(child.bulleted_list_item.rich_text);
+                if (!childText.trim()) continue;
+
+                if (isSpecHeader) {
+                  const colonIdx = childText.indexOf(':');
+                  if (colonIdx > 0) {
+                    currentProduct.specs.push({
+                      label: childText.substring(0, colonIdx).trim(),
+                      value: childText.substring(colonIdx + 1).trim()
+                    });
+                  }
+                } else if (isProsHeader) {
+                  currentProduct.pros.push(childText);
+                } else if (isConsHeader) {
+                  currentProduct.cons.push(childText);
+                } else if (isRecommendHeader) {
+                  currentProduct.recommendFor.push(childText);
+                } else {
+                  classifyBulletItem(childText, currentProduct);
+                }
+              }
+            }
+            continue;
           }
         } catch (err) {
           console.warn(`   ⚠️  Failed to fetch children for block ${block.id}:`, err.message);
