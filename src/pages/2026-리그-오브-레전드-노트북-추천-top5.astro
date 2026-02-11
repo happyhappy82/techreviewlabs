@@ -1,0 +1,685 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-11T03:46:03.533Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "추천 제품 상세 리뷰",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "에이수스 2025 ROG 스트릭스 스카 16 코어Ultra9 인텔 15세대",
+    "summary": "최강의 성능, 최상의 비주얼을 위한 궁극의 게이밍 머신",
+    "keyPoint": "현존 최고 사양 GPU와 미니 LED 디스플레이",
+    "target": "극한의 성능과 비주얼을 추구하는 하이엔드 게이머 및 전문가",
+    "buyUrl": "https://link.coupang.com/a/dzYt4N",
+    "description": "하이엔드 게이밍 노트북 시장의 정점에 서 있는 에이수스 ROG 스트릭스 스카 16입니다. 2026년에 선보이는 최신 기술들이 집약된, 그야말로 꿈의 머신이라고 할 수 있습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5090 Laptop GPU 24GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5-5600 (최대 64GB 확장 가능)"
+      },
+      {
+        "label": "저장장치",
+        "value": "2TB PCIe 4.0 NVMe M.2 SSD (RAID 0)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 Mini LED 2.5K (2560x1600) 240Hz, 1200nits, DCI-P3 100%"
+      },
+      {
+        "label": "무게",
+        "value": "2.85kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "pros": [
+      "현존 최고 사양의 모바일 GPU RTX 5090 탑재로 데스크탑급 게이밍 성능",
+      "Mini LED 디스플레이로 뛰어난 HDR 표현력과 1200nits 밝기",
+      "Thunderbolt 5 듀얼 포트로 다양한 고속 연결 지원",
+      "정교한 쿨링 시스템으로 고성능 유지하면서 소음 억제",
+      "AniMe Vision으로 독특한 개성 표현 가능",
+      "240Hz 고주사율로 부드러운 게이밍 경험",
+      "G-SYNC 지원으로 화면 찢어짐 없는 게임 플레이"
+    ],
+    "cons": [
+      "높은 가격대",
+      "2.85kg의 무거운 무게로 휴대성 제한",
+      "380W 어댑터 필요로 이동 시 부담",
+      "생각보다 무겁다는 사용자 피드백"
+    ],
+    "recommendFor": [
+      "예산에 구애받지 않고 현존하는 최고의 게이밍 성능을 원하는 분",
+      "게임 외에 영상 편집, 3D 렌더링 등 최고 사양을 요구하는 전문 작업을 하는 분",
+      "최고의 디스플레이 품질로 게임과 미디어를 즐기고 싶은 분"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "HP 2024 오멘 16 16.1 코어i7 인텔 14세대 지포스 RTX 4060",
+    "summary": "합리적인 가격에 뛰어난 게이밍 및 작업 성능을 제공하는 만능 노트북",
+    "keyPoint": "가성비 좋은 14세대 i7과 RTX 4060 조합",
+    "target": "성능과 가격의 균형을 중시하는 게이머, 영상 편집자, CAD 작업자",
+    "buyUrl": "https://link.coupang.com/a/dzX2rU",
+    "description": "합리적인 가격에 뛰어난 성능을 자랑하는 HP 오멘 16입니다. 14세대 인텔 코어 i7 프로세서와 RTX 4060의 조합으로 리그 오브 레전드는 물론, 다양한 AAA 게임과 전문 작업까지 무리 없이 소화해 냅니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-14700HX (20코어/28스레드, 최대 5.5GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4060 8GB GDDR6 (DLSS 3 지원)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5 5600MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe Gen4 NVMe M.2 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16.1인치 QHD (2560x1440) 240Hz, IPS, G-SYNC, 100% sRGB"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.4kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "pros": [
+      "가성비 좋은 게이밍 노트북",
+      "14세대 i7-14700HX와 RTX 4060의 밸런스 좋은 조합",
+      "32GB RAM 기본 탑재로 멀티태스킹 쾌적",
+      "QHD 240Hz 고해상도 고주사율 디스플레이",
+      "OMEN Gaming Hub로 세밀한 성능 조절 가능",
+      "HP 공식 A/S와 쿠팡 무상 A/S 지원",
+      "Wi-Fi 7, 블루투스 5.4 최신 연결성",
+      "세련된 Shadow Black 디자인"
+    ],
+    "cons": [
+      "SSD 512GB 기본 용량 부족 (업그레이드 권장)",
+      "배터리 소모 빠름 (외출 시 충전기 필수)",
+      "280W 대형 어댑터로 휴대성 저하",
+      "표면에 지문 자국 잘 보임",
+      "게이밍 시 발열 및 소음 발생",
+      "배터리 충전 제한 기능 미지원"
+    ],
+    "recommendFor": [
+      "200만원대에서 가성비 좋은 게이밍 노트북을 찾는 분",
+      "리그 오브 레전드 외에 AAA 게임도 QHD 환경에서 즐기고 싶은 분",
+      "영상 편집, CAD 등 전문 작업도 겸하는 학생이나 직장인"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "에이서 2025 프레데터 헬리오스 네오 16 AI 코어Ultra9 인텔 15세대 (PHN16-73-9797)",
+    "summary": "압도적인 성능과 효율적인 쿨링으로 무장한 게이밍 가성비 끝판왕",
+    "keyPoint": "i9 275HX와 RTX 5070 Ti의 강력한 가성비",
+    "target": "최고 사양 게임과 전문 작업을 합리적인 가격에 원하는 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzXFNj",
+    "description": "강력한 성능과 뛰어난 쿨링, 그리고 합리적인 가격까지 갖춘 에이서 프레데터 헬리오스 네오 16 AI 모델입니다. 인텔 15세대 코어 Ultra 9 프로세서와 RTX 5070 Ti 조합으로 쾌적한 게이밍 경험을 선사합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 Ti 12GB GDDR7 (TGP 140W)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5 6400MT/s 듀얼채널 (최대 64GB 확장 가능)"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) 240Hz, IPS, 500nits, DCI-P3, G-SYNC"
+      },
+      {
+        "label": "무게",
+        "value": "2.45kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      }
+    ],
+    "pros": [
+      "Intel 275HX와 RTX 5070 Ti 조합으로 강력한 게임 성능",
+      "330W 어댑터와 뛰어난 쿨링 시스템으로 성능 안정성 확보",
+      "240Hz WQXGA 디스플레이로 선명하고 부드러운 화면",
+      "Thunderbolt 4 등 다양한 포트 구성",
+      "2년 무상보증 (국내)와 1년 해외 여행자 보증",
+      "가성비 뛰어남 (동급 사양 대비 합리적인 가격)"
+    ],
+    "cons": [
+      "터보모드에서 팬 소음이 날카로움",
+      "상판 지문 자국, 하판 마감이 다소 저렴한 느낌",
+      "키보드 키감이 경쟁 제품 대비 평범함",
+      "오른쪽 SHIFT 키가 작아 적응 필요",
+      "스피커 음질이 평범함 (DTS 설치 권장)",
+      "무게 2.45kg으로 휴대성 제한",
+      "배터리 사용시간 짧음 (고성능 작업 시)"
+    ],
+    "recommendFor": [
+      "고성능 게이밍과 전문 작업을 위한 가성비 좋은 노트북을 찾는 분",
+      "직접 윈도우를 설치할 수 있는 사용자",
+      "뛰어난 쿨링 성능으로 장시간 안정적인 사용을 원하는 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "에이서 2025 프레데터 헬리오스 네오 16 AI 코어Ultra9 인텔 15세대 (PHN16-73-97AB)",
+    "summary": "윈도우 포함으로 즉시 사용 가능, 뛰어난 성능과 안정성을 겸비한 게이밍 노트북",
+    "keyPoint": "윈도우 포함, i9 275HX와 RTX 5070 Ti의 강력한 성능",
+    "target": "윈도우 설치 부담 없이 바로 고성능을 경험하고 싶은 게이머 및 크리에이터",
+    "buyUrl": "https://link.coupang.com/a/dzYsEK",
+    "description": "앞서 소개한 모델과 동일한 성능을 갖추고 있지만, Windows 11 Home이 기본 탑재되어 있어 구매 후 바로 사용 가능한 모델입니다. 복잡한 윈도우 설치 과정 없이 최상의 성능을 누리고 싶은 분께 적합합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 Ti 12GB GDDR7 (TGP 140W)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5-6400MHz 듀얼 채널 (최대 64GB)"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 IPS WQXGA (2560x1600) 240Hz, 500nits, DCI-P3, G-Sync"
+      },
+      {
+        "label": "무게",
+        "value": "2.45kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "pros": [
+      "가격 대비 최상급 성능 (i9 275HX와 RTX 5070 Ti 조합이 이 가격대에서 독보적)",
+      "강력한 쿨링 시스템 (5세대 에어로블레이드와 액체 금속 써멀 그리스)",
+      "240Hz 고해상도 디스플레이 (WQXGA 해상도와 DCI-P3 색역으로 게임과 영상 편집 모두 적합)",
+      "안정적인 작동 (장시간 사용에도 멈춤이나 강제 종료 없음)",
+      "쿨링 소음 관리 (균형 모드에서 조용한 팬 소음)",
+      "다양한 포트 (Thunderbolt 4, USB 3.2 x3, HDMI 2.1, microSD 슬롯)",
+      "게이밍 디자인 (RGB 로고와 4존 RGB 키보드)",
+      "Windows 11 Home 기본 포함으로 즉시 사용 가능"
+    ],
+    "cons": [
+      "무게 (2.45kg으로 들고 다니기에는 다소 무거움)",
+      "게임 모드 팬 소음 (고성능 모드에서는 팬 소음이 큼)",
+      "지문 자국 (블랙 표면에 지문이 잘 남음)",
+      "시야각 (약간의 시야각 존재)",
+      "배터리 소모 (고사양 작업 시 배터리 빨리 소모, 전원 연결 필수)"
+    ],
+    "recommendFor": [
+      "윈도우 설치에 대한 부담 없이 고성능 게이밍 노트북을 바로 사용하고 싶은 분",
+      "리그 오브 레전드 및 AAA 게임을 최고 옵션으로 즐기고 싶은 분",
+      "4K 영상 편집, 3D 디자인 등 전문가 수준의 작업을 하는 분"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "에이수스 2025 비보북 16 코어9 인텔 14세대 지포스 RTX 4050",
+    "summary": "휴대성과 성능을 동시에 잡은, 다용도 활용에 좋은 밸런스 노트북",
+    "keyPoint": "Core i9과 RTX 4050의 실용적인 조합",
+    "target": "업무와 학업, 그리고 가벼운 게이밍을 모두 만족시키고 싶은 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzXI9K",
+    "description": "에이수스 비보북 16은 실용적인 디자인에 강력한 게이밍 성능을 더한 모델입니다. 인텔 14세대 코어 i9 프로세서와 RTX 4050 GPU를 탑재하여 리그 오브 레전드는 물론, 다양한 업무와 창작 작업까지 쾌적하게 수행합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i9 14세대"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4050"
+      },
+      {
+        "label": "RAM",
+        "value": "기본 16GB"
+      },
+      {
+        "label": "저장장치",
+        "value": "SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치"
+      },
+      {
+        "label": "무게",
+        "value": "1.95kg"
+      },
+      {
+        "label": "배터리",
+        "value": "63Wh"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      }
+    ],
+    "pros": [
+      "Core i9과 RTX 4050의 강력한 조합",
+      "비보북 라인업의 실용적인 디자인",
+      "16인치 대화면으로 생산성 향상",
+      "게이밍과 업무용 모두 적합",
+      "비교적 가벼운 1.95kg의 무게"
+    ],
+    "cons": [
+      "윈도우 미포함",
+      "상세 스펙 정보 확인 필요",
+      "RTX 4050은 고사양 AAA 게임에는 다소 아쉬울 수 있음"
+    ],
+    "recommendFor": [
+      "업무, 학업, 그리고 가벼운 게이밍을 동시에 만족시키고 싶은 분",
+      "합리적인 가격으로 다용도 노트북을 찾는 학생이나 직장인",
+      "16인치 대화면과 비교적 가벼운 휴대성을 선호하는 분"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "리그 오브 레전드에 왜 이렇게 고사양 노트북이 필요한가요?",
+    "a": "A. 리그 오브 레전드는 그래픽 사양이 아주 높지 않아도 플레이는 가능하지만, 경쟁적인 게임 특성상 높은 프레임 레이트와 부드러운 화면이 승패에 큰 영향을 줍니다. 한타 상황에서 프레임 드랍 없이 안정적인 플레이를 위해서는 고성능 CPU와 GPU가 필요하며, 144Hz 이상의 고주사율 디스플레이는 적의 움직임을 더 빠르게 인지하고 반응하는 데 도움을 줍니다. 또한, 게임 외에 스트리밍, 영상 편집 등 다른 작업을 병행한다면 더욱 강력한 성능의 노트북이 필요합니다."
+  },
+  {
+    "q": "게이밍 노트북의 발열과 소음은 어느 정도인가요?",
+    "a": "A. 게이밍 노트북은 고성능 부품을 사용하기 때문에 일반 노트북보다 발열이 높고, 이를 해소하기 위한 쿨링팬 소음이 크게 발생할 수 있습니다. 특히 고사양 게임을 최고 성능으로 구동할 때는 팬 소음이 다소 크게 느껴질 수 있습니다. 하지만 최근 출시되는 게이밍 노트북들은 효율적인 쿨링 시스템과 소프트웨어 제어 기능을 통해 발열과 소음을 효과적으로 관리합니다. 균형 모드나 저소음 모드를 사용하면 일상적인 작업에서는 조용하게 사용할 수 있습니다."
+  },
+  {
+    "q": "노트북으로 게임 외에 다른 작업도 많이 하는데 어떤 제품이 좋을까요?",
+    "a": "A. 리그 오브 레전드 외에 영상 편집, 3D 렌더링, 프로그래밍 등 고사양 작업을 병행한다면, CPU와 GPU 성능이 모두 뛰어난 모델을 선택하는 것이 좋습니다. 특히 VRAM 용량이 큰 GPU(RTX 4060 이상)와 32GB 이상의 RAM을 탑재한 모델이 효율적입니다. 에이수스 ROG 스트릭스 스카 16이나 에이서 프레데터 헬리오스 네오 16 AI 모델들이 이러한 용도에 매우 적합합니다."
+  },
+  {
+    "q": "Free DOS 모델은 어떻게 윈도우를 설치하나요?",
+    "a": "A. Free DOS 모델은 운영체제가 설치되어 있지 않은 제품입니다. 윈도우를 설치하려면 윈도우 11 정품 라이선스를 구매한 후, 마이크로소프트 공식 웹사이트에서 윈도우 설치 미디어 생성 도구를 다운로드하여 USB에 설치 파일을 만듭니다. 이후 USB를 노트북에 연결하고 바이오스(BIOS) 설정에서 USB로 부팅 순서를 변경하여 윈도우를 설치할 수 있습니다. 일부 노트북은 SSD 인식을 위해 IRST 드라이버를 미리 준비해야 할 수도 있습니다."
+  },
+  {
+    "q": "배터리 사용 시간이 짧은데, 항상 충전기를 꽂고 써야 하나요?",
+    "a": "A. 게이밍 노트북은 고성능 부품으로 인해 전력 소모가 많아 일반 노트북에 비해 배터리 사용 시간이 짧습니다. 특히 고사양 게임이나 작업을 할 때는 배터리만으로는 제 성능을 내기 어렵고 빠르게 소모됩니다. 따라서 최적의 성능을 위해서는 전원 어댑터를 연결하여 사용하는 것이 권장됩니다. 이동 중 가벼운 작업이나 웹 서핑 시에는 배터리로 사용 가능하지만, 장시간 고성능 사용 시에는 전원 연결이 필수라고 생각하시면 됩니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "에이수스 ROG 스트릭스 스카 16",
+    "cpu": "Intel Core Ultra 9 275HX (15세대)",
+    "gpu": "NVIDIA GeForce RTX 5090 24GB",
+    "ram": "32GB DDR5-5600",
+    "저장장치": "2TB PCIe 4.0 NVMe SSD",
+    "디스플레이": "16인치 Mini LED 2.5K 240Hz",
+    "밝기": "1200nits",
+    "색영역": "DCI-P3 100%",
+    "무게": "2.85kg",
+    "os": "Windows 11 Home"
+  },
+  {
+    "name": "HP 오멘 16",
+    "cpu": "Intel Core i7-14700HX (14세대)",
+    "gpu": "NVIDIA GeForce RTX 4060 8GB",
+    "ram": "32GB DDR5-5600",
+    "저장장치": "512GB PCIe Gen4 NVMe SSD",
+    "디스플레이": "16.1인치 QHD 240Hz IPS",
+    "밝기": "300nits",
+    "색영역": "100% sRGB",
+    "무게": "2.4kg",
+    "os": "Windows 11 Home"
+  },
+  {
+    "name": "에이서 프레데터 헬리오스 네오 16 AI (PHN16-73-9797)",
+    "cpu": "Intel Core Ultra 9 275HX (15세대)",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti 12GB",
+    "ram": "32GB DDR5-6400",
+    "저장장치": "1TB PCIe Gen4 NVMe SSD",
+    "디스플레이": "16인치 WQXGA 240Hz IPS",
+    "밝기": "500nits",
+    "색영역": "DCI-P3",
+    "무게": "2.45kg",
+    "os": "Free DOS"
+  },
+  {
+    "name": "에이서 프레데터 헬리오스 네오 16 AI (PHN16-73-97AB)",
+    "cpu": "Intel Core Ultra 9 275HX (15세대)",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti 12GB",
+    "ram": "32GB DDR5-6400",
+    "저장장치": "1TB PCIe Gen4 NVMe SSD",
+    "디스플레이": "16인치 WQXGA 240Hz IPS",
+    "밝기": "500nits",
+    "색영역": "DCI-P3",
+    "무게": "2.45kg",
+    "os": "Windows 11 Home"
+  },
+  {
+    "name": "에이수스 비보북 16",
+    "cpu": "Intel Core i9 14세대",
+    "gpu": "NVIDIA GeForce RTX 4050",
+    "ram": "16GB",
+    "저장장치": "SSD",
+    "디스플레이": "16인치",
+    "밝기": "-",
+    "색영역": "-",
+    "무게": "1.95kg",
+    "os": "Free DOS"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "밝기",
+    "label": "밝기"
+  },
+  {
+    "key": "색영역",
+    "label": "색영역"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "os",
+    "label": "OS"
+  }
+];
+const selectionGuide = "";
+---
+
+<BaseLayout
+  title="2026 리그 오브 레전드 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026 리그 오브 레전드 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <header class="article-header">
+        <h1>2026 리그 오브 레전드 노트북 추천 Top5</h1>
+        <p class="intro-text">안녕하세요. 오늘은 2026 리그 오브 레전드 노트북 추천에 대해 말씀드릴게요.</p>
+      </header>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 리그 오브 레전드, 왜 좋은 노트북이 중요할까요?</h2>
+        <p>리그 오브 레전드(League of Legends, LoL)는 전 세계적으로 가장 인기 있는 MOBA(Multiplayer Online Battle Arena) 장르의 게임입니다. 두 팀이 각자의 기지와 넥서스를 파괴하기 위해 전략적인 전투를 벌이는 방식이죠. 출시된 지 10년이 넘었지만, 꾸준한 업데이트와 방대한 e스포츠 리그 덕분에 여전히 압도적인 인기를 자랑하고 있습니다.</p>
+        <p>LoL은 그래픽 사양이 아주 높지 않아도 플레이가 가능하지만, 경쟁적인 게임 특성상 '높은 프레임 레이트(FPS)'와 '안정적인 네트워크 환경', 그리고 '빠른 반응속도'가 승패에 결정적인 영향을 미칩니다. 특히 챔피언들의 화려한 스킬 이펙트가 난무하는 한타 상황에서는 순간적인 프레임 드랍이 발생할 수 있어, 이를 최소화할 수 있는 고성능 CPU와 GPU가 중요합니다. 또한, 144Hz 이상의 고주사율 디스플레이는 부드러운 화면 전환으로 적의 움직임을 더 빠르게 인지하고 반응할 수 있도록 도와주죠.</p>
+        <p>2026년에도 LoL의 인기는 식지 않을 것이며, 더욱 최적화된 플레이 환경을 위해선 탄탄한 성능을 갖춘 게이밍 노트북이 필수적입니다. 단순히 게임만 하는 것을 넘어, 스트리밍, 영상 편집 등 다양한 작업을 병행하는 사용자라면 더욱 강력한 성능의 노트북을 고려해야 합니다.</p>
+        <div class="affiliate-notice">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 리그 오브 레전드를 위한 노트북 추천 제품 5가지를 소개해 드렸습니다. 최강의 성능을 원한다면 에이수스 ROG 스트릭스 스카 16을, 가성비와 성능의 균형을 찾는다면 HP 오멘 16이나 에이서 프레데터 헬리오스 네오 16 AI 모델들을 추천합니다. 게임 외에 업무나 학업까지 다용도로 활용하면서 가벼운 게이밍을 즐기고 싶다면 에이수스 비보북 16도 좋은 선택이 될 것입니다.
+리그 오브 레전드는 물론, 앞으로 출시될 다양한 게임들까지 쾌적하게 즐기기 위해서는 자신의 사용 목적과 예산에 맞는 최적의 노트북을 선택하는 것이 중요합니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
