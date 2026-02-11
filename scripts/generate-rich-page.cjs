@@ -1046,10 +1046,34 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
 
   <main>
     <article>
-      <header class="article-header">
-        <h1>${data.title}</h1>
-        <p class="intro-text">${introText}</p>
-      </header>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          ${data.title}
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="${data.date}" class="text-gray-500">
+            ${data.date ? data.date.split('T')[0] : ''} 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          ${introText}
+        </p>
+      </div>
 
       {products.length > 0 && (
       <section class="section summary-section">
@@ -1082,9 +1106,6 @@ const selectionGuide = ${JSON.stringify(selectionGuideText)};
       <section class="section topic-intro">
         <h2>${topicTitle}</h2>
         ${topicText.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('\n        ')}
-        <div class="affiliate-notice">
-          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
-        </div>
       </section>
 
       {products.length > 0 && (
