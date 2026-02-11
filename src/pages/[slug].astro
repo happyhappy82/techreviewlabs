@@ -135,7 +135,7 @@ const breadcrumbSchema = {
         <h1 class="text-ns-title text-ns-text mb-4">
           {review.data.title}
         </h1>
-        <div class="flex items-center gap-4 text-[13px] text-gray-500">
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
           <div class="flex items-center gap-2">
             <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
               <span class="text-[10px] font-bold">TRL</span>
@@ -145,6 +145,10 @@ const breadcrumbSchema = {
           <time datetime={review.data.date} class="text-gray-500">
             {formatDateForDisplay(review.data.date)} 업데이트
           </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
         </div>
       </div>
 
