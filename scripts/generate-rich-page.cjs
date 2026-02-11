@@ -184,6 +184,8 @@ const SECTION_PATTERNS = [
   { pattern: '제품 설명', type: 'products' },
   { pattern: '제품 리뷰', type: 'products' },
   { pattern: '제품 소개', type: 'products' },
+  { pattern: '상세 리뷰', type: 'products' },
+  { pattern: '추천 제품', type: 'products' },
 ];
 
 // h2 제목으로 섹션 타입 추론
