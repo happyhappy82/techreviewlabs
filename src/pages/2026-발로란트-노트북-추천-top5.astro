@@ -1,0 +1,686 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-12T05:21:06.446Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "기가바이트 2025 게이밍 A16 (GAMING A16 CMH)",
+    "summary": "100만원대 최고의 가성비 게이밍 노트북",
+    "keyPoint": "RTX 4050, 76Wh 배터리, 16:10",
+    "target": "예산이 한정된 게이머, 대학생",
+    "buyUrl": "https://link.coupang.com/a/dzYuuK",
+    "description": "",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i5-13420H (8코어/12스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4050 6GB GDDR6"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5 5200MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WUXGA (1920x1200), 165Hz, IPS"
+      },
+      {
+        "label": "배터리",
+        "value": "76Wh Li-Polymer"
+      },
+      {
+        "label": "무게",
+        "value": "2.2kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "pros": [
+      "100만원대 초반에 RTX 4050을 탑재하여 뛰어난 가성비를 자랑합니다.",
+      "76Wh 대용량 배터리로 외부에서도 충전기 없이 장시간 사용이 가능합니다.",
+      "16:10 화면비율로 세로 공간이 넓어 게임 외 작업 시 생산성이 좋습니다.",
+      "MUX 스위치를 지원하여 외장 그래픽 단독 모드로 성능을 극대화할 수 있습니다.",
+      "윈드포스 쿨링 시스템으로 효율적인 열 관리가 가능합니다."
+    ],
+    "cons": [
+      "NTSC 45%의 색재현율로 전문적인 그래픽 작업에는 부적합합니다.",
+      "2.2kg의 무게는 휴대성에 다소 부담이 될 수 있습니다.",
+      "터보 모드 사용 시 팬 소음이 다소 크게 느껴질 수 있습니다."
+    ],
+    "recommendFor": [
+      "합리적인 가격으로 발로란트와 같은 인기 게임을 쾌적하게 즐기고 싶은 대학생 게이머.",
+      "게이밍 성능과 더불어 긴 배터리 사용 시간을 중요하게 생각하는 분.",
+      "일상적인 작업과 가벼운 게임을 동시에 만족시키고 싶은 분."
+    ]
+  },
+  {
+    "id": 2,
+    "name": "레노버 2025 리전 7 16IAX10 (83KY001SKR)",
+    "summary": "압도적인 성능과 최상급 디스플레이",
+    "keyPoint": "RTX 5070, Core Ultra 9, OLED 240Hz",
+    "target": "극한의 성능을 추구하는 게이머, 전문 크리에이터",
+    "buyUrl": "https://link.coupang.com/a/dzXUzy",
+    "description": "",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 8GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5 6400MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "4TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) OLED, 240Hz, 500nits, 100% DCI-P3"
+      },
+      {
+        "label": "무게",
+        "value": "약 2kg"
+      },
+      {
+        "label": "두께",
+        "value": "17.9mm"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Pro DSP"
+      }
+    ],
+    "pros": [
+      "인텔 최신 Arrow Lake Core Ultra 9 프로세서와 RTX 5070 GPU로 데스크탑급 최강 성능을 제공합니다.",
+      "2.5K 240Hz OLED 디스플레이는 완벽한 블랙 표현과 뛰어난 색감으로 최고의 시각 경험을 선사합니다.",
+      "17.9mm의 슬림한 풀메탈 바디와 2kg의 무게로 게이밍 노트북치고 휴대성이 매우 우수합니다.",
+      "64GB의 대용량 메모리와 4TB SSD로 멀티태스킹 및 고용량 크리에이티브 작업에 최적화되어 있습니다.",
+      "Wi-Fi 7 지원으로 초고속 무선 인터넷 환경을 구축할 수 있습니다."
+    ],
+    "cons": [
+      "최고급 사양인 만큼 높은 가격대가 부담스러울 수 있습니다.",
+      "OLED 패널 특성상 장시간 정적인 이미지 표시 시 번인 현상에 대한 우려가 있습니다.",
+      "게이밍 풀로드 시 강력한 성능만큼 팬 소음이 발생할 수 있습니다."
+    ],
+    "recommendFor": [
+      "예산에 구애받지 않고 현존 최고의 게이밍 성능과 디스플레이를 경험하고 싶은 프로 게이머.",
+      "영상 편집, 3D 렌더링 등 고사양 크리에이티브 작업을 노트북으로 처리하는 전문가.",
+      "데스크탑을 대체할 수 있는 궁극의 올인원 노트북을 찾는 분."
+    ]
+  },
+  {
+    "id": 3,
+    "name": "HP 2025 VICTUS 15 GAMING LAPTOP (15-fb3001AX)",
+    "summary": "게임과 작업을 위한 합리적인 고성능 올라운더",
+    "keyPoint": "Ryzen 9 8945HS, RTX 4060, 144Hz",
+    "target": "고사양 게임과 작업 모두 원하는 사용자, 가성비 추구",
+    "buyUrl": "https://link.coupang.com/a/dzX9sT",
+    "description": "",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 8945HS (8코어/16스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4060"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5-5600MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe Gen4 NVMe M.2 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.6인치 FHD (1920x1080) IPS, 144Hz, 300nit"
+      },
+      {
+        "label": "배터리",
+        "value": "4-cell, 70Wh Li-ion polymer"
+      },
+      {
+        "label": "무게",
+        "value": "2.29kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      }
+    ],
+    "pros": [
+      "AMD Ryzen 9 8945HS 프로세서와 RTX 4060 그래픽카드 조합으로 게임과 영상 작업 모두 쾌적하게 처리 가능합니다.",
+      "144Hz 고주사율 디스플레이로 FPS/액션 게임에서 부드러운 화면 전환을 경험할 수 있습니다.",
+      "듀얼팬 쿨링 시스템으로 발열 관리가 우수하여 장시간 사용에도 안정적입니다.",
+      "심플하고 깔끔한 디자인으로 게이밍 노트북임을 크게 드러내지 않습니다.",
+      "100만원대 중반 가격에 고사양 스펙을 제공하여 가격 대비 성능이 뛰어납니다."
+    ],
+    "cons": [
+      "2.29kg의 무게로 휴대성이 뛰어나다고 보기는 어렵습니다.",
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 하는 번거로움이 있습니다.",
+      "디스플레이 색재현율(62.5% sRGB)이 낮아 전문적인 색 작업에는 외부 모니터 연결이 권장됩니다.",
+      "고사양 작업이나 게임 시 팬 소음이 발생할 수 있습니다."
+    ],
+    "recommendFor": [
+      "발로란트 뿐만 아니라 다양한 고사양 게임을 즐기며, 가끔 영상 편집 등 작업도 하는 올라운더 게이머.",
+      "합리적인 가격에 RTX 4060급 성능을 원하며, 윈도우 설치에 어려움이 없는 분.",
+      "심플한 디자인의 게이밍 노트북을 선호하는 분."
+    ]
+  },
+  {
+    "id": 4,
+    "name": "MSI 2025 레이더 18 HX AI (Raider 18 HX AI A2XWIG-U9)",
+    "summary": "데스크탑을 대체하는 궁극의 게이밍 머신",
+    "keyPoint": "RTX 5080, Core Ultra 9, 18인치 Mini LED",
+    "target": "최고 성능, 대화면을 선호하는 프로페셔널 게이머",
+    "buyUrl": "https://link.coupang.com/a/dzYgaT",
+    "description": "",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 285HX (8P+16E코어)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5080 16GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "2TB NVMe PCIe Gen5 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "18인치 Mini LED UHD+ (3840x2400), 120Hz, 1000nits, DCI-P3 100%"
+      },
+      {
+        "label": "배터리",
+        "value": "99.9Whr"
+      },
+      {
+        "label": "연결성",
+        "value": "Thunderbolt 5, Wi-Fi 7"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "pros": [
+      "인텔 Core Ultra 9 285HX와 RTX 5080의 조합으로 데스크탑을 능가하는 궁극의 성능을 제공합니다.",
+      "18인치 Mini LED UHD+ 디스플레이는 1000nits 밝기와 DCI-P3 100% 색재현율로 압도적인 시각 경험을 선사합니다.",
+      "썬더볼트 5와 Wi-Fi 7 등 최신 연결 기술을 탑재하여 미래 지향적인 환경을 제공합니다.",
+      "오버부스트 울트라 기술로 CPU+GPU 최대 260W의 성능을 끌어낼 수 있습니다.",
+      "쿨러부스트 5 시스템으로 극한의 성능에서도 안정적인 발열 관리가 가능합니다."
+    ],
+    "cons": [
+      "500만원대 이상의 매우 높은 가격대로 접근성이 낮습니다.",
+      "18인치 대화면과 400W 어댑터로 인해 휴대성은 크게 기대하기 어렵습니다.",
+      "무게와 크기 때문에 이동보다는 거치형으로 사용하는 것이 적합합니다."
+    ],
+    "recommendFor": [
+      "성능과 디스플레이에 대한 타협 없이 최고의 게이밍 경험을 원하는 하이엔드 유저.",
+      "전문적인 AI/딥러닝, 3D 렌더링, 4K 영상 편집 등 극한의 작업 성능이 필요한 전문가.",
+      "데스크탑 없이 모든 작업을 노트북으로 해결하고자 하는 분."
+    ]
+  },
+  {
+    "id": 5,
+    "name": "레노버 2025 리전 5 15IRX10 (83LY00HEKR)",
+    "summary": "균형 잡힌 성능과 세련된 디자인",
+    "keyPoint": "RTX 5060, Core i7, 16:10, sRGB 100%",
+    "target": "메인스트림 게이머, 생산성을 중시하는 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzXLck",
+    "description": "",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-13650HX (14코어 20스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.6인치 WUXGA (1920x1200) IPS, 165Hz, 300nit, sRGB 100%"
+      },
+      {
+        "label": "배터리",
+        "value": "80Wh"
+      },
+      {
+        "label": "무게",
+        "value": "2.1kg"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      }
+    ],
+    "pros": [
+      "160만원대 가격에 RTX 5060과 i7-13650HX 조합으로 훌륭한 가성비를 제공합니다.",
+      "1TB 대용량 NVMe SSD를 기본 탑재하여 넉넉한 저장 공간을 제공합니다.",
+      "16:10 화면비율과 sRGB 100% 색재현율 디스플레이로 게임과 작업 모두 만족스럽습니다.",
+      "Legion TrueStrike 키보드는 1.5mm 키스트로크와 24-Zone RGB 백라이트로 우수한 타건감과 게이밍 감성을 선사합니다.",
+      "Lenovo AI Engine+와 Cold Front Hyper 쿨링 시스템으로 성능 최적화와 효율적인 열 관리가 가능합니다."
+    ],
+    "cons": [
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 합니다.",
+      "터보 부스터 사용 시 팬 소음이 다소 발생할 수 있습니다 (전원 옵션으로 조절 가능).",
+      "16GB RAM은 고사양 전문 작업 시 부족하게 느껴질 수 있습니다 (확장 가능)."
+    ],
+    "recommendFor": [
+      "발로란트, 오버워치 등 FPS 게임을 주로 하면서도 AAA급 게임까지 즐기고 싶은 메인스트림 게이머.",
+      "영상 편집, 그래픽 작업 등 크리에이티브 작업도 병행하며 높은 색재현율을 중요하게 생각하는 분.",
+      "가성비와 성능, 디자인의 균형을 중요하게 생각하는 분."
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "발로란트용 노트북은 어떤 사양이 가장 중요한가요?",
+    "a": "A. 발로란트는 고주사율 디스플레이와 안정적인 프레임을 제공하는 그래픽카드가 중요합니다. 144Hz 이상의 주사율과 RTX 3050 이상, 혹은 이번에 소개해 드린 RTX 4050/5060급 그래픽카드를 탑재한 노트북이라면 쾌적하게 플레이할 수 있습니다."
+  },
+  {
+    "q": "게이밍 노트북은 팬 소음이 심하다는데, 괜찮을까요?",
+    "a": "A. 고사양 게이밍 노트북은 게임 중 발열 관리를 위해 팬이 빠르게 회전하여 소음이 발생할 수 있습니다. 하지만 대부분의 노트북은 성능 모드를 조절할 수 있는 소프트웨어를 제공하며, 일반적인 사용 시에는 소음이 크지 않습니다. 헤드셋을 사용하면 게임 중 소음은 크게 신경 쓰이지 않을 것입니다."
+  },
+  {
+    "q": "Free DOS 제품은 윈도우를 직접 설치해야 하나요?",
+    "a": "A. 네, Free DOS 제품은 운영체제가 포함되어 있지 않으므로, 구매 후 윈도우를 직접 설치해야 합니다. 윈도우 설치 미디어를 USB에 만들고 바이오스 설정을 통해 설치할 수 있으며, 온라인에 많은 가이드가 있으니 참고하시면 어렵지 않게 설치할 수 있습니다."
+  },
+  {
+    "q": "노트북 구매 시 A/S는 어떻게 확인해야 하나요?",
+    "a": "A. 노트북 구매 시 제조사별 A/S 정책과 보증 기간을 확인하는 것이 중요합니다. 쿠팡에서 구매하는 경우 쿠팡 안심케어와 같은 추가 무상보증 옵션을 제공하기도 하니, 이를 활용하여 보증 기간을 연장하는 것도 좋은 방법입니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "기가바이트 A16",
+    "cpu": "i5-13420H",
+    "gpu": "RTX 4050",
+    "ram": "16GB DDR5",
+    "저장장치": "512GB SSD",
+    "디스플레이": "16인치 WUXGA IPS 165Hz",
+    "색재현율": "NTSC 45%",
+    "운영체제": "Win 11 Home",
+    "무게": "2.2kg",
+    "배터리": "76Wh"
+  },
+  {
+    "name": "레노버 리전 7",
+    "cpu": "Ultra 9 275HX",
+    "gpu": "RTX 5070",
+    "ram": "64GB DDR5",
+    "저장장치": "4TB SSD",
+    "디스플레이": "16인치 WQXGA OLED 240Hz",
+    "색재현율": "DCI-P3 100%",
+    "운영체제": "Win 11 Pro",
+    "무게": "약 2kg",
+    "배터리": "미공개"
+  },
+  {
+    "name": "HP 빅터스 15",
+    "cpu": "Ryzen 9 8945HS",
+    "gpu": "RTX 4060",
+    "ram": "16GB DDR5",
+    "저장장치": "512GB SSD",
+    "디스플레이": "15.6인치 FHD IPS 144Hz",
+    "색재현율": "sRGB 62.5%",
+    "운영체제": "Free DOS",
+    "무게": "2.29kg",
+    "배터리": "70Wh"
+  },
+  {
+    "name": "MSI 레이더 18 HX AI",
+    "cpu": "Ultra 9 285HX",
+    "gpu": "RTX 5080",
+    "ram": "32GB DDR5",
+    "저장장치": "2TB SSD",
+    "디스플레이": "18인치 UHD+ Mini LED 120Hz",
+    "색재현율": "DCI-P3 100%",
+    "운영체제": "Win 11 Home",
+    "무게": "미공개 (대화면)",
+    "배터리": "99.9Whr"
+  },
+  {
+    "name": "레노버 리전 5",
+    "cpu": "i7-13650HX",
+    "gpu": "RTX 5060",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB SSD",
+    "디스플레이": "15.6인치 WUXGA IPS 165Hz",
+    "색재현율": "sRGB 100%",
+    "운영체제": "Free DOS",
+    "무게": "2.1kg",
+    "배터리": "80Wh"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "색재현율",
+    "label": "색재현율"
+  },
+  {
+    "key": "운영체제",
+    "label": "운영체제"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "배터리",
+    "label": "배터리"
+  }
+];
+const selectionGuide = "각 노트북은 저마다의 강점과 약점을 가지고 있습니다. 여러분의 예산, 주된 사용 목적, 그리고 중요하게 생각하는 가치에 따라 최적의 선택이 달라질 수 있습니다.\n• 성능과 디스플레이에 아낌없이 투자하고 싶다면: 레노버 2025 리전 7 16IAX10이나 MSI 2025 레이더 18 HX AI는 현존 최고 수준의 CPU, GPU와 함께 압도적인 OLED 또는 Mini LED 디스플레이를 제공합니다. 단순 게이밍을 넘어 전문적인 크리에이티브 작업까지 고려한다면 이보다 좋은 선택은 없을 것입니다.\n• 게이밍과 작업을 모두 아우르는 합리적인 선택: HP 2025 VICTUS 15 GAMING LAPTOP과 레노버 2025 리전 5 15IRX10은 100만원대 중반에서 RTX 4060/5060급 성능을 제공하여 밸런스가 좋습니다. 특히 HP 빅터스는 AMD Ryzen 9의 멀티태스킹 능력이 돋보이고, 레노버 리전 5는 sRGB 100% 디스플레이로 색 정확도가 필요한 작업에 유리합니다.\n여러분의 사용 패턴과 예산을 꼼꼼히 고려하여 가장 만족스러운 선택을 하시길 바랍니다.";
+---
+
+<BaseLayout
+  title="2026 발로란트 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 '2026 발로란트 노트북 추천 Top5'에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 발로란트 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-02-12T03:40:00.000+00:00" class="text-gray-500">
+            2026-02-12 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 '2026 발로란트 노트북 추천 Top5'에 대해 말씀드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 발로란트, 어떤 게임이길래?</h2>
+        <p>발로란트는 라이엇 게임즈에서 개발한 5대5 캐릭터 기반 전술 슈팅 게임입니다. 카운터 스트라이크와 같은 클래식 FPS의 전술적인 요소에 오버워치와 같은 캐릭터별 고유 스킬을 더해, 빠르고 전략적인 플레이를 동시에 즐길 수 있는 것이 특징이죠.</p>
+        <p>• 게임의 특징: 정교한 총기 컨트롤과 함께 각 요원(캐릭터)의 스킬을 활용하여 팀원과 협력하는 것이 중요합니다. 폭발적인 한타 싸움보다는 소규모 교전과 전략적인 운영이 승패를 가르는 경우가 많아, 순간적인 판단력과 에임 실력이 중요하게 작용합니다.</p>
+        <p>• 트렌드 상황: 2020년 출시 이후 전 세계적으로 폭발적인 인기를 얻으며 e스포츠 리그도 활발하게 운영되고 있습니다. 끊임없는 업데이트와 새로운 요원, 맵 출시로 꾸준히 유저들의 사랑을 받고 있으며, 특히 국내 PC방 점유율 상위권을 꾸준히 유지하고 있는 대표적인 인기 게임입니다.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 '2026 발로란트 노트북 추천 Top5'에 대해 말씀드렸습니다. 오늘 소개해 드린 제품들이 여러분의 게이밍 라이프를 한층 더 업그레이드하는 데 도움이 되기를 바랍니다. 특히 발로란트와 같은 FPS 게임은 장비의 영향이 크니, 여러분의 플레이 스타일에 맞는 최적의 노트북을 선택하시길 응원합니다! 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
