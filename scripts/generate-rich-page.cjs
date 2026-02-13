@@ -59,12 +59,37 @@ function isNegativeText(text) {
   return NEGATIVE_KEYWORDS.some(kw => lower.includes(kw));
 }
 
+// 스펙이 아닌 항목 (key:value 형태이지만 스펙이 아닌 것들)
+const NON_SPEC_KEYS = [
+  '게이밍', '사무용', '사무', '영상편집', '코딩', '학습', '멀티태스킹',
+  '가성비', '휴대성', '디자인', '내구성', '안정성', '호환성',
+  '총평', '후기', '평점', '점수', '별점', '등급', '사용자',
+  '추천', '적합', '용도', '대상', '타겟',
+  '종합', '결론', '요약', '한줄평', '코멘트', '평가',
+  '장점', '단점', '아쉬운 점', '좋은 점'
+];
+
 // 텍스트가 스펙 형태인지 판별 (key: value)
 function isSpecFormat(text) {
   const colonIdx = text.indexOf(':');
   if (colonIdx < 1 || colonIdx > 20) return false;
-  const key = text.substring(0, colonIdx).toLowerCase();
-  return SPEC_KEYWORDS.some(kw => key.includes(kw)) || colonIdx < 15;
+  const key = text.substring(0, colonIdx).trim().toLowerCase();
+
+  // 먼저 NON_SPEC_KEYS에 해당하면 스펙이 아님
+  if (NON_SPEC_KEYS.some(nsk => key.includes(nsk))) return false;
+
+  // SPEC_KEYWORDS에 해당하면 스펙
+  if (SPEC_KEYWORDS.some(kw => key.includes(kw))) return true;
+
+  // key가 짧고(15자 미만) SPEC_KEYWORDS에도 NON_SPEC_KEYS에도 없으면
+  // value 길이로 추가 판별 (스펙 value는 보통 짧음)
+  if (colonIdx < 15) {
+    const value = text.substring(colonIdx + 1).trim();
+    // value가 너무 길면 (30자 이상) 설명문이지 스펙이 아닐 확률 높음
+    return value.length < 30;
+  }
+
+  return false;
 }
 
 // 구매 링크인지 판별
@@ -141,11 +166,47 @@ function deduplicateProducts(products) {
 function isSummaryTable(headers) {
   if (headers.length < 2) return false;
   const firstHeader = (headers[0] || '').toLowerCase();
-  const summaryFirstCol = ['제품', '이름', '모델', '상품', '순위'];
+  const summaryFirstCol = ['제품', '이름', '모델', '상품', '순위', '비고', '구분', '항목'];
   const hasSummaryFirstCol = summaryFirstCol.some(kw => firstHeader.includes(kw));
   const evalKeywords = ['핵심', '한 줄', '추천', '평가', '요약', '장점', '특징', '코멘트', '대상'];
   const hasEvalCol = headers.slice(1).some(h => evalKeywords.some(kw => h.toLowerCase().includes(kw)));
   return hasSummaryFirstCol && hasEvalCol;
+}
+
+// 전치 테이블 감지: 제품이 열(컬럼)에, 속성이 행에 배치된 경우
+function isTransposedSummaryTable(tableData) {
+  if (tableData.length < 2 || tableData[0].length < 3) return false;
+  const firstHeader = (tableData[0][0] || '').toLowerCase();
+
+  // 첫 번째 헤더가 "비고"이고, 행의 첫 번째 셀이 속성 키워드를 포함하면 전치
+  if (!firstHeader.includes('비고')) return false;
+
+  const attrKeywords = ['핵심', '장점', '한 줄', '평가', '요약', '추천', '대상', '제품', '특징', '코멘트', '타겟'];
+  let attrMatchCount = 0;
+  for (let i = 1; i < tableData.length; i++) {
+    const cellValue = (tableData[i][0] || '').toLowerCase();
+    if (attrKeywords.some(kw => cellValue.includes(kw))) {
+      attrMatchCount++;
+    }
+  }
+
+  // 2개 이상의 행 첫 셀이 속성 키워드를 포함하면 전치 테이블
+  return attrMatchCount >= 2;
+}
+
+// 전치 테이블을 정상 방향(제품=행, 속성=열)으로 변환
+function transposeTable(tableData) {
+  const rows = tableData.length;
+  const cols = tableData[0].length;
+  const result = [];
+  for (let c = 0; c < cols; c++) {
+    const newRow = [];
+    for (let r = 0; r < rows; r++) {
+      newRow.push(tableData[r] && tableData[r][c] ? tableData[r][c] : '');
+    }
+    result.push(newRow);
+  }
+  return result;
 }
 
 // 롱테일 키워드 매칭 패턴 (우선순위 순)
@@ -154,31 +215,48 @@ const SECTION_PATTERNS = [
   { pattern: '자주 묻는 질문', type: 'faq' },
   { pattern: 'q&a', type: 'faq' },
   { pattern: 'faq', type: 'faq' },
+  { pattern: '궁금한 점', type: 'faq' },
+  { pattern: '질문과 답변', type: 'faq' },
 
   // 마무리
   { pattern: '이 글을 마치며', type: 'closing' },
+  { pattern: '글을 마치며', type: 'closing' },
+  { pattern: '마치며', type: 'closing' },
   { pattern: '마무리', type: 'closing' },
   { pattern: '결론', type: 'closing' },
   { pattern: '정리하며', type: 'closing' },
+  { pattern: '마지막으로', type: 'closing' },
+  { pattern: '총평', type: 'closing' },
 
   // 요약
   { pattern: '핵심만 콕', type: 'summary' },
   { pattern: '한눈에 보기', type: 'summary' },
   { pattern: '핵심 요약', type: 'summary' },
+  { pattern: '요약 정리', type: 'summary' },
+  { pattern: '한눈에 비교', type: 'summary' },
 
   // 도입
   { pattern: '들어가며', type: 'topic' },
+  { pattern: '시작하며', type: 'topic' },
+  { pattern: '소개', type: 'topic' },
 
   // 비교
   { pattern: '제품 비교표', type: 'comparison' },
   { pattern: '제품 비교', type: 'comparison' },
   { pattern: '비교표', type: 'comparison' },
+  { pattern: '스펙 비교', type: 'comparison' },
+  { pattern: '성능 비교', type: 'comparison' },
+  { pattern: '사양 비교', type: 'comparison' },
 
   // 선택 가이드
   { pattern: '어떤 제품을 선택해야', type: 'guide' },
   { pattern: '구매 가이드', type: 'guide' },
   { pattern: '선택 가이드', type: 'guide' },
   { pattern: '선택해야 할까', type: 'guide' },
+  { pattern: '고르는 법', type: 'guide' },
+  { pattern: '고르는 방법', type: 'guide' },
+  { pattern: '선택 기준', type: 'guide' },
+  { pattern: '구매 포인트', type: 'guide' },
 
   // 제품 설명 섹션 헤더 (제품 이름이 아님!)
   { pattern: '제품 설명', type: 'products' },
@@ -186,16 +264,36 @@ const SECTION_PATTERNS = [
   { pattern: '제품 소개', type: 'products' },
   { pattern: '상세 리뷰', type: 'products' },
   { pattern: '추천 제품', type: 'products' },
+  { pattern: '추천 목록', type: 'products' },
+  { pattern: '제품 목록', type: 'products' },
+];
+
+// 제품명이 아닌 섹션 헤더 키워드 (ghost product 방지)
+const NON_PRODUCT_KEYWORDS = [
+  '비교표', '비교', '마치며', '마무리', '결론', '정리',
+  'faq', '자주 묻는', '질문', '총평', '요약', '핵심만',
+  '가이드', '선택 기준', '고르는', '참고', '주의사항',
+  '들어가며', '시작하며', '소개'
 ];
 
 // h2 제목으로 섹션 타입 추론
 function inferSectionType(title) {
-  const t = title.toLowerCase().trim();
+  // 숫자 접두사 제거 후 매칭 (예: "4. 제품 비교표" → "제품 비교표")
+  const cleaned = title.replace(/^\d+[\.\)]\s*/, '').trim();
+  const t = cleaned.toLowerCase();
 
-  // 롱테일 패턴 매칭 (숏 키워드 폴백 없음 — 롱테일 강제 정책)
+  // 롱테일 패턴 매칭
   for (const { pattern, type } of SECTION_PATTERNS) {
     if (t.includes(pattern)) {
       return type;
+    }
+  }
+
+  // 안전장치: NON_PRODUCT_KEYWORDS에 해당하면 closing으로 분류 (ghost product 방지)
+  for (const kw of NON_PRODUCT_KEYWORDS) {
+    if (t.includes(kw)) {
+      console.log(`   🛡️  섹션 헤더로 감지 (ghost product 방지): "${title}" → keyword: "${kw}"`);
+      return 'closing';
     }
   }
 
@@ -386,7 +484,20 @@ async function parseNotionContent(pageId) {
         continue;
       }
 
-      // 번호 없는 h2는 무시 (번호 필수 정책)
+      // 번호 없는 h2 — 섹션 헤더인지 먼저 확인
+      const sectionType = inferSectionType(text);
+      if (sectionType !== null) {
+        currentSection = sectionType;
+        if (sectionType === 'topic' && !result.topicTitle) {
+          result.topicTitle = text;
+        }
+        currentProduct = null;
+        productSubSection = null;
+        console.log(`   ✅  번호 없는 h2 섹션 인식: "${text}" → ${sectionType}`);
+        continue;
+      }
+
+      // 진짜 인식 안 되는 h2만 무시
       console.warn(`   ⚠️  번호 없는 h2 무시: "${text}"`);
       continue;
     }
@@ -482,13 +593,20 @@ async function parseNotionContent(pageId) {
       tableCount++;
 
       if (tableData.length > 0) {
-        const headers = tableData[0];
+        // 전치 테이블 감지 및 변환 (제품이 열에 배치된 경우)
+        let finalTableData = tableData;
+        if (isTransposedSummaryTable(tableData)) {
+          console.log(`   🔄  전치 테이블 감지 — 행/열 변환 (${tableData[0].length - 1}개 제품)`);
+          finalTableData = transposeTable(tableData);
+        }
+
+        const headers = finalTableData[0];
 
         // 콘텐츠 기반 테이블 종류 판별 (순서가 아닌 구조로 판단)
         if (isSummaryTable(headers) && result.summaryTable.length === 0) {
-          result.summaryTable = tableData;
+          result.summaryTable = finalTableData;
         } else {
-          result.comparisonTable = tableData;
+          result.comparisonTable = finalTableData;
         }
       }
       continue;
@@ -879,10 +997,12 @@ function enrichProductsFromTable(table, products) {
     return headers.findIndex(h => keywords.some(kw => h.includes(kw)));
   };
 
-  const nameIdx = findColIdx(['제품', '이름', '모델', '노트북']);
+  // nameIdx: 강한 제품명 표시자 우선, 없으면 비고/구분 폴백
+  let nameIdx = findColIdx(['제품', '이름', '모델', '노트북']);
+  if (nameIdx < 0) nameIdx = findColIdx(['비고', '구분', '항목']);
   const keyPointIdx = findColIdx(['핵심', '장점', '특징', '포인트']);
-  const summaryIdx = findColIdx(['한 줄', '평가', '요약', '코멘트']);
-  const targetIdx = findColIdx(['추천', '대상', '타겟', '적합']);
+  const summaryIdx = findColIdx(['한 줄', '평가', '요약', '코멘트', '총평']);
+  const targetIdx = findColIdx(['추천', '대상', '타겟', '적합', '용도']);
 
   // 이미 매칭된 제품 추적 (중복 매칭 방지)
   const matched = new Set();
