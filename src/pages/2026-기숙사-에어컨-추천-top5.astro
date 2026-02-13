@@ -1,0 +1,576 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-13T07:43:07.266Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "삼성전자 62.6㎡(19평) + 18.7㎡(5.7평) BESPOKE AI 무풍 클래식 홈멀티형 에어컨",
+    "summary": "빠르고 시원한 냉방과 스마트한 관리 기능을 갖춘 기본에 충실한 스탠드 에어컨",
+    "keyPoint": "AI 쾌적/절약 모드, 하이패스 회오리 냉방, 이지케어",
+    "target": "넓은 거실 공간을 빠르게 냉방하고 싶고, 스마트 기능으로 편리함을 추구하는 분",
+    "buyUrl": "https://link.coupang.com/a/dFdXSb",
+    "description": "삼성전자의 AI Q9000 스탠드 에어컨은 넓은 공간을 빠르고 효율적으로 냉방하는 데 초점을 맞춘 모델입니다. AI 기반의 스마트 기능으로 사용자의 편의성을 높여줍니다.\n거실과 침실을 동시에 쾌적하게 관리하고 싶은 분들을 위한 삼성전자의 2in1 홈멀티 에어컨입니다. 무풍냉방 기술로 직바람 없이 편안한 냉방을 제공합니다.\n삼성 BESPOKE 무풍 스탠드 에어컨은 뛰어난 냉방 성능과 함께 감각적인 디자인, 그리고 무풍 기술로 쾌적함을 선사합니다. 솔라셀 리모컨으로 편리함까지 더했습니다.\n삼성 AI 무풍콤보 벽걸이 에어컨은 작은 공간에 최적화된 모델로, 1등급 에너지 효율과 무풍냉방 기능을 결합하여 전기 요금 걱정 없이 쾌적함을 선사합니다.\n",
+    "specs": [
+      {
+        "label": "냉방면적",
+        "value": "62.6㎡ (19평)"
+      },
+      {
+        "label": "에너지 효율",
+        "value": "냉방 3등급"
+      },
+      {
+        "label": "운전능력",
+        "value": "정격 냉방 능력 7.70 kW"
+      },
+      {
+        "label": "본체 크기 (WxHxD)",
+        "value": "360 x 1,847 x 246 mm"
+      },
+      {
+        "label": "주요 기능",
+        "value": "하이패스 회오리 냉방, AI 쾌적, AI 절약 모드 (최대 30% 절전), SmartThings 앱 연동, 워시클린 (열교환기 세척), 대용량 강력 제습"
+      },
+      {
+        "label": "냉방면적",
+        "value": "스탠드 62.6㎡(19평) + 벽걸이 18.7㎡(5.7평)"
+      },
+      {
+        "label": "에너지 효율",
+        "value": "3등급"
+      },
+      {
+        "label": "유형",
+        "value": "홈멀티형 (스탠드 + 벽걸이)"
+      },
+      {
+        "label": "주요 기능",
+        "value": "AI 컨트롤, 무풍냉방, SmartThings 앱 연동, 워시클린, 자동건조"
+      },
+      {
+        "label": "냉방면적",
+        "value": "56.9㎡ (17.2평)"
+      },
+      {
+        "label": "에너지 효율",
+        "value": "3등급"
+      },
+      {
+        "label": "운전능력",
+        "value": "정격 냉방 능력 7.00 kW"
+      },
+      {
+        "label": "본체 크기 (WxHxD)",
+        "value": "363 x 1,883 x 294 mm"
+      },
+      {
+        "label": "주요 기능",
+        "value": "무풍냉방, 하이패스 회오리 냉방, AI 절약 모드, 이지케어 8단계, BESPOKE AI 맞춤쾌적, SmartThings 연동, 솔라셀 리모컨"
+      },
+      {
+        "label": "냉방면적",
+        "value": "34.1㎡ (10.3평)"
+      },
+      {
+        "label": "에너지 효율",
+        "value": "1등급"
+      },
+      {
+        "label": "운전능력",
+        "value": "정격 냉방 능력 4.20 kW"
+      },
+      {
+        "label": "본체 크기 (WxHxD)",
+        "value": "1055 x 299 x 215mm"
+      },
+      {
+        "label": "주요 기능",
+        "value": "무풍냉방 (28,000개 마이크로 홀), 쾌적제습, AI 쾌적, AI 절약 모드 (최대 30% 절전), 무풍 열대야 쾌면, 워시클린, 이지케어 6단계, SmartThings 앱 제어, Wi-Fi"
+      }
+    ],
+    "pros": [
+      "하이패스 회오리 냉방으로 넓은 공간을 빠르게 시원하게 만들어 줍니다.",
+      "AI 쾌적 모드가 알아서 온도를 조절해 주어 편리합니다.",
+      "AI 절약 모드로 전기 요금 부담을 줄일 수 있습니다.",
+      "SmartThings 앱으로 언제 어디서든 에어컨을 제어할 수 있습니다.",
+      "워시클린 기능으로 열교환기를 깨끗하게 관리할 수 있습니다.",
+      "배송부터 설치까지 삼성전자 전문 기사가 직접 진행하여 안심할 수 있습니다.",
+      "스탠드와 벽걸이 두 대를 하나의 실외기로 운영하여 효율적입니다.",
+      "무풍냉방 기능으로 직바람 없이 쾌적하고 조용한 환경을 조성합니다.",
+      "AI 컨트롤이 사용 패턴을 학습하여 최적의 쾌적함을 제공합니다.",
+      "SmartThings 앱으로 원격 제어가 가능하여 편리합니다.",
+      "워시클린 및 자동건조 기능으로 위생적인 관리가 용이합니다.",
+      "무풍냉방으로 직바람 없이 은은하고 쾌적한 냉방을 즐길 수 있습니다.",
+      "하이패스 회오리 냉방으로 필요한 경우 빠르게 실내를 시원하게 합니다.",
+      "AI 절약 모드와 BESPOKE AI 맞춤쾌적으로 효율적인 에너지 관리가 가능합니다.",
+      "솔라셀 리모컨으로 건전지 교체 번거로움이 없습니다.",
+      "이지케어 8단계 시스템으로 에어컨 내부를 위생적으로 관리할 수 있습니다.",
+      "세련된 BESPOKE 디자인으로 인테리어 효과까지 얻을 수 있습니다.",
+      "1등급 에너지 효율로 전기 요금 부담을 크게 줄일 수 있습니다.",
+      "약 28,000개의 마이크로 홀에서 나오는 무풍냉방으로 직바람 없이 쾌적합니다.",
+      "쾌적제습 기능으로 추위 없이 습도를 조절하며 절전 효과까지 있습니다.",
+      "AI 쾌적 및 AI 절약 모드로 스마트하고 효율적인 냉방이 가능합니다.",
+      "워시클린 및 이지케어 6단계 시스템으로 위생적인 관리가 편리합니다.",
+      "SmartThings 앱으로 언제 어디서든 에어컨을 제어할 수 있습니다."
+    ],
+    "cons": [
+      "무풍냉방 기능은 지원되지 않아 직바람에 민감한 분들은 아쉬울 수 있습니다.",
+      "에너지 효율이 3등급으로 1등급 제품보다 전기 요금이 다소 더 나올 수 있습니다.",
+      "스탠드형이라 공간을 어느 정도 차지합니다.",
+      "3등급 에너지 효율로 전기 요금에 대한 고려가 필요합니다.",
+      "초기 설치 비용이 단품 에어컨보다 높을 수 있습니다.",
+      "두 대를 동시에 설치해야 하므로 설치 공간 확보가 중요합니다.",
+      "3등급 에너지 효율로 장시간 사용 시 전기 요금에 대한 고려가 필요합니다.",
+      "냉방 전용 모델이라 난방 기능은 지원하지 않습니다.",
+      "무풍 기능에 익숙하지 않은 사용자에게는 초기 적응 시간이 필요할 수 있습니다.",
+      "벽걸이형이라 넓은 거실 공간 전체를 커버하기에는 한계가 있을 수 있습니다.",
+      "일부 고급 스탠드형 에어컨에 비해 추가적인 AI 청정 기능 등은 미지원입니다.",
+      "설치 환경에 따라 추가 설치비가 발생할 수 있습니다."
+    ],
+    "recommendFor": [
+      "넓은 거실 공간을 빠르고 시원하게 냉방하고 싶으신 분.",
+      "AI 기능을 활용하여 스마트하고 편리한 에어컨 관리를 원하시는 분.",
+      "안정적인 삼성전자 서비스와 설치를 선호하시는 분.",
+      "거실과 침실 등 두 공간에 에어컨이 모두 필요하신 분.",
+      "직바람을 싫어하여 무풍냉방 기능을 선호하시는 분.",
+      "AI 기반의 스마트한 통합 관리를 원하시는 분.",
+      "직바람을 싫어하고, 바람 없이 쾌적한 냉방을 선호하시는 분.",
+      "에어컨 디자인이 인테리어와 잘 어울리기를 바라시는 분.",
+      "편리한 관리 기능과 스마트한 AI 기능을 중요하게 생각하시는 분.",
+      "원룸, 서재, 침실 등 작은 공간에서 사용할 에어컨을 찾으시는 분.",
+      "전기 요금 절약과 직바람 없는 쾌적한 냉방을 동시에 원하시는 분.",
+      "스마트폰으로 편리하게 에어컨을 제어하고 관리하고 싶으신 분."
+    ]
+  },
+  {
+    "id": 2,
+    "name": "LG전자 인버터 56.9㎡(17.2평) + 18.7㎡(5.7평) 휘센 오브제컨렉션 뷰2 2in1 2시리즈 에어컨",
+    "summary": "거실과 방을 동시에 쾌적하게, 직바람 없이 편안한 삼성 무풍 기술",
+    "keyPoint": "무풍냉방, 2in1 홈멀티 구성, AI 컨트롤",
+    "target": "거실과 침실 모두 에어컨이 필요하며, 직바람을 싫어하는 분",
+    "buyUrl": "https://link.coupang.com/a/dFdYQt",
+    "description": "LG전자의 휘센 오브제컬렉션 뷰2 2in1 에어컨은 강력한 냉방 성능과 LG만의 감각적인 오브제 디자인, 그리고 다양한 스마트 기능을 결합한 프리미엄 멀티 에어컨입니다.\n",
+    "specs": [
+      {
+        "label": "냉방면적",
+        "value": "스탠드 56.9㎡(17.2평) + 벽걸이 18.7㎡(5.7평)"
+      },
+      {
+        "label": "에너지 효율",
+        "value": "3등급"
+      },
+      {
+        "label": "유형",
+        "value": "멀티형 (2in1 스탠드 + 벽걸이)"
+      },
+      {
+        "label": "스탠드 실내기 크기 (WxHxD)",
+        "value": "350 x 1,840 x 295 mm"
+      },
+      {
+        "label": "주요 기능",
+        "value": "아이스쿨파워, AI 바람, AI 건조, AI 열교환기 세척, 강력제습, 펫케어 모드, ThinQ (Wi-Fi), 서클 무드라이팅 (8색상), UP 가전"
+      }
+    ],
+    "pros": [
+      "아이스쿨파워로 방 전체를 빠르게 시원하게 만들어 줍니다.",
+      "소프트바람 모드로 직바람 없이 은은한 쾌적함을 제공합니다.",
+      "AI 바람과 굿슬립 모드로 사용자의 수면 패턴에 맞춰 최적의 취침 환경을 조성합니다.",
+      "AI 건조 및 AI 열교환기 세척으로 곰팡이와 냄새 걱정 없이 위생적입니다.",
+      "LG ThinQ 앱으로 원격 제어 및 스마트 진단이 가능하여 편리합니다.",
+      "서클 무드라이팅 기능으로 인테리어 효과와 감성적인 분위기를 연출할 수 있습니다.",
+      "펫케어 모드가 있어 반려동물과 함께 생활하는 분들에게 유용합니다."
+    ],
+    "cons": [
+      "3등급 에너지 효율로 장시간 사용 시 전기 요금에 대한 고려가 필요합니다.",
+      "초기 구매 비용이 다른 제품들에 비해 다소 높을 수 있습니다.",
+      "오브제컬렉션 디자인이 모든 인테리어에 어울리지 않을 수 있습니다."
+    ],
+    "recommendFor": [
+      "거실과 방 모두 강력하고 쾌적한 냉방이 필요하신 분.",
+      "세련된 디자인과 감성적인 무드 연출을 중요하게 생각하시는 분.",
+      "LG ThinQ 앱을 통한 다양한 스마트 기능과 펫케어 기능을 활용하고 싶으신 분."
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "에어컨 설치 시 추가 비용은 얼마나 발생할까요?",
+    "a": "A. 기본 설치는 무료이지만, 배관 길이 추가, 타공, 앵글 설치, 실외기 외부 작업 등에 따라 추가 비용이 발생할 수 있습니다. 각 제품 상세 페이지의 설치 안내를 꼼꼼히 확인하고, 설치 기사 방문 시 충분히 상담하는 것이 좋습니다."
+  },
+  {
+    "q": "1등급 에어컨과 3등급 에어컨의 전기 요금 차이는 큰가요?",
+    "a": "A. 에너지 효율 등급은 연간 소비 전력량에 따라 결정됩니다. 1등급 제품이 3등급 제품보다 일반적으로 전력 소비량이 적어 장시간 사용 시 전기 요금 절약 효과가 더 큽니다. 하지만 3등급 제품이라도 AI 절약 모드나 무풍 모드를 활용하여 효율적으로 사용하면 요금 부담을 줄일 수 있습니다."
+  },
+  {
+    "q": "무풍 기능은 어떤 점이 좋은가요?",
+    "a": "A. 무풍 기능은 에어컨 바람이 몸에 직접 닿지 않아 냉방병 걱정을 줄여주고, 피부 건조함이나 불쾌감을 최소화하여 더욱 쾌적한 환경을 만들어 줍니다. 특히 취침 시나 아이들이 있는 공간에서 유용하게 활용될 수 있습니다."
+  },
+  {
+    "q": "에어컨 자가 청정 기능은 정말 효과가 있나요?",
+    "a": "A. 네, 자가 청정 기능은 에어컨 내부 열교환기의 습기를 자동으로 건조하거나, 워시클린처럼 얼려서 세척하는 방식으로 곰팡이와 세균 번식을 억제하는 데 도움을 줍니다. 이를 통해 에어컨에서 발생하는 불쾌한 냄새를 줄이고 위생적으로 관리할 수 있습니다."
+  },
+  {
+    "q": "기숙사에서 2in1 멀티형 에어컨을 설치할 수 있나요?",
+    "a": "A. 기숙사의 구조와 규정에 따라 다를 수 있습니다. 실외기 설치 공간과 배관 경로 확보가 가능해야 하며, 기숙사 관리 주체의 허가를 받아야 합니다. 설치 전 반드시 기숙사 관리사무소에 문의하여 설치 가능 여부를 확인하는 것이 중요합니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "유형",
+    "삼성전자_ai_q9000_스탠드": "스탠드형",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "홈멀티형 (스탠드+벽걸이)",
+    "삼성전자_bespoke_무풍_스탠드": "스탠드형",
+    "삼성전자_ai_무풍콤보_벽걸이": "벽걸이형",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "홈멀티형 (스탠드+벽걸이)"
+  },
+  {
+    "name": "냉방면적 (스탠드)",
+    "삼성전자_ai_q9000_스탠드": "62.6㎡ (19평)",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "62.6㎡ (19평)",
+    "삼성전자_bespoke_무풍_스탠드": "56.9㎡ (17.2평)",
+    "삼성전자_ai_무풍콤보_벽걸이": "-",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "56.9㎡ (17.2평)"
+  },
+  {
+    "name": "냉방면적 (벽걸이)",
+    "삼성전자_ai_q9000_스탠드": "-",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "18.7㎡ (5.7평)",
+    "삼성전자_bespoke_무풍_스탠드": "-",
+    "삼성전자_ai_무풍콤보_벽걸이": "34.1㎡ (10.3평)",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "18.7㎡ (5.7평)"
+  },
+  {
+    "name": "에너지 효율",
+    "삼성전자_ai_q9000_스탠드": "3등급",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "3등급",
+    "삼성전자_bespoke_무풍_스탠드": "3등급",
+    "삼성전자_ai_무풍콤보_벽걸이": "1등급",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "3등급"
+  },
+  {
+    "name": "무풍냉방",
+    "삼성전자_ai_q9000_스탠드": "미지원",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "지원",
+    "삼성전자_bespoke_무풍_스탠드": "지원",
+    "삼성전자_ai_무풍콤보_벽걸이": "지원",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "미지원 (소프트바람 지원)"
+  },
+  {
+    "name": "AI 기능",
+    "삼성전자_ai_q9000_스탠드": "AI 쾌적, AI 절약",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "AI 컨트롤, AI 쾌적",
+    "삼성전자_bespoke_무풍_스탠드": "AI 쾌적, AI 절약",
+    "삼성전자_ai_무풍콤보_벽걸이": "AI 쾌적, AI 절약",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "AI 바람, AI 건조"
+  },
+  {
+    "name": "스마트 앱 연동",
+    "삼성전자_ai_q9000_스탠드": "SmartThings",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "SmartThings",
+    "삼성전자_bespoke_무풍_스탠드": "SmartThings",
+    "삼성전자_ai_무풍콤보_벽걸이": "SmartThings",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "ThinQ"
+  },
+  {
+    "name": "자가청정 기능",
+    "삼성전자_ai_q9000_스탠드": "워시클린",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "워시클린",
+    "삼성전자_bespoke_무풍_스탠드": "워시클린, 이지케어 8단계",
+    "삼성전자_ai_무풍콤보_벽걸이": "워시클린, 이지케어 6단계",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "AI 건조, AI 열교환기 세척"
+  },
+  {
+    "name": "특이사항",
+    "삼성전자_ai_q9000_스탠드": "하이패스 회오리 냉방",
+    "삼성전자_bespoke_ai_무풍_홈멀티": "2in1 구성",
+    "삼성전자_bespoke_무풍_스탠드": "솔라셀 리모컨, BESPOKE 디자인",
+    "삼성전자_ai_무풍콤보_벽걸이": "1등급 고효율, 쾌적제습",
+    "lg전자_휘센_오브제컬렉션_뷰2_2in1": "서클 무드라이팅, 펫케어 모드"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "삼성전자_ai_q9000_스탠드",
+    "label": "삼성전자 AI Q9000 스탠드"
+  },
+  {
+    "key": "삼성전자_bespoke_ai_무풍_홈멀티",
+    "label": "삼성전자 BESPOKE AI 무풍 홈멀티"
+  },
+  {
+    "key": "삼성전자_bespoke_무풍_스탠드",
+    "label": "삼성전자 BESPOKE 무풍 스탠드"
+  },
+  {
+    "key": "삼성전자_ai_무풍콤보_벽걸이",
+    "label": "삼성전자 AI 무풍콤보 벽걸이"
+  },
+  {
+    "key": "lg전자_휘센_오브제컬렉션_뷰2_2in1",
+    "label": "LG전자 휘센 오브제컬렉션 뷰2 2in1"
+  }
+];
+const selectionGuide = "기숙사 에어컨을 선택할 때는 여러분의 생활 패턴과 공간 특성을 가장 먼저 고려해야 합니다.\n• 공간 크기: 원룸이나 작은 침실이라면 삼성 AI 무풍콤보 벽걸이 에어컨처럼 10평대 벽걸이형이 적합합니다. 넓은 거실이 있는 기숙사라면 삼성 AI Q9000 스탠드형이나 LG 휘센 오브제컬렉션 뷰2 2in1과 같은 스탠드형 또는 멀티형이 좋습니다. 특히 멀티형은 거실과 방을 동시에 시원하게 할 수 있어 효율적입니다.\n• 전기 요금: 장시간 에어컨을 사용해야 한다면 에너지 효율 1등급 제품을 선택하는 것이 중요합니다. 삼성 AI 무풍콤보 벽걸이 에어컨은 1등급으로 전기 요금 부담을 크게 줄일 수 있습니다. 3등급 제품이라도 AI 절약 모드나 무풍 모드를 잘 활용하면 효율적인 사용이 가능합니다.\n• 냉방 방식 선호도: 직바람을 싫어하는 분이라면 삼성 BESPOKE 무풍 라인업(홈멀티, 스탠드, 벽걸이)의 무풍냉방 기능이 필수적입니다. 강력하고 시원한 바람을 선호한다면 삼성 AI Q9000의 하이패스 회오리 냉방이나 LG 휘센의 아이스쿨파워 기능을 눈여겨보세요.\n• 스마트 기능 및 편의성: SmartThings나 LG ThinQ 앱 연동은 외출 중에도 에어컨을 켜거나 끌 수 있어 매우 편리합니다. AI 기능들은 사용 패턴을 학습하여 최적의 쾌적함을 제공하므로, 스마트한 생활을 추구한다면 AI 기능이 풍부한 모델을 선택하는 것이 좋습니다. 자가청정 기능은 곰팡이와 냄새 걱정을 덜어주어 관리의 번거로움을 줄여줍니다.\n• 디자인: 에어컨도 이제 인테리어의 일부입니다. 삼성 BESPOKE 라인업이나 LG 휘센 오브제컬렉션 뷰2는 감각적인 디자인으로 공간의 품격을 높여줍니다.\n이러한 요소들을 종합적으로 고려하여 여러분의 기숙사 환경에 가장 적합한 에어컨을 선택하시길 바랍니다.";
+---
+
+<BaseLayout
+  title="2026 기숙사 에어컨 추천 Top5"
+  description="안녕하세요. 오늘은 '2026 기숙사 에어컨'에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 기숙사 에어컨 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-04-15T00:30:00.000+00:00" class="text-gray-500">
+            2026-04-15 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 '2026 기숙사 에어컨'에 대해 말씀드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 2026 기숙사 에어컨</h2>
+        <p>여름철 무더위는 학습 효율을 떨어뜨리고, 숙면을 방해하는 주범이죠. 특히 기숙사처럼 개인 공간이 한정된 곳에서는 에어컨 선택이 더욱 중요합니다. 쾌적한 학습 환경과 편안한 휴식을 위해 기숙사 에어컨은 이제 필수 가전이 되었는데요.</p>
+        <p>일반적인 주거 공간에 비해 기숙사는 공간 효율성, 소음, 전기 요금, 관리 편의성 등 고려해야 할 요소가 많습니다. 빠르게 시원해지는 냉방 성능은 기본이고, 공간을 많이 차지하지 않는 디자인, 그리고 무엇보다 학생들의 주머니 사정을 고려한 에너지 효율이 중요하죠. 또한, 직접 관리하기 쉬운 청소 기능이나 스마트폰으로 제어할 수 있는 편리한 기능들도 요즘 기숙사 생활에 큰 도움이 됩니다.</p>
+        <p>오늘 제가 소개해 드릴 제품들은 이런 기숙사 환경에 최적화된 에어컨들입니다. 각 제품의 특징을 꼼꼼히 비교해 보시고, 여러분의 기숙사 라이프를 한 단계 업그레이드해 줄 최고의 에어컨을 찾아보시길 바랍니다.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 여름을 대비하여 기숙사 환경에 적합한 에어컨 Top5를 소개해 드렸습니다. 삼성전자와 LG전자의 다양한 모델들을 비교하며 각 제품이 가진 특징과 장단점을 살펴보았는데요. 빠르고 강력한 냉방부터 무풍 기능, AI 스마트 제어, 그리고 감각적인 디자인까지, 여러분의 필요와 취향에 맞는 에어컨을 선택하는 데 도움이 되셨기를 바랍니다.
+덥고 습한 여름, 쾌적한 기숙사 환경에서 학업에 집중하고 편안하게 휴식하는 것은 매우 중요합니다. 오늘 소개해 드린 정보가 여러분의 현명한 에어컨 선택에 조금이나마 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
