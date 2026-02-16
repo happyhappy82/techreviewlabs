@@ -1,0 +1,375 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-16T05:22:26.973Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [];
+const faqs = [
+  {
+    "q": "서든어택만 플레이할 건데, RTX 5070이나 5070 Ti까지 필요할까요?",
+    "a": "A. 서든어택만 플레이한다면 RTX 5060으로도 충분히 최고 옵션에서 쾌적하게 즐길 수 있습니다. 하지만 더 높은 사양의 최신 게임을 함께 즐기거나, 앞으로 출시될 게임의 사양 변화에 대비한다면 RTX 5070 이상을 선택하는 것이 좋습니다. 높은 GPU는 게임 외에 영상 편집, 3D 작업 등에서도 뛰어난 성능을 발휘합니다."
+  },
+  {
+    "q": "Free DOS 제품은 윈도우 설치가 어렵지 않나요?",
+    "a": "A. Free DOS 제품은 운영체제가 설치되어 있지 않아 윈도우를 직접 설치해야 합니다. USB에 윈도우 설치 파일을 준비하고, BIOS 설정에서 부팅 순서를 변경하는 등의 과정이 필요합니다. 컴퓨터에 익숙하지 않다면 다소 어렵게 느껴질 수 있지만, 온라인에 상세한 설치 가이드가 많으니 참고하시면 충분히 직접 설치할 수 있습니다."
+  },
+  {
+    "q": "게이밍 노트북은 발열이 심하다고 하는데, 쿨링 성능은 어떤가요?",
+    "a": "A. 게이밍 노트북은 고성능 부품을 사용하기 때문에 일반 노트북보다 발열이 높은 것은 사실입니다. 하지만 오늘 소개해 드린 제품들은 각 제조사의 최신 쿨링 기술(Cryo-Chamber, AeroBlade 3D 팬, WindForce Infinity SLIM, Arc Flow Fans, OMEN TEMPEST COOLING 등)이 적용되어 있어 효과적으로 발열을 관리합니다. 터보 모드 등 최고 성능 설정에서는 팬 소음이 발생할 수 있지만, 게임 플레이에는 큰 지장이 없을 정도로 설계되었습니다."
+  },
+  {
+    "q": "휴대성이 중요한데, 2kg대 게이밍 노트북도 괜찮을까요?",
+    "a": "A. 게이밍 노트북은 일반적으로 2kg 이상인 경우가 많습니다. 오늘 추천드린 제품 중 기가바이트 에어로 X16은 1.9kg으로 매우 가벼운 편에 속하여 휴대성이 뛰어납니다. 2kg 초반대의 에이수스 TUF 게이밍 F16이나 HP 오멘 16도 게이밍 노트북치고는 비교적 가벼워 이동이 잦은 분들께 괜찮은 선택이 될 수 있습니다. 하지만 장시간 이동 시에는 무게감을 느낄 수 있으니, 개인의 휴대 빈도와 중요도에 따라 선택하는 것이 좋습니다."
+  },
+  {
+    "q": "쿠팡에서 구매하면 A/S는 어떻게 되나요?",
+    "a": "A. 쿠팡에서 구매한 노트북은 각 제조사의 공식 서비스 정책을 따릅니다. 대부분 1년 또는 2년의 무상 보증 기간이 제공되며, 제조사 서비스 센터를 통해 A/S를 받을 수 있습니다. 또한, 쿠팡 안심케어와 같은 추가 보증 옵션을 통해 우발적 파손까지 보장받을 수도 있으니, 구매 시 해당 옵션을 확인해 보는 것을 추천합니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "델 2025 에일리언웨어 오로라 16",
+    "cpu": "Intel Core 7 240H (14세대)",
+    "gpu": "NVIDIA RTX 5070 (115W TGP, 12GB GDDR7)",
+    "ram": "32GB DDR5 5600MHz",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "16인치 WQXGA (2560x1600), 120Hz, 300nits, 100% sRGB",
+    "운영체제": "Windows 11 Home",
+    "무게": "약 2.7kg"
+  },
+  {
+    "name": "에이서 2025 프레데터 헬리오스 네오 16 AI",
+    "cpu": "Intel Core Ultra 9 275HX (15세대)",
+    "gpu": "NVIDIA RTX 5070 Ti (140W TGP, 12GB GDDR7)",
+    "ram": "32GB DDR5 6400MT/s",
+    "저장장치": "1TB PCIe Gen4 NVMe",
+    "디스플레이": "16인치 WQXGA (2560x1600), 240Hz, 500nits, DCI-P3",
+    "운영체제": "-",
+    "무게": "2.45kg"
+  },
+  {
+    "name": "기가바이트 2025 에어로 X16",
+    "cpu": "AMD Ryzen AI 7 350 (AI 300 시리즈)",
+    "gpu": "NVIDIA RTX 5070 (8GB GDDR7)",
+    "ram": "32GB DDR5",
+    "저장장치": "1TB NVMe Gen4 SSD",
+    "디스플레이": "16인치 WQXGA (2560x1600), 165Hz, sRGB 100%",
+    "운영체제": "Free DOS",
+    "무게": "1.9kg"
+  },
+  {
+    "name": "에이수스 2025 TUF 게이밍 F16",
+    "cpu": "Intel Core i7-14650HX (14세대)",
+    "gpu": "NVIDIA RTX 5060 (115W TGP, 8GB GDDR7)",
+    "ram": "16GB DDR5",
+    "저장장치": "512GB PCIe Gen4 SSD",
+    "디스플레이": "16인치 2.5K QHD (2560x1600), 165Hz, 400nits, 100% sRGB",
+    "운영체제": "Free DOS",
+    "무게": "약 2.2kg"
+  },
+  {
+    "name": "HP 2025 오멘 16",
+    "cpu": "AMD Ryzen 9 8940HX (8000 시리즈)",
+    "gpu": "NVIDIA RTX 5060",
+    "ram": "16GB (단일 채널)",
+    "저장장치": "1TB NVMe Gen4 SSD",
+    "디스플레이": "16인치 WQXGA (2560x1600), 240Hz, 500nits, sRGB 100%",
+    "운영체제": "Windows 11 Home",
+    "무게": "(정보 미표기)"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "운영체제",
+    "label": "운영체제"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  }
+];
+const selectionGuide = "서든어택을 포함한 게이밍 노트북을 선택할 때는 몇 가지 중요한 요소를 고려해야 합니다.\n• 성능 (CPU/GPU): 서든어택은 비교적 사양이 낮은 게임이지만, 미래의 업데이트나 다른 고사양 게임까지 염두에 둔다면 최소 RTX 4060 이상, 여유가 된다면 RTX 5060 또는 RTX 5070 급의 그래픽카드를 추천합니다. CPU는 인텔 코어 i7 14세대 또는 AMD 라이젠 7 8000 시리즈 이상이면 충분합니다.\n• 디스플레이 (주사율/해상도): FPS 게임에서는 높은 주사율이 매우 중요합니다. 최소 120Hz 이상, 가능하다면 165Hz 또는 240Hz 디스플레이를 선택하는 것이 좋습니다. 해상도는 QHD(2560x1440 또는 2560x1600)가 게이밍과 작업 모두에 적합하며, 색재현율(sRGB 100% 또는 DCI-P3)도 확인하면 좋습니다.\n• 휴대성 vs. 쿨링: 고성능 노트북은 발열이 심하기 때문에 효율적인 쿨링 시스템이 필수입니다. 하지만 쿨링 성능이 좋으면 보통 노트북의 무게와 두께가 늘어납니다.\n• 예산: 성능이 좋을수록 가격도 비싸집니다. 자신의 예산 범위 내에서 가장 효율적인 선택을 하는 것이 중요합니다.";
+---
+
+<BaseLayout
+  title="2026 서든어택 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026년 서든어택을 위한 최고의 노트북을 추천해 드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 서든어택 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-02-16T03:40:00.000+00:00" class="text-gray-500">
+            2026-02-16 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 2026년 서든어택을 위한 최고의 노트북을 추천해 드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며</h2>
+        <p>서든어택은 넥슨에서 서비스하는 대표적인 1인칭 슈팅(FPS) 게임입니다. 출시 이후 꾸준한 인기를 끌며 국민 FPS 게임으로 자리매김했죠. 빠르고 직관적인 게임 플레이, 낮은 진입 장벽, 그리고 끊임없이 업데이트되는 콘텐츠 덕분에 여전히 많은 유저들이 즐겨 찾고 있습니다. 특히 e스포츠 리그도 활발하게 운영되어 경쟁적인 플레이를 즐기는 분들에게도 매력적입니다.</p>
+        <p>2026년에도 서든어택은 여전히 많은 사랑을 받을 것으로 예상되지만, 게임 엔진이나 그래픽 업데이트가 이루어질 가능성도 배제할 수 없습니다. 또한, 서든어택뿐만 아니라 다른 고사양 게임까지 염두에 둔다면, 단순히 '돌아가는' 노트북이 아니라 '쾌적하게 즐길 수 있는' 고성능 노트북을 선택하는 것이 중요합니다. 특히 FPS 게임은 높은 주사율과 빠른 반응 속도가 승패에 큰 영향을 미치므로, 디스플레이 스펙도 꼼꼼히 따져봐야 합니다.</p>
+        <p>오늘 제가 소개해 드릴 노트북들은 서든어택은 물론, 더 높은 사양의 최신 게임까지 문제없이 즐길 수 있는 강력한 성능을 갖춘 제품들입니다. 여러분의 게이밍 경험을 한 단계 업그레이드해 줄 최고의 선택들을 지금부터 함께 살펴보시죠!</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 서든어택을 비롯한 다양한 고사양 게임을 즐길 수 있는 최고의 게이밍 노트북 5종을 소개해 드렸습니다. 각 제품마다 강력한 성능과 독특한 매력을 가지고 있어, 여러분의 용도와 예산에 맞춰 현명한 선택을 하시길 바랍니다.
+• 최고의 성능과 감성: 델 에일리언웨어 오로라 16은 프리미엄 디자인과 강력한 RTX 5070으로 게이밍 경험을 극대화하고 싶은 분들께 적합합니다.
+• 휴대성과 성능의 조화: 기가바이트 에어로 X16은 1.9kg의 초경량 디자인으로 이동이 잦은 크리에이터 및 게이머에게 최고의 솔루션이 될 것입니다.
+• 합리적인 가성비: 에이수스 TUF 게이밍 F16은 100만원대 후반의 가격으로 RTX 5060의 강력한 성능과 뛰어난 디스플레이를 제공하여 가성비를 중시하는 분들께 탁월합니다.
+• AMD 팬을 위한 선택: HP 오멘 16은 AMD 라이젠 9 프로세서와 240Hz 고주사율 디스플레이로 e스포츠에 최적화된 게이밍 경험을 선사합니다.
+어떤 노트북을 선택하시든, 2026년에도 서든어택과 함께 즐거운 게이밍 라이프를 만끽하시길 바랍니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
