@@ -1,0 +1,682 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-24T10:00:09.559Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "제품리뷰",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "MSI 2023 Alpha17 라이젠9 라이숌 7000 시리즈 지포스 RTX 4060",
+    "summary": "압도적인 성능과 몰입감을 선사하는 AMD 게이밍 머신",
+    "keyPoint": "강력한 AMD CPU/GPU 조합, 17.3인치 대화면",
+    "target": "대화면에서 고성능 게임과 작업을 원하는 AMD 팬",
+    "buyUrl": "https://link.coupang.com/a/dzYvKC",
+    "description": "강력한 AMD 시스템으로 무장한 MSI Alpha 17은 대화면에서 최고의 게이밍 경험을 선사합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7945HX (16코어/32스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "AMD Radeon RX 7600M XT 8GB GDDR6"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "17.3인치 FHD (1920x1080), 144Hz"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.7kg"
+      }
+    ],
+    "pros": [
+      "16코어 32스레드의 강력한 멀티코어 성능으로 스타크래프트2는 물론, 영상 편집, 3D 렌더링 등 고사양 작업에 최적입니다.",
+      "17.3인치 대화면은 게임과 영상 시청 시 압도적인 몰입감을 제공합니다.",
+      "AMD CPU와 GPU 조합으로 가격 대비 뛰어난 성능을 자랑합니다.",
+      "sRGB 100% 색재현율로 정확하고 풍부한 색감을 표현합니다.",
+      "1TB 대용량 SSD가 기본 탑재되어 저장 공간 걱정 없이 다양한 게임과 파일을 보관할 수 있습니다.",
+      "144Hz 고주사율 디스플레이로 스타크래프트2와 같은 RTS 게임에서 부드러운 화면을 경험할 수 있습니다."
+    ],
+    "cons": [
+      "약 2.7kg의 무게는 휴대성을 크게 제한하여 주로 한 곳에 두고 사용하는 데 적합합니다.",
+      "Free DOS 제품으로 윈도우를 별도로 구매하여 설치해야 하는 번거로움이 있습니다.",
+      "FHD 해상도는 QHD나 WQXGA 대비 선명도가 다소 부족하게 느껴질 수 있습니다.",
+      "2023년 모델로 일부 최신 기술이 미탑재되었을 수 있습니다."
+    ],
+    "recommendFor": [
+      "대화면에서 최고의 AMD 게이밍 성능을 경험하고 싶은 분",
+      "스타크래프트2 외에도 영상 편집, 3D 렌더링 등 멀티코어 성능이 중요한 작업을 하는 분",
+      "합리적인 가격으로 고성능 게이밍 노트북을 찾는 분"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "레노버 2025 리전 7 16IAX10 코어Ultra9 인텔 14세대 지포스 RTX 5070",
+    "summary": "럭셔리한 디자인과 타협 없는 최고 사양 게이밍 노트북",
+    "keyPoint": "최신 인텔/엔비디아 조합, RTX 5070, OLED",
+    "target": "최고의 성능과 화질로 모든 것을 정복하려는 하드코어 게이머 및 크리에이터",
+    "buyUrl": "https://link.coupang.com/a/dzXUzy",
+    "description": "최고의 성능과 화질, 그리고 휴대성까지 겸비한 레노버 리전 7은 럭셔리 게이밍 노트북의 정점입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 275HX (24코어/24스레드, 최대 5.4GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 8GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "DDR5 64GB (듀얼 채널, 6400MHz)"
+      },
+      {
+        "label": "저장장치",
+        "value": "NVMe SSD 4TB"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) OLED, 240Hz, 500nits, 100% DCI-P3"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Pro DSP"
+      },
+      {
+        "label": "무게",
+        "value": "약 2kg"
+      },
+      {
+        "label": "두께",
+        "value": "17.9mm"
+      }
+    ],
+    "pros": [
+      "인텔 최신 Arrow Lake Core Ultra 9 프로세서와 RTX 5070 GPU 조합으로 데스크톱급 성능을 제공하여 스타크래프트2는 물론 모든 AAA 게임을 최고 옵션으로 즐길 수 있습니다.",
+      "2.5K 240Hz OLED 디스플레이는 완벽한 블랙과 뛰어난 색감, 압도적인 명암비로 전에 없던 시각적 경험을 선사합니다.",
+      "17.9mm의 슬림한 두께와 약 2kg의 무게는 고성능 게이밍 노트북 중에서도 뛰어난 휴대성을 자랑합니다.",
+      "64GB 대용량 메모리와 4TB SSD는 멀티태스킹, 4K 영상 편집, 3D 렌더링 등 모든 크리에이티브 작업에 최적화되어 있습니다.",
+      "Wi-Fi 7 지원으로 초고속 무선 연결이 가능하며, 윈도우 11 Pro가 기본 탑재되어 있어 편리합니다."
+    ],
+    "cons": [
+      "최고 사양인 만큼 높은 가격은 구매에 부담이 될 수 있습니다.",
+      "OLED 패널 특성상 장시간 정적 이미지 표시 시 번인(Burn-in) 현상에 대한 우려가 있을 수 있습니다.",
+      "배터리 용량 및 사용 시간 정보가 미공개되어 있어 아쉬움이 남습니다.",
+      "게이밍 풀로드 시 강력한 쿨링 시스템으로 인해 팬 소음이 발생할 수 있습니다."
+    ],
+    "recommendFor": [
+      "최고의 성능과 최상의 디스플레이 화질을 동시에 원하는 하드코어 게이머 및 전문가",
+      "스타크래프트2 외에도 최신 AAA 게임, e스포츠, 영상 편집, 3D 렌더링 등 모든 작업을 최고 사양으로 하고 싶은 분",
+      "휴대성까지 겸비한 프리미엄 게이밍 노트북을 찾는 분"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "HP 2025 오멘 16 코어i7 인텔 14세대 지포스 RTX 5060 퍼포먼스",
+    "summary": "균형 잡힌 성능과 뛰어난 디스플레이를 갖춘 게이밍",
+    "keyPoint": "RTX 5060, 240Hz WQXGA 디스플레이",
+    "target": "고주사율과 고해상도 게이밍을 동시에 즐기고 싶은 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzYu08",
+    "description": "HP 오멘 16은 강력한 인텔 CPU와 RTX 5060 GPU, 그리고 선명한 고주사율 디스플레이로 균형 잡힌 게이밍 경험을 제공합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-14700HX (20코어/28스레드, 최대 5.5GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5-5600MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16.1인치 WQXGA (2560x1600), 240Hz, 500nits, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.3kg"
+      }
+    ],
+    "pros": [
+      "RTX 50시리즈 최신 GPU인 RTX 5060과 14세대 인텔 Core i7-14700HX의 조합으로 스타크래프트2는 물론, 대부분의 고사양 게임을 쾌적하게 구동할 수 있습니다.",
+      "240Hz 고주사율과 WQXGA 고해상도 디스플레이는 선명하고 부드러운 화면을 제공하여 게임 몰입도를 높입니다.",
+      "500nits의 밝기와 sRGB 100% 색재현율로 뛰어난 화질을 자랑하며, OMEN AI 기능으로 원클릭 성능 최적화가 가능합니다.",
+      "32GB 대용량 메모리가 기본 탑재되어 멀티태스킹 및 전문 작업에도 충분한 성능을 발휘합니다.",
+      "HP ADP 케어팩으로 우발적 파손까지 1년 무상 보장되어 안심하고 사용할 수 있습니다."
+    ],
+    "cons": [
+      "약 2.3kg의 무게는 휴대성에 다소 부담이 될 수 있습니다.",
+      "제품 가격대가 높은 편에 속합니다.",
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 하는 불편함이 있습니다."
+    ],
+    "recommendFor": [
+      "스타크래프트2를 포함한 고사양 게임을 고주사율과 고해상도로 동시에 즐기고 싶은 분",
+      "균형 잡힌 성능과 뛰어난 디스플레이를 중요하게 생각하는 분",
+      "영상 편집 등 크리에이티브 작업도 겸하는 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "기가바이트 2025 게이밍 A16 코어9 인텔 13세대 지포스 RTX 4060",
+    "summary": "100만원대 초반, 합리적인 가격의 실속형 게이밍",
+    "keyPoint": "RTX 4050, 16인치 165Hz, 가성비",
+    "target": "가성비 좋게 스타크래프트2와 캐주얼 게임을 즐기려는 학생 및 일반 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzXMaE",
+    "description": "합리적인 가격에 뛰어난 게이밍 성능을 제공하는 기가바이트 게이밍 A16은 가성비를 중요하게 생각하는 분들에게 최적의 선택입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i5-13420H (8코어/12스레드, 최대 4.6GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4050 6GB GDDR6"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5 5200MHz (단일 SO-DIMM, 최대 64GB 확장)"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB PCIe Gen4 NVMe SSD (최대 4TB 확장)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WUXGA (1920x1200) IPS, 165Hz, 300nits"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      },
+      {
+        "label": "무게",
+        "value": "2.2kg"
+      },
+      {
+        "label": "배터리",
+        "value": "76Wh (최장 14시간)"
+      }
+    ],
+    "pros": [
+      "100만원 초반대에 RTX 4050을 탑재하여 최고의 가성비를 자랑합니다. 스타크래프트2는 물론 대부분의 게임을 원활하게 구동할 수 있습니다.",
+      "16인치 대화면과 165Hz 고주사율 디스플레이로 게임 몰입도를 높여줍니다.",
+      "76Wh 대용량 배터리로 최장 14시간 사용이 가능하여 외부 활동에도 적합합니다.",
+      "16GB 단일 램으로 16GB 추가 시 32GB 듀얼 채널 구성이 용이하며, 2슬롯 SSD로 최대 4TB까지 확장이 가능합니다.",
+      "PD 3.0 충전을 지원하여 USB-C 타입 충전기로도 전원 공급이 가능합니다.",
+      "무광 메탈 디자인으로 심플하면서도 고급스러운 외관을 갖추고 있습니다."
+    ],
+    "cons": [
+      "2.2kg의 무게는 휴대성이 다소 부족할 수 있습니다.",
+      "Free DOS 제품으로 윈도우를 별도로 설치해야 하며, SSD 인식 문제 시 드라이버 설치가 필요할 수 있습니다.",
+      "NTSC 45%의 낮은 색재현율로 그래픽 작업이나 전문적인 색상 작업에는 부적합합니다.",
+      "300nits 밝기는 야외 사용 시 화면 가시성을 제한할 수 있습니다.",
+      "터보팬 모드 시 팬 소음이 크게 발생할 수 있습니다."
+    ],
+    "recommendFor": [
+      "예산에 맞춰 가성비 좋은 게이밍 노트북을 찾는 학생 또는 일반 사용자",
+      "스타크래프트2와 같은 RTS 게임 및 캐주얼 게임을 주로 즐기는 분",
+      "긴 배터리 사용 시간과 PD 충전 기능을 선호하는 분"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "HP 2025 오멘 16 올림 코어Ultra7 인텔 15세대",
+    "summary": "최신 기술과 휴대성을 겸비한 스마트한 게이밍 노트북",
+    "keyPoint": "인텔 15세대, RTX 5060, 슬림 디자인",
+    "target": "최신 인텔 CPU와 RTX 5060의 균형을 찾는 이동 잦은 게이머",
+    "buyUrl": "https://link.coupang.com/a/dzXEPd",
+    "description": "최신 인텔 코어 Ultra 7 프로세서와 RTX 5060 GPU, 그리고 슬림한 디자인이 돋보이는 HP 오멘 16 올림입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 7 255H (16코어/16스레드, 최대 5.1GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060"
+      },
+      {
+        "label": "RAM",
+        "value": "24GB DDR5-5600MT/s"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe NVMe M.2 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) IPS 240Hz VRR 500nits 3ms"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      },
+      {
+        "label": "두께",
+        "value": "2.27cm"
+      },
+      {
+        "label": "무게",
+        "value": "2.42kg"
+      }
+    ],
+    "pros": [
+      "2세대 인텔 코어 Ultra 7 255H 프로세서와 RTX 5060 GPU 조합으로 스타크래프트2를 포함한 최신 게임과 AI 기반 작업에 뛰어난 성능을 발휘합니다.",
+      "16:10 WQXGA 240Hz VRR IPS 디스플레이는 500nits의 밝기와 3ms의 빠른 응답속도로 FPS 및 RTS 게임에 최적화된 부드러운 화면을 제공합니다.",
+      "DLSS 4 및 NVIDIA Reflex 2 지원으로 성능과 화질을 동시에 향상시킬 수 있습니다.",
+      "오멘 템페스트 쿨링 시스템은 효율적인 발열 관리와 저소음 작동을 목표로 설계되었습니다.",
+      "1TB 대용량 SSD가 기본 탑재되어 빠른 로딩 속도와 넉넉한 저장 공간을 제공합니다."
+    ],
+    "cons": [
+      "Free DOS 제품으로 윈도우를 별도로 구매하여 설치해야 합니다.",
+      "24GB RAM은 일반적인 16GB 또는 32GB와 다른 구성으로, 추후 업그레이드 시 호환성 확인이 필요할 수 있습니다.",
+      "약 2.42kg의 무게는 슬림 디자인임에도 불구하고 휴대성에 약간의 부담이 될 수 있습니다."
+    ],
+    "recommendFor": [
+      "최신 인텔 코어 Ultra 프로세서와 RTX 5060의 균형 잡힌 성능을 원하는 분",
+      "고주사율, 고해상도 디스플레이로 FPS 및 RTS 게임에 집중하고 싶은 분",
+      "AI 기반 시스템으로 게이밍 및 스트리밍 환경을 최적화하려는 분"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "스타크래프트2를 플레이하는 데 어떤 스펙이 가장 중요한가요?",
+    "a": "A. 스타크래프트2는 대규모 유닛이 등장하는 실시간 전략 게임이므로, CPU 성능이 매우 중요합니다. 코어 수가 많고 클럭이 높은 CPU일수록 쾌적한 플레이가 가능합니다. 또한, 화면 전환이 빠른 RTS 게임의 특성상 144Hz 이상의 고주사율 디스플레이가 있다면 더욱 부드럽고 유리한 플레이를 경험할 수 있습니다. GPU는 RTX 4050 이상이면 충분하며, RTX 4060 이상이면 어떤 상황에서도 완벽한 성능을 보장합니다."
+  },
+  {
+    "q": "Free DOS 노트북은 어떻게 사용해야 하나요?",
+    "a": "A. Free DOS 노트북은 운영체제(윈도우)가 설치되어 있지 않은 제품입니다. 따라서 노트북을 구매하신 후 정품 윈도우 11을 별도로 구매하여 직접 설치해야 합니다. 윈도우 설치 USB를 미리 준비하시고, 제조사 웹사이트에서 해당 모델의 드라이버를 미리 다운로드해 두시면 설치 과정이 더욱 수월합니다."
+  },
+  {
+    "q": "게이밍 노트북의 무게가 2kg이 넘는데, 휴대성이 많이 떨어지나요?",
+    "a": "A. 2kg이 넘는 게이밍 노트북은 일반 사무용 노트북에 비해서는 분명히 휴대성이 떨어집니다. 하지만 고성능 부품과 강력한 쿨링 시스템을 탑재해야 하므로 어느 정도 무게는 불가피합니다. 만약 매일 들고 다니며 이동해야 한다면 2kg 이하의 슬림형 모델을 고려하는 것이 좋고, 주로 한 곳에 두고 가끔 이동한다면 2kg 초중반대도 충분히 감당할 수 있습니다."
+  },
+  {
+    "q": "OLED 디스플레이는 번인 현상 우려가 있다고 하는데 괜찮을까요?",
+    "a": "A. OLED 디스플레이는 완벽한 블랙 표현과 뛰어난 색감으로 최고의 화질을 제공하지만, 장시간 정적인 이미지를 표시할 경우 번인(화면 잔상) 현상이 발생할 수 있는 잠재적 위험이 있습니다. 최신 OLED 패널은 번인 방지 기술이 많이 적용되어 있지만, 게임 HUD나 작업표시줄처럼 고정된 이미지를 오래 띄우는 사용 습관은 피하고, 주기적으로 화면을 끄거나 화면 보호기를 사용하는 것이 좋습니다."
+  },
+  {
+    "q": "노트북 구매 후 램(RAM)이나 SSD를 업그레이드해도 되나요?",
+    "a": "A. 네, 대부분의 게이밍 노트북은 사용자 편의를 위해 램과 SSD 업그레이드를 지원합니다. 특히 기본 램 용량이 16GB 단일 채널인 경우, 16GB 램을 추가하여 듀얼 채널 32GB로 구성하면 게임 및 작업 성능이 크게 향상될 수 있습니다. SSD 역시 슬롯이 추가로 있거나 교체 가능한 경우가 많으므로, 필요에 따라 용량을 늘릴 수 있습니다. 다만, 업그레이드 전에 제조사의 보증 정책을 확인하고, 호환 가능한 부품을 선택하는 것이 중요합니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "MSI 2023 Alpha17",
+    "cpu": "AMD Ryzen 9 7945HX",
+    "gpu": "AMD Radeon RX 7600M XT",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "17.3\" FHD 144Hz",
+    "운영체제": "Free DOS",
+    "무게": "2.7kg"
+  },
+  {
+    "name": "레노버 2025 리전 7",
+    "cpu": "Intel Core Ultra 9 275HX",
+    "gpu": "NVIDIA RTX 5070",
+    "ram": "64GB DDR5",
+    "저장장치": "4TB NVMe SSD",
+    "디스플레이": "16\" WQXGA OLED 240Hz",
+    "운영체제": "Windows 11 Pro",
+    "무게": "2kg"
+  },
+  {
+    "name": "HP 2025 오멘 16 (i7)",
+    "cpu": "Intel Core i7-14700HX",
+    "gpu": "NVIDIA RTX 5060",
+    "ram": "32GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "16.1\" WQXGA 240Hz",
+    "운영체제": "Windows 11 Home",
+    "무게": "2.3kg"
+  },
+  {
+    "name": "기가바이트 2025 게이밍 A16",
+    "cpu": "Intel Core i5-13420H",
+    "gpu": "NVIDIA RTX 4050",
+    "ram": "16GB DDR5",
+    "저장장치": "512GB NVMe SSD",
+    "디스플레이": "16\" WUXGA IPS 165Hz",
+    "운영체제": "Free DOS",
+    "무게": "2.2kg"
+  },
+  {
+    "name": "HP 2025 오멘 16 (Ultra7)",
+    "cpu": "Intel Core Ultra 7 255H",
+    "gpu": "NVIDIA RTX 5060",
+    "ram": "24GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "16\" WQXGA IPS 240Hz",
+    "운영체제": "Free DOS",
+    "무게": "2.42kg"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "운영체제",
+    "label": "운영체제"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  }
+];
+const selectionGuide = "스타크래프트2: 자유의날개는 비교적 오래된 게임이지만, 2026년에도 쾌적하고 경쟁력 있는 플레이를 위해서는 강력한 CPU와 고주사율 디스플레이가 중요합니다. 여기에 더해 최신 트렌드를 반영한 노트북이라면 다른 게임이나 작업에서도 만족도가 높을 것입니다.\n• 최고의 성능과 화질을 원한다면: 레노버 2025 리전 7 16IAX10\n  • 이 제품은 인텔 Core Ultra 9와 RTX 5070, 그리고 2.5K 240Hz OLED 디스플레이라는 최강의 조합을 자랑합니다. 스타크래프트2는 물론 어떤 게임이나 작업도 완벽하게 소화할 수 있는 끝판왕 스펙이죠. 높은 가격대가 부담될 수 있지만, 최상급 경험을 원한다면 후회하지 않을 선택입니다.\n• 가성비 좋은 게이밍을 원한다면: 기가바이트 2025 게이밍 A16\n  • 100만원 초반대에 RTX 4050과 165Hz 디스플레이를 제공하여 스타크래프트2를 포함한 대부분의 게임을 원활하게 즐길 수 있습니다. 긴 배터리 시간과 PD 충전 지원은 휴대성까지 겸비하게 해줍니다. 다만, 디스플레이의 낮은 색재현율은 그래픽 작업용으로는 부적합합니다.\n• 균형 잡힌 고성능 게이밍을 원한다면: HP 2025 오멘 16 코어i7 또는 HP 2025 오멘 16 올림 코어Ultra7\n  • 두 HP 오멘 16 모델 모두 RTX 5060과 240Hz WQXGA 디스플레이를 탑재하여 고사양 게임과 고주사율 게이밍을 동시에 만족시킵니다. 인텔 Core i7-14700HX 모델은 강력한 멀티코어 성능을, Core Ultra 7 255H 모델은 최신 AI 엔진과 효율성을 강조합니다. 개인의 CPU 선호도에 따라 선택하시면 좋습니다.\n• AMD 시스템의 파워를 느끼고 싶다면: MSI 2023 Alpha17 라이젠9\n  • AMD Ryzen 9 7945HX와 Radeon RX 7600M XT 조합으로 강력한 성능을 발휘합니다. 특히 17.3인치 대화면은 뛰어난 몰입감을 제공하며, AMD 풀 시스템의 장점을 극대화합니다. 고성능 작업과 게임을 대화면에서 즐기는 분께 적합합니다.";
+---
+
+<BaseLayout
+  title="2026 스타크래프트2 자유의날개 노트북 추천 Top5"
+  description="안녕하세요 '2026 스타크래프트2 자유의날개 노트북 추천 Top5'에 대해 다뤄보겠습니다. 스타크래프트2는 출시된 지 꽤 시간이 흘렀지만, 여전히 많은 분들이 즐기고 계신 실시간 전략 시뮬레이션(RTS) 게임의 명작입니다."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 스타크래프트2 자유의날개 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-02-24T16:40:00.000+09:00" class="text-gray-500">
+            2026-02-24 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요 '2026 스타크래프트2 자유의날개 노트북 추천 Top5'에 대해 다뤄보겠습니다. 스타크래프트2는 출시된 지 꽤 시간이 흘렀지만, 여전히 많은 분들이 즐기고 계신 실시간 전략 시뮬레이션(RTS) 게임의 명작입니다.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며</h2>
+        <p>스타크래프트2: 자유의날개는 2010년 출시된 블리자드 엔터테인먼트의 대표작으로, 테란, 저그, 프로토스 세 종족 간의 치열한 전략 전투를 다룹니다. 특히 이 게임은 뛰어난 밸런스와 깊이 있는 전략성으로 e스포츠의 한 축을 담당하며 전 세계적으로 사랑받아 왔죠. 2026년에도 여전히 많은 유저들이 멀티플레이를 즐기며 실력을 겨루고 있습니다.</p>
+        <p>스타크래프트2는 최신 AAA 게임만큼의 고사양을 요구하지는 않지만, 대규모 전투 상황에서는 수많은 유닛과 이펙트가 동시에 처리되어야 하므로 CPU 성능이 매우 중요합니다. 또한, 승패를 가르는 찰나의 순간을 놓치지 않기 위해 고주사율 디스플레이는 필수적입니다. 부드러운 화면 전환은 게임의 몰입도를 높이고 반응 속도를 향상시켜 주기 때문이죠.</p>
+        <p>오늘 소개해 드릴 노트북들은 스타크래프트2를 쾌적하게 즐길 수 있는 것은 물론, 2026년의 다양한 작업과 게임 환경에도 충분히 대응할 수 있는 강력한 성능을 자랑합니다. 여러분의 게임 경험을 한 단계 업그레이드해 줄 최고의 선택지를 지금부터 함께 살펴보시죠!</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 스타크래프트2 자유의날개 노트북 추천 Top5 제품들을 소개해 드렸습니다. 고성능 게이밍 노트북은 단순히 게임을 넘어 다양한 작업을 처리하는 데도 탁월한 성능을 발휘합니다. 여러분의 예산과 사용 목적에 맞춰 최적의 노트북을 선택하시길 바랍니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
