@@ -1,0 +1,610 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-26T03:31:07.625Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "2026년 180만원대 노트북, 이 제품들을 주목하세요!",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "델 2024 게이밍 G16 DG7630 코어i7 인텔 13세대 지포스 RTX 4060",
+    "summary": "안정적인 게이밍 성능과 뛰어난 화면으로 몰입감 UP",
+    "keyPoint": "QHD+ 240Hz 디스플레이, 강력한 쿨링",
+    "target": "고사양 게임과 영상 작업 병행하는 게이머",
+    "buyUrl": "https://link.coupang.com/a/dAdyAZ",
+    "description": "델 G16은 강력한 성능과 게이밍에 최적화된 디스플레이를 갖춘 모델입니다. 인텔 13세대 코어 i7 프로세서와 RTX 4060 그래픽카드가 만나 어떤 게임이든 쾌적하게 즐길 수 있는 환경을 제공합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-13650HX (14코어/20스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4060 8GB GDDR6 (TGP 140W)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe PCIe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 QHD+ (2560x1600) 16:10 240Hz 100% DCI-P3 G-SYNC"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.52kg"
+      }
+    ],
+    "pros": [
+      "Windows 11 Home이 기본 탑재되어 있어 별도 설치 없이 바로 사용 가능합니다.",
+      "16:10 화면비와 QHD+ 해상도로 더 넓고 선명한 시야를 확보할 수 있습니다.",
+      "100% DCI-P3 색재현율과 G-SYNC 지원으로 영상 편집이나 컬러 작업, 그리고 부드러운 게이밍 경험에 매우 적합합니다.",
+      "1TB 대용량 SSD가 기본 탑재되어 게임이나 대용량 파일 저장에 유리합니다.",
+      "Alienware에서 영감을 받은 고급 냉각 솔루션(Element 31, 베이퍼 체임버)으로 장시간 고사양 작업에도 안정적인 성능을 유지합니다."
+    ],
+    "cons": [
+      "약 2.52kg의 무게는 휴대성 측면에서 다소 제한적일 수 있습니다.",
+      "16GB RAM은 기본적인 고사양 작업에는 충분하지만, 매우 무거운 멀티태스킹이나 전문적인 3D 작업 시에는 부족함을 느낄 수 있습니다."
+    ],
+    "recommendFor": [
+      "Windows를 바로 사용하고 싶고, 고해상도 고주사율 디스플레이로 게임에 몰입하고 싶은 게이머",
+      "대용량 파일을 다루거나 영상 편집 등 색 정확도가 중요한 작업을 하는 크리에이터"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "레노버 2025 리전 5 15 코어i7 인텔 14세대 지포스 RTX 4060",
+    "summary": "압도적인 비주얼과 최신 기술의 집약체로 미래를 경험",
+    "keyPoint": "OLED 디스플레이, RTX 5060, 고급 A/S",
+    "target": "최고의 화질로 게임/영상 편집하는 전문가",
+    "buyUrl": "https://link.coupang.com/a/dzXSYE",
+    "description": "레노버 리전 5 15는 압도적인 OLED 디스플레이와 최신 RTX 5060 그래픽카드를 탑재하여 시각적인 만족감과 강력한 성능을 동시에 제공하는 모델입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-14700HX (20코어/28스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7 (TGP 115W)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.3인치 WQXGA (2560x1600) OLED, 165Hz, 500nits, 100% DCI-P3"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      }
+    ],
+    "pros": [
+      "OLED 패널로 완벽한 블랙 표현과 무한대 명암비, 100% DCI-P3 색재현율을 제공하여 압도적인 색감과 화질을 경험할 수 있습니다.",
+      "RTX 5060 (Blackwell 아키텍처) 그래픽카드와 TGP 115W로 데스크탑급에 가까운 강력한 그래픽 성능을 자랑합니다.",
+      "인텔 i7-14700HX 프로세서는 20코어 28스레드로 멀티태스킹과 고성능 작업에 매우 우수합니다.",
+      "레노버 프리미엄 케어 서비스(엔지니어 현장 방문)와 ADP 파손 보험까지 제공되어 A/S 걱정 없이 안심하고 사용할 수 있습니다.",
+      "Cold Front Hyper 냉각 시스템과 Lenovo AI Engine+로 장시간 사용에도 쾌적한 환경을 유지합니다."
+    ],
+    "cons": [
+      "Free DOS 모델이므로 윈도우를 직접 설치해야 하는 번거로움이 있습니다.",
+      "OLED 디스플레이 특성상 장시간 정지 이미지를 표시할 경우 번인 현상의 우려가 있습니다.",
+      "배터리 사용 시간과 정확한 무게 정보가 제공되지 않아 휴대성을 가늠하기 어렵습니다. (유사 모델 기준 약 2kg 내외로 추정)"
+    ],
+    "recommendFor": [
+      "최고의 화질과 그래픽 성능으로 게임, 4K 영상 편집, 그래픽 작업을 하는 전문가",
+      "강력한 성능과 프리미엄 A/S를 중요하게 생각하는 사용자"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "LG전자 2025 그램 16 코어Ultra5, 메모리 16",
+    "summary": "휴대성과 생산성의 완벽한 조화, 어디서든 내 사무실",
+    "keyPoint": "초경량, 긴 배터리, AI 프로세서",
+    "target": "이동이 잦은 직장인, 학생, 가벼운 사무용",
+    "buyUrl": "https://link.coupang.com/a/dCANs6",
+    "description": "LG 그램 16은 초경량 디자인과 압도적인 배터리 성능으로 휴대성과 생산성을 극대화한 노트북입니다. 고사양 게이밍보다는 이동이 잦은 환경에서 최고의 효율을 발휘하고 싶은 분들에게 안성맞춤입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra5 (AI 가속기 포함)"
+      },
+      {
+        "label": "GPU",
+        "value": "내장 그래픽 (Intel Arc Graphics)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB"
+      },
+      {
+        "label": "저장장치",
+        "value": "256GB SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 (40.6cm)"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "약 1.19kg"
+      }
+    ],
+    "pros": [
+      "16인치 대화면 노트북임에도 불구하고 약 1.19kg의 경이로운 무게로 휴대성이 매우 뛰어납니다.",
+      "최대 25.5시간의 배터리 지속 시간으로 외부에서도 충전기 없이 하루 종일 사용 가능합니다.",
+      "인텔 코어 Ultra5 프로세서는 AI 가속기를 포함하여 효율적인 멀티태스킹과 AI 기반 작업을 지원합니다.",
+      "메가 듀얼 쿨링팬 시스템으로 빠르게 열을 식히면서도 거의 무소음에 가까운 정숙성을 제공합니다.",
+      "돌비 애트모스 사운드와 AI 배터리 관리 기능으로 사용자 편의성을 높였습니다."
+    ],
+    "cons": [
+      "256GB SSD 용량은 기본적인 사무용에는 충분하지만, 대용량 파일이나 여러 프로그램을 설치하기에는 부족할 수 있습니다.",
+      "외장 그래픽카드 없이 내장 그래픽(Intel Arc Graphics)만 탑재되어 고사양 게임이나 전문적인 영상 편집, 3D 그래픽 작업에는 한계가 있습니다.",
+      "스노우 화이트 색상은 깔끔하지만, 먼지나 때가 잘 묻을 수 있어 관리가 필요합니다."
+    ],
+    "recommendFor": [
+      "가벼운 노트북으로 출장, 외근, 학교 수업 등 이동이 잦은 직장인이나 학생",
+      "긴 배터리 시간으로 외부에서 전원 걱정 없이 작업을 하고 싶은 사용자",
+      "문서 작업, 온라인 강의, 웹 서핑 등 기본적인 사무/학습 용도로 최적의 효율을 원하는 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "에이수스 2025 TUF 게이밍 노트북 A18 라이젠7 260",
+    "summary": "데스크탑을 대체할 압도적 몰입감과 강력한 성능",
+    "keyPoint": "18인치 대화면, RTX 5060, 뛰어난 내구성",
+    "target": "넓은 화면으로 게임과 작업 모두 원하는 사용자",
+    "buyUrl": "https://link.coupang.com/a/dD7CmF",
+    "description": "에이수스 TUF 게이밍 A18은 18인치라는 압도적인 대화면과 최신 RTX 5060 그래픽카드를 탑재하여 데스크탑을 대체할 만한 몰입감과 성능을 제공합니다. 넓은 화면으로 게임과 작업을 동시에 만족시키고 싶은 분들께 강력 추천합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 260 (8코어/16스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 (최신 Blackwell 아키텍처, 높은 전력 투입)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5-5600 (확장 가능)"
+      },
+      {
+        "label": "저장장치",
+        "value": "512GB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "18인치 WUXGA (1920x1200) IPS, 144Hz, 300nits, sRGB 100%, 16:10"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS"
+      },
+      {
+        "label": "무게",
+        "value": "약 2.6kg"
+      }
+    ],
+    "pros": [
+      "18인치 대화면 디스플레이는 게임, 영화 시청, 멀티태스킹 시 압도적인 몰입감을 선사합니다.",
+      "RTX 5060 그래픽카드의 높은 전력 투입량으로 데스크탑급에 가까운 강력한 그래픽 성능을 발휘합니다.",
+      "sRGB 100% 색재현율과 144Hz 고주사율로 정확한 색감과 부드러운 화면을 제공하여 영상 편집 및 게이밍에 모두 적합합니다.",
+      "USB-C 포트로 PD 100W 충전을 지원하여 외부나 차량에서도 편리하게 충전할 수 있습니다.",
+      "MIL-STD-810H 군사 등급 내구성 테스트를 통과한 TUF 라인업으로 견고하고 오래 사용할 수 있습니다."
+    ],
+    "cons": [
+      "약 2.6kg의 무게와 18인치라는 큰 크기는 매일 휴대하기에는 다소 부담스러울 수 있습니다. 일반 노트북 가방에 맞지 않을 수 있습니다.",
+      "Free DOS 모델이므로 윈도우와 드라이버를 직접 설치해야 합니다.",
+      "높은 성능만큼 배터리 소모가 빠른 편이므로 충전기 휴대가 필수적입니다.",
+      "FHD 해상도(WUXGA)는 18인치 화면 크기 대비 픽셀 밀도가 다소 낮게 느껴질 수 있습니다."
+    ],
+    "recommendFor": [
+      "데스크탑 대용으로 넓은 화면과 고성능 게이밍 경험을 원하는 사용자",
+      "캠핑이나 외부 활동 시에도 강력한 성능의 노트북을 사용하고 싶은 분",
+      "영상 편집, 그래픽 작업 등 전문적인 용도로 넓은 작업 공간이 필요한 크리에이터"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "Free DOS 노트북은 윈도우를 어떻게 설치해야 하나요?",
+    "a": "A. Free DOS 노트북은 운영체제가 포함되어 있지 않으므로, 직접 Windows를 구매하여 USB 설치 디스크를 만들고 부팅하여 설치해야 합니다. 레노버나 ASUS 공식 홈페이지에서 해당 모델의 드라이버를 미리 다운로드 받아두시면 설치 후 편리하게 설정할 수 있습니다."
+  },
+  {
+    "q": "게이밍 노트북의 무게가 2kg가 넘는데 휴대하기 괜찮을까요?",
+    "a": "A. 2kg 이상의 게이밍 노트북은 매일 가방에 넣고 다니기에는 다소 무겁게 느껴질 수 있습니다. 데스크탑 대용으로 집이나 특정 장소에 두고 사용하는 용도이거나, 가끔 이동하는 용도로 적합합니다. 휴대성이 중요하다면 LG 그램 16과 같이 1kg 초반대 노트북을 고려하는 것이 좋습니다."
+  },
+  {
+    "q": "OLED 디스플레이는 번인 현상이 걱정되는데 괜찮을까요?",
+    "a": "A. 최신 OLED 패널은 과거보다 번인 방지 기술이 많이 발전했습니다. 하지만 장시간 동일한 정지 이미지를 화면에 표시하는 것은 피하고, 주기적으로 화면 보호기를 사용하거나 화면을 끄는 습관을 들이면 번인 우려를 크게 줄일 수 있습니다."
+  },
+  {
+    "q": "노트북 RAM 16GB로 충분할까요?",
+    "a": "A. 대부분의 고사양 게임이나 일반적인 사무/영상 편집 작업에는 16GB RAM이 충분합니다. 하지만 4K 이상 고해상도 영상 편집, 복잡한 3D 모델링, 또는 여러 가상 머신을 동시에 실행하는 등 매우 무거운 작업을 한다면 32GB 이상으로 업그레이드를 고려해볼 수 있습니다. 일부 게이밍 노트북은 RAM 확장 슬롯을 제공하기도 합니다."
+  },
+  {
+    "q": "180만원대 노트북을 구매할 때 꼭 확인해야 할 점은 무엇인가요?",
+    "a": "A. 가장 중요한 것은 본인의 주된 사용 목적입니다. 게이밍, 휴대성, 전문 작업 등 어떤 용도에 가장 비중을 두는지 명확히 하고, 그에 맞는 CPU, GPU, 디스플레이 사양을 확인해야 합니다. 또한, A/S 정책, 무게, 배터리 시간, 운영체제 포함 여부 등도 꼼꼼히 살펴보는 것이 좋습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "델 2024 게이밍 G16 DG7630",
+    "cpu": "Intel i7-13650HX",
+    "gpu": "RTX 4060 8GB (TGP 140W)",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "16인치 QHD+ 240Hz IPS (100% DCI-P3)",
+    "운영체제": "Windows 11 Home",
+    "무게": "약 2.52kg",
+    "배터리": "86Wh",
+    "주요_특징": "QHD+ 240Hz, 고급 쿨링, 1TB SSD"
+  },
+  {
+    "name": "레노버 2025 리전 5 15",
+    "cpu": "Intel i7-14700HX",
+    "gpu": "RTX 5060 8GB GDDR7 (TGP 115W)",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "15.3인치 WQXGA 165Hz OLED (100% DCI-P3)",
+    "운영체제": "Free DOS",
+    "무게": "정보 미제공 (약 2kg 추정)",
+    "배터리": "정보 미제공",
+    "주요_특징": "OLED, RTX 5060, 프리미엄 A/S, AI Engine+"
+  },
+  {
+    "name": "LG전자 2025 그램 16",
+    "cpu": "Intel Core Ultra5",
+    "gpu": "Intel Arc Graphics (내장)",
+    "ram": "16GB",
+    "저장장치": "256GB SSD",
+    "디스플레이": "16인치",
+    "운영체제": "Windows 11 Home",
+    "무게": "약 1.19kg",
+    "배터리": "최대 25.5시간",
+    "주요_특징": "초경량, 긴 배터리, AI 프로세서, 듀얼 쿨링"
+  },
+  {
+    "name": "에이수스 2025 TUF 게이밍 A18",
+    "cpu": "AMD Ryzen 7 260",
+    "gpu": "RTX 5060 (높은 전력 투입)",
+    "ram": "16GB DDR5-5600",
+    "저장장치": "512GB NVMe SSD",
+    "디스플레이": "18인치 WUXGA 144Hz IPS (sRGB 100%)",
+    "운영체제": "Free DOS",
+    "무게": "약 2.6kg",
+    "배터리": "정보 미제공 (성능 대비 빠른 소모)",
+    "주요_특징": "18인치 대화면, RTX 5060, MIL-STD 내구성"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "운영체제",
+    "label": "운영체제"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "배터리",
+    "label": "배터리"
+  },
+  {
+    "key": "주요_특징",
+    "label": "주요 특징"
+  }
+];
+const selectionGuide = "180만원대 노트북은 여러분의 주된 사용 목적에 따라 선택이 명확하게 갈릴 수 있습니다.\n• 최고의 게이밍 성능과 화질을 원한다면: 레노버 리전 5 15 또는 에이수스 TUF 게이밍 A18을 고려해 보세요. 특히 레노버 리전은 OLED 디스플레이로 압도적인 비주얼을 제공하며, 에이수스 TUF A18은 18인치 대화면으로 최고의 몰입감을 선사합니다. 두 제품 모두 최신 RTX 5060을 탑재하여 어떤 게임이든 쾌적하게 즐길 수 있습니다. 델 G16도 RTX 4060에 QHD 240Hz 디스플레이로 훌륭한 게이밍 경험을 제공합니다.\n• 영상 편집이나 그래픽 작업도 병행한다면: 델 G16의 100% DCI-P3 디스플레이나 레노버 리전 5 15의 OLED, 에이수스 TUF A18의 sRGB 100% 디스플레이가 색 정확도 면에서 우수합니다. RTX 4060/5060 그래픽카드는 렌더링 속도와 작업 효율을 크게 높여줄 것입니다.\n운영체제 설치 여부도 중요한 선택 기준입니다. 델 G16과 LG 그램 16은 Windows 11 Home이 기본 탑재되어 있어 구매 후 바로 사용할 수 있지만, 레노버 리전 5 15와 에이수스 TUF A18은 Free DOS 모델이므로 윈도우를 직접 설치해야 합니다. 윈도우 설치 경험이 없거나 번거로움을 피하고 싶다면 기본 OS가 포함된 제품을 선택하는 것이 좋습니다.";
+---
+
+<BaseLayout
+  title="2026 180만원대 노트북 추천 Top4"
+  description="안녕하세요. 오늘은 '2026년 180만원대 노트북 추천 Top4'에 대해 말씀드릴게요. 이 가격대는 고성능과 합리적인 가성비 사이에서 고민하는 분들이 가장 많이 찾아보는 구간인데요. 최신 기술이 집약된 제품부터 휴대성에 특화된 모델까지, 여러분의 니즈에 딱 맞는 노트"
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 180만원대 노트북 추천 Top4
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-02-26T00:30:00.000+00:00" class="text-gray-500">
+            2026-02-26 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 '2026년 180만원대 노트북 추천 Top4'에 대해 말씀드릴게요. 이 가격대는 고성능과 합리적인 가성비 사이에서 고민하는 분들이 가장 많이 찾아보는 구간인데요. 최신 기술이 집약된 제품부터 휴대성에 특화된 모델까지, 여러분의 니즈에 딱 맞는 노트북을 찾을 수 있도록 꼼꼼하게 분석해 봤습니다.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 180만원대 노트북, 어떤 키워드에 집중해야 할까?</h2>
+        <p>180만원대 노트북은 단순히 문서 작업이나 웹 서핑을 넘어, 더 높은 성능과 특별한 경험을 원하는 분들을 위한 가격대라고 할 수 있습니다. 이 가격대에서는 주로 다음과 같은 키워드에 집중하여 제품을 선택하게 됩니다.</p>
+        <p>• 프리미엄 휴대성: LG 그램처럼 초경량에 긴 배터리 타임을 제공하여 이동이 잦은 환경에서도 최고의 생산성을 발휘할 수 있는 모델도 이 가격대에서 찾아볼 수 있습니다.</p>
+        <p>• 대화면 몰입감: 16인치, 심지어 18인치에 달하는 대화면 디스플레이는 게임이나 영상 시청, 여러 창을 띄워놓고 작업할 때 압도적인 몰입감과 편의성을 제공합니다.</p>
+        <p>이번 포스팅에서는 이러한 다양한 니즈를 충족시킬 수 있는 180만원대 노트북 4종을 자세히 살펴보겠습니다. 여러분의 소중한 예산이 아깝지 않도록, 도와드리겠습니다.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 '2026년 180만원대 노트북 추천 Top4'에 대해 말씀드렸습니다. 이 가격대에서는 여러분의 라이프스타일과 작업 환경을 한 단계 업그레이드해 줄 다양한 매력적인 노트북들을 만날 수 있습니다. 강력한 게이밍 성능을 원한다면 델 G16, 레노버 리전 5 15, 에이수스 TUF A18을, 압도적인 휴대성과 생산성을 원한다면 LG 그램 16을 고려해 보세요.
+어떤 제품을 선택하시든, 이 포스팅이 여러분의 현명한 구매 결정에 조금이나마 도움이 되었기를 바랍니다. 다음에도 더 유익하고 재미있는 IT/테크 정보로 찾아오겠습니다!</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
