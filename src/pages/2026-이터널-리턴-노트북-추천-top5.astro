@@ -1,0 +1,706 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-26T05:15:58.868Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "제품리뷰",
+    "summary": "",
+    "keyPoint": "",
+    "target": "",
+    "buyUrl": "",
+    "description": "",
+    "specs": [],
+    "pros": [],
+    "cons": [],
+    "recommendFor": []
+  },
+  {
+    "id": 2,
+    "name": "기가바이트 2025 에어로 X16 라이젠 AI 라이젠 AI 300 시리즈",
+    "summary": "AI와 게이밍, 휴대성을 모두 잡은 프리미엄 올라운더",
+    "keyPoint": "AI 특화 CPU, RTX 5070, 165Hz 고주사율, 가벼운 디자인",
+    "target": "AI 개발자, 전문 크리에이터, 고사양 게이밍 프로페셔널",
+    "buyUrl": "https://link.coupang.com/a/dzXsLk",
+    "description": "기가바이트 에어로 X16은 휴대성과 성능, 그리고 최신 AI 기술까지 놓치지 않은 프리미엄 노트북입니다. 특히 AMD Ryzen AI 7 350 프로세서와 NVIDIA RTX 5070의 조합은 미래 지향적인 작업을 하는 분들께 강력한 선택지가 될 것입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen AI 7 350 (8코어, 50 TOPS NPU)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 (8GB GDDR7, DLSS 4 지원)"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB"
+      },
+      {
+        "label": "SSD",
+        "value": "1TB NVMe Gen4"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) 165Hz, 3ms, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      },
+      {
+        "label": "무게",
+        "value": "1.9kg"
+      },
+      {
+        "label": "배터리",
+        "value": "최대 12시간 사용"
+      },
+      {
+        "label": "보증",
+        "value": "2년 무상보증"
+      }
+    ],
+    "pros": [
+      "50 TOPS NPU로 AI 작업에 최적화된 프로세서",
+      "RTX 5070으로 게이밍과 크리에이티브 작업 모두 우수",
+      "1.9kg 가벼운 무게로 휴대성 우수",
+      "2년 무상보증 제공으로 안심하고 사용 가능",
+      "고급스러운 NIL 공정 디자인",
+      "165Hz 고주사율과 3ms 응답속도로 부드러운 화면"
+    ],
+    "cons": [
+      "윈도우 미포함 (Free DOS)으로 별도 설치 필요",
+      "게이밍 노트북 대비 GPU TGP가 낮을 수 있음 (전력 제한으로 최고 성능 발휘에 제약)"
+    ],
+    "recommendFor": [
+      "최신 AI 기술을 활용한 작업을 많이 하시는 분",
+      "고사양 게임과 영상 편집, 3D 렌더링 등 크리에이티브 작업을 병행하시는 분",
+      "휴대성과 성능 모두 중요하게 생각하는 프리미엄 노트북 사용자"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "기가바이트 2025 게이밍 A16 코어i5 인텔 13세대 지포스 RTX 4060",
+    "summary": "가성비 끝판왕, 게이밍과 학습용 모두 만족하는 다재다능 노트북",
+    "keyPoint": "100만원대 RTX 4050, 165Hz 대화면, 긴 배터리",
+    "target": "예산 제한 있는 게이머, 대학생, 학습 및 사무용 겸용 사용자",
+    "buyUrl": "https://link.coupang.com/a/dzXMaE",
+    "description": "합리적인 가격에 게이밍 성능을 제대로 누리고 싶은 분들께 기가바이트 게이밍 A16은 최고의 가성비 선택입니다. RTX 4050 그래픽카드와 165Hz 고주사율 디스플레이로 이터널 리턴은 물론 대부분의 게임을 쾌적하게 즐길 수 있습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i5-13420H (8코어/12스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4050 6GB GDDR6"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5 5200MHz (최대 64GB 확장)"
+      },
+      {
+        "label": "SSD",
+        "value": "512GB PCIe Gen4 NVMe (최대 4TB 확장)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WUXGA (1920x1200) IPS, 165Hz, 300nits"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 11 설치 권장)"
+      },
+      {
+        "label": "무게",
+        "value": "2.2kg"
+      },
+      {
+        "label": "배터리",
+        "value": "76Wh (최장 14시간)"
+      }
+    ],
+    "pros": [
+      "100만원 초반대에 RTX 4050 탑재한 최고의 가성비",
+      "16인치 대화면과 165Hz 고주사율로 게이밍에 최적화",
+      "76Wh 대용량 배터리로 최장 14시간 사용 가능하여 외부 활동에 적합",
+      "16GB 단일 램으로 듀얼 채널 업그레이드 용이",
+      "2슬롯 SSD로 최대 4TB까지 확장 가능",
+      "PD 3.0 충전 지원으로 USB-C 전원 공급 가능"
+    ],
+    "cons": [
+      "2.2kg으로 휴대성이 다소 부족",
+      "Free DOS로 윈도우 별도 설치 필요",
+      "색재현율 NTSC 45%로 그래픽 작업에는 부적합",
+      "300nits 밝기로 야외 사용 시 제한적"
+    ],
+    "recommendFor": [
+      "예산에 맞춰 가성비 좋은 게이밍 노트북을 찾으시는 분",
+      "이터널 리턴과 같은 온라인 게임을 고주사율로 즐기고 싶은 학생 또는 일반 사용자",
+      "학습 및 사무용으로도 활용할 수 있는 다목적 노트북을 원하시는 분"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "레노버 2025 리전 5 15 코어i7 인텔 14세대 지포스 RTX 4060",
+    "summary": "압도적인 화질과 최상급 성능을 겸비한 게이밍/크리에이터 노트북",
+    "keyPoint": "OLED 디스플레이, RTX 5060 (115W), 강력한 14세대 i7",
+    "target": "영상 편집자, 그래픽 디자이너, 최고 화질로 게임을 즐기려는 게이머",
+    "buyUrl": "https://link.coupang.com/a/dzXSYE",
+    "description": "레노버 리전 5는 게이밍 노트북의 명가답게 강력한 성능과 함께 압도적인 OLED 디스플레이를 제공하여 시각적인 만족도를 극대화합니다. 게임뿐만 아니라 영상, 사진 작업에도 최적화된 팔방미인 노트북입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-14700HX (20코어/28스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7 (TGP 115W)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "SSD",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.3인치 WQXGA (2560x1600) OLED, 165Hz, 500nits, 100% DCI-P3"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 11 설치 권장)"
+      },
+      {
+        "label": "보증",
+        "value": "프리미엄 케어 서비스 (현장 방문 수리), ADP 파손 보험"
+      }
+    ],
+    "pros": [
+      "OLED 패널로 압도적인 색감과 명암비, 완벽한 블랙 표현",
+      "RTX 5060 TGP 115W로 데스크탑급 그래픽 성능",
+      "i7-14700HX 20코어로 멀티태스킹 및 고사양 작업 우수",
+      "레노버 프리미엄 케어와 ADP 서비스로 든든한 A/S 지원",
+      "165Hz 고주사율과 Dolby Vision으로 게이밍 및 영상 시청 모두 최적",
+      "200만원 이하에서 OLED와 RTX 5060 조합의 뛰어난 가성비",
+      "영상 편집 시 렌더링 속도 매우 빠름"
+    ],
+    "cons": [
+      "Free DOS로 윈도우 별도 설치 필요",
+      "OLED 특성상 번인 우려 (장시간 정지 이미지 표시 시 주의 필요)",
+      "배터리 및 무게 정보 미제공 (유사 모델 기준 약 2kg 내외 추정)"
+    ],
+    "recommendFor": [
+      "최고 화질과 색감으로 게임과 영상을 즐기고 싶은 분",
+      "전문적인 영상 편집, 그래픽 디자인 작업을 하는 크리에이터",
+      "강력한 CPU와 GPU 성능으로 어떤 작업이든 원활하게 처리하고 싶은 분"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "MSI 타이탄 18 HX 코어Ultra 9 지포스 RTX 5090",
+    "summary": "타의 추종을 불허하는 데스크톱급 성능의 궁극적인 게이밍 머신",
+    "keyPoint": "RTX 5090, Mini LED 4K+ 디스플레이, Cherry MX 기계식 키보드",
+    "target": "극한의 성능을 추구하는 프로 게이머, 3D/AI 전문가, 한정판 수집가",
+    "buyUrl": "https://link.coupang.com/a/dzX1Yn",
+    "description": "MSI 타이탄 18 HX 드래곤 에디션은 이름에서부터 느껴지듯이, 타협 없는 최고 성능과 독보적인 디자인을 자랑하는 궁극의 게이밍 머신입니다. 모든 면에서 데스크톱을 뛰어넘는 스펙을 원하는 하이엔드 유저를 위한 노트북입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 9 285HX (24코어, AI 전용 NPU 탑재)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5090 Laptop GPU 24GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "DDR5 96GB (48GB x 2)"
+      },
+      {
+        "label": "SSD",
+        "value": "6TB NVMe M.2 SSD (Gen5 2TB + Gen4 2TB x 2, 4슬롯)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "18인치 UHD+ (3840x2400) Mini LED, 120Hz, DCI-P3 100%, 1000nits"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Pro"
+      },
+      {
+        "label": "무게",
+        "value": "3.6kg"
+      },
+      {
+        "label": "배터리",
+        "value": "99.9Whr"
+      },
+      {
+        "label": "키보드",
+        "value": "Cherry MX ULP 기계식 (Per-Key RGB)"
+      }
+    ],
+    "pros": [
+      "데스크톱급 최고 성능 (Core Ultra 9 285HX + RTX 5090)",
+      "장인정신이 담긴 드래곤 에디션 특별 디자인",
+      "18인치 Mini LED 4K+ 디스플레이로 압도적인 시각 경험",
+      "Cherry MX 기계식 키보드로 최고급 타건감 제공",
+      "썬더볼트 5 최신 연결성 (120Gbps) 및 최대 6TB 대용량 스토리지",
+      "99.9Whr 대용량 배터리와 Wi-Fi 7, 블루투스 5.4 최신 무선 기술",
+      "6x 스피커 Dynaudio 프리미엄 사운드 시스템"
+    ],
+    "cons": [
+      "900만원대 초고가 프리미엄 가격",
+      "3.6kg의 무거운 무게로 휴대성 제한적",
+      "400W 대형 어댑터 필요",
+      "고성능 작업 시 발열 및 소음 가능성"
+    ],
+    "recommendFor": [
+      "예산에 구애받지 않고 현존하는 최고의 게이밍 성능을 원하는 프로 게이머",
+      "3D 렌더링, AI 딥러닝 등 극한의 성능을 요구하는 전문가",
+      "한정판 디자인과 최고급 빌드 퀄리티를 중시하는 콜렉터"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "HP 2025 오멘 16 라이젠9 라이숌 8000 시리즈 지포스 RTX 4070",
+    "summary": "e스포츠에 최적화된 고성능 게이밍 노트북, 안정적인 사용 환경 제공",
+    "keyPoint": "Ryzen 9 8940HX, 240Hz VRR 디스플레이, Windows 11 기본 탑재",
+    "target": "e스포츠 선수, 고주사율 게이밍을 즐기는 사용자, AMD 선호 게이머",
+    "buyUrl": "https://link.coupang.com/a/dzYjQ1",
+    "description": "HP 오멘 16은 AMD 라이젠 9 프로세서와 RTX 5060의 조합으로 강력한 게이밍 성능을 제공하며, 특히 240Hz의 초고주사율 디스플레이는 e스포츠 게임에 최적화된 환경을 선사합니다. Windows 11 Home이 기본 탑재되어 있어 구매 후 바로 사용할 수 있는 점도 큰 장점입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 8940HX (16코어 32스레드)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB (16GB x 1)"
+      },
+      {
+        "label": "SSD",
+        "value": "NVMe Gen4 SSD 1TB"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) 240Hz IPS VRR, 500nits, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "쿨링",
+        "value": "OMEN TEMPEST COOLING"
+      },
+      {
+        "label": "보증",
+        "value": "1년 워런티, HP ADP 케어팩 서비스"
+      }
+    ],
+    "pros": [
+      "AMD Ryzen 9 8940HX의 강력한 16코어 성능",
+      "240Hz 초고주사율로 부드러운 게이밍, e스포츠에 최적화",
+      "500nits 밝기로 야외에서도 선명한 화면",
+      "VRR (가변주사율) 지원으로 화면 티어링 현상 제거",
+      "16:10 화면비로 더 넓은 시야 제공",
+      "OMEN AI로 자동 성능 최적화",
+      "Windows 11 Home 기본 탑재로 편리한 사용 환경",
+      "HP ADP 케어팩 서비스 지원으로 우발적 파손도 보장"
+    ],
+    "cons": [
+      "RAM 16GB 단일 채널 (듀얼 채널 구성 시 성능 향상 가능)",
+      "CTO 제품으로 개봉 후 출고됨",
+      "무게 및 배터리 용량 정보 미표기"
+    ],
+    "recommendFor": [
+      "이터널 리턴과 같은 e스포츠 게임을 최고 주사율로 즐기고 싶은 분",
+      "AMD 라이젠 프로세서를 선호하고 강력한 멀티코어 성능이 필요한 분",
+      "구매 후 바로 사용 가능한 Windows 11이 탑재된 게이밍 노트북을 찾으시는 분"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "이터널 리턴 플레이에 필요한 최소 사양은 어느 정도인가요?",
+    "a": "A. 이터널 리턴은 그래픽 설정에 따라 다르지만, 일반적으로 인텔 i5 또는 AMD 라이젠 5 프로세서, 8GB RAM, GTX 1050Ti 또는 RX 570급 그래픽카드 정도면 낮은 옵션으로 플레이 가능합니다. 하지만 쾌적한 고프레임 플레이를 위해서는 오늘 추천해 드린 노트북들과 같이 RTX 4050 이상, 16GB RAM 이상을 권장합니다."
+  },
+  {
+    "q": "게이밍 노트북 구매 시 가장 중요하게 봐야 할 점은?",
+    "a": "A. 가장 중요한 것은 GPU(그래픽카드) 성능입니다. 게임의 프레임을 좌우하는 핵심 부품이며, 다음으로는 CPU 성능, RAM 용량(16GB 이상 권장), 그리고 디스플레이의 주사율(120Hz 이상)과 해상도를 고려해야 합니다. 저장장치는 SSD가 필수이며, 용량은 최소 512GB 이상을 추천합니다."
+  },
+  {
+    "q": "Free DOS 제품은 어떻게 윈도우를 설치하나요?",
+    "a": "A. Free DOS 제품은 운영체제가 설치되어 있지 않으므로, 직접 윈도우 라이선스를 구매하여 USB로 설치해야 합니다. 제조사 홈페이지에서 해당 모델의 드라이버를 미리 다운로드하여 준비해두면 좋습니다. 특히 SSD 인식 문제가 발생할 경우, 인텔 VMD 드라이버나 AMD 스토리지 드라이버를 먼저 설치해야 하는 경우도 있습니다."
+  },
+  {
+    "q": "노트북의 'AI TOPS'는 어떤 역할을 하나요?",
+    "a": "A. AI TOPS는 NPU(신경망 처리 장치)의 AI 연산 성능을 나타내는 단위입니다. 숫자가 높을수록 AI 관련 작업을 더 빠르고 효율적으로 처리할 수 있습니다. 실시간 번역, 이미지 생성, 동영상 편집 시 AI 가속 등 다양한 AI 기능을 활용할 때 중요한 역할을 합니다. 특히 Copilot+ PC 인증을 받은 제품들은 특정 AI 기능을 하드웨어적으로 지원합니다."
+  },
+  {
+    "q": "고주사율 디스플레이가 이터널 리턴에 중요한가요?",
+    "a": "A. 네, 매우 중요합니다. 이터널 리턴과 같은 AOS/배틀로얄 장르의 게임은 실시간으로 적의 움직임을 파악하고 빠르게 반응하는 것이 승패에 큰 영향을 미칩니다. 120Hz 이상의 고주사율 디스플레이는 화면 전환이 훨씬 부드러워 적의 움직임을 더 명확하게 인지할 수 있게 해주며, 반응 속도 향상에도 도움을 줍니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "기가바이트 2025 에어로 X16 라이젠 AI",
+    "cpu": "AMD Ryzen AI 7 350",
+    "gpu": "RTX 5070 8GB GDDR7",
+    "ram": "32GB",
+    "ssd": "1TB NVMe Gen4",
+    "디스플레이": "16인치 WQXGA (2560x1600) sRGB 100%",
+    "주사율": "165Hz",
+    "무게": "1.9kg",
+    "os": "Free DOS"
+  },
+  {
+    "name": "기가바이트 2025 게이밍 A16 코어i5",
+    "cpu": "Intel Core i5-13420H",
+    "gpu": "RTX 4050 6GB GDDR6",
+    "ram": "16GB DDR5",
+    "ssd": "512GB PCIe Gen4",
+    "디스플레이": "16인치 WUXGA (1920x1200) IPS NTSC 45%",
+    "주사율": "165Hz",
+    "무게": "2.2kg",
+    "os": "Free DOS"
+  },
+  {
+    "name": "레노버 2025 리전 5 15 코어i7",
+    "cpu": "Intel Core i7-14700HX",
+    "gpu": "RTX 5060 8GB GDDR7 (115W)",
+    "ram": "16GB DDR5",
+    "ssd": "1TB NVMe SSD",
+    "디스플레이": "15.3인치 WQXGA (2560x1600) OLED 100% DCI-P3",
+    "주사율": "165Hz",
+    "무게": "미표기",
+    "os": "Free DOS"
+  },
+  {
+    "name": "MSI 타이탄 18 HX 코어Ultra 9",
+    "cpu": "Intel Core Ultra 9 285HX",
+    "gpu": "RTX 5090 24GB GDDR7",
+    "ram": "96GB DDR5",
+    "ssd": "6TB NVMe M.2 SSD",
+    "디스플레이": "18인치 UHD+ (3840x2400) Mini LED 100% DCI-P3",
+    "주사율": "120Hz",
+    "무게": "3.6kg",
+    "os": "Windows 11 Pro"
+  },
+  {
+    "name": "HP 2025 오멘 16 라이젠9",
+    "cpu": "AMD Ryzen 9 8940HX",
+    "gpu": "RTX 5060",
+    "ram": "16GB (단일)",
+    "ssd": "1TB NVMe Gen4",
+    "디스플레이": "16인치 WQXGA (2560x1600) IPS sRGB 100%",
+    "주사율": "240Hz",
+    "무게": "미표기",
+    "os": "Windows 11 Home"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "ssd",
+    "label": "SSD"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "주사율",
+    "label": "주사율"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "os",
+    "label": "OS"
+  }
+];
+const selectionGuide = "각 제품마다 뚜렷한 강점을 가지고 있어, 어떤 용도로 노트북을 주로 사용할지에 따라 선택이 달라질 수 있습니다.\n• 최고의 성능과 화질, 그리고 AI 기능까지 모두 누리고 싶다면: 기가바이트 2025 에어로 X16 라이젠 AI\n• 합리적인 예산으로 이터널 리턴을 포함한 게이밍과 학습, 사무용까지 커버하고 싶다면: 기가바이트 2025 게이밍 A16 코어i5\n• 압도적인 OLED 디스플레이로 게임과 영상 콘텐츠를 최고 화질로 즐기며, 영상 편집 등의 전문 작업도 병행한다면: 레노버 2025 리전 5 15 코어i7\n• 예산에 제한 없이 현존하는 최고의 게이밍 성능과 독보적인 디자인을 원한다면: MSI 타이탄 18 HX 코어Ultra 9\n• e스포츠 게임을 주로 즐기고, 고주사율 디스플레이와 AMD 프로세서의 강력함을 선호한다면: HP 2025 오멘 16 라이젠9";
+---
+
+<BaseLayout
+  title="2026 이터널 리턴 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026년에도 이터널 리턴을 쾌적하게 즐길 수 있는 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 이터널 리턴 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-02-26T03:40:00.000+00:00" class="text-gray-500">
+            2026-02-26 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 2026년에도 이터널 리턴을 쾌적하게 즐길 수 있는 노트북 추천에 대해 말씀드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며</h2>
+        <p>이터널 리턴은 님블뉴런이 개발한 독특한 MOBA(Multiplayer Online Battle Arena)와 배틀 로얄, 서바이벌 장르가 결합된 게임입니다. 루미아 섬에서 18명의 플레이어가 생존을 위해 경쟁하며, 야생 동물을 사냥하고 재료를 수집하여 무기와 방어구를 제작하고, 다른 플레이어와 전투를 벌여 최종 생존자가 되는 것이 목표입니다. 애니메이션풍의 그래픽과 개성 넘치는 캐릭터, 전략적인 아이템 빌드와 전투가 특징이며, 최근에는 e스포츠 리그도 활발하게 개최되며 인기를 더해가고 있습니다.</p>
+        <p>이터널 리턴은 비교적 가벼운 캐주얼 게임으로 보이지만, 고프레임으로 부드럽게 플레이하고 싶다면 일정 수준 이상의 하드웨어 사양이 필요합니다. 특히 한타 싸움 등 복잡한 상황에서는 CPU와 GPU의 성능이 중요하며, 144Hz 이상의 고주사율 디스플레이는 적의 움직임을 더 빠르게 인지하고 반응하는 데 큰 도움이 됩니다. 오늘 소개해 드릴 노트북들은 이터널 리턴은 물론, 다양한 고사양 게임과 작업까지 커버할 수 있는 2026년 기준 최고의 선택지들입니다.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 이터널 리턴을 쾌적하게 즐길 수 있는 노트북 Top5에 대해 말씀드렸습니다. 각 제품의 특징과 장단점을 꼼꼼히 비교해 보시고, 여러분의 사용 목적과 예산에 가장 잘 맞는 노트북을 선택하시길 바랍니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
