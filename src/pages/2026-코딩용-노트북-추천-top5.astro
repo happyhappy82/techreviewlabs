@@ -1,0 +1,766 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-02-28T11:19:09.997Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [
+  {
+    "id": 1,
+    "name": "HP 2025 오멘 16 라이젠9 라이젠 8000 시리즈 지포스 RTX 4070",
+    "summary": "고성능 게이밍과 전문 작업 모두 커버하는 만능 노트북",
+    "keyPoint": "강력한 성능, 우수한 쿨링, ADP 케어",
+    "target": "고사양 개발, 게임, 영상 편집을 위한 올라운더",
+    "buyUrl": "https://link.coupang.com/a/dD7BJA",
+    "description": "압도적인 성능과 안정성을 자랑하는 HP OMEN 16은 코딩은 물론, 고사양 게임과 영상 편집까지 모든 것을 아우르는 강력한 노트북입니다. 특히 최신 라이젠 9 프로세서와 차세대 RTX 5060 그래픽카드가 탑재되어 어떤 작업이든 막힘없이 처리할 수 있습니다.\nMSI 크로스헤어 A17 HX는 최신 AMD 라이젠 9 9000 시리즈와 엔비디아 RTX 5070의 조합으로 압도적인 성능을 자랑합니다. 17인치의 넓은 화면은 몰입감을 극대화하며, 어떤 작업이든 쾌적하게 수행할 수 있도록 돕습니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 8940HX (16코어/32스레드, 최대 5.3GHz, 75W TDP)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB (16GBx2) DDR5 5600MHz"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe NVMe Gen 4 SSD (M.2)"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) IPS VRR, 240Hz, 500nits, sRGB 100%"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무게",
+        "value": "2.44kg"
+      },
+      {
+        "label": "배터리",
+        "value": "4cell 70Wh 리튬이온 폴리머 (고속충전 지원)"
+      },
+      {
+        "label": "네트워크",
+        "value": "Wi-Fi 6E (2x2) + Bluetooth 5.3"
+      },
+      {
+        "label": "카메라",
+        "value": "HP 트루비전 1080P FHD + 듀얼 어레이 마이크"
+      },
+      {
+        "label": "키보드",
+        "value": "4존 RGB 백라이트, 26키 롤오버, 안티 고스팅"
+      },
+      {
+        "label": "오디오",
+        "value": "DTS:X Ultra, 듀얼 스피커, HP Audio Boost, HyperX Audio"
+      },
+      {
+        "label": "주요 포트",
+        "value": "USB Type-C 10Gbps (PD, DP 1.4) 1개, USB Type-A 5Gbps 3개, HDMI 2.1, RJ-45, 오디오 콤보 잭"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 (9000 시리즈, Zen 5 아키텍처)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 (Blackwell 아키텍처)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "17인치 (43.1cm)"
+      },
+      {
+        "label": "운영체제",
+        "value": "WIN11 Home"
+      },
+      {
+        "label": "전원",
+        "value": "240W 어댑터"
+      },
+      {
+        "label": "색상",
+        "value": "그레이"
+      },
+      {
+        "label": "출시년월",
+        "value": "2025년 9월"
+      }
+    ],
+    "pros": [
+      "  Windows 11 Home이 기본 탑재되어 추가 비용 없이 바로 사용 가능합니다.",
+      "  최신 RTX 5060으로 차세대 게이밍과 GPU 가속 작업에 최적화된 성능을 제공합니다.",
+      "  240Hz 주사율과 VRR(가변 주사율) 지원으로 부드러운 화면을 제공하여 눈의 피로를 줄여줍니다.",
+      "  32GB 대용량 메모리로 여러 개발 툴과 가상 환경을 동시에 구동해도 쾌적합니다.",
+      "  HP ADP 서비스로 우발적인 파손까지 보장받을 수 있어 안심하고 사용할 수 있습니다.",
+      "  500nits 고휘도 디스플레이와 sRGB 100% 색재현율로 밝은 환경에서도 선명하고 정확한 색상을 표현합니다.",
+      "  1080P FHD 웹캠으로 화상회의 품질이 우수하여 비대면 협업에 유리합니다.",
+      "  라이젠 9 9000 시리즈와 RTX 5070 조합으로 최상위급 게이밍 및 전문 작업 성능을 제공합니다.",
+      "  17인치 대화면으로 코드 작성 시 넓은 시야를 확보하고, 멀티태스킹 작업 효율을 높일 수 있습니다.",
+      "  1TB NVMe SSD가 기본 탑재되어 대용량 개발 환경이나 게임 설치에 여유가 있습니다.",
+      "  Windows 11 Home이 기본 설치되어 별도의 OS 설치 없이 바로 사용 가능합니다.",
+      "  최신 Zen 5 아키텍처의 압도적인 멀티스레드 성능은 복잡한 컴파일이나 가상 환경 구동에 매우 유리합니다.",
+      "  RTX 5070의 최신 AI 및 그래픽 기능(DLSS 4, 레이 트레이싱 등)을 활용할 수 있습니다.",
+      "  MSI 크로스헤어 라인업의 프리미엄 빌드 품질로 견고함과 디자인을 모두 잡았습니다.",
+      "  240W 충분한 전력 공급으로 성능 저하 없는 안정적 구동이 가능합니다."
+    ],
+    "cons": [
+      "  2.44kg의 무게로 휴대성이 다소 부족합니다.",
+      "  높은 가격대로 형성되어 있습니다.",
+      "  70Wh 배터리로 사용 시간이 제한적일 수 있어 전원 연결이 필요할 때가 많습니다.",
+      "  고성능 모드에서 팬 소음이 다소 발생할 수 있습니다.",
+      "  높은 가격대로 예산이 충분한 사용자에게 적합합니다.",
+      "  17인치 대화면으로 휴대성이 다소 부족하며, 240W 충전기 또한 무게와 크기가 부담될 수 있습니다.",
+      "  신규 출시 제품으로 아직 실사용자 후기가 적어 구매 전 정보를 얻기 어려울 수 있습니다.",
+      "  기본 메모리가 16GB이므로 고사양 개발 작업 시 32GB 이상으로 업그레이드를 고려해야 할 수 있습니다."
+    ],
+    "recommendFor": [
+      "  고사양 게임 개발이나 딥러닝 학습 등 강력한 GPU 성능이 필요한 개발자",
+      "  4K 영상 편집, 3D 모델링 등 전문적인 크리에이티브 작업을 하는 분",
+      "  안정적인 성능과 우수한 쿨링 시스템을 중요하게 생각하는 분",
+      "  우발적 파손까지 보장하는 A/S 서비스를 선호하는 분",
+      "  최고의 성능을 요구하는 게임 개발자나 AI/머신러닝 엔지니어",
+      "  17인치 대화면으로 넓은 작업 공간을 선호하는 분",
+      "  최신 기술이 집약된 플래그십 노트북을 찾는 분",
+      "  넉넉한 예산으로 성능 타협 없는 노트북을 구매하려는 분"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "HP 2025 오멘 16 슬림 코어Ultra7 인텔 15세대 지포스 RTX 5070",
+    "summary": "휴대성과 강력한 성능을 동시에 잡은 인텔 기반 슬림 노트북",
+    "keyPoint": "슬림한 디자인, RTX 5070, AI NPU",
+    "target": "이동이 잦고 AI 개발에 관심 있는 개발자",
+    "buyUrl": "https://link.coupang.com/a/dzXQyP",
+    "description": "HP OMEN 16 슬림은 강력한 성능을 유지하면서도 휴대성을 크게 개선한 모델입니다. 인텔 코어 Ultra 7 2세대 프로세서와 RTX 5070의 조합으로 AI 작업과 고사양 게임, 코딩까지 거침없이 소화합니다. 슬림한 디자인은 이동이 잦은 개발자에게 큰 장점입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core Ultra 7 255H (2세대, 16코어 16스레드, 최대 5.1GHz, AI NPU 탑재)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5070 (Blackwell 아키텍처)"
+      },
+      {
+        "label": "RAM",
+        "value": "24GB DDR5-5600MT/s"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB PCIe Gen4 NVMe M.2 SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 WQXGA (2560x1600) IPS, 240Hz, 3ms, 500nit, sRGB 100%, 16:10 화면비"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 미포함)"
+      },
+      {
+        "label": "두께",
+        "value": "2.27cm"
+      },
+      {
+        "label": "무게",
+        "value": "2.42kg"
+      },
+      {
+        "label": "색상",
+        "value": "Shadow Black"
+      },
+      {
+        "label": "배터리",
+        "value": "70Wh (고속 충전 지원)"
+      },
+      {
+        "label": "쿨링",
+        "value": "OMEN Tempest Cooling (4면 통풍구, IR 써말 센서)"
+      },
+      {
+        "label": "오디오",
+        "value": "HyperX 튜닝 사운드 + DTS:X Ultra"
+      },
+      {
+        "label": "키보드",
+        "value": "4-Zone RGB 백라이트 키보드"
+      }
+    ],
+    "pros": [
+      "  슬림한 디자인(2.27cm)과 2.42kg의 무게로 고성능 노트북임에도 불구하고 휴대성이 우수합니다.",
+      "  RTX 5070으로 강력한 게이밍 성능은 물론, 딥러닝 등 GPU 가속이 필요한 코딩 작업에 매우 적합합니다.",
+      "  Intel Core Ultra 7 2세대 프로세서에 내장된 AI NPU를 활용하여 AI 관련 개발 및 작업에 유리합니다.",
+      "  240Hz 고주사율과 WQXGA 해상도의 디스플레이 조합은 코딩 시 높은 가독성과 부드러운 화면을 제공합니다.",
+      "  4면 통풍구와 IR 써멀 센서가 적용된 OMEN Tempest Cooling 시스템으로 효율적인 발열 관리가 가능합니다.",
+      "  HyperX 튜닝 사운드 시스템으로 작업 중에도 풍부한 오디오 경험을 제공합니다."
+    ],
+    "cons": [
+      "  Free DOS 모델로, Windows 운영체제를 별도로 구매하여 설치해야 합니다.",
+      "  200만원대 가격으로 예산 부담이 있을 수 있습니다.",
+      "  24GB RAM이 단일 채널 구성일 수 있어, 고사양 작업 시 듀얼 채널 32GB 이상으로 업그레이드를 고려하는 것이 좋습니다."
+    ],
+    "recommendFor": [
+      "  강력한 성능과 함께 슬림하고 휴대성 좋은 노트북을 원하는 개발자",
+      "  AI 관련 개발이나 딥러닝 학습에 관심 있는 분",
+      "  고사양 게임과 코딩 작업을 병행하는 분",
+      "  Windows 설치에 능숙하거나 직접 설치할 계획이 있는 분"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "델 2024 게이밍 G16 DG7630 코어i7 인텔 13세대 지포스 RTX 4060",
+    "summary": "안정적인 성능과 뛰어난 디스플레이로 몰입감을 더하는 게이밍/코딩 노트북",
+    "keyPoint": "QHD+ 240Hz G-SYNC 디스플레이, 고급 쿨링",
+    "target": "시각적 만족도를 중시하는 개발자, 준전문가",
+    "buyUrl": "https://link.coupang.com/a/dAdyAZ",
+    "description": "델 G16은 뛰어난 디스플레이 품질과 안정적인 성능을 자랑하는 게이밍 노트북입니다. 코딩 작업 시 넓고 정확한 색감을 제공하며, RTX 4060 그래픽카드로 다양한 개발 환경과 게임을 쾌적하게 구동할 수 있습니다. 델 특유의 견고함과 고급 쿨링 솔루션도 큰 장점입니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-13650HX (14코어/20스레드, P코어 4.9GHz/E코어 3.6GHz, 24MB 캐시)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 4060 8GB GDDR6 (TGP 140W: 115W + 25W Dynamic Boost)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe PCIe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "16인치 QHD+ (2560x1600) 16:10 240Hz 100% DCI-P3 G-SYNC"
+      },
+      {
+        "label": "운영체제",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "무선",
+        "value": "Intel WiFi 6 AX201"
+      },
+      {
+        "label": "무게/두께",
+        "value": "약 2.52kg / 25.6mm"
+      },
+      {
+        "label": "배터리",
+        "value": "86Wh"
+      },
+      {
+        "label": "색상",
+        "value": "메탈릭 나이트쉐이드"
+      },
+      {
+        "label": "쿨링",
+        "value": "Alienware 영감의 열 설계 (4개 히트파이프, Element 31, 베이퍼 체임버)"
+      }
+    ],
+    "pros": [
+      "  Windows 11 Home이 기본 탑재되어 있어 별도의 OS 설치 과정 없이 바로 사용할 수 있습니다.",
+      "  16:10 화면비율의 QHD+ 디스플레이는 코딩 시 더 많은 코드를 한눈에 볼 수 있게 해주어 생산성을 높여줍니다.",
+      "  100% DCI-P3 색재현율과 G-SYNC 지원으로 영상 편집, 그래픽 디자인 등 컬러 작업에도 매우 적합합니다.",
+      "  1TB 대용량 SSD가 기본 탑재되어 많은 개발 프로젝트와 데이터를 저장할 수 있습니다.",
+      "  Alienware에서 영감을 받은 고급 냉각 솔루션(4개 히트파이프, Element 31, 베이퍼 체임버)으로 장시간 고성능 작업 시에도 안정적인 온도를 유지합니다.",
+      "  Game Shift 키를 통해 터보부스트 모드를 즉시 활성화하여 필요할 때 최대 성능을 끌어낼 수 있습니다."
+    ],
+    "cons": [
+      "  약 2.52kg의 무게로 휴대성이 다소 제한적입니다.",
+      "  기본 16GB RAM은 일부 고사양 개발 작업이나 가상 환경 구동 시 부족하게 느껴질 수 있으므로, 업그레이드를 고려해볼 만합니다."
+    ],
+    "recommendFor": [
+      "  뛰어난 디스플레이 품질로 코딩과 멀티미디어 작업을 동시에 즐기고 싶은 개발자",
+      "  안정적인 성능과 효율적인 쿨링 시스템을 중요하게 생각하는 분",
+      "  Windows가 기본 탑재된 노트북을 선호하는 분",
+      "  델 특유의 견고한 빌드 퀄리티를 선호하는 분"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "레노버 2025 리전 5 15 코어i7 인텔 14세대 지포스 RTX 4060",
+    "summary": "압도적인 성능과 몰입감을 제공하는 대화면 괴물",
+    "keyPoint": "최신 CPU/GPU, 17인치 대화면, 프리미엄 빌드",
+    "target": "최고 성능을 추구하는 개발자, 게이머, 크리에이터",
+    "buyUrl": "https://link.coupang.com/a/dzXSYE",
+    "description": "레노버 리전 5는 압도적인 OLED 디스플레이와 강력한 인텔 14세대 프로세서, 그리고 RTX 5060 그래픽카드를 합리적인 가격에 제공하는 매력적인 노트북입니다. 특히 영상 편집, 그래픽 작업 등 시각적 요소가 중요한 코딩 작업에 최상의 환경을 제공합니다.\n",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Core i7-14700HX (20코어/28스레드, 최대 5.5GHz)"
+      },
+      {
+        "label": "GPU",
+        "value": "NVIDIA GeForce RTX 5060 8GB GDDR7 (TGP 115W)"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5"
+      },
+      {
+        "label": "저장장치",
+        "value": "1TB NVMe SSD"
+      },
+      {
+        "label": "디스플레이",
+        "value": "15.3인치 WQXGA (2560x1600) OLED, 165Hz, 500nits, 100% DCI-P3, DisplayHDR True Black 600, Dolby Vision"
+      },
+      {
+        "label": "운영체제",
+        "value": "Free DOS (윈도우 11 설치 권장)"
+      },
+      {
+        "label": "키보드",
+        "value": "Legion TrueStrike, 24-Zone RGB 백라이트, 1.5mm 키스트로크"
+      },
+      {
+        "label": "오디오",
+        "value": "Nahimic Audio, Dolby Atmos"
+      },
+      {
+        "label": "디자인",
+        "value": "Eclipse Black, NEW LEGION 디자인"
+      },
+      {
+        "label": "쿨링",
+        "value": "Cold Front Hyper"
+      },
+      {
+        "label": "AI",
+        "value": "Lenovo AI Engine+ (하드웨어 AI 칩 탑재)"
+      }
+    ],
+    "pros": [
+      "  OLED 패널이 탑재되어 압도적인 색감과 무한대 명암비를 자랑하며, 완벽한 블랙 표현으로 눈의 피로를 줄여줍니다.",
+      "  RTX 5060 115W TGP로 데스크탑급 그래픽 성능을 제공하여 고사양 게임 및 GPU 가속 코딩 작업에 매우 유리합니다.",
+      "  Intel i7-14700HX 20코어 프로세서는 복잡한 멀티태스킹과 빠른 컴파일 속도를 보장합니다.",
+      "  레노버 프리미엄 케어 및 ADP 파손 보험 서비스로 A/S 걱정 없이 사용할 수 있습니다.",
+      "  165Hz 고주사율과 Dolby Vision 지원으로 게이밍 및 영상 시청 모두 최적의 경험을 제공합니다.",
+      "  200만원 이하에서 OLED와 RTX 5060 조합을 만날 수 있는 뛰어난 가성비를 자랑합니다.",
+      "  Legion TrueStrike 24-Zone RGB 백라이트 키보드는 감성적인 만족감과 정확한 키감을 제공합니다.",
+      "  NEW LEGION 디자인은 슬림하고 세련되어 사무실에서도 부담 없이 사용할 수 있습니다.",
+      "  영상 편집 시 렌더링 속도가 매우 빠르다는 사용자 후기가 있습니다."
+    ],
+    "cons": [
+      "  Free DOS 모델로, Windows 운영체제를 별도로 구매하여 설치해야 합니다.",
+      "  OLED 디스플레이 특성상 장시간 정지 이미지 표시 시 번인(Burn-in) 우려가 있을 수 있습니다. (화면 보호기 사용 권장)",
+      "  배터리 사용 시간 및 정확한 무게 정보가 제공되지 않아 휴대성 예측이 어렵습니다. (유사 모델 기준 약 2kg 내외 추정)"
+    ],
+    "recommendFor": [
+      "  영상 편집, 그래픽 디자인, 웹 프론트엔드 개발 등 시각적 작업이 많은 개발자",
+      "  최상의 디스플레이 품질과 강력한 성능을 동시에 원하는 분",
+      "  프리미엄 A/S 서비스와 가성비를 중요하게 생각하는 분",
+      "  Windows 설치에 능숙하거나 직접 설치할 계획이 있는 분"
+    ]
+  }
+];
+const faqs = [
+  {
+    "q": "코딩용 노트북은 꼭 게이밍 노트북이어야 하나요?",
+    "a": "A. 반드시 게이밍 노트북일 필요는 없지만, 게이밍 노트북은 고성능 CPU와 GPU, 그리고 효율적인 쿨링 시스템을 갖추고 있어 복잡한 코딩 작업이나 가상 환경 구동에 매우 유리합니다. 특히 AI/딥러닝, 게임 개발, 3D 렌더링 등 GPU 가속이 필요한 분야에서는 게이밍 노트북의 성능이 큰 도움이 됩니다."
+  },
+  {
+    "q": "RAM은 16GB면 충분할까요?",
+    "a": "A. 간단한 웹 개발이나 스크립트 작성에는 16GB도 충분할 수 있습니다. 하지만 여러 IDE, 가상 머신, Docker 컨테이너, 다수의 브라우저 탭을 동시에 구동하거나 대규모 프로젝트를 진행할 경우 32GB 이상을 권장합니다. RAM은 업그레이드가 비교적 쉬운 부품이므로, 나중에 부족하다면 추가하는 방법도 있습니다."
+  },
+  {
+    "q": "Free DOS 제품은 어떻게 사용하나요?",
+    "a": "A. Free DOS는 운영체제가 설치되어 있지 않은 제품을 의미합니다. 이러한 제품을 구매할 경우, 사용자가 직접 Windows 11과 같은 운영체제를 구매하여 USB를 통해 설치해야 합니다. 드라이버는 제조사 공식 홈페이지에서 다운로드받거나, 레노버의 Lenovo Vantage와 같은 전용 소프트웨어를 통해 쉽게 설치할 수 있습니다."
+  },
+  {
+    "q": "휴대성과 성능 중 어떤 것을 우선해야 할까요?",
+    "a": "A. 이는 사용자의 주된 사용 환경에 따라 다릅니다. 노트북을 주로 한 곳에 두고 사용하고, 고성능 작업을 많이 한다면 성능을 우선하는 것이 좋습니다. 반면, 외부 미팅이 잦거나 카페 등에서 이동하며 작업하는 일이 많다면 슬림하고 가벼운 제품을 선택하는 것이 생산성 향상에 더 도움이 될 수 있습니다. 최근에는 HP OMEN 16 슬림처럼 휴대성과 성능을 모두 잡은 모델도 많이 출시되고 있습니다."
+  },
+  {
+    "q": "OLED 디스플레이는 번인 현상이 걱정되는데 괜찮을까요?",
+    "a": "A. OLED는 완벽한 블랙 표현과 뛰어난 색감으로 시각적 만족도가 매우 높습니다. 과거에는 번인 현상이 이슈였지만, 최근 기술 발전으로 내구성이 많이 향상되었습니다. 장시간 정지된 이미지를 표시하는 것을 피하고, 화면 보호기나 다크 모드를 적극 활용하며, 주기적으로 화면을 전환해주면 번인 걱정을 줄일 수 있습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "HP 2025 오멘 16 라이젠9",
+    "cpu": "AMD Ryzen 9 8940HX",
+    "gpu": "NVIDIA GeForce RTX 5060 8GB GDDR7",
+    "ram": "32GB DDR5 5600MHz",
+    "저장장치": "1TB PCIe NVMe Gen 4 SSD",
+    "디스플레이": "16인치 WQXGA IPS VRR 240Hz",
+    "os": "Windows 11 Home",
+    "무게": "2.44kg",
+    "배터리": "70Wh",
+    "특징": "32GB RAM, ADP 케어, 500nits"
+  },
+  {
+    "name": "MSI 2025 크로스헤어 A17 HX",
+    "cpu": "AMD Ryzen 9 9000 시리즈",
+    "gpu": "NVIDIA GeForce RTX 5070",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "17인치 (43.1cm)",
+    "os": "WIN11 Home",
+    "무게": "(정보 미제공, 17인치)",
+    "배터리": "(정보 미제공)",
+    "특징": "최신 CPU/GPU, 17인치 대화면"
+  },
+  {
+    "name": "HP 2025 오멘 16 슬림 코어Ultra7",
+    "cpu": "Intel Core Ultra 7 255H (2세대)",
+    "gpu": "NVIDIA GeForce RTX 5070",
+    "ram": "24GB DDR5-5600MT/s",
+    "저장장치": "1TB PCIe Gen4 NVMe M.2 SSD",
+    "디스플레이": "16인치 WQXGA IPS 240Hz",
+    "os": "Free DOS",
+    "무게": "2.42kg",
+    "배터리": "70Wh",
+    "특징": "슬림 디자인, AI NPU, RTX 5070"
+  },
+  {
+    "name": "델 2024 게이밍 G16 DG7630",
+    "cpu": "Intel Core i7-13650HX (13세대)",
+    "gpu": "NVIDIA GeForce RTX 4060 8GB GDDR6",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB NVMe PCIe SSD",
+    "디스플레이": "16인치 QHD+ 16:10 240Hz DCI-P3 G-SYNC",
+    "os": "Windows 11 Home",
+    "무게": "약 2.52kg",
+    "배터리": "86Wh",
+    "특징": "QHD+ 100% DCI-P3 G-SYNC, 고급 쿨링"
+  },
+  {
+    "name": "레노버 2025 리전 5 15",
+    "cpu": "Intel Core i7-14700HX (14세대)",
+    "gpu": "NVIDIA GeForce RTX 5060 8GB GDDR7",
+    "ram": "16GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "15.3인치 WQXGA OLED 165Hz DCI-P3",
+    "os": "Free DOS",
+    "무게": "(정보 미제공, 약 2kg 추정)",
+    "배터리": "(정보 미제공)",
+    "특징": "OLED 디스플레이, i7-14700HX 20코어, 프리미엄 케어"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "os",
+    "label": "OS"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "배터리",
+    "label": "배터리"
+  },
+  {
+    "key": "특징",
+    "label": "특징"
+  }
+];
+const selectionGuide = "";
+---
+
+<BaseLayout
+  title="2026 코딩용 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 '2026 코딩용 노트북 추천'에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 코딩용 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-02-28T10:30:00.000+00:00" class="text-gray-500">
+            2026-02-28 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 '2026 코딩용 노트북 추천'에 대해 말씀드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며 - 코딩용 노트북의 모든 것</h2>
+        <p>코딩용 노트북이라고 하면 어떤 점을 가장 중요하게 생각하시나요? 단순히 코드만 짜는 것을 넘어, 요즘 개발 환경은 훨씬 더 복잡하고 다양해졌습니다. 웹 개발, 앱 개발, 데이터 과학, 인공지능(AI), 게임 개발 등 분야별로 요구되는 성능도 천차만별이죠.</p>
+        <p>•   코딩용 노트북의 특징:</p>
+        <p>  •   CPU: 복잡한 연산, 컴파일, 가상 환경 구동에 필수적입니다. 멀티코어 성능이 좋은 프로세서가 유리하죠. 인텔 코어 i7/i9 또는 AMD 라이젠 7/9 급이 권장됩니다.</p>
+        <p>  •   RAM: 여러 IDE, 브라우저 탭, 가상 머신 등을 동시에 실행하려면 넉넉한 램이 필수입니다. 최소 16GB, 가능하다면 32GB 이상을 추천합니다.</p>
+        <p>  •   SSD: 빠른 부팅과 프로그램 로딩을 위해 NVMe SSD는 기본입니다. 512GB 이상, 여유가 된다면 1TB를 선택하는 것이 좋습니다.</p>
+        <p>  •   GPU: AI/머신러닝, 딥러닝, 게임 개발, 3D 렌더링 등 GPU 가속이 필요한 작업에서는 고성능 그래픽카드가 중요합니다. 엔비디아 RTX 시리즈가 대표적이죠.</p>
+        <p>  •   디스플레이: 장시간 코딩 작업에는 눈의 피로를 줄여주는 고해상도, 넓은 화면, 그리고 정확한 색 재현율의 디스플레이가 중요합니다.</p>
+        <p>  •   키보드: 편안하고 정확한 키감은 개발자의 생산성에 직결됩니다.</p>
+        <p>  •   쿨링 시스템: 고성능 작업을 장시간 할 때 안정적인 성능을 유지하기 위해 효과적인 쿨링은 필수입니다.</p>
+        <p>2026년은 AI 기술의 발전과 함께 개발 환경도 더욱 고도화될 것으로 예상됩니다. 단순히 코드를 작성하는 것을 넘어, AI 모델 학습, 대규모 데이터 처리, 복잡한 시뮬레이션 등 다양한 작업을 노트북 하나로 처리해야 하는 경우가 많아질 거예요. 따라서 강력한 CPU와 GPU, 그리고 넉넉한 RAM과 SSD는 이제 선택이 아닌 필수가 되고 있습니다. 또한, 휴대성과 배터리 성능도 중요한 고려 요소가 될 것입니다.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 '2026 코딩용 노트북 추천 Top5'에 대해 자세히 말씀드렸습니다. 각 제품마다 강력한 성능을 바탕으로 저마다의 특징과 매력을 가지고 있어 어떤 제품을 선택해야 할지 고민이 많으실 텐데요. 본인의 코딩 스타일, 주력 개발 분야, 그리고 노트북을 사용할 환경(휴대성, 디스플레이 품질 등)을 고려하여 가장 적합한 모델을 선택하시길 바랍니다.
+특히 2026년은 AI 기술의 발전이 가속화될 것으로 예상되는 만큼, AI NPU가 탑재된 인텔 코어 Ultra 프로세서나 강력한 RTX 50 시리즈 그래픽카드는 단순 코딩을 넘어 미래 지향적인 개발 환경을 구축하는 데 큰 도움이 될 것입니다.
+위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
