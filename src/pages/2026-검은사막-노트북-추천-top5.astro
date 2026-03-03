@@ -1,0 +1,378 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-03-03T09:54:50.422Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [];
+const faqs = [
+  {
+    "q": "검은사막은 어떤 사양의 노트북이 필요한가요?",
+    "a": "A. 검은사막은 그래픽이 뛰어나 고사양을 요구하는 게임입니다. 쾌적한 플레이를 위해서는 최소 RTX 3050 이상의 그래픽카드, 인텔 Core i5 13세대 또는 AMD Ryzen 7 200 시리즈 이상의 프로세서, 16GB 이상의 RAM, 그리고 NVMe SSD를 권장합니다. 144Hz 이상의 고주사율 디스플레이는 게임 몰입도를 높여줍니다."
+  },
+  {
+    "q": "Free DOS 제품은 어떻게 사용하나요?",
+    "a": "A. Free DOS 제품은 운영체제가 포함되어 있지 않은 노트북입니다. 노트북 구매 후 사용자가 직접 윈도우 운영체제를 구매하여 설치해야 합니다. 윈도우 설치 USB를 미리 준비하시거나, 주변의 도움을 받는 것이 좋습니다."
+  },
+  {
+    "q": "게이밍 노트북의 발열 관리가 중요한가요?",
+    "a": "A. 네, 매우 중요합니다. 고사양 게임을 장시간 플레이할 경우 노트북 내부 온도가 크게 상승하여 성능 저하나 수명 단축의 원인이 될 수 있습니다. 효율적인 쿨링 시스템을 갖춘 노트북을 선택하거나, 외부 쿨링 패드를 함께 사용하는 것을 추천합니다."
+  },
+  {
+    "q": "DLSS, Ray Tracing 같은 기술은 무엇인가요?",
+    "a": "A. DLSS(Deep Learning Super Sampling)는 AI 기반으로 게임 해상도를 업스케일링하여 프레임을 향상시키는 엔비디아의 기술입니다. Ray Tracing(레이 트레이싱)은 빛의 물리적 경로를 시뮬레이션하여 더욱 사실적인 그림자, 반사, 조명 효과를 구현하는 기술입니다. 이 기술들을 지원하는 그래픽카드를 사용하면 게임의 시각적 품질을 크게 향상시킬 수 있습니다."
+  },
+  {
+    "q": "휴대성과 성능 중 어떤 것을 우선해야 할까요?",
+    "a": "A. 이는 개인의 사용 목적에 따라 달라집니다. 주로 집이나 한 장소에서만 게임을 한다면 쿨링 성능이 좋고 대화면인 고성능 노트북이 유리합니다. 반면, 노트북을 자주 들고 다니며 이동 중에도 게임이나 작업을 해야 한다면 휴대성이 좋은 경량 노트북을 선택하는 것이 좋습니다. 최근에는 휴대성과 성능을 모두 갖춘 제품들도 많이 출시되고 있습니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "HP 2025 빅터스 15",
+    "프로세서": "Intel Core i5-13420H",
+    "그래픽카드": "RTX 3050 6GB",
+    "메모리": "32GB DDR4",
+    "저장장치": "2TB NVMe SSD",
+    "디스플레이": "15.6인치 FHD 144Hz IPS",
+    "무게": "2.29kg",
+    "운영체제": "Free DOS",
+    "ai_npu": "-"
+  },
+  {
+    "name": "에이서 2025 니트로 V 16S",
+    "프로세서": "AMD Ryzen 7 260",
+    "그래픽카드": "RTX 5050",
+    "메모리": "16GB DDR5",
+    "저장장치": "512GB NVMe SSD",
+    "디스플레이": "16인치 WUXGA 180Hz IPS",
+    "무게": "2.1kg",
+    "운영체제": "Free DOS",
+    "ai_npu": "16 TOPS"
+  },
+  {
+    "name": "에이수스 2025 ROG 제피러스 G14",
+    "프로세서": "AMD Ryzen 9 270",
+    "그래픽카드": "RTX 5060",
+    "메모리": "32GB LPDDR5X",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "14인치 3K OLED 120Hz",
+    "무게": "1.50kg",
+    "운영체제": "Windows 11 Home",
+    "ai_npu": "-"
+  },
+  {
+    "name": "에이수스 2025 게이밍 V16",
+    "프로세서": "Intel Core 5",
+    "그래픽카드": "RTX 5050",
+    "메모리": "16GB DDR5",
+    "저장장치": "512GB NVMe SSD",
+    "디스플레이": "16인치 FHD+ 144Hz IPS",
+    "무게": "1.95kg",
+    "운영체제": "Free DOS",
+    "ai_npu": "-"
+  },
+  {
+    "name": "HP 2025 오멘 16",
+    "프로세서": "AMD Ryzen AI 7 350",
+    "그래픽카드": "RTX 5060 8GB GDDR7",
+    "메모리": "32GB DDR5",
+    "저장장치": "512GB NVMe SSD",
+    "디스플레이": "16인치 WQXGA 240Hz IPS",
+    "무게": "2.45kg",
+    "운영체제": "Free DOS",
+    "ai_npu": "Ryzen AI NPU"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "프로세서",
+    "label": "프로세서"
+  },
+  {
+    "key": "그래픽카드",
+    "label": "그래픽카드"
+  },
+  {
+    "key": "메모리",
+    "label": "메모리"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  },
+  {
+    "key": "운영체제",
+    "label": "운영체제"
+  },
+  {
+    "key": "ai_npu",
+    "label": "AI NPU"
+  }
+];
+const selectionGuide = "검은사막을 플레이하기 위한 노트북을 선택할 때는 몇 가지 중요한 기준을 고려해야 합니다.\n• 그래픽카드 (GPU): 검은사막은 그래픽이 중요한 게임이므로, 최소 RTX 3050 이상, 가능하다면 RTX 4060 또는 RTX 5050/5060급의 GPU를 선택하는 것이 좋습니다. 최신 RTX 50시리즈는 DLSS 4와 같은 기술로 더 향상된 프레임을 기대할 수 있습니다.\n• 프로세서 (CPU): 게임의 전반적인 성능과 대규모 전투 시 프레임 유지에 중요한 역할을 합니다. 인텔 Core i5-13세대 이상 또는 AMD Ryzen 7 200 시리즈 이상의 프로세서가 적합합니다.\n• 디스플레이: 144Hz 이상의 고주사율 디스플레이는 부드러운 게임 화면을 제공하여 몰입감을 높여줍니다. FHD+ (1920x1200) 또는 QHD+ (2560x1600) 해상도를 고려해 보세요.\n• 운영체제: Free DOS 제품은 가격이 저렴하지만 윈도우를 별도로 설치해야 합니다. 윈도우가 기본 포함된 제품은 편리하지만 가격이 다소 높습니다.\n각자의 예산과 주로 사용하는 용도, 그리고 휴대성 선호도에 따라 최적의 선택은 달라질 수 있습니다.";
+---
+
+<BaseLayout
+  title="2026 검은사막 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026년 검은사막을 위한 최고의 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 검은사막 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-03-03T16:40:00.000+09:00" class="text-gray-500">
+            2026-03-03 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 2026년 검은사막을 위한 최고의 노트북 추천에 대해 말씀드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며</h2>
+        <p>검은사막은 펄어비스에서 개발한 대표적인 MMORPG 게임입니다. 출시 이후 꾸준히 사랑받으며 뛰어난 그래픽과 논타겟팅 액션 전투 시스템으로 많은 게이머들의 마음을 사로잡았죠. 방대한 오픈월드에서 즐길 수 있는 탐험, 무역, 다양한 생활 콘텐츠는 물론, 끊임없이 펼쳐지는 역동적인 전투는 검은사막만의 독보적인 매력입니다.</p>
+        <p>하지만 이런 멋진 그래픽과 액션을 제대로 경험하려면 그만큼 탄탄한 사양의 노트북이 필수인데요. 특히 최고 옵션이나 대규모 전투 시에는 CPU, GPU, 그리고 넉넉한 RAM이 뒷받침되어야 쾌적한 플레이가 가능합니다. 부드러운 움직임과 몰입감 넘치는 경험을 위해서는 고주사율 디스플레이도 중요한 요소죠.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026년 검은사막을 위한 노트북 추천 Top5를 살펴보았습니다. 각 제품마다 강점과 특징이 뚜렷하기 때문에, 여러분의 플레이 스타일과 예산, 그리고 노트북 사용 목적에 맞춰 현명한 선택을 하시길 바랍니다. 위에 소개해 드린 내용들이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
