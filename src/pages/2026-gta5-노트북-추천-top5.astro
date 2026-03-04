@@ -1,0 +1,370 @@
+---
+/**
+ * Auto-generated from Notion
+ * Generated at: 2026-03-04T05:03:53.846Z
+ * Do not edit manually
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const products = [];
+const faqs = [
+  {
+    "q": "GTA5를 쾌적하게 플레이하려면 어느 정도 스펙이 필요한가요?",
+    "a": "A. GTA5는 출시된 지 오래되었지만, 고해상도, 높은 그래픽 옵션, 그리고 GTA 온라인의 복잡성을 고려하면 최소한 RTX 3050 또는 RTX 4050급 GPU와 16GB RAM, 그리고 인텔 코어 i5 12세대 이상 또는 AMD 라이젠 5 6000 시리즈 이상 CPU를 추천합니다. 더 높은 프레임과 미래의 게임까지 고려한다면 RTX 4060 이상을 선택하는 것이 좋습니다."
+  },
+  {
+    "q": "게이밍 노트북을 구매할 때 디스플레이 주사율이 중요한가요?",
+    "a": "A. 네, 중요합니다. 주사율은 1초에 화면이 몇 번 깜빡이는지를 나타내는 수치로, 높을수록 화면이 부드럽게 느껴집니다. GTA5와 같은 액션 게임에서는 120Hz 이상의 주사율을 가진 디스플레이가 훨씬 더 몰입감 있고 부드러운 게임 경험을 제공합니다."
+  },
+  {
+    "q": "게이밍 노트북은 발열 관리가 중요한가요?",
+    "a": "A. 매우 중요합니다. 게임을 할 때는 CPU와 GPU가 최고 성능으로 작동하기 때문에 많은 열이 발생합니다. 효과적인 쿨링 시스템이 갖춰지지 않으면 성능 저하(쓰로틀링)가 발생하여 게임 플레이에 지장을 줄 수 있습니다. 따라서 쿨링 시스템이 잘 설계된 제품을 선택하는 것이 좋습니다."
+  },
+  {
+    "q": "Free DOS 노트북은 어떻게 사용하나요?",
+    "a": "A. Free DOS는 운영체제가 설치되지 않은 상태로 출고되는 노트북을 의미합니다. 윈도우를 사용하기 위해서는 별도로 윈도우 운영체제를 구매하여 직접 설치해야 합니다. 보통 USB를 이용해 설치하며, 인터넷 검색을 통해 자세한 설치 방법을 쉽게 찾을 수 있습니다."
+  },
+  {
+    "q": "게이밍 노트북의 RAM은 어느 정도가 적당한가요?",
+    "a": "A. GTA5를 포함한 대부분의 최신 게임은 16GB RAM을 권장합니다. 멀티태스킹이나 스트리밍, 또는 다른 고사양 작업을 병행한다면 32GB RAM이 더욱 쾌적한 환경을 제공합니다. 8GB RAM은 최소 사양이지만, 원활한 게임 플레이를 위해서는 16GB로 업그레이드하는 것을 추천합니다."
+  }
+];
+const comparisonData = [
+  {
+    "name": "1위",
+    "제품명": "MSI 2024 Thin A15",
+    "cpu": "AMD Ryzen 5 7535HS",
+    "gpu": "RTX 3050 4GB",
+    "ram": "8GB DDR5",
+    "저장장치": "512GB NVMe SSD",
+    "디스플레이": "15.6인치 FHD 144Hz",
+    "무게": "1.86kg"
+  },
+  {
+    "name": "2위",
+    "제품명": "기가바이트 2025 게이밍 A16",
+    "cpu": "Intel Core i5-13420H",
+    "gpu": "RTX 4050 6GB",
+    "ram": "16GB DDR5",
+    "저장장치": "512GB PCIe Gen4 SSD",
+    "디스플레이": "16인치 WUXGA 165Hz",
+    "무게": "2.2kg"
+  },
+  {
+    "name": "3위",
+    "제품명": "델 2025 에일리언웨어 오로라 16",
+    "cpu": "Intel Core 7 240H",
+    "gpu": "RTX 5070 12GB",
+    "ram": "32GB DDR5",
+    "저장장치": "1TB NVMe SSD",
+    "디스플레이": "16인치 WQXGA 120Hz",
+    "무게": "2.7kg"
+  },
+  {
+    "name": "4위",
+    "제품명": "HP 2025 오멘 16 슬림",
+    "cpu": "Intel Core Ultra 7 255H",
+    "gpu": "RTX 5070",
+    "ram": "24GB DDR5",
+    "저장장치": "1TB PCIe Gen4 SSD",
+    "디스플레이": "16인치 WQXGA 240Hz",
+    "무게": "2.42kg"
+  },
+  {
+    "name": "5위",
+    "제품명": "델 2023 에일리언웨어 X16",
+    "cpu": "Intel Core i7-13700H",
+    "gpu": "RTX 4060 8GB",
+    "ram": "16GB LPDDR5",
+    "저장장치": "1TB PCIe NVMe SSD",
+    "디스플레이": "16인치 QHD+ 165Hz",
+    "무게": "2.57~2.72kg"
+  }
+];
+const comparisonSpecs = [
+  {
+    "key": "제품명",
+    "label": "제품명"
+  },
+  {
+    "key": "cpu",
+    "label": "CPU"
+  },
+  {
+    "key": "gpu",
+    "label": "GPU"
+  },
+  {
+    "key": "ram",
+    "label": "RAM"
+  },
+  {
+    "key": "저장장치",
+    "label": "저장장치"
+  },
+  {
+    "key": "디스플레이",
+    "label": "디스플레이"
+  },
+  {
+    "key": "무게",
+    "label": "무게"
+  }
+];
+const selectionGuide = "GTA5와 같은 오픈월드 게임은 CPU와 GPU 성능 모두 중요합니다. 특히 GTA 온라인처럼 여러 플레이어가 한 화면에 모이는 상황에서는 CPU 성능이 뒷받침되어야 끊김 없는 플레이가 가능합니다. 또한, 고해상도와 높은 그래픽 옵션으로 즐기려면 강력한 GPU가 필수적이죠.\n• 예산이 가장 중요하다면: MSI Thin A15는 100만원 이하에서 GTA5를 즐길 수 있는 가장 합리적인 선택입니다. FHD 해상도에서 중간 정도의 옵션으로 쾌적하게 플레이할 수 있습니다.\n• 가성비와 성능의 균형을 원한다면: 기가바이트 게이밍 A16은 RTX 4050을 탑재하여 GTA5를 높은 옵션으로도 충분히 즐길 수 있으며, 16:10 화면비와 대용량 배터리로 활용성도 뛰어납니다.\n• 최고의 게이밍 경험을 원한다면: 델 에일리언웨어 오로라 16이나 HP 오멘 16 슬림은 RTX 5070이라는 최신 하이엔드 GPU를 탑재하여 QHD+ 해상도와 고주사율 환경에서 GTA5를 포함한 모든 AAA 게임을 최고 옵션으로 즐길 수 있습니다. 특히 HP 오멘 16 슬림은 휴대성까지 겸비하여 이동이 잦은 게이머에게 이상적입니다.\n• 프리미엄 디자인과 안정성을 추구한다면: 델 에일리언웨어 X16은 독보적인 디자인, 뛰어난 쿨링, 그리고 Windows 11 Pro 기본 탑재로 안정적인 환경을 제공합니다. 다만, GPU 스펙과 가격을 고려하여 신중하게 선택해야 합니다.\n여러분의 예산과 사용 목적, 선호하는 디자인 등을 종합적으로 고려하여 최적의 GTA5 노트북을 선택하시길 바랍니다.";
+---
+
+<BaseLayout
+  title="2026 GTA5 노트북 추천 Top5"
+  description="안녕하세요. 오늘은 2026 GTA5 노트북 추천에 대해 말씀드릴게요."
+>
+  <Header />
+
+  <main>
+    <article>
+      <!-- 헤더 섹션 -->
+      <div class="mb-8 pb-6 border-b border-ns-border">
+        <h1 class="text-ns-title text-ns-text mb-4">
+          2026 GTA5 노트북 추천 Top5
+        </h1>
+        <div class="flex items-center gap-4 text-[13px] text-gray-500 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-ns-bg flex items-center justify-center">
+              <span class="text-[10px] font-bold">TRL</span>
+            </div>
+            <span class="font-medium text-ns-text">TechReviewLabs</span>
+          </div>
+          <time datetime="2026-03-04T12:40:00.000+09:00" class="text-gray-500">
+            2026-03-04 업데이트
+          </time>
+        </div>
+        <!-- 쿠팡파트너스 알림 -->
+        <div class="affiliate-notice text-[13px] text-gray-600 bg-gray-50 px-4 py-2 rounded-md border border-gray-200">
+          이 포스팅은 쿠팡파트너스 일환으로 수수료를 지급받습니다.
+        </div>
+      </div>
+
+      <!-- 요약 박스 (excerpt) -->
+      <div class="ns-card mb-8 bg-ns-bg">
+        <p class="text-[14px] text-ns-text leading-relaxed">
+          안녕하세요. 오늘은 2026 GTA5 노트북 추천에 대해 말씀드릴게요.
+        </p>
+      </div>
+
+      {products.length > 0 && (
+      <section class="section summary-section">
+        <h2>핵심만 콕!</h2>
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>제품명</th>
+                <th>핵심 장점</th>
+                <th>한 줄 평</th>
+                <th>추천 대상</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="product-name-cell">{p.name}</td>
+                  <td>{p.keyPoint || '-'}</td>
+                  <td>{p.summary || '-'}</td>
+                  <td>{p.target || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section topic-intro">
+        <h2>들어가며</h2>
+        <p>Grand Theft Auto V, 흔히 GTA5라고 불리는 이 게임은 락스타 게임즈가 개발한 전설적인 오픈월드 액션 어드벤처 게임입니다. 2013년에 처음 출시되었음에도 불구하고, 그 방대한 스케일과 자유도, 그리고 끊임없이 업데이트되는 온라인 모드 'GTA 온라인' 덕분에 여전히 전 세계 수많은 게이머들에게 사랑받고 있는 작품이죠.</p>
+        <p>이 게임은 가상의 도시 로스 산토스와 블레인 카운티를 배경으로 세 명의 주인공 마이클, 프랭클린, 트레버의 이야기가 얽히는 깊이 있는 싱글 플레이 캠페인을 제공합니다. 여기에 다양한 차량과 무기, 미션, 그리고 끝없는 부가 활동들이 더해져 플레이어는 자신만의 방식으로 가상 세계를 탐험할 수 있습니다. 특히 GTA 온라인은 친구들과 함께 은행을 털거나, 레이스를 즐기거나, 자신만의 사업을 운영하는 등 무궁무진한 재미를 선사하며 꾸준히 새로운 콘텐츠를 선보이고 있습니다.</p>
+        <p>GTA5는 출시된 지 오래되었지만, 여전히 PC 게이밍 성능의 중요한 척도 중 하나로 여겨집니다. 고해상도에서 높은 프레임률로 게임을 즐기거나, 수많은 유저들이 한 공간에 모이는 온라인 세션, 혹은 그래픽 모드를 적용할 경우 강력한 CPU와 충분한 RAM, 그리고 뛰어난 GPU 성능이 필수적입니다. 또한, 차기작인 GTA 6에 대한 기대감이 높아지는 만큼, 지금 좋은 성능의 노트북을 구매하는 것은 앞으로 출시될 고사양 게임들을 대비하는 현명한 선택이 될 수 있습니다.</p>
+      </section>
+
+      {products.length > 0 && (
+      <section class="section">
+        <h2>상세 리뷰</h2>
+        {products.map((product, index) => (
+          <div class="product-review" id={`product-${product.id}`}>
+            <h3 class="product-title">
+              <span class="rank-num">{index + 1}.</span>
+              {product.name}
+            </h3>
+            {product.description && <p class="product-desc">{product.description}</p>}
+            <div class="product-content">
+              {product.buyUrl && (
+              <div class="product-cta">
+                <a href={product.buyUrl} class="buy-link" target="_blank" rel="sponsored nofollow">
+                  <span class="coupang-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </span>
+                  최저가 보러가기
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+              )}
+              <div class="product-details">
+                {product.specs.length > 0 && (
+                <div class="spec-block">
+                  <h4>주요 스펙</h4>
+                  <ul class="spec-list">
+                    {product.specs.map(spec => (
+                      <li><strong>{spec.label}:</strong> {spec.value}</li>
+                    ))}
+                  </ul>
+                </div>
+                )}
+                {product.pros.length > 0 && (
+                <div class="pros-block">
+                  <h4>장점</h4>
+                  <ul>
+                    {product.pros.map(pro => <li>{pro}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.cons.length > 0 && (
+                <div class="cons-block">
+                  <h4>단점</h4>
+                  <ul>
+                    {product.cons.map(con => <li>{con}</li>)}
+                  </ul>
+                </div>
+                )}
+                {product.recommendFor.length > 0 && (
+                  <div class="recommend-block">
+                    <h4>이런 분께 추천합니다</h4>
+                    <ul>
+                      {product.recommendFor.map(r => <li>{r}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+      )}
+
+      {selectionGuide && (
+        <section class="section selection-guide">
+          <h2>어떤 제품을 선택해야 할까요?</h2>
+          {selectionGuide.split('\n').filter(p => p.trim()).map(p => (
+            p.startsWith('•') || p.startsWith('-')
+              ? <p class="guide-item">{p.replace(/^[•-]s*/, '')}</p>
+              : <p>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {comparisonData.length > 0 && (
+      <section class="section">
+        <h2>제품 비교표</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                {comparisonData.map(p => <th>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSpecs.map(spec => (
+                <tr>
+                  <th>{spec.label}</th>
+                  {comparisonData.map(p => <td>{p[spec.key] || '-'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      )}
+
+      <section class="section closing">
+        <h2>마무리</h2>
+        <p>오늘은 2026 GTA5 노트북 추천에 대해 말씀드렸습니다. 오늘 소개해 드린 5가지 노트북은 각기 다른 매력과 강점을 가지고 있어 여러분의 예산과 필요에 맞춰 현명한 선택을 할 수 있도록 도와드릴 것입니다. 고성능 게이밍을 위한 에일리언웨어와 오멘, 그리고 합리적인 가성비를 자랑하는 MSI와 기가바이트까지, 다양한 선택지가 있으니 꼼꼼히 비교해 보시고 여러분의 게이밍 라이프를 한 단계 업그레이드할 최고의 파트너를 찾으시길 바랍니다. 위 글 내용이 여러분들께 조금이라도 도움이 되길 바랍니다.</p>
+      </section>
+
+      {faqs.length > 0 && (
+        <section class="section faq-section">
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            {faqs.map(faq => (
+              <details class="faq-item">
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .article-header { padding: 3rem 0 2rem; border-bottom: 2px solid #1A1A1A; margin-bottom: 2rem; }
+  .article-header h1 { font-size: 38px; font-weight: 800; color: #1A1A1A; margin: 0 0 16px; }
+  .intro-text { font-size: 19px; line-height: 1.8; color: #333; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+  .section h2 { font-size: 29px; font-weight: 800; color: #1A1A1A; margin: 0 0 20px; }
+  .section p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+  .table-wrapper { overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+  .summary-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 17px; }
+  .summary-table th, .summary-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+  .summary-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .summary-table tbody tr:hover { background: #f9f9f9; }
+  .product-name-cell { font-weight: 600; color: #1A1A1A; min-width: 180px; }
+  .topic-intro p { text-indent: 1em; }
+  .affiliate-notice { margin-top: 24px; padding: 12px 16px; background: #FEF3C7; border-radius: 6px; font-size: 17px; color: #92400E; }
+  .product-review { padding: 2rem 0; border-bottom: 1px solid #eee; }
+  .product-review:last-child { border-bottom: none; }
+  .product-title { font-size: 26px; font-weight: 700; color: #1A1A1A; margin: 0 0 12px; }
+  .rank-num { color: #256FFF; }
+  .product-desc { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+  .product-content { display: block; }
+  .product-cta { margin: 20px 0 24px; }
+  .buy-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: linear-gradient(135deg, #FF455B 0%, #E63E50 100%); color: #fff; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(255, 69, 91, 0.35); transition: all 0.2s ease; }
+  .buy-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 69, 91, 0.45); }
+  .coupang-icon { display: flex; align-items: center; }
+  .buy-link .arrow { transition: transform 0.2s; }
+  .buy-link:hover .arrow { transform: translateX(4px); }
+  .product-details h4 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .spec-block, .pros-block, .cons-block, .recommend-block { margin-bottom: 20px; }
+  .spec-list { margin: 0; padding: 0; list-style: none; }
+  .spec-list li { font-size: 16px; line-height: 1.6; color: #444; padding: 4px 0; }
+  .spec-list li strong { color: #1A1A1A; }
+  .pros-block ul, .cons-block ul, .recommend-block ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.7; }
+  .pros-block ul li { color: #166534; }
+  .cons-block ul li { color: #991B1B; }
+  .recommend-block ul li { color: #1E40AF; }
+  .comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; text-align: center; border: 1px solid #ddd; vertical-align: top; }
+  .comparison-table thead th { background: #1A1A1A; color: #fff; font-weight: 600; }
+  .comparison-table tbody th { background: #f5f5f5; font-weight: 600; text-align: left; padding-left: 12px; }
+  .closing p { font-size: 19px; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .faq-item summary { padding: 16px 20px; font-size: 18px; font-weight: 600; color: #1A1A1A; cursor: pointer; background: #fff; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "▶ "; font-size: 12px; color: #666; }
+  .faq-item[open] summary::before { content: "▼ "; }
+  .faq-item p { padding: 16px 20px; margin: 0; font-size: 17px; line-height: 1.8; color: #555; background: #fafafa; border-top: 1px solid #eee; }
+  .selection-guide p { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+  .selection-guide .guide-item { padding-left: 20px; position: relative; }
+  .selection-guide .guide-item::before { content: "•"; position: absolute; left: 0; color: #256FFF; font-weight: bold; }
+  @media (max-width: 768px) {
+    .article-header h1 { font-size: 31px; }
+    .buy-link { width: 100%; justify-content: center; }
+  }
+</style>
