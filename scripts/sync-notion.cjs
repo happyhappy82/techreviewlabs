@@ -384,7 +384,29 @@ async function scheduledSync() {
         newPublishedSlugs.push(publishedSlug);
       }
     } else {
-      console.log(`\nℹ️  Already published: ${slug} (skipping)`);
+      // 기존 .astro 리치 페이지 → .md로 변환
+      console.log(`\n🔄 Converting rich page to .md: ${slug}`);
+      const richPagesPath2 = path.join(process.cwd(), 'src/data/rich-pages.json');
+      if (fs.existsSync(richPagesPath2)) {
+        try {
+          const richPages = JSON.parse(fs.readFileSync(richPagesPath2, 'utf-8'));
+          const existingRich = richPages.find(p => p.notionPageId === pageId);
+          if (existingRich) {
+            const astroPath = path.join(process.cwd(), 'src/pages', `${existingRich.slug}.astro`);
+            if (fs.existsSync(astroPath)) {
+              fs.unlinkSync(astroPath);
+              console.log(`  🗑️  Removed old rich page: ${existingRich.slug}.astro`);
+            }
+            const updated = richPages.filter(p => p.notionPageId !== pageId);
+            fs.writeFileSync(richPagesPath2, JSON.stringify(updated, null, 2), 'utf-8');
+            console.log(`  🗑️  Removed from rich-pages.json: ${existingRich.slug}`);
+          }
+        } catch (e) { /* ignore */ }
+      }
+      const publishedSlug = await processPage(pageId, true);
+      if (publishedSlug) {
+        newPublishedSlugs.push(publishedSlug);
+      }
     }
   }
 
