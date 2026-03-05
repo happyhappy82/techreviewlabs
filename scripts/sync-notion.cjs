@@ -209,19 +209,6 @@ async function processPage(pageId, isNew = false) {
   console.log(`\n📝 Processing: ${props.title} (${slug})`);
   console.log(`   Status: ${props.status}, Date: ${props.date}`);
 
-  // 모든 글을 리치 UI Astro 페이지로 생성
-  console.log(`   🎨 Generating Rich UI page...`);
-  try {
-    const richSlug = await generateRichPage(pageId);
-    if (richSlug) {
-      console.log(`   ✅ Rich page generated: ${richSlug}.astro`);
-      return richSlug;
-    }
-  } catch (error) {
-    console.error(`   ❌ Failed to generate rich page: ${error.message}`);
-  }
-  return null;
-
   // Check if file exists with different slug (title changed)
   const existingFile = findExistingFileByPageId(pageId);
   if (existingFile.exists && existingFile.slug !== slug) {
@@ -494,9 +481,8 @@ async function webhookSync() {
     }
 
     if (isExisting) {
-      console.log(`\n✏️  Updating existing review: ${slug}`);
-      await processPage(pageId, false);
-      return true;
+      console.log(`\nℹ️  Existing rich page: ${slug} (skipping, managed as .astro)`);
+      return false;
     } else {
       console.log(`\n✨ Publishing new review: ${slug}`);
       const publishedSlug = await processPage(pageId, true);
