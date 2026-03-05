@@ -476,21 +476,6 @@ async function webhookSync() {
 
   // Handle publish/update
   if (status === 'Published') {
-    // rich-pages.json에 존재하는 기존 리치 페이지는 스킵
-    let isRichPage = false;
-    const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
-    if (fs.existsSync(richPagesPath)) {
-      try {
-        const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
-        isRichPage = richPages.some(p => p.notionPageId === pageId);
-      } catch (e) { /* ignore */ }
-    }
-
-    if (isRichPage) {
-      console.log(`\nℹ️  Existing rich page: ${slug} (skipping, managed as .astro)`);
-      return false;
-    }
-
     // .md 파일 존재 여부로 신규/업데이트 구분
     const existingMd = findExistingFileByPageId(pageId);
     if (existingMd.exists) {
