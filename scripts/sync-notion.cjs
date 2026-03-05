@@ -307,38 +307,51 @@ async function scheduledSync() {
   const databaseId = process.env.NOTION_DATABASE_ID;
   const now = new Date().toISOString();
 
-  // Query: status = "Published" AND date < now
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
+  // Query: status = "Published" AND date < now (페이지네이션 처리)
+  let allPages = [];
+  let startCursor = undefined;
+
+  do {
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
           },
-        },
+          {
+            property: 'Date',
+            date: {
+              before: now,
+            },
+          },
+        ],
+      },
+      sorts: [
         {
           property: 'Date',
-          date: {
-            before: now,
-          },
+          direction: 'descending',
         },
       ],
-    },
-    sorts: [
-      {
-        property: 'Date',
-        direction: 'descending',
-      },
-    ],
-  });
+      start_cursor: startCursor,
+    });
 
-  console.log(`📚 Found ${response.results.length} published reviews (date < now)`);
+    allPages = allPages.concat(response.results);
+    startCursor = response.has_more ? response.next_cursor : undefined;
+
+    if (response.has_more) {
+      console.log(`📄 Fetched ${allPages.length} pages so far, loading more...`);
+    }
+  } while (startCursor);
+
+  console.log(`📚 Found ${allPages.length} published reviews (date < now)`);
 
   let newPublishedSlugs = [];
 
-  for (const page of response.results) {
+  for (const page of allPages) {
     const pageId = page.id;
     const props = await getPageProperties(pageId);
 
@@ -463,26 +476,27 @@ async function webhookSync() {
 
   // Handle publish/update
   if (status === 'Published') {
-    // 이미 .md 파일로 존재하는 글은 리치 페이지로 재생성하지 않음
-    const existingMd = findExistingFileByPageId(pageId);
-    if (existingMd.exists) {
-      console.log(`\nℹ️  Already exists as .md: ${existingMd.fileName} (skipping rich page generation)`);
-      return false;
-    }
-
-    // rich-pages.json에서 동일 pageId 확인 (.astro 페이지 기준)
-    let isExisting = false;
+    // rich-pages.json에 존재하는 기존 리치 페이지는 스킵
+    let isRichPage = false;
     const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
     if (fs.existsSync(richPagesPath)) {
       try {
         const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
-        isExisting = richPages.some(p => p.notionPageId === pageId);
+        isRichPage = richPages.some(p => p.notionPageId === pageId);
       } catch (e) { /* ignore */ }
     }
 
-    if (isExisting) {
+    if (isRichPage) {
       console.log(`\nℹ️  Existing rich page: ${slug} (skipping, managed as .astro)`);
       return false;
+    }
+
+    // .md 파일 존재 여부로 신규/업데이트 구분
+    const existingMd = findExistingFileByPageId(pageId);
+    if (existingMd.exists) {
+      console.log(`\n✏️  Updating existing review: ${existingMd.fileName}`);
+      await processPage(pageId, false);
+      return true;
     } else {
       console.log(`\n✨ Publishing new review: ${slug}`);
       const publishedSlug = await processPage(pageId, true);
