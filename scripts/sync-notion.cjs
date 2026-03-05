@@ -476,6 +476,25 @@ async function webhookSync() {
 
   // Handle publish/update
   if (status === 'Published') {
+    // 기존 .astro 리치 페이지가 있으면 삭제 (.md가 우선되도록)
+    const richPagesPath = path.join(process.cwd(), 'src/data/rich-pages.json');
+    if (fs.existsSync(richPagesPath)) {
+      try {
+        const richPages = JSON.parse(fs.readFileSync(richPagesPath, 'utf-8'));
+        const existingRich = richPages.find(p => p.notionPageId === pageId);
+        if (existingRich) {
+          const astroPath = path.join(process.cwd(), 'src/pages', `${existingRich.slug}.astro`);
+          if (fs.existsSync(astroPath)) {
+            fs.unlinkSync(astroPath);
+            console.log(`  🗑️  Removed old rich page: ${existingRich.slug}.astro`);
+          }
+          const updated = richPages.filter(p => p.notionPageId !== pageId);
+          fs.writeFileSync(richPagesPath, JSON.stringify(updated, null, 2), 'utf-8');
+          console.log(`  🗑️  Removed from rich-pages.json: ${existingRich.slug}`);
+        }
+      } catch (e) { /* ignore */ }
+    }
+
     // .md 파일 존재 여부로 신규/업데이트 구분
     const existingMd = findExistingFileByPageId(pageId);
     if (existingMd.exists) {
