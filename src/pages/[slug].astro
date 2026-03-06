@@ -339,4 +339,55 @@ const breadcrumbSchema = {
     color: #1F1F1F;
     font-style: normal;
   }
+
+  /* 장점/단점/추천 색상 */
+  article .prose :global(.pros-label) {
+    color: #16a34a !important;
+    font-weight: 700;
+  }
+  article .prose :global(.pros-list) li {
+    color: #15803d !important;
+  }
+
+  article .prose :global(.cons-label) {
+    color: #dc2626 !important;
+    font-weight: 700;
+  }
+  article .prose :global(.cons-list) li {
+    color: #b91c1c !important;
+  }
+
+  article .prose :global(.rec-label) {
+    color: #16a34a !important;
+    font-weight: 700;
+  }
+  article .prose :global(.rec-list) li {
+    color: #15803d !important;
+  }
 </style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var prose = document.querySelector('.prose');
+    if (!prose) return;
+    var items = prose.querySelectorAll('li');
+    for (var i = 0; i < items.length; i++) {
+      var li = items[i];
+      var text = '';
+      for (var j = 0; j < li.childNodes.length; j++) {
+        if (li.childNodes[j].nodeType === 3) text += li.childNodes[j].textContent.trim();
+      }
+      var childUl = li.querySelector('ul');
+      if (text === '장점') {
+        li.classList.add('pros-label');
+        if (childUl) childUl.classList.add('pros-list');
+      } else if (text === '단점') {
+        li.classList.add('cons-label');
+        if (childUl) childUl.classList.add('cons-list');
+      } else if (text.indexOf('추천') !== -1) {
+        li.classList.add('rec-label');
+        if (childUl) childUl.classList.add('rec-list');
+      }
+    }
+  });
+</script>
