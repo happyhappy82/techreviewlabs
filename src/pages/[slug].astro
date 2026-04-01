@@ -30,6 +30,73 @@ function getReadingTime(content: string): string {
 const pageUrl = `https://www.techreviewlab.xyz/${review.slug}`;
 const isActualReview = review.data.product && (review.data.rating ?? 0) > 0;
 
+// --- SEO: 제목에서 카테고리 추출 (검색 결과 CTR 개선) ---
+const titleText = review.data.title;
+const year = titleText.match(/^\d{4}/)?.[0] || '2026';
+
+// FAQ Schema 자동 생성 (details/summary 패턴에서 추출하는 대신 자주 묻는 질문 자동 생성)
+function generateFaqSchema(title: string) {
+  const faqItems: { question: string; answer: string }[] = [];
+
+  // 제목에서 제품 카테고리 추출
+  const isNotebook = /노트북/.test(title);
+  const isMonitor = /모니터/.test(title);
+  const isTablet = /태블릿/.test(title);
+  const productType = isNotebook ? '노트북' : isMonitor ? '모니터' : isTablet ? '태블릿' : '제품';
+
+  // 게임 이름 또는 용도 추출
+  const match = title.match(/^(?:\d{4}\s+)?(.+?)\s+(?:노트북|모니터|태블릿|추천)/);
+  const keyword = match ? match[1] : '';
+
+  // 한글 조사 처리 (숫자/영어 끝도 처리)
+  function getJosa(word: string, josaPair: [string, string]): string {
+    const lastChar = word.charAt(word.length - 1);
+    const code = lastChar.charCodeAt(0);
+    // 숫자로 끝나는 경우: 0,1,3,6,7,8 = 받침O / 2,4,5,9 = 받침X
+    if (/[0-9]/.test(lastChar)) {
+      return ['0','1','3','6','7','8'].includes(lastChar) ? josaPair[0] : josaPair[1];
+    }
+    // 영문으로 끝나는 경우 기본값
+    if (code < 0xAC00 || code > 0xD7A3) return josaPair[1];
+    const hasJongseong = (code - 0xAC00) % 28 !== 0;
+    return hasJongseong ? josaPair[0] : josaPair[1];
+  }
+
+  if (keyword) {
+    const eunNeun = getJosa(productType, ['은', '는']);
+    const eulReul = getJosa(keyword, ['을', '를']);
+
+    faqItems.push({
+      question: `${keyword}에 적합한 ${productType}의 핵심 스펙은 무엇인가요?`,
+      answer: `${keyword}${eulReul} 위한 ${productType}${eunNeun} 이 글에서 추천하는 Top5 제품의 스펙 비교표를 참고하시면 용도에 맞는 최적의 선택을 하실 수 있습니다. 각 제품의 장단점과 추천 대상을 상세히 정리해두었습니다.`,
+    });
+    faqItems.push({
+      question: `${keyword} ${productType} 추천 제품 중 가성비 좋은 제품은?`,
+      answer: `가성비를 중시한다면 이 글의 비교표에서 가격대비 성능 점수가 높은 제품을 확인해보세요. 예산별 추천 제품을 상세히 안내해드리고 있습니다.`,
+    });
+    faqItems.push({
+      question: `${year}년 ${keyword} ${productType}${eunNeun} 어디서 가장 저렴하게 구매할 수 있나요?`,
+      answer: `각 제품별 최저가 링크를 글 하단에 정리해두었습니다. 쿠팡에서 할인, 쿠폰, 카드혜택을 함께 활용하시면 더욱 저렴하게 구매하실 수 있습니다.`,
+    });
+  }
+
+  if (faqItems.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+const faqSchema = generateFaqSchema(titleText);
+
 const mainSchema = isActualReview
   ? {
       "@context": "https://schema.org",
@@ -96,6 +163,25 @@ const mainSchema = isActualReview
       image: "https://www.techreviewlab.xyz/opengraph-image.png",
     };
 
+// SEO: meta description 자동 생성 (excerpt에서 쿠팡파트너스 문구 제거 + 매력적으로)
+function generateMetaDescription(title: string, excerpt: string): string {
+  // 쿠팡파트너스 문구 제거
+  let clean = excerpt.replace(/이\s*포스팅은\s*쿠팡파트너스\s*일환으로\s*수수료를\s*지급받습니다\.?\s*/g, '').trim();
+  // 너무 길면 자르기 (155자)
+  if (clean.length > 155) {
+    clean = clean.substring(0, 152) + '...';
+  }
+  // 앞에 연도 키워드 강조
+  const yearMatch = title.match(/^(\d{4})/);
+  const yearStr = yearMatch ? yearMatch[1] + '년 ' : '';
+  if (clean.length < 80) {
+    clean = yearStr + title + ' - 장단점 비교, 가격대별 추천, 실사용 리뷰까지 한눈에 확인하세요.';
+  }
+  return clean;
+}
+
+const metaDescription = generateMetaDescription(titleText, review.data.excerpt);
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -118,7 +204,7 @@ const breadcrumbSchema = {
 
 <BaseLayout
   title={review.data.title}
-  description={review.data.excerpt}
+  description={metaDescription}
   canonical={pageUrl}
   ogType="article"
   publishedTime={review.data.date}
@@ -129,6 +215,7 @@ const breadcrumbSchema = {
     <article>
       <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+      {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
       <!-- 헤더 섹션 -->
       <div class="mb-8 pb-6 border-b border-ns-border">
@@ -166,6 +253,15 @@ const breadcrumbSchema = {
     </article>
   </main>
   <TableOfContents />
+
+  <!-- 플로팅 CTA 버튼 (스크롤 시 나타남) -->
+  <div id="floating-cta" class="floating-cta hidden">
+    <a id="floating-cta-link" href="#" target="_blank" rel="noopener noreferrer nofollow" class="floating-cta-btn">
+      <span class="floating-cta-icon">&#127873;</span>
+      <span class="floating-cta-text">가격 보러가기</span>
+      <span class="floating-cta-arrow">&rsaquo;</span>
+    </a>
+  </div>
 </BaseLayout>
 
 <style>
@@ -340,6 +436,162 @@ const breadcrumbSchema = {
     font-style: normal;
   }
 
+  /* ====== CTA 버튼 스타일 (제휴 링크) ====== */
+  article .prose :global(.cta-button-wrap) {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0 2rem;
+  }
+
+  article .prose :global(.cta-button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 480px;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF4500 100%);
+    color: #fff !important;
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 12px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(255, 69, 0, 0.35);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: -0.3px;
+  }
+
+  article .prose :global(.cta-button:hover) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 69, 0, 0.45);
+    background: linear-gradient(135deg, #FF7B45 0%, #FF5510 100%);
+    color: #fff !important;
+  }
+
+  article .prose :global(.cta-button:active) {
+    transform: translateY(0);
+  }
+
+  article .prose :global(.cta-button::after) {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: cta-shimmer 2.5s infinite;
+  }
+
+  @keyframes cta-shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  article .prose :global(.cta-icon) {
+    font-size: 20px;
+  }
+
+  article .prose :global(.cta-arrow) {
+    font-size: 22px;
+    font-weight: 300;
+  }
+
+  /* 중간 CTA (글 중간에 삽입되는 배너) */
+  article .prose :global(.mid-cta-banner) {
+    background: linear-gradient(135deg, #FFF5F0 0%, #FFF0E8 100%);
+    border: 2px solid #FFD4C0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  article .prose :global(.mid-cta-banner p) {
+    font-size: 14px;
+    color: #8B4513;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  article .prose :global(.mid-cta-banner .cta-button) {
+    max-width: 360px;
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  /* 플로팅 CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    width: 90%;
+    max-width: 480px;
+  }
+
+  .floating-cta.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(20px);
+  }
+
+  .floating-cta.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .floating-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF4500 100%);
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 50px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 20px rgba(255, 69, 0, 0.4), 0 0 40px rgba(255, 69, 0, 0.15);
+    transition: all 0.2s ease;
+    letter-spacing: -0.3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .floating-cta-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5), 0 0 50px rgba(255, 69, 0, 0.2);
+  }
+
+  .floating-cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: cta-shimmer 2.5s infinite;
+  }
+
+  .floating-cta-icon {
+    font-size: 18px;
+  }
+
+  .floating-cta-arrow {
+    font-size: 22px;
+    font-weight: 300;
+  }
+
   /* 장점/단점/추천 색상 */
   article .prose :global(.pros-label) {
     color: #16a34a !important;
@@ -370,6 +622,8 @@ const breadcrumbSchema = {
   document.addEventListener('DOMContentLoaded', function() {
     var prose = document.querySelector('.prose');
     if (!prose) return;
+
+    // === 1. 장점/단점/추천 색상 ===
     var items = prose.querySelectorAll('li');
     for (var i = 0; i < items.length; i++) {
       var li = items[i];
@@ -387,6 +641,103 @@ const breadcrumbSchema = {
       } else if (text.indexOf('추천') !== -1) {
         li.classList.add('rec-label');
         if (childUl) childUl.classList.add('rec-list');
+      }
+    }
+
+    // === 2. CTA 링크를 눈에 띄는 버튼으로 변환 ===
+    var allLinks = prose.querySelectorAll('a');
+    var ctaLinks = [];
+    var ctaKeywords = ['최저가', '보러가기', '할인', '쿠폰', '카드혜택', '확인하기'];
+    for (var k = 0; k < allLinks.length; k++) {
+      var link = allLinks[k];
+      var linkText = (link.textContent || '').trim();
+      var href = link.getAttribute('href') || '';
+      // 쿠팡 링크이거나 CTA 키워드가 포함된 링크
+      var isCoupang = href.indexOf('coupang.com') !== -1 || href.indexOf('link.coupang') !== -1;
+      var hasCTAKeyword = false;
+      for (var m = 0; m < ctaKeywords.length; m++) {
+        if (linkText.indexOf(ctaKeywords[m]) !== -1) { hasCTAKeyword = true; break; }
+      }
+      if (isCoupang || hasCTAKeyword) {
+        ctaLinks.push(link);
+      }
+    }
+
+    for (var n = 0; n < ctaLinks.length; n++) {
+      var ctaLink = ctaLinks[n];
+      var ctaHref = ctaLink.getAttribute('href') || '#';
+      var parentP = ctaLink.parentElement;
+
+      // CTA 버튼 래퍼 생성
+      var wrap = document.createElement('div');
+      wrap.className = 'cta-button-wrap';
+
+      var btn = document.createElement('a');
+      btn.href = ctaHref;
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer nofollow';
+      btn.className = 'cta-button';
+      btn.innerHTML = '<span class="cta-icon">&#127873;</span> 가격 보러가기 <span class="cta-arrow">&rsaquo;</span>';
+
+      wrap.appendChild(btn);
+
+      // 원래 링크가 p 태그 안의 유일한 요소면 p를 교체, 아니면 뒤에 삽입
+      if (parentP && parentP.tagName === 'P' && parentP.childNodes.length <= 2) {
+        parentP.replaceWith(wrap);
+      } else {
+        ctaLink.replaceWith(wrap);
+      }
+    }
+
+    // === 3. 플로팅 CTA 버튼 제어 ===
+    var floatingCta = document.getElementById('floating-cta');
+    var floatingCtaLink = document.getElementById('floating-cta-link');
+    if (floatingCta && ctaLinks.length > 0) {
+      // 첫 번째 CTA 링크의 href 사용
+      var floatHref = ctaLinks[0] ? (ctaLinks[0].getAttribute('href') || '#') : '#';
+      if (floatingCtaLink) floatingCtaLink.href = floatHref;
+
+      var lastScrollY = 0;
+      var ticking = false;
+      function updateFloatingCta() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var docHeight = document.documentElement.scrollHeight;
+        var winHeight = window.innerHeight;
+        var scrollPercent = scrollY / (docHeight - winHeight);
+
+        // 20% 이상 스크롤 시 표시, 페이지 끝 근처(95%)에서 숨김
+        if (scrollPercent > 0.2 && scrollPercent < 0.95) {
+          floatingCta.classList.remove('hidden');
+          floatingCta.classList.add('visible');
+        } else {
+          floatingCta.classList.remove('visible');
+          floatingCta.classList.add('hidden');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(updateFloatingCta);
+          ticking = true;
+        }
+      });
+    }
+
+    // === 5. 가장 가까운 CTA로 플로팅 버튼 href 동적 업데이트 ===
+    var ctaButtons = prose.querySelectorAll('.cta-button');
+    if (ctaButtons.length > 0 && floatingCtaLink) {
+      var observer = new IntersectionObserver(function(entries) {
+        for (var e = 0; e < entries.length; e++) {
+          if (entries[e].isIntersecting) {
+            var visibleHref = entries[e].target.getAttribute('href');
+            if (visibleHref) floatingCtaLink.href = visibleHref;
+          }
+        }
+      }, { rootMargin: '0px 0px -50% 0px' });
+
+      for (var b = 0; b < ctaButtons.length; b++) {
+        observer.observe(ctaButtons[b]);
       }
     }
   });

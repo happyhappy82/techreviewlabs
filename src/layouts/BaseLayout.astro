@@ -50,7 +50,7 @@ const organizationSchema = {
     <link rel="icon" type="image/png" href="/icon.png" />
     <link rel="apple-touch-icon" href="/apple-icon.png" />
 
-    <title>{title}</title>
+    <title>{title}{title === '테크리뷰Lab' ? '' : ' | 테크리뷰Lab'}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
